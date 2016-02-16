@@ -1,6 +1,6 @@
 {
   "name": "djakne-frontend",
-  "version": "1.1.1",
+  "version": "0.1.0",
   "description": "Ionic app for Djäkne Kaffebar",
   "scripts": {
     "commit": "git-cz"
