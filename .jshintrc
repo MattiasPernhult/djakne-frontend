@@ -5,7 +5,11 @@
     "before"     : false,
     "beforeEach" : false,
     "after"      : false,
-    "afterEach"  : false
+    "afterEach"  : false,
+    "angular"    : false,
+    "window"     : false,
+    "cordova"    : false,
+    "StatusBar"  : false
   },
   "camelcase": true,
   "curly": true,
@@ -16,7 +20,7 @@
   "laxcomma": true,
   "node": true,
   "trailing": true,
-  "strict": true,
+  "strict": false,
   "unused": "vars",
   "undef": true
 }

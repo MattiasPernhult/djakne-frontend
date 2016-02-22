@@ -5,7 +5,7 @@
 ### Formatting
 * [2 Spaces for indentation](#2-spaces-for-indentation)
 * [Use Semicolons](#use-semicolons)
-* [80 characters per line](#80-characters-per-line)
+* [100 characters per line](#100-characters-per-line)
 * [Use single quotes](#use-single-quotes)
 * [Opening braces go on the same line](#opening-braces-go-on-the-same-line)
 * [Always use braces](#always-use-braces)
@@ -42,8 +42,8 @@ We use 2 spaces for indentation. Make sure that your text editors settings is se
 #### Use semicolons
 We are using semicolons. Tips is to add this configuration to your .jshintrc file
 
-#### 80 characters per line
-Limit your lines to 80 characters. Make sure that your editor is displaying the line at 80 characters.
+#### 100 characters per line
+Limit your lines to 100 characters. Make sure that your editor is displaying the line at 100 characters.
 
 #### Use single quotes
 Use single quotes, unless you are writing JSON.
