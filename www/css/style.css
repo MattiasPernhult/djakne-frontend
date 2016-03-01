@@ -1,1 +1,10 @@
 /* Empty. Add your own CSS if you like */
+.product-price
+{
+  float: right;
+}
+.product-desc
+{
+  display:block;
+  font-size:12px;
+}

@@ -1,0 +1,12 @@
+<ion-nav-bar></ion-nav-bar>
+<ion-view view-title="Menu">
+  <ion-content class="padding">
+      <ul class="list">
+        <li class="item product-name" ng-repeat="product in products">
+          {{product.name}}
+          <span class="product-price">{{product.price}} kr</span>
+          <span class="product-desc">This is a product description..</span>
+        </li>
+      </ul>
+  </ion-content>
+</ion-view>
