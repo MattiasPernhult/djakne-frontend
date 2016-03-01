@@ -1,18 +1,19 @@
 angular.module('menu', ['ionic'])
   .controller('MenuCtrl', function($scope, MenuFactory) {
-    console.log(MenuFactory.getProducts());
-    $scope.products = MenuFactory.getProducts();
+    MenuFactory.getProducts(function(data) {
+      $scope.products = data;
+    });
   })
 
   .factory('MenuFactory', function($http) {
 
     return {
       // Http Request
-      getProducts: function() {
+      getProducts: function(done) {
         $http.get('data/menu.json')
           .then(function(response) {
             // Handle Success
-            console.log(response.data);
+            return done(response.data.products);
           }, function(response) {
             // Handle Failure
             console.log(response.data);
