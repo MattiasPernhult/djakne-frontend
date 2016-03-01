@@ -1,12 +1,18 @@
 <ion-nav-bar></ion-nav-bar>
 <ion-view view-title="Meny">
   <ion-content class="padding">
-      <ul class="list">
-        <li class="item product-name" ng-repeat="product in products">
-          {{product.name}}
-          <span class="product-price">{{product.price}} kr</span>
-          <span class="product-desc">This is a product description..</span>
-        </li>
-      </ul>
-  </ion-content>
+
+  <div ng-controller="MenuCtrl" class="list" ng-repeat="product in products">
+    <div class="item item-button-right">
+      <div ng-click="showme = !showme">
+        <span>{{product.name}}</span>
+        <span class="product-price">{{product.price}} kr</span>
+        <span class="product-desc" ng-show="showme">This is a product description..</span>
+      </div>
+      <button class="button button-positive">
+        <i class="icon ion-ios-plus-empty"></i>
+      </button>
+    </div>
+  </div>
+
 </ion-view>
