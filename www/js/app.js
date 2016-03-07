@@ -1,7 +1,7 @@
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'starter' is the name of this angular module example
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
@@ -44,31 +44,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','m
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.home', {
+    url: '/home',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl',
+      'tab-home': {
+        templateUrl: 'templates/tab-home.html',
       },
     },
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.djakne', {
+      url: '/djakne',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl',
-        },
-      },
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl',
+        'tab-djakne': {
+          templateUrl: 'templates/tab-djakne.html',
         },
       },
     })
@@ -77,13 +66,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','m
     url: '/menu',
     views: {
       'tab-menu': {
-        templateUrl: 'templates/menu.html',
+        templateUrl: 'templates/tab-menu.html',
         controller: 'MenuCtrl',
       },
     },
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/home');
 
 });
