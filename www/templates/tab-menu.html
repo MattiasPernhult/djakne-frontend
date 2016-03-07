@@ -1,6 +1,6 @@
 <ion-view view-title="Menu">
  <ion-nav-buttons side="right">
-   <div ng-click="productTotal <= 1 || go('cart')">
+   <div ng-click="productTotal === 0 || go('cart')">
      <div class="ion-bag"></div>
      <div class="circle" ng-show="productTotal > 0">{{productTotal}}</div>
    </div>

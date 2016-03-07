@@ -3,11 +3,11 @@
   <ion-nav-bar>
     <ion-nav-buttons side="right">
       <div class="ion-bag"></div>
-      <div class="circle" ng-show="productCount > 0">{{productCount}}</div>
+      <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content class="padding">
-      <h4 class="text-center" ng-show="productCount === 0">There are no products in the cart</h4>
+      <h4 class="text-center" ng-show="cartQty === 0">There are no products in the cart</h4>
       <ul class="list">
         <li class="item product-name" ng-repeat="product in products">
           <div class="row">
@@ -20,9 +20,9 @@
             </div>
             <div class="col col-20">
               <div class="qty-container">
-                <div id="removeOne" class="qty-symbol" ng-click="removeFromCart(product)">-</div>
+                <div id="removeOne" class="qty-symbol" ng-click="remove(product)">-</div>
                 <h1 id="qty-amount">{{product.qty}}</h1>
-                <div id="addOne" class="qty-symbol" ng-click="addToCart(product)">+</div>
+                <div id="addOne" class="qty-symbol" ng-click="add(product)">+</div>
               </div>
             </div>
           </div>

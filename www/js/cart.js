@@ -5,12 +5,12 @@ angular.module('cart', ['ionic','menu'])
     $scope.products = Cart.list();
 
     // Add item to cart
-    $scope.addToCart = function(product) {
+    $scope.add = function(product) {
       Cart.add(product);
     };
 
     // Remove item from cart
-    $scope.removeFromCart = function(product) {
+    $scope.remove = function(product) {
       Cart.remove(product);
     };
 
@@ -25,7 +25,7 @@ angular.module('cart', ['ionic','menu'])
         return Cart.size();
       },
       function(newVal) {
-        $scope.productCount = newVal;
+        $scope.cartQty = newVal;
       }
     );
 
@@ -41,6 +41,7 @@ angular.module('cart', ['ionic','menu'])
   })
 
   .factory('Cart', function($http) {
+    // Cart array
     var cart = [];
 
     return {
