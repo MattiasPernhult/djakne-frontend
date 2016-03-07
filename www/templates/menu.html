@@ -1,0 +1,27 @@
+<ion-view view-title="Menu">
+<ion-nav-bar>
+  <ion-nav-buttons side="right">
+    <div ng-click="productTotal <= 1 || go('cart')">
+      <div class="ion-bag"></div>
+      <div class="circle" ng-show="productTotal > 0">{{productTotal}}</div>
+    </div>
+  </ion-nav-buttons>
+</ion-nav-bar>
+  <ion-content class="padding">
+      <ul class="list">
+        <li class="item product-name" ng-repeat="product in products">
+          <img src="../img/remove.svg" id="icon-remove" class="cart-icon" ng-show="inCart(product) >= 0" ng-click="removeFromCart(product)"/>
+          <div class="row">
+            <div class="col col-80">
+              <h3>{{product.name}}</h3>
+              <p class="product-desc">This is a product description..</p>
+            </div>
+            <div class="col col-20">
+              <p class="product-price">{{product.price}} kr</p>
+            </div>
+          </div>
+          <img src="../img/add.svg" id="icon-add" class="cart-icon" ng-click="addToCart(product)"></img>
+        </li>
+      </ul>
+  </ion-content>
+</ion-view>

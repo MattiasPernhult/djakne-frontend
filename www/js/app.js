@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','menu'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','menu','cart',])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -30,48 +30,60 @@ angular.module('starter', ['ionic','menu'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    .state('menu', {
-      url: '/menu',
-      templateUrl: 'templates/menu.html',
+    .state('cart', {
+      url: '/cart',
+      templateUrl: 'templates/cart.html',
+      controller: 'CartCtrl',
     })
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
   })
 
   // Each tab has its own nav history stack:
 
-  .state('tab.home', {
-    url: '/home',
+  .state('tab.dash', {
+    url: '/dash',
     views: {
-      'tab-home': {
-        templateUrl: 'templates/tab-home.html',
-      }
-    }
+      'tab-dash': {
+        templateUrl: 'templates/tab-dash.html',
+        controller: 'DashCtrl',
+      },
+    },
   })
 
-  .state('tab.djakne', {
-      url: '/djakne',
+  .state('tab.chats', {
+      url: '/chats',
       views: {
-        'tab-djakne': {
-          templateUrl: 'templates/tab-djakne.html',
-        }
-      }
+        'tab-chats': {
+          templateUrl: 'templates/tab-chats.html',
+          controller: 'ChatsCtrl',
+        },
+      },
+    })
+    .state('tab.chat-detail', {
+      url: '/chats/:chatId',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/chat-detail.html',
+          controller: 'ChatDetailCtrl',
+        },
+      },
     })
 
   .state('tab.menu', {
     url: '/menu',
     views: {
       'tab-menu': {
-        templateUrl: 'templates/tab-menu.html',
+        templateUrl: 'templates/menu.html',
         controller: 'MenuCtrl',
-      }
-    }
+      },
+    },
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/tab/dash');
 
 });
