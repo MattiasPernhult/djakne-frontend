@@ -5,6 +5,7 @@ angular.module('menu', ['ionic'])
     });
   })
 
+
   .factory('MenuFactory', function($http) {
 
     return {
