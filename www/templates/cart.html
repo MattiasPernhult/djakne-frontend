@@ -1,0 +1,41 @@
+
+<ion-view view-title="Cart">
+  <ion-nav-bar>
+    <ion-nav-buttons side="right">
+      <div class="ion-bag"></div>
+      <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="padding">
+      <h4 class="text-center" ng-show="cartQty === 0">There are no products in the cart</h4>
+      <ul class="list">
+        <li class="item product-name" ng-repeat="product in products">
+          <div class="row">
+            <div class="col col-60">
+              <h3>{{product.name}}</h3>
+              <p class="product-desc">This is a product description..</p>
+            </div>
+            <div class="col col-20">
+              <div class="col text-center"><p>{{product.price}} kr</p></div>
+            </div>
+            <div class="col col-20">
+              <div class="qty-container">
+                <div id="removeOne" class="qty-symbol" ng-click="remove(product)">-</div>
+                <h1 id="qty-amount">{{product.qty}}</h1>
+                <div id="addOne" class="qty-symbol" ng-click="add(product)">+</div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="cart-total-container">
+        <div class="total-desc">
+          <h4 id="cart-total-title">Totalt:</h4>
+          <p id="cart-total-price">{{total}} kr</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="button button-block button-dark" ng-click="placeOrder()"> Beställ</button>
+      </div>
+  </ion-content>
+</ion-view>
