@@ -34,6 +34,13 @@ angular.module('starter', ['ionic','menu'])
       url: '/menu',
       templateUrl: 'templates/menu.html',
     })
+
+    .state('cart', {
+      url: '/cart',
+      templateUrl: 'templates/cart.html',
+      controller: 'CartCtrl',
+    })
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
