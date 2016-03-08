@@ -1,7 +1,7 @@
 angular.module('factories', ['config'])
 
 .factory('accessFactory', function() {
-  var accessToken = '';
+  var accessToken;
 
   var changeAccessToken = function(token)  {
     accessToken = token;
@@ -25,7 +25,8 @@ angular.module('factories', ['config'])
     if (products)  {
       return done(products);
     }
-    var url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
+    //var url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
+    var url = 'data/menu.json';
     $http.get(url)
       .then(function(response) {
         // Handle Success

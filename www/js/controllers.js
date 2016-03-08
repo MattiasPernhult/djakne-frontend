@@ -1,12 +1,15 @@
 angular.module('controllers', ['factories', 'config'])
 
-// .controller('RatingController', function($scope) {
-//   $scope.ratingFull = {};
-//   $scope.ratingFull.rate = 3;
-//   $scope.ratingFull.max = 5;
-// })
+.controller('RatingController', function($scope) {
+  $scope.ratingFull = {};
+  $scope.ratingFull.rate = 3;
+  $scope.ratingFull.max = 5;
+})
 
-.controller('ProductController', function($scope, Cart, MenuFactory) {
+.controller('ProductController', function($scope, $state, Cart, MenuFactory) {
+
+  $scope.go = $state.go.bind($state);
+  $scope.customersProducts = Cart.list();
 
   // Watch for changes in cart size
   $scope.$watch(function() {
@@ -16,6 +19,11 @@ angular.module('controllers', ['factories', 'config'])
       $scope.productTotal = newVal;
     }
   );
+
+  $scope.inCart = function(product) {
+    return Cart.contains(product);
+  };
+
   // Get product menu
   MenuFactory.getProducts(function(data) {
     $scope.products = data;
