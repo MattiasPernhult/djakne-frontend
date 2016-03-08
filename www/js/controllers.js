@@ -16,7 +16,7 @@ angular.module('controllers', ['factories', 'config'])
       return Cart.size();
     },
     function(newVal) {
-      $scope.productTotal = newVal;
+      $scope.cartQty = newVal;
     }
   );
 

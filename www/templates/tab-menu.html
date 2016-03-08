@@ -1,10 +1,10 @@
 <ion-view view-title="Menu">
- <ion-nav-buttons side="right">
-   <div ng-click="productTotal === 0 || go('cart')">
-     <div class="ion-bag"></div>
-     <div class="circle" ng-show="productTotal > 0">{{productTotal}}</div>
-   </div>
- </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <div ng-click="cartQty === 0 || go('cart')">
+      <button class=" button button-icon ion-bag"></button>
+      <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
+    </div>
+  </ion-nav-buttons>
  <ion-content>
      <ul class="list">
        <li class="item product-name" ng-repeat="product in products">
