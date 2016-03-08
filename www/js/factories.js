@@ -25,8 +25,12 @@ angular.module('factories', ['config'])
     if (products)  {
       return done(products);
     }
-    //var url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
-    var url = 'data/menu.json';
+    var url;
+    if (accessFactory.getAccessToken()) {
+      url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
+    } else {
+      url = 'data/menu.json';
+    }
     $http.get(url)
       .then(function(response) {
         // Handle Success
