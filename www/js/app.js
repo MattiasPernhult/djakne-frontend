@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','menu','cart',])
+angular.module('starter', ['ionic', 'login', 'menu', 'cart'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -30,6 +30,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','m
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
+
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'LoginController',
+  })
+
     .state('cart', {
       url: '/cart',
       templateUrl: 'templates/cart.html',
@@ -74,5 +81,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','m
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/login');
 });
