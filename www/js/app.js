@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'login', 'menu', 'cart'])
+angular.module('starter', ['ionic', 'login', 'menu', 'cart', 'profile',])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -61,14 +61,24 @@ angular.module('starter', ['ionic', 'login', 'menu', 'cart'])
     },
   })
 
-  .state('tab.djakne', {
-      url: '/djakne',
+  .state('tab.social', {
+      url: '/social',
       views: {
-        'tab-djakne': {
-          templateUrl: 'templates/tab-djakne.html',
+        'tab-social': {
+          templateUrl: 'templates/tab-social.html',
         },
       },
     })
+
+    .state('tab.profile', {
+        url: '/profile',
+        views: {
+          'tab-profile': {
+            templateUrl: 'templates/tab-profile.html',
+            controller: 'RatingCtrl',
+          },
+        },
+      })
 
   .state('tab.menu', {
     url: '/menu',
@@ -81,5 +91,5 @@ angular.module('starter', ['ionic', 'login', 'menu', 'cart'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/tab/home');
 });

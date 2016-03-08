@@ -99,7 +99,9 @@ angular.module('cart', ['ionic','menu'])
         // Set up http
         var data = {products: []};
         angular.forEach(cart, function(item) {
-          data.products.push({id: item.id});
+          for (var i = 0; i < item.qty; i++) {
+            data.products.push({id: item.id});
+          }
         });
         return data;
       },
