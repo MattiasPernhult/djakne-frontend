@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'login', 'menu', 'cart', 'profile', 'config'])
+angular.module('starter', ['ionic', 'controllers', 'factories', 'config'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -40,7 +40,7 @@ angular.module('starter', ['ionic', 'login', 'menu', 'cart', 'profile', 'config'
     .state('cart', {
       url: '/cart',
       templateUrl: 'templates/cart.html',
-      controller: 'CartCtrl',
+      controller: 'ProductController',
     })
 
   // setup an abstract state for the tabs directive
@@ -75,7 +75,7 @@ angular.module('starter', ['ionic', 'login', 'menu', 'cart', 'profile', 'config'
         views: {
           'tab-profile': {
             templateUrl: 'templates/tab-profile.html',
-            controller: 'RatingCtrl',
+            controller: 'RatingController',
           },
         },
       })
@@ -85,7 +85,7 @@ angular.module('starter', ['ionic', 'login', 'menu', 'cart', 'profile', 'config'
     views: {
       'tab-menu': {
         templateUrl: 'templates/tab-menu.html',
-        controller: 'MenuCtrl',
+        controller: 'ProductController',
       },
     },
   });
