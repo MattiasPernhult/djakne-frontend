@@ -1,22 +1,4 @@
-angular.module('login', [])
-
-.controller('MenuController', function($scope, $http, $location, accessService) {
-  $scope.accessToken = accessService.getAccessToken();
-
-  $scope.getMenu = function() {
-    var url = 'http://192.168.43.39:3000/menu?token=' + $scope.accessToken;
-    $http({
-        method: 'get',
-        url: url,
-      })
-      .success(function(data) {
-        $scope.products = data;
-      })
-      .error(function(error, status) {
-        console.log('ERROR: ' + error);
-      });
-  };
-})
+angular.module('login', ['config'])
 
 .service('accessService', function() {
   var accessToken = '';
@@ -35,10 +17,11 @@ angular.module('login', [])
   };
 })
 
-.controller('LoginController', function($scope, $http, $location, $rootScope, accessService) {
-
-  $scope.urlStep1 = 'http://192.168.43.39:3000/oauth/linkedin/ios';
-  $scope.redirectUri = 'http://192.168.43.39:3000/oauth/linkedin/ios/callback';
+.controller('LoginController', ['$scope', '$http', '$location', '$rootScope', 'accessService',
+'HOST', function($scope, $http, $location, $rootScope, accessService, HOST) {
+  console.log(HOST.hostAdress);
+  $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
+  $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';
   $scope.grantType = 'authorization_code';
   $scope.cliendId = '77fqlypcm1ourl';
   $scope.clientSecret = 'UVKqpbFQchFA8ku0';
@@ -57,11 +40,11 @@ angular.module('login', [])
             accessService.changeAccessToken(token);
             ref.close();
             $rootScope.$apply(function() {
-              $location.path('/menu');
+              $location.path('/tab/home');
             });
           }
         );
       }
     });
   };
-});
+},]);

@@ -1,6 +1,7 @@
-angular.module('menu', ['ionic'])
-  .controller('MenuCtrl', function($scope, $state, MenuFactory, Cart) {
-
+angular.module('menu', ['ionic', 'login', 'config'])
+  .controller('MenuCtrl', function($scope, $state, MenuFactory, Cart, accessService) {
+    console.log('MENU CONTROLLER');
+    console.log(accessService.getAccessToken());
     // Rout to specific page
     $scope.go = $state.go.bind($state);
 
@@ -30,25 +31,23 @@ angular.module('menu', ['ionic'])
     };
 
     // Remove item from cart
-    $scope.removeFromCart = function(product) {
+    $scope.removeFromCart = function(product)  {
       Cart.remove(product);
     };
-
   })
 
-  .factory('MenuFactory', function($http) {
-
-    return {
-
-      getProducts: function(done) {
-        $http.get('data/menu.json')
-          .then(function(response) {
-            // Handle Success
-            return done(response.data.products);
-          }, function(response) {
-            // Handle Failure
-            return done(response.data);
-          });
-      },
-    };
-  });
+.factory('MenuFactory', function($http, accessService, HOST) {
+  return {
+    getProducts: function(done) {
+      var url = HOST.hostAdress + ':3000/menu?token=' + accessService.getAccessToken();
+      $http.get(url)
+        .then(function(response) {
+          // Handle Success
+          return done(response.data.products);
+        }, function(response) {
+          // Handle Failure
+          return done(response.data);
+        });
+    },
+  };
+});
