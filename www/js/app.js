@@ -91,5 +91,5 @@ angular.module('starter', ['ionic', 'controllers', 'factories', 'config'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/menu');
+  $urlRouterProvider.otherwise('/login');
 });
