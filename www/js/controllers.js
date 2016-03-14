@@ -1,9 +1,24 @@
-angular.module('controllers', ['factories', 'config'])
+angular.module('controllers', ['factories', 'config',])
 
 .controller('RatingController', function($scope) {
-  $scope.ratingFull = {};
-  $scope.ratingFull.rate = 3;
-  $scope.ratingFull.max = 5;
+
+  $scope.ratingsObject = {
+        iconOn: 'ion-ios-star',
+        iconOff: 'ion-ios-star-outline',
+        iconOnColor: 'rgb(200, 200, 100)',
+        iconOffColor:  'rgb(96, 96, 96)',
+        rating:  2,
+        minRating: 1,
+        readOnly: true,
+        callback: function(rating) {
+          $scope.ratingsCallback(rating);
+        },
+      };
+
+  $scope.ratingsCallback = function(rating) {
+        console.log('Selected rating is : ', rating);
+      };
+
 })
 
 .controller('ProductController', function($scope, $state, Cart, MenuFactory) {
