@@ -1,8 +1,11 @@
 
 <ion-view view-title="Cart">
   <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <button ng-click="go('tab.menu')" class=" button button-icon ion-ios-arrow-left"></button>
+    </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <div class="ion-bag"></div>
+      <button class=" button button-icon ion-bag"></button>
       <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
     </ion-nav-buttons>
   </ion-nav-bar>
