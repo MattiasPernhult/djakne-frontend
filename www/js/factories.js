@@ -106,6 +106,8 @@ angular.module('factories', ['config'])
       var data = {
         products: [],
       };
+      data.message = 'asdf';
+      data.takeaway = 1;
       angular.forEach(cart, function(item) {
         for (var i = 0; i < item.qty; i++) {
           data.products.push({
@@ -113,7 +115,18 @@ angular.module('factories', ['config'])
           });
         }
       });
-      return data;
+      var url = HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken();
+      $http.post(url, data)
+        .then(function(response) {
+          // Handle Success
+          data = '';
+          return true;
+          ​
+        }, function(response) {
+          // Handle Failure
+          return false;
+        });
+      console.log(data);
     },
   };
 });
