@@ -129,3 +129,14 @@ img#icon-add
   margin-right: 5px;
 
 }
+
+/* Profile template */
+
+.profile h3 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.ionic_ratings .icon {
+   font-size: 50px;
+ }
