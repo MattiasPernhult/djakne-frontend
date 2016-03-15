@@ -21,23 +21,27 @@ angular.module('factories', ['config'])
 
   var events;
 
-  var getEvents = funtion(done) {
-  var url;
+  var getEvents = function(done) {
+    var url = 'http://localhost:3000/events';
 
-  $http.get(url)
-    .then(function(response) {
-      // Handle Success
-      events = response.data;
+    if (events) {
       return done(events);
-    }, function(response) {
-      // Handle Failure
-      return done(response.data);
-    });
-};
-return {
-  getEvents: events,
-};
-  }
+    }
+    $http.get(url)
+      .then(function(response) {
+        // Handle Success
+        console.log('sccess: ' + response);
+        events = response.data.result;
+        return done(events);
+      }, function(response) {
+        // Handle Failure
+        console.log('ERROR' + response);
+        return done(response.data.error);
+      });
+  };
+  return {
+    getEvents: getEvents,
+  };
 })
 
 .factory('MenuFactory', function($http, accessFactory, HOST) {

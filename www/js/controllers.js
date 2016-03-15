@@ -70,7 +70,9 @@ angular.module('controllers', ['factories', 'config',])
 })
 
 .controller('EventController', function($scope, EventFactory) {
+  console.log('här');
   EventFactory.getEvents(function(data) {
+    console.log(data);
     $scope.events = data;
   });
 })
