@@ -17,6 +17,29 @@ angular.module('factories', ['config'])
   };
 })
 
+.factory('EventFactory', function($http, accessFactory, HOST) {
+
+  var events;
+
+  var getEvents = funtion(done) {
+  var url;
+
+  $http.get(url)
+    .then(function(response) {
+      // Handle Success
+      events = response.data;
+      return done(events);
+    }, function(response) {
+      // Handle Failure
+      return done(response.data);
+    });
+};
+return {
+  getEvents: events,
+};
+  }
+})
+
 .factory('MenuFactory', function($http, accessFactory, HOST) {
 
   var products;

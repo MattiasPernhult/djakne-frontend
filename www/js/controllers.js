@@ -69,6 +69,12 @@ angular.module('controllers', ['factories', 'config',])
   );
 })
 
+.controller('EventController', function($scope, EventFactory) {
+  EventFactory.getEvents(function(data) {
+    $scope.events = data;
+  });
+})
+
 .controller('LoginController',
   function($scope, $http, $location, $rootScope, accessFactory, HOST) {
     console.log(HOST.hostAdress);

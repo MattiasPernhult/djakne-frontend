@@ -140,3 +140,13 @@ img#icon-add
 .ionic_ratings .icon {
    font-size: 50px;
  }
+
+/* Testkod för Social-tabben (event branch) */
+ .card h2 {
+   font-size: 24px;
+ }
+
+ img#CoWork {
+   height: 250px;
+   padding: 20px;
+ }

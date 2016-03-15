@@ -43,6 +43,11 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       controller: 'ProductController',
     })
 
+    .state('events_description', {
+      url: '/events_description',
+      templateUrl: 'templates/events_description.html',
+    })
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -66,6 +71,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       views: {
         'tab-social': {
           templateUrl: 'templates/tab-social.html',
+          controller: 'EventController',
         },
       },
     })
