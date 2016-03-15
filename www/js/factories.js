@@ -46,7 +46,7 @@ angular.module('factories', ['config'])
   };
 })
 
-.factory('Cart', function($http) {
+.factory('Cart', function($http, accessFactory, HOST) {
   // Cart array
   var cart = [];
 
@@ -113,6 +113,17 @@ angular.module('factories', ['config'])
           });
         }
       });
+
+      $http.post(HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken(), data)
+      .success(function(res) {
+        alert('success');
+        alert(JSON.stringify(res));
+      })
+      .error(function(err) {
+        alert('error');
+        alert(JSON.stringify(err));
+      });
+
       return data;
     },
   };

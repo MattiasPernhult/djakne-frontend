@@ -41,7 +41,7 @@ angular.module('controllers', ['factories', 'config'])
 
   // Place order
   $scope.placeOrder = function() {
-    console.log(Cart.order());
+    Cart.order();
   };
 
   // Watch for changes in product total
