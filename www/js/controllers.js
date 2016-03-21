@@ -1,31 +1,5 @@
 angular.module('controllers', ['factories', 'config', ])
 
-
-.controller('RatingController', function($scope) {
-
-  $scope.ratingsObject = {
-    iconOn: 'ion-ios-star',
-    iconOff: 'ion-ios-star-outline',
-    iconOnColor: 'rgb(200, 200, 100)',
-    iconOffColor: 'rgb(96, 96, 96)',
-    rating: 2,
-    minRating: 1,
-    readOnly: true,
-    callback: function(rating) {
-      $scope.ratingsCallback(rating);
-    },
-  };
-
-  $scope.ratingsCallback = function(rating) {
-    console.log('Selected rating is : ', rating);
-  };
-
-})
-
-.controller('HomeController', function($scope, $http, HOST, accessFactory) {
-
-})
-
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification) {
   var push = PushNotification.init({
