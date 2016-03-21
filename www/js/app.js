@@ -58,6 +58,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
     views: {
       'tab-home': {
         templateUrl: 'templates/tab-home.html',
+        controller: 'HomeController',
       },
     },
   })

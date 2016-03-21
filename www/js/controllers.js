@@ -1,5 +1,12 @@
 angular.module('controllers', ['factories', 'config', ])
 
+.controller('HomeController', function($scope, RatingFactory) {
+  RatingFactory.getRating(function(data) {
+    console.log(data);
+    $scope.rating = data;
+  });
+})
+
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification) {
   var push = PushNotification.init({

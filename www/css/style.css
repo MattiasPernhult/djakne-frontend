@@ -7,6 +7,14 @@ body {
   color: #222222;
 }
 
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  font-family: Georgia, Times, "Times New Roman", serif !important;
+  color: #222222;
+  line-height: 1.6;
+}
+
 ion-view {
   position:relative;
 }
@@ -32,7 +40,7 @@ ion-slide p {
 }
 
 .text-login-container {
-  top:425px;
+  top:350px;
   bottom:0;
   left:0;
   right:0;
@@ -43,8 +51,7 @@ ion-slide p {
 
 .text-login-container h3 {
   font-size: 28px;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: lighter !important;
+  font-family: Georgia, Times, "Times New Roman", serif !important;
 }
 
 
@@ -83,6 +90,36 @@ ion-slide p {
   position: relative;
   bottom:60px;
   margin: 0 auto;
+}
+
+.login-button-container button {
+  background-color: #0076B7!important;
+  border-radius: 0%!important;
+}
+
+/* Home/Djäkne template */
+
+.home img {
+  display: block;
+  margin: 0 auto;
+}
+
+.home h3 {
+  font-family: 'Alegreya Sans', sans-serif;
+  text-align: center;
+}
+
+.home h5 {
+  font-family: 'Alegreya Sans', sans-serif;
+  text-align: center;
+}
+
+.home p {
+  font-family: 'Alegreya Sans', sans-serif;
+  text-align: center;
+  color: #222222;
+  padding: 12px;
+  font-size: 18px;
 }
 
 
