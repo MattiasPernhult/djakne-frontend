@@ -142,8 +142,31 @@ img#icon-add
  }
 
 /* Testkod för Social-tabben (event branch) */
+h2.main {
+  padding-left:10px;
+  padding-top: 14px;
+  font-size: 22px;
+  text-transform: uppercase;
+  font-family: Georgia, serif;
+}
+
  .card h2 {
-   font-size: 24px;
+   font-size: 20px;
+ }
+
+ .card h4 {
+   font-size: 16px;
+   color: #aaa;
+   font-family: Georgia, serif;
+ }
+
+a.default {
+   text-decoration: none;
+ }
+
+p.desc_text {
+   font-size: 16px;
+   padding-left:10px;
  }
 
  img#CoWork {

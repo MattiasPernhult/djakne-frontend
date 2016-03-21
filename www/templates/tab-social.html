@@ -1,41 +1,28 @@
 <ion-view view-title="Social">
 
   <ion-content>
-    <h2> Händer på Djäkne </h2>
+    <h2 class="main"> Händer på Djäkne </h2>
 
-    <p> Intro text dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
-    <img id="CoWork" src="img/coWorking.png">
+    <p class="desc_text"> Ta del av gemenskapen på Djäkne! Inte medlem? Inga problem, alla är välkomna!</p>
 
-    <div class="">
-      <ul class="list">
-        <li class="item product-name" ng-repeat="event in events">
-          <div class="row">
-            <div class="col col-75">
-              <h3 ng-click="showme = !showme">{{event.title}}</h3>
-              <p class="product-desc" ng-show="showme">{{event.date}}</p>
+  <div class="card">
+        <ul class="list">
+
+          <li class="item product-name" ng-repeat="event in events">
+            <div class="row">
+                <div class="col col-75">
+                  <a class="default" ui-sref="events_description" ng-click="saveID()"> <!-- HUR görs detta? -->
+                      <h2>{{event.title}}</h2>
+                      <h4>{{event.date}}</h4>
+
+                      <img src="img/coWorking.png">
+                      <p>{{event.text}}</p>
+                  </a>
+                </div>
             </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- <div class="card">
-      <a class="item item-thumbnail-left" ui-sref="events_description">
-        <div>
-          <h2>Gemensam lunch</h2>
-          <p>DATUM: 3 april</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="card">
-      <a class="item item-thumbnail-left" ui-sref="events_description">
-        <div>
-          <h2>AW på Djäkne</h2>
-          <p>DATUM: 3 april</p>
-        </div>
-      </a>
-    </div> -->
+          </li>
+        </ul>
+  </div>
 
   </ion-content>
 
