@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories', 'config'])
+angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories', 'config',
+'ngCordova',])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -75,7 +76,6 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
         views: {
           'tab-profile': {
             templateUrl: 'templates/tab-profile.html',
-            controller: 'RatingController',
           },
         },
       })

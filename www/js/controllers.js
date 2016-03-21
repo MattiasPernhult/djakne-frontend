@@ -1,27 +1,54 @@
-angular.module('controllers', ['factories', 'config',])
+angular.module('controllers', ['factories', 'config', ])
 
-.controller('RatingController', function($scope) {
+.controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
+  MenuFactory, $cordovaLocalNotification) {
+  var push = PushNotification.init({
+    android: {
+      senderID: '104492237304',
+    },
+    ios: {
+      alert: 'true',
+      badge: 'true',
+      sound: 'true',
+    },
+    windows: {},
+  });
 
-  $scope.ratingsObject = {
-        iconOn: 'ion-ios-star',
-        iconOff: 'ion-ios-star-outline',
-        iconOnColor: 'rgb(200, 200, 100)',
-        iconOffColor:  'rgb(96, 96, 96)',
-        rating:  2,
-        minRating: 1,
-        readOnly: true,
-        callback: function(rating) {
-          $scope.ratingsCallback(rating);
-        },
+  push.on('registration', function(data) {
+    if (!window.localStorage.registrationId) {
+      window.localStorage.registrationId = data.registrationId;
+      var body = {
+        token: data.registrationId,
       };
+      var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
+      $http.post(url, body)
+        .success(function(res) {
+          console.log(res);
+        })
+        .error(function(err) {
+          console.log(err);
+        });
+    }
+  });
 
-  $scope.ratingsCallback = function(rating) {
-        console.log('Selected rating is : ', rating);
-      };
+  push.on('notification', function(data) {
+    console.log(JSON.stringify(data));
+    var alarmTime = new Date();
+    alarmTime.setMinutes(alarmTime.getSeconds() + 3);
+    $cordovaLocalNotification.add({
+      date: alarmTime,
+      message: data.message,
+      title: 'Your order',
+      autoCancel: true,
+      sound: null,
+    }).then(function() {
+      console.log('The notification has been set');
+    });
+  });
 
-})
-
-.controller('ProductController', function($scope, $state, Cart, MenuFactory) {
+  push.on('error', function(err) {
+    console.log(err);
+  });
 
   $scope.go = $state.go.bind($state);
   $scope.customersProducts = Cart.list();
@@ -56,7 +83,7 @@ angular.module('controllers', ['factories', 'config',])
 
   // Place order
   $scope.placeOrder = function() {
-    console.log(Cart.order());
+    Cart.order();
   };
 
   // Watch for changes in product total
@@ -70,7 +97,7 @@ angular.module('controllers', ['factories', 'config',])
 })
 
 .controller('LoginController',
-  function($scope, $http, $location, $rootScope, accessFactory, HOST) {
+  function($scope, $http, $location, $rootScope, accessFactory, HOST, $ionicSlideBoxDelegate) {
     console.log(HOST.hostAdress);
     $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
     $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';
@@ -98,5 +125,35 @@ angular.module('controllers', ['factories', 'config',])
           );
         }
       });
+    };
+
+    $scope.gallery = [
+      {
+        url: 'img/coffeeData.jpeg',
+        title: 'Stay Connected',
+        desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+      },
+      {
+        url: 'img/djakne.png',
+        title: 'Enjoy great coffee',
+        desc: 'Donec dapibus, magna quis tincidunt finibus, tellus odio porttitor nisi.',
+      },
+      {
+        url: 'img/business1.jpeg',
+        title: 'Evolve and share',
+        desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+      },
+    ];
+
+    $scope.next = function() {
+      $ionicSlideBoxDelegate.next();
+    };
+    $scope.previous = function() {
+      $ionicSlideBoxDelegate.previous();
+    };
+
+    // Called each time the slide changes
+    $scope.slideChanged = function(index) {
+      $scope.slideIndex = index;
     };
   });

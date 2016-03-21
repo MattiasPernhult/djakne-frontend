@@ -1,32 +1,114 @@
 /* Empty. Add your own CSS if you like */
-.item
-{
+
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
+
+body {
+  font-family: Georgia, Times, "Times New Roman", serif !important;
+  color: #222222;
+}
+
+ion-view {
+  position:relative;
+}
+
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  color: #000;
+  font-weight: 300;
+  position: relative;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+.slider-pager {
+  bottom: 70px;
+}
+
+ion-slide p {
+  width: 330px;
+  margin: 0 auto;
+}
+
+.text-login-container {
+  top:425px;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:1;
+  position:absolute;
+  margin: auto;
+}
+
+.text-login-container h3 {
+  font-size: 28px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: lighter !important;
+}
+
+
+/* Color overlay on background image */
+
+.login:after {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  content: ' ';
+  opacity: 0.6;
+  position:absolute;
+  z-index:0;
+  top: 0;
+  left: 0;
+}
+
+.login-container {
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  z-index: 3 !important;
+}
+
+.login-container h1 {
+  font-size: 55px;
+  margin-bottom: 0;
+  font-family: Georgia, Times, "Times New Roman", serif !important;
+}
+
+/* Login - subtitle */
+
+.login-button-container {
+  position: relative;
+  bottom:60px;
+  margin: 0 auto;
+}
+
+
+/* List item content - menu template / cart template */
+
+.item {
   display: flex;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-.row
-{
+.row {
   padding: 0;
 }
 
-/* List item content - menu template / cart template */
-
-.product-price
-{
+.product-price {
   text-align: center;
 }
-.product-desc
-{
+.product-desc {
   display:block;
   font-size:12px;
 }
 
 /* Nav buttons */
 
-.circle
-{
+.circle {
   height: 15px;
   width: 15px;
   border-radius: 50%;
@@ -43,21 +125,18 @@
 
 
 
-.cart-icon
-{
+.cart-icon {
   height:40px;
   width: 40px;
 }
 
 /* Icons for adding and removing items - menu template */
 
-img#icon-remove
-{
+img#icon-remove {
   margin-right:9px;
 }
 
-img#icon-add
-{
+img#icon-add {
   margin-left:9px;
   margin-right:6px;
 }
@@ -65,25 +144,21 @@ img#icon-add
 /* Product total - cart template */
 
 
-.cart-total-container
-{
+.cart-total-container {
   height: 50px;
   width:100%;
 }
 
-.total-desc
-{
+.total-desc {
   float:right;
 }
 
-#cart-total-title
-{
+#cart-total-title {
   float: left;
   margin:0;
 }
 
-#cart-total-price
-{
+#cart-total-price {
   float:left;
   margin:0 5px;
   font-size:20px;
@@ -95,8 +170,7 @@ img#icon-add
 /* Item quantity - cart template */
 
 
-.qty-container
-{
+.qty-container {
   width: auto;
   display: inline-flex;
   margin-top: -4px;
@@ -104,27 +178,22 @@ img#icon-add
   margin-right: 4px;
 }
 
-.qty-symbol
-{
-
+.qty-symbol {
   width: auto;
   text-align: center;
   line-height: 36px;
 }
 
-#qty-amount
-{
+#qty-amount {
   margin: 0;
 }
 
-#addOne
-{
+#addOne {
   font-size:25px;
   margin-left: 5px;
 }
 
-#removeOne
-{
+#removeOne {
   font-size:30px;
   margin-right: 5px;
 

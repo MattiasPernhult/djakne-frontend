@@ -46,7 +46,7 @@ angular.module('factories', ['config'])
   };
 })
 
-.factory('Cart', function($http) {
+.factory('Cart', function($http, accessFactory, HOST) {
   // Cart array
   var cart = [];
 
@@ -115,18 +115,18 @@ angular.module('factories', ['config'])
           });
         }
       });
-      var url = HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken();
-      $http.post(url, data)
-        .then(function(response) {
-          // Handle Success
-          data = '';
-          return true;
-          ​
-        }, function(response) {
-          // Handle Failure
-          return false;
-        });
-      console.log(data);
+
+      $http.post(HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken(), data)
+      .success(function(res) {
+        alert('success');
+        alert(JSON.stringify(res));
+      })
+      .error(function(err) {
+        alert('error');
+        alert(JSON.stringify(err));
+      });
+
+      return data;
     },
   };
 });
