@@ -1,11 +1,22 @@
-<ion-view>
-  <ion-content>
-    <div class="login-text-container">
-      <h1 class="text-center">Djäkne</h1>
-      <h6 class="text-center">Startup Studios</h6>
-    </div>
-    <div class="button-container text-center">
-      <button ng-click="login()" class="signIn button button-dark" type="submit">Sign in with LinkedIN</button>
-    </div>
-  </ion-content>
+<ion-view hide-nav-bar="true">
+  <div class="login-container text-center">
+    <h1>Djäkne</h1>
+    <h6>Startup Studios</h6>
+  </div>
+  <ion-slide-box on-slide-changed="slideChanged(index)">
+
+    <ion-slide class="login text-center" ng-repeat="image in gallery" ng-style="{ 'background-image': 'url(' + image.url + ')' }">
+      <div class="text-login-container">
+        <h3>{{image.title}}</h3>
+        <p>{{image.desc}}</p>
+      </div>
+    </ion-slide>
+
+  </ion-slide-box>
+  <div class="login-button-container text-center" ng-click="login()">
+    <button class="button button-clear" type="submit">
+      <img src="img/Sign-in.png">
+    </button>
+  </div>
+
 </ion-view>

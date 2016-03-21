@@ -1,5 +1,6 @@
 angular.module('controllers', ['factories', 'config', ])
 
+
 .controller('RatingController', function($scope) {
 
   $scope.ratingsObject = {
@@ -122,7 +123,7 @@ angular.module('controllers', ['factories', 'config', ])
 })
 
 .controller('LoginController',
-  function($scope, $http, $location, $rootScope, accessFactory, HOST) {
+  function($scope, $http, $location, $rootScope, accessFactory, HOST, $ionicSlideBoxDelegate) {
     console.log(HOST.hostAdress);
     $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
     $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';
@@ -150,5 +151,35 @@ angular.module('controllers', ['factories', 'config', ])
           );
         }
       });
+    };
+
+    $scope.gallery = [
+      {
+        url: 'img/coffeeData.jpeg',
+        title: 'Stay Connected',
+        desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+      },
+      {
+        url: 'img/djakne.png',
+        title: 'Enjoy great coffee',
+        desc: 'Donec dapibus, magna quis tincidunt finibus, tellus odio porttitor nisi.',
+      },
+      {
+        url: 'img/business1.jpeg',
+        title: 'Evolve and share',
+        desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+      },
+    ];
+
+    $scope.next = function() {
+      $ionicSlideBoxDelegate.next();
+    };
+    $scope.previous = function() {
+      $ionicSlideBoxDelegate.previous();
+    };
+
+    // Called each time the slide changes
+    $scope.slideChanged = function(index) {
+      $scope.slideIndex = index;
     };
   });
