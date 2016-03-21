@@ -46,6 +46,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
     .state('events_description', {
       url: '/events_description',
       templateUrl: 'templates/events_description.html',
+      controller: 'EventDescriptionController',
     })
 
   // setup an abstract state for the tabs directive

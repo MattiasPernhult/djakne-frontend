@@ -1,27 +1,28 @@
 <ion-view view-title="Event">
   <ion-content class="padding">
 
- <a class="button button-icon ion-ios-arrow-left" ui-sref="tab.social"></a>
+    <a class="button button-icon ion-ios-arrow-left" ui-sref="tab.social"></a>
 
-<div class="card">
-     <ul class="list">
-       <li class="item product-name" ng-repeat="event in events">
-         <h2>{{event.title}}</h2>
-         <h4>{{event.date}}</h4>
+    <div class="card">
+
+      <div class="row">
+        <div class="col col-75">
+          <h2>{{chosenEvent.title}}</h2>
+          <h4>{{chosenEvent.date}}</h4>
+        </div>
+      </div>
       </li>
-    </ul>
-</div>
-  <p>{{event.title}}</p>
-  <p>Description</p>
+      <p>Description</p>
+      <p>
+        {{chosenEvent.text}}
+      </p>
+      <div class="text-center">
+        <!-- FUNKTION MÅSTE SKAPAS! -->
+        <button class="button icon icon-right ion-chevron-right" ng-click="signupLunch()"> Sign up</button>
+      </div>
 
-
-  <div class="text-center">
-     <!-- FUNKTION MÅSTE SKAPAS! -->
-    <button class="button icon icon-right ion-chevron-right" ng-click="signupLunch()"> Sign up</button>
-  </div>
-
-  <h4>Anmälda</h4>
-  <p>Här visas LinkedIn-bilder på dem som anmält sig</p>
+      <h4>Anmälda</h4>
+      <p>Här visas LinkedIn-bilder på dem som anmält sig</p>
 
   </ion-content>
 </ion-view>

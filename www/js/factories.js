@@ -20,6 +20,7 @@ angular.module('factories', ['config'])
 .factory('EventFactory', function($http, accessFactory, HOST) {
 
   var events;
+  var oneEvent;
 
   var getEvents = function(done) {
     var url = 'http://localhost:3000/events';
@@ -30,7 +31,7 @@ angular.module('factories', ['config'])
     $http.get(url)
       .then(function(response) {
         // Handle Success
-        console.log('sccess: ' + response);
+        console.log('success: ' + response);
         events = response.data.result;
         return done(events);
       }, function(response) {
@@ -39,8 +40,20 @@ angular.module('factories', ['config'])
         return done(response.data.error);
       });
   };
+
+  var setEvent = function(chosenEvent) {
+    oneEvent = chosenEvent;
+    console.log('nytt event satt: ' + oneEvent.title);
+  };
+
+  var getEvent = function() {
+    return oneEvent;
+  };
+
   return {
     getEvents: getEvents,
+    getEvent: getEvent,
+    setEvent: setEvent,
   };
 })
 
