@@ -52,7 +52,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
     .state('addEvent', {
       url: '/addEvent',
       templateUrl: 'templates/addEvent.html',
-      controller: 'addEventController',
+      controller: 'AddEventController',
     })
 
   // setup an abstract state for the tabs directive

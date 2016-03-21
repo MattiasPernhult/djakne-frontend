@@ -92,6 +92,34 @@ angular.module('controllers', ['factories', 'config', ])
   );
 })
 
+.controller('AddEventController', function($scope, $http) {
+
+  $scope.event = {};
+
+  $scope.sendPost = function() {
+    console.log('scope: ' + $scope.event.title);
+
+    var formData = {
+      title: $scope.event.title,
+      text: $scope.event.text,
+      author: $scope.event.author,
+      date: $scope.event.date,
+    };
+
+    var url = 'http://localhost:3000/events';
+    console.log('i sendPost');
+    console.log('formData : ' + formData.title);
+    $http.post(url, formData)
+      .success(function(data, status, headers, config) {
+        console.log('Data: ' + data);
+      })
+      .error(function(err, status, headers, config) {
+        console.log('ERROR: ' + err);
+        console.log(JSON.stringify(err));
+      });
+  };
+})
+
 .controller('LoginController',
   function($scope, $http, $location, $rootScope, accessFactory, HOST) {
     console.log(HOST.hostAdress);
