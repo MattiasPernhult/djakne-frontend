@@ -2,6 +2,8 @@ angular.module('controllers', ['factories', 'config', ])
 
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification) {
+
+/*
   var push = PushNotification.init({
     android: {
       senderID: '104492237304',
@@ -49,6 +51,19 @@ angular.module('controllers', ['factories', 'config', ])
   push.on('error', function(err) {
     console.log(err);
   });
+*/
+
+  $scope.specials = [
+    {
+      name: 'Laktosfritt',
+      checked: false,
+    },
+    {
+      name: 'Takeaway',
+      checked: false,
+    },
+
+  ];
 
   $scope.go = $state.go.bind($state);
   $scope.customersProducts = Cart.list();
@@ -62,6 +77,10 @@ angular.module('controllers', ['factories', 'config', ])
     }
   );
 
+  $scope.updateLocalStorage = function() {
+    console.log("Hej");
+  };
+
   $scope.inCart = function(product) {
     return Cart.contains(product);
   };
@@ -69,6 +88,10 @@ angular.module('controllers', ['factories', 'config', ])
   // Get product menu
   MenuFactory.getProducts(function(data) {
     $scope.products = data;
+  });
+
+  MenuFactory.getFavourites(function(data) {
+    $scope.favourites = data;
   });
 
   // Add item to cart
@@ -81,8 +104,33 @@ angular.module('controllers', ['factories', 'config', ])
     Cart.remove(product);
   };
 
+  $scope.priceRequest = function() {
+    Cart.priceRequest();
+  };
+
   // Place order
   $scope.placeOrder = function() {
+
+    var message = '';
+    var takeaway = 0;
+    var comment = document.getElementById("comment").value;
+
+    if ($scope.specials[0].checked) {
+      message += $scope.specials[0].name + ': Ja';
+    }
+    if ($scope.specials[1].checked) {
+      takeaway = 1;
+    }
+    if (comment) {
+      if (message) {
+        message += '\nKommentar: ' + comment;
+      }else {
+        message += 'Kommentar: ' + comment;
+      }
+    }
+
+    console.log(message);
+
     Cart.order();
   };
 

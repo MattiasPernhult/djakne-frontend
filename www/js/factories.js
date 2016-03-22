@@ -20,6 +20,29 @@ angular.module('factories', ['config'])
 .factory('MenuFactory', function($http, accessFactory, HOST) {
 
   var products;
+  var favourites;
+
+
+  var getFavourites = function(done) {
+    if (favourites)  {
+      return done(favourites);
+    }
+    var url;
+    if (accessFactory.getAccessToken()) {
+      url = HOST.hostAdress + ':3000/menu/favourites?token=' + accessFactory.getAccessToken();
+    }
+
+    $http.get(url)
+      .then(function(response) {
+        // Handle Success
+        favourites = response.data.products;
+        console.log(favourites);
+        return done(favourites);
+      }, function(response) {
+        // Handle Failure
+        return done(response.data);
+      });
+  };
 
   var getProducts = function(done) {
     if (products)  {
@@ -43,10 +66,11 @@ angular.module('factories', ['config'])
   };
   return {
     getProducts: getProducts,
+    getFavourites: getFavourites,
   };
 })
 
-.factory('Cart', function($http, accessFactory, HOST) {
+.factory('Cart', function($http, accessFactory, HOST, $state) {
   // Cart array
   var cart = [];
 
@@ -101,27 +125,45 @@ angular.module('factories', ['config'])
       });
       return total;
     },
-    order: function()  {
-      // Set up http
+    priceRequest: function() {
       var data = {
-        products: [],
+        "products":[
+          {"id": 1}
+        ]
       };
-      data.message = 'asdf';
-      data.takeaway = 1;
-      angular.forEach(cart, function(item) {
-        for (var i = 0; i < item.qty; i++) {
-          data.products.push({
-            id: item.id,
-          });
-        }
-      });
 
-      $http.post(HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken(), data)
+      $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' + accessFactory.getAccessToken(), data)
       .success(function(res) {
+
         alert('success');
         alert(JSON.stringify(res));
       })
       .error(function(err) {
+
+        alert('error');
+        alert(JSON.stringify(err));
+      });
+
+    },
+    order: function()  {
+      var data = {
+        "message": "asdf",
+        "takeaway": 1,
+        "products":[
+          {"id": 1}
+        ]
+      };
+
+      $http.post(HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken(), data)
+      .success(function(res) {
+
+        alert('Din order är skickad!');
+        // $state.go('menu');
+        alert('success');
+        alert(JSON.stringify(res));
+      })
+      .error(function(err) {
+        // alert('Something went wrong there, try again');
         alert('error');
         alert(JSON.stringify(err));
       });
