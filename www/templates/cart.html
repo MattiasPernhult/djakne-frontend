@@ -37,7 +37,7 @@
             <span class="input-label"><h3>Meddelande:</h3></span>
             <input type="text" id="comment" placeholder="Skriv ytterligare önskemål..">
         </label>
-        <ion-toggle ng-model="item.checked" value="Laktosfritt" ng-repeat="item in specials"><h3>{{item.name}}</h3></ion-toggle>
+        <ion-toggle ng-model="takeaway" ng-click="change()"><h3>Takeaway</h3></ion-toggle>
       </form>
       <div class="cart-total-container">
         <div class="total-desc">

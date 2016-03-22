@@ -52,18 +52,23 @@ angular.module('controllers', ['factories', 'config', ])
     console.log(err);
   });
 */
+  $scope.change = function() {
+    if(window.localStorage.takeaway === '') {
+      window.localStorage.setItem('takeaway','1');
+    }
 
-  $scope.specials = [
-    {
-      name: 'Laktosfritt',
-      checked: false,
-    },
-    {
-      name: 'Takeaway',
-      checked: false,
-    },
+    if(window.localStorage.takeaway === '1'){
+      window.localStorage.setItem('takeaway','0');
+    }
 
-  ];
+  };
+
+  if(window.localStorage.takeaway === '1') {
+    $scope.takeaway = true;
+  }else{
+    $scope.takeaway = false;
+  }
+
 
   $scope.go = $state.go.bind($state);
   $scope.customersProducts = Cart.list();
@@ -76,10 +81,6 @@ angular.module('controllers', ['factories', 'config', ])
       $scope.cartQty = newVal;
     }
   );
-
-  $scope.updateLocalStorage = function() {
-    console.log("Hej");
-  };
 
   $scope.inCart = function(product) {
     return Cart.contains(product);
