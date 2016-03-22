@@ -73,6 +73,7 @@ angular.module('factories', ['config'])
 .factory('Cart', function($http, accessFactory, HOST, $state) {
   // Cart array
   var cart = [];
+  var totalPrice = 0;
 
   return {
     list: function() {
@@ -125,33 +126,33 @@ angular.module('factories', ['config'])
       });
       return total;
     },
-    priceRequest: function() {
-      var data = {
-        "products":[
-          {"id": 1}
-        ]
-      };
-
-      $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' + accessFactory.getAccessToken(), data)
+    getProductsId: function() {
+      var productsId = [];
+      for (var index in cart) {
+        var object = cart[index];
+        productsId.push({id: object.id});
+      }
+      return productsId;
+    },
+    priceRequest: function(data, done) {
+      $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' +
+      accessFactory.getAccessToken(), data)
       .success(function(res) {
-
-        alert('success');
-        alert(JSON.stringify(res));
+        totalPrice = res.totalPrice;
+        return done(null);
       })
       .error(function(err) {
-
-        alert('error');
-        alert(JSON.stringify(err));
+        return done(err);
       });
-
+    },
+    getTotalPrice: function() {
+      return totalPrice;
     },
     order: function()  {
       var data = {
-        "message": "asdf",
-        "takeaway": 1,
-        "products":[
-          {"id": 1}
-        ]
+        'message': 'asdf',
+        'takeaway': 1,
+        'products':[{'id': 1}]
       };
 
       $http.post(HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken(), data)

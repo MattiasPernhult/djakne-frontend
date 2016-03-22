@@ -1,7 +1,7 @@
 <ion-view view-title="Menu">
   <ion-nav-buttons side="right">
-    <div ng-click="cartQty === 0 || go('cart')">
-      <button class=" button button-icon ion-bag"></button>
+    <div ng-click="cartQty === 0 || priceRequest()">
+      <button class="button button-icon ion-bag"></button>
       <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
     </div>
   </ion-nav-buttons>

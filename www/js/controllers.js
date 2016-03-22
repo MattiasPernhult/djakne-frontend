@@ -3,7 +3,6 @@ angular.module('controllers', ['factories', 'config', ])
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification) {
 
-/*
   var push = PushNotification.init({
     android: {
       senderID: '104492237304',
@@ -51,21 +50,18 @@ angular.module('controllers', ['factories', 'config', ])
   push.on('error', function(err) {
     console.log(err);
   });
-*/
 
-  $scope.specials = [
-    {
+  $scope.specials = [{
       name: 'Laktosfritt',
       checked: false,
-    },
-    {
+    }, {
       name: 'Takeaway',
       checked: false,
     },
 
   ];
 
-  $scope.go = $state.go.bind($state);
+  // $scope.go = $state.go.bind($state);
   $scope.customersProducts = Cart.list();
 
   // Watch for changes in cart size
@@ -77,8 +73,14 @@ angular.module('controllers', ['factories', 'config', ])
     }
   );
 
+  $scope.$watch(function() {
+    return Cart.getTotalPrice();
+  }, function(newVal) {
+    $scope.totalPrice = newVal;
+  });
+
   $scope.updateLocalStorage = function() {
-    console.log("Hej");
+
   };
 
   $scope.inCart = function(product) {
@@ -90,7 +92,7 @@ angular.module('controllers', ['factories', 'config', ])
     $scope.products = data;
   });
 
-  MenuFactory.getFavourites(function(data) {
+  MenuFactory.getFavourites(function(data)  {
     $scope.favourites = data;
   });
 
@@ -104,8 +106,22 @@ angular.module('controllers', ['factories', 'config', ])
     Cart.remove(product);
   };
 
+  $scope.goToMenu = function() {
+    $state.go('tab.menu');
+  };
+
   $scope.priceRequest = function() {
-    Cart.priceRequest();
+    var data = {
+      products: Cart.getProductsId(),
+    };
+    data = JSON.stringify(data);
+    Cart.priceRequest(data, function(err, resp) {
+      if (err) {
+        alert('ERROR');
+      } else {
+        $state.go('cart');
+      }
+    });
   };
 
   // Place order
@@ -124,7 +140,7 @@ angular.module('controllers', ['factories', 'config', ])
     if (comment) {
       if (message) {
         message += '\nKommentar: ' + comment;
-      }else {
+      } else {
         message += 'Kommentar: ' + comment;
       }
     }
@@ -175,23 +191,19 @@ angular.module('controllers', ['factories', 'config', ])
       });
     };
 
-    $scope.gallery = [
-      {
-        url: 'img/coffeeData.jpeg',
-        title: 'Stay Connected',
-        desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
-      },
-      {
-        url: 'img/djakne.png',
-        title: 'Enjoy great coffee',
-        desc: 'Donec dapibus, magna quis tincidunt finibus, tellus odio porttitor nisi.',
-      },
-      {
-        url: 'img/business1.jpeg',
-        title: 'Evolve and share',
-        desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
-      },
-    ];
+    $scope.gallery = [{
+      url: 'img/coffeeData.jpeg',
+      title: 'Stay Connected',
+      desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+    }, {
+      url: 'img/djakne.png',
+      title: 'Enjoy great coffee',
+      desc: 'Donec dapibus, magna quis tincidunt finibus, tellus odio porttitor nisi.',
+    }, {
+      url: 'img/business1.jpeg',
+      title: 'Evolve and share',
+      desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+    }, ];
 
     $scope.next = function() {
       $ionicSlideBoxDelegate.next();
