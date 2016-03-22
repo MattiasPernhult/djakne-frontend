@@ -5,7 +5,7 @@
       <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
     </div>
   </ion-nav-buttons>
- <ion-content>
+ <ion-content ng-style="{ 'background-image': 'url(img/menu.jpg)' }">
      <ul class="list">
        <li class="item product-name" ng-repeat="product in products">
          <img src="img/remove.svg" id="icon-remove" class="cart-icon" ng-show="inCart(product) >= 0" ng-click="removeFromCart(product)"/>
