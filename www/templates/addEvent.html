@@ -1,36 +1,34 @@
 <ion-view view-title="Add Event">
 
   <ion-content>
-  <h1> Skapa nytt event</h1>
+    <h1> Skapa nytt event</h1>
 
     <form ng-submit="sendPost()">
-          <div class="list">
-              <label class="item item-input item-stacked-label">
-                <span class="input-label">Namn på event</span>
-                <input type="text" placeholder="How to get your business growing" ng-model="event.title">
-              </label>
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Namn på event</span>
+          <input type="text" placeholder="How to get your business growing" ng-model="event.title">
+        </label>
 
-              <label class="item item-input item-stacked-label">
-                <span class="input-label">Ditt namn</span>
-                <input type="text" placeholder="Kalle Kula" ng-model="event.author">
-              </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Ditt namn</span>
+          <input type="text" placeholder="Kalle Kula" ng-model="event.author">
+        </label>
 
-              <label class="item item-input item-stacked-label">
-                <span class="input-label">Beskrivning</span>
-                <input type="text" placeholder="Kalle Kula" ng-model="event.text">
-              </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Beskrivning</span>
+          <input type="text" placeholder="Kalle Kula" ng-model="event.text">
+        </label>
 
-              <label class="item item-input item-stacked-label">
-                <span class="input-label">Datum</span>
-                <input type="text" placeholder="kalle@djakne.com" ng-model="event.date">
-              </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Datum</span>
+          <input type="text" placeholder="2016-05-06 10:00:00" ng-model="event.date">
+        </label>
+      </div>
 
-          </div>
-
-          <button type="submit" name="name" class="button button-block button-positive">
-
-          Skapa event
-          </button>
+      <button type="submit" name="name" class="button button-block button-positive">
+        Skapa event
+      </button>
 
     </form>
 
