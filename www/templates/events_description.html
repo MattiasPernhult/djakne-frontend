@@ -1,28 +1,66 @@
 <ion-view view-title="Event">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <button class=" button button-icon ion-ios-arrow-left" ui-sref="tab.social"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
   <ion-content class="padding">
 
-    <a class="button button-icon ion-ios-arrow-left" ui-sref="tab.social"></a>
 
-    <div class="card">
-
-      <div class="row">
-        <div class="col col-75">
-          <h2>{{chosenEvent.title}}</h2>
-          <h4>{{event.date | date:'MM/dd/yyyy'}}</h4>
-        </div>
+<!--
+    <div class="row">
+      <div class="col col-75">
+        <h3>{{chosenEvent.title}}</h3>
+        <h4>Datum: {{chosenEvent.date | date:'MM/dd/yyyy'}}</h4>
       </div>
-      </li>
-      <p>Description</p>
-      <p>
-        {{chosenEvent.text}}
-      </p>
-      <div class="text-center">
-        <!-- FUNKTION MÅSTE SKAPAS! -->
-        <button class="button icon icon-right ion-chevron-right" ng-click="signupLunch()"> Sign up</button>
-      </div>
+    </div>
 
-      <h4>Anmälda</h4>
-      <p>Här visas LinkedIn-bilder på dem som anmält sig</p>
+    <div class="row">
+      <div class="col col-75">
+        <p>Beskrivning:</p>
+        <p>{{chosenEvent.text}}</p>
+      </div>
+    </div>
+
+
+    <div class="text-center"> FUNKTION MÅSTE SKAPAS!
+      <button class="button button-block button-dark" ng-click="signupLunch()">Anmäl till event</button>
+    </div>
+    -->
+
+    <div class="list">
+
+    <div class="list padding test">
+
+      <h3>{{chosenEvent.title}}</h3>
+      <h4>Datum: {{chosenEvent.date | date:'MM/dd/yyyy'}}</h4>
+
+
+    <div class="item item-body border">
+      <img class="full-image" src="img/coWorking.png">
+    </div>
+
+    <div class="row">
+      <div class="col col-75">
+        <p>{{chosenEvent.text}}</p>
+      </div>
+    </div>
+
+    <div class="text-center"> <!--FUNKTION MÅSTE SKAPAS!-->
+      <button class="button button-block button-dark" ng-click="signupLunch()">Anmäl till event</button>
+    </div>
+
+    <div class="row">
+      <div class="col col-75">
+        <h4>Deltagare:</h4>
+        <p>Bilder på medlemmar som är anmälda från linkedIn</p>
+      </div>
+    </div>
+
+    </div>
+
+  </div>
 
   </ion-content>
 </ion-view>

@@ -42,7 +42,6 @@
 }
 
 
-
 .cart-icon
 {
   height:40px;
@@ -165,11 +164,72 @@ a.default {
  }
 
 p.desc_text {
-   font-size: 16px;
-   padding-left:10px;
+   font-size: 15px;
+   text-align: center;
+   font-style: italic;
+   padding-bottom: 13px;
+   font-family: Georgia, serif;
  }
 
  img#CoWork {
    height: 250px;
    padding: 20px;
+ }
+
+ .addEvent-title {
+    font-style: bold;
+    text-align: center;
+    font-family: Georgia, serif;
+    padding-top: 30px;
+
+ }
+
+ .social-title {
+    font-style: bold;
+    text-align: center;
+    padding-top: 20px;
+    font-family: Georgia, serif;
+
+ }
+
+ /* Event pages */
+
+ .button.button-block.button-dark {
+    font-weight:bold;
+    font-family: Georgia, serif;
+
+ }
+
+ .full-image{
+    height: 150px;
+
+ }
+
+ .row p{
+   padding-top: 15px;
+   font-size: 16px;
+   font-family: Georgia, serif;
+
+ }
+
+ .border {
+
+   border: none;
+   border-top: 1px solid grey !important;
+   border-bottom: 1px solid grey !important;
+ }
+
+ .padding.test h4 {
+    font-family: Georgia, serif;
+
+ }
+
+ .padding.test h3 {
+    font-family: Georgia, serif;
+
+ }
+
+ .padding.thumbnail h2, h3 {
+   font-family: Georgia, serif;
+
  }
