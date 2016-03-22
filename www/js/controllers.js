@@ -1,5 +1,18 @@
 angular.module('controllers', ['factories', 'config', ])
 
+.controller('HomeController', function($scope, RatingFactory) {
+  RatingFactory.getRating(function(data) {
+    console.log(data);
+    $scope.rating = data;
+  });
+})
+   // logout Hassan
+.controller('logoutController', function($scope, $state) {
+  $scope.logout = function() {
+    $state.go('login');
+  };
+})
+
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification) {
 
@@ -161,7 +174,7 @@ angular.module('controllers', ['factories', 'config', ])
 })
 
 .controller('LoginController',
-  function($scope, $http, $location, $rootScope, accessFactory, HOST, $ionicSlideBoxDelegate) {
+  function($scope, $state, $http, $location, $rootScope, accessFactory, HOST, $ionicSlideBoxDelegate) {
     console.log(HOST.hostAdress);
     $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
     $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';
@@ -182,11 +195,8 @@ angular.module('controllers', ['factories', 'config', ])
               var token = body.substring(body.indexOf('{') + 10, body.lastIndexOf('}') - 1);
               accessFactory.changeAccessToken(token);
               ref.close();
-              $rootScope.$apply(function() {
-                $location.path('/tab/home');
-              });
-            }
-          );
+              $state.go('tab.home');
+            });
         }
       });
     };

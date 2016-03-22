@@ -1,5 +1,6 @@
 angular.module('factories', ['config'])
 
+
 .factory('accessFactory', function() {
   var accessToken;
 
@@ -14,6 +15,33 @@ angular.module('factories', ['config'])
   return {
     changeAccessToken: changeAccessToken,
     getAccessToken: getAccessToken,
+  };
+})
+
+.factory('RatingFactory', function($http, HOST) {
+
+  var rating;
+
+  var getRating = function(done) {
+    var url = HOST.hostAdress + ':4000/coffee/current';
+
+    if (rating) {
+      return done(rating);
+    }
+    $http.get(url)
+      .then(function(response) {
+        // Handle Success
+        console.log('success: ' + response);
+        rating = response.data.result;
+        return done(rating);
+      }, function(response) {
+        // Handle Failure
+        console.log('ERROR' + response);
+        return done(response.data.error);
+      });
+  };
+  return {
+    getRating: getRating,
   };
 })
 

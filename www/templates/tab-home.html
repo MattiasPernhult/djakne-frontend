@@ -1,5 +1,13 @@
 <ion-view view-title="Djäkne">
-  <ion-content class="padding">
-    
+  <ion-content class="home">
+    <div class="list card">
+      <h1>Veckans Kaffe</h1>
+      <h3>{{rating.title}}</h3>
+      <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
+      <img ng-src="{{rating.image}}"></img>
+      <p>{{rating.description}}</p>
+      <!-- <p>{{rating.averageVotes}}</p>
+      <p>{{rating.totalVotes}}</p> -->
+    </div>
   </ion-content>
 </ion-view>

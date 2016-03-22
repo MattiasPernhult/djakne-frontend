@@ -58,6 +58,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
     views: {
       'tab-home': {
         templateUrl: 'templates/tab-home.html',
+        controller: 'HomeController',
       },
     },
   })
@@ -76,6 +77,8 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
         views: {
           'tab-profile': {
             templateUrl: 'templates/tab-profile.html',
+            //logout Hassan
+            controller: 'logoutController',
           },
         },
       })
