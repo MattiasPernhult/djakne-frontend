@@ -1,15 +1,154 @@
 /* Empty. Add your own CSS if you like */
 
-@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
-
 body {
   font-family: Georgia, Times, "Times New Roman", serif !important;
   color: #222222;
 }
 
+div.scroll{
+  height:100%;
+}
+
+.list{
+  height:100%;
+}
+
 ion-view {
   position:relative;
 }
+
+/* Profile */
+
+.hero{
+    height: 230px;
+
+}
+
+.hero h3 {
+  margin-top:0;
+}
+
+#iconSettings {
+  display:flex;
+  margin-top: 10px 0;
+  background-color: #e42112;
+}
+
+#iconSettings .icon {
+  color: white;
+  font-size: 30px;
+}
+
+#iconSettings a {
+  color: white;
+}
+
+.content {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+  top: 30px;
+}
+
+.content h4 {
+  font-size: 14px;
+}
+
+#profileTitle {
+  color: black;
+}
+
+.avatar {
+  height: 88px;
+  width: 88px;
+  background-position: center;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: 10px;
+  position: relative;
+  left: auto;
+  background-size: contain;
+}
+
+/* MENU */
+
+/* Product Information */
+
+.product-title{
+  font-weight: 400 !important;
+  font-size:19px !important;
+
+}
+
+.product-price{
+  font-size: 14px !important;
+}
+
+.productInfo{
+  width:60%;
+  display:inline-block;
+  float:left;
+}
+
+/* Container for add and buy button */
+
+.buttonContainer{
+  float:right;
+}
+
+/* Items in menu template */
+
+.menuCard{
+  width:100%;
+  height:25%;
+  position:relative;
+}
+
+.product:first-of-type{
+  border-top: none !important;
+}
+
+.product:last-of-type{
+  border-bottom: none !important;
+}
+
+.item-expand:last-child {
+  border-top: 1px solid #e2e2e2;
+  border-bottom:none;
+}
+
+.item-expand {
+  position: relative;
+  width: 100%;
+  transition: height 0.1s ease-out;
+  overflow: hidden;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.item-expand.inactive:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  height: 10%;
+  width: 100%;
+  display: block;
+}
+
+.item-expand.active {
+  height: auto;
+  transition: height 0.3s ease-out;
+}
+
+/* Title in menu cards */
+
+h3.menuTitle.ng-binding {
+  margin-top: 50px;
+}
+
+/* Login template */
 
 .slider {
   height: 100%;
@@ -87,20 +226,17 @@ ion-slide p {
 
 
 /* List item content - menu template / cart template */
-
+/*
 .item {
   display: flex;
   padding-left: 5px;
   padding-right: 5px;
-}
+}*/
 
 .row {
   padding: 0;
 }
 
-.product-price {
-  text-align: center;
-}
 .product-desc {
   display:block;
   font-size:12px;
@@ -126,8 +262,8 @@ ion-slide p {
 
 
 .cart-icon {
-  height:40px;
-  width: 40px;
+  height:30px;
+  width: 30px;
 }
 
 /* Icons for adding and removing items - menu template */

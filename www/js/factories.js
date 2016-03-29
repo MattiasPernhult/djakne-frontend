@@ -17,6 +17,51 @@ angular.module('factories', ['config'])
   };
 })
 
+.factory('ProfileFactory', function() {
+  var orderSettings = {
+    Takeaway:
+      {
+        name: 'Takeaway',
+        checked: 'false',
+      },
+    Lactos:
+      {
+        name: 'Lactos',
+        checked: 'false',
+      },
+  };
+
+  return {
+    getOrderSettings: function() {
+      return orderSettings;
+    },
+    checkOrderSettings: function(name) {
+      if (window.localStorage[name]) {
+        orderSettings[name].checked = true;
+      }else {
+        orderSettings[name].checked  = false;
+      }
+    },
+  };
+})
+
+.factory('SessionFactory', function() {
+  return {
+    add: function(name,value) {
+      window.localStorage.setItem(name,value);
+    },
+    remove: function(name) {
+      window.localStorage.removeItem(name);
+    },
+    exists: function(name) {
+      if (window.localStorage[name]) {
+        return true;
+      }
+      return false;
+    },
+  };
+})
+
 .factory('MenuFactory', function($http, accessFactory, HOST) {
 
   var products;
@@ -70,7 +115,7 @@ angular.module('factories', ['config'])
   };
 })
 
-.factory('Cart', function($http, accessFactory, HOST, $state) {
+.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoading) {
   // Cart array
   var cart = [];
 
@@ -90,6 +135,7 @@ angular.module('factories', ['config'])
       } else {
         this.increaseQty(index);
       }
+
     },
     remove: function(item)  {
       var index = this.contains(item);
@@ -131,29 +177,37 @@ angular.module('factories', ['config'])
           {"id": 1}
         ]
       };
-
       $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' + accessFactory.getAccessToken(), data)
       .success(function(res) {
-
         alert('success');
         alert(JSON.stringify(res));
+        $ionicLoading.hide();
       })
       .error(function(err) {
-
         alert('error');
         alert(JSON.stringify(err));
+        $ionicLoading.hide();
       });
 
     },
-    order: function()  {
+    order: function(message, takeaway, singleItem)  {
       var data = {
-        "message": "asdf",
-        "takeaway": 1,
-        "products":[
-          {"id": 1}
-        ]
+        message: message,
+        takeaway: takeaway,
+        products: [],
       };
 
+      if (!singleItem) {
+        angular.forEach(cart,function(obj) {
+          for (var i = 0; i < obj.qty; i++) {
+            data.products.push({id: obj.qty});
+          }
+        });
+      } else {
+        data.products.push({id: singleItem.qty});
+      }
+      console.log(data);
+      console.log("Köpet är gjort!");
       $http.post(HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken(), data)
       .success(function(res) {
 

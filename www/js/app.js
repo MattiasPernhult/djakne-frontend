@@ -76,6 +76,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
         views: {
           'tab-profile': {
             templateUrl: 'templates/tab-profile.html',
+            controller: 'ProfileController',
           },
         },
       })

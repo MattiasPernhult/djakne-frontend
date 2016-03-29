@@ -1,7 +1,32 @@
 angular.module('controllers', ['factories', 'config', ])
 
+.controller('ProfileController', function($scope, SessionFactory, ProfileFactory) {
+
+  // When user enters view, check settings
+  $scope.$on('$ionicView.enter', function() {
+    ProfileFactory.checkOrderSettings('Takeaway');
+    ProfileFactory.checkOrderSettings('Lactos');
+
+    // Get ordersettings
+    $scope.orderSettings = ProfileFactory.getOrderSettings();
+
+  });
+
+  // When user changes settings, add or remove localstorage
+  $scope.change = function(name, value) {
+
+    if (window.localStorage[name]) {
+      SessionFactory.remove(name);
+    }else {
+      SessionFactory.add(name,value);
+    }
+  };
+
+})
+
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
-  MenuFactory, $cordovaLocalNotification) {
+  MenuFactory, $cordovaLocalNotification, ProfileFactory) {
+
 
 /*
   var push = PushNotification.init({
@@ -52,23 +77,143 @@ angular.module('controllers', ['factories', 'config', ])
     console.log(err);
   });
 */
-  $scope.change = function() {
-    if(window.localStorage.takeaway === '') {
-      window.localStorage.setItem('takeaway','1');
-    }
 
-    if(window.localStorage.takeaway === '1'){
-      window.localStorage.setItem('takeaway','0');
-    }
 
+
+    $scope.favorites = [
+      {
+        title: 'Favoriter',
+        icon: 'ion-android-favorite',
+        products:
+          [
+            {
+              id:1,
+              name: 'Moocha',
+              price: 20,
+            },
+            {
+              id:2,
+              name: 'Cappucino',
+              price: 20,
+            },
+          ],
+        },
+    ];
+
+  // END HERE
+
+  $scope.items = [
+      {
+        title: 'Varma Drycker',
+        icon: 'ion-coffee',
+        products:
+          [
+            {
+              id:1,
+              name: 'Stor Kaffe',
+              price: 20,
+            },
+            {
+              id:2,
+              name: 'Cappucino',
+              price: 20,
+            },
+            {
+              id:3,
+              name: 'Black',
+              price: 10,
+            },
+            {
+              id:4,
+              name: 'Large',
+              price: 14,
+            },
+            {
+              id:5,
+              name: 'Cordova',
+              price: 18,
+            },
+          ],
+      },
+      {
+        title: 'Ätbart',
+        icon: 'ion-android-restaurant',
+        products:
+          [
+            {
+              id:6,
+              name: 'Pasta',
+              price: 20,
+            },
+            {
+              id:7,
+              name: 'Smörgås',
+              price: 22,
+            },
+            {
+              id:8,
+              name: 'Tårta',
+              price: 20,
+            },
+            {
+              id:9,
+              name: 'Kakor',
+              price: 22,
+            },
+            {
+              id:10,
+              name: 'Frukt',
+              price: 20,
+            },
+          ],
+      },
+      {
+        title: 'Övrigt',
+        icon: 'ion-icecream',
+        products:
+          [
+            {
+              id:11,
+              name: 'Julmust',
+              price: 10,
+            },
+            {
+              id:12,
+              name: 'Cider',
+              price: 15,
+            },
+            {
+              id:13,
+              name: 'Öl',
+              price: 22,
+            },
+            {
+              id:14,
+              name: 'Läsk',
+              price: 20,
+            },
+            {
+              id:15,
+              name: 'Saft',
+              price: 19,
+            },
+          ],
+      },
+  ];
+
+  $scope.expand = function(vote) {
+     vote.show = !vote.show;
   };
 
-  if(window.localStorage.takeaway === '1') {
-    $scope.takeaway = true;
-  }else{
-    $scope.takeaway = false;
-  }
 
+  // Get settings
+  $scope.orderSettings = ProfileFactory.getOrderSettings();
+
+  // When user enters view check status for ordersettings
+  $scope.$on('$ionicView.enter', function() {
+    ProfileFactory.checkOrderSettings('Takeaway');
+    ProfileFactory.checkOrderSettings('Lactos');
+  });
 
   $scope.go = $state.go.bind($state);
   $scope.customersProducts = Cart.list();
@@ -111,15 +256,15 @@ angular.module('controllers', ['factories', 'config', ])
 
   // Place order
   $scope.placeOrder = function() {
-
+    var singleItem = false;
     var message = '';
     var takeaway = 0;
     var comment = document.getElementById("comment").value;
 
-    if ($scope.specials[0].checked) {
-      message += $scope.specials[0].name + ': Ja';
+    if ($scope.orderSettings.Lactos.checked) {
+      message += 'Laktosfritt: Ja';
     }
-    if ($scope.specials[1].checked) {
+    if ($scope.orderSettings.Takeaway.checked) {
       takeaway = 1;
     }
     if (comment) {
@@ -130,10 +275,24 @@ angular.module('controllers', ['factories', 'config', ])
       }
     }
 
-    console.log(message);
-
-    Cart.order();
+    Cart.order(message, takeaway, singleItem);
   };
+
+  $scope.buyNow = function(item) {
+    var takeaway = 0;
+    var message = '';
+    item.qty = 1;
+
+    if (window.localStorage.Takeaway) {
+      takeaway = 1;
+    }
+    if (window.localStorage.Lactos) {
+      message += 'Laktosfritt: Ja';
+    }
+
+    Cart.order(message, takeaway, item);
+
+  }
 
   // Watch for changes in product total
   $scope.$watch(function() {
