@@ -1,6 +1,5 @@
 <ion-view view-title="Djäkne">
   <ion-content class="home" ng-style="{ 'background-image': 'url(img/home.jpg)' }">
-    <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
     <div class="list card">
       <h1>Veckans Kaffe</h1>
       <h3>{{rating.title}}</h3>
@@ -9,6 +8,13 @@
       <p>{{rating.description}}</p>
       <!-- <p>{{rating.averageVotes}}</p>
       <p>{{rating.totalVotes}}</p> -->
+    </div>
+    <div class="list card">
+      <h1>Rösta!</h1>
+      <h3>{{rating.startDate | date:'V.ww'}}</h3>
+      <h5>Kaffe från {{rating.title}}</h3>
+      <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+        <button class="button button-full button" ng-click="">Skicka</button>
     </div>
   </ion-content>
 </ion-view>

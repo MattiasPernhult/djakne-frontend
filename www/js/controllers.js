@@ -1,7 +1,7 @@
 angular.module('controllers', ['factories', 'config', ])
 
-.controller('HomeController', function($scope, RatingFactory) {
-  RatingFactory.getRating(function(data) {
+.controller('HomeController', function($scope, CoffeeFactory) {
+  CoffeeFactory.getCoffee(function(data) {
     console.log(data);
     $scope.rating = data;
   });

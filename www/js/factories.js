@@ -18,22 +18,22 @@ angular.module('factories', ['config'])
   };
 })
 
-.factory('RatingFactory', function($http, HOST) {
+.factory('CoffeeFactory', function($http, HOST) {
 
-  var rating;
+  var coffee;
 
-  var getRating = function(done) {
+  var getCoffee = function(done) {
     var url = HOST.hostAdress + ':4000/coffee/current';
 
-    if (rating) {
-      return done(rating);
+    if (coffee) {
+      return done(coffee);
     }
     $http.get(url)
       .then(function(response) {
         // Handle Success
         console.log('success: ' + response);
-        rating = response.data.result;
-        return done(rating);
+        coffee = response.data.result;
+        return done(coffee);
       }, function(response) {
         // Handle Failure
         console.log('ERROR' + response);
@@ -41,7 +41,7 @@ angular.module('factories', ['config'])
       });
   };
   return {
-    getRating: getRating,
+    getCoffee: getCoffee,
   };
 })
 
