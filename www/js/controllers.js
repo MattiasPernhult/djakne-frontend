@@ -79,7 +79,7 @@ angular.module('controllers', ['factories', 'config', ])
   };
 })
 
-.controller('EventDescriptionController', function($scope, EventFactory) {
+.controller('EventDescriptionController', function($scope, $http, EventFactory, accessFactory, HOST) {
   var eventData = EventFactory.getEvent();
   $scope.chosenEvent = eventData;
 
@@ -90,9 +90,22 @@ angular.module('controllers', ['factories', 'config', ])
       $scope.chosenEvent = newVal;
     }
   );
+  $scope.signUp = function() {
+    var url = HOST.hostAdress + ':4000/events' + '/' + $scope.chosenEvent._id + '?token=' +
+    accessFactory.getAccessToken();
+    console.log('URL till signup: ' + url);
+    console.log('accessToken : ' + accessFactory.getAccessToken());
+    $http.post(url, {})
+      .success(function(data, status, headers, config) {
+        console.log('SUCCESS data: ' + data);
+      })
+      .error(function(err, status, headers, config) {
+        console.log('ERROR: ' + err);
+      });
+  };
 })
 
-.controller('AddEventController', function($scope, $http) {
+.controller('AddEventController', function($scope, $http, HOST) {
 
   $scope.event = {};
 
@@ -106,7 +119,7 @@ angular.module('controllers', ['factories', 'config', ])
       date: $scope.event.date,
     };
 
-    var url = 'http://localhost:3000/events';
+    var url = HOST.hostAdress + ':4000/events';
     console.log('i sendPost');
     console.log('formData : ' + formData.title);
     $http.post(url, formData)
