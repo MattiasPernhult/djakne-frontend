@@ -7,6 +7,10 @@ body {
   color: #222222;
 }
 
+.tab {
+  padding-top: 3px!important;
+}
+
 h1 {
   text-align: center;
   margin-top: 10px;
