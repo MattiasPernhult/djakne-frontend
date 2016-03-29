@@ -17,6 +17,12 @@ ion-view {
   position:relative;
 }
 
+
+.heart {
+  font-size:40px;
+  color:red !important;
+}
+
 /* Profile */
 
 .hero{

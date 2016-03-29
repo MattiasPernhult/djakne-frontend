@@ -27,176 +27,53 @@ angular.module('controllers', ['factories', 'config', ])
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification, ProfileFactory, $ionicPopup) {
 
+  //
+  // var push = PushNotification.init({
+  //   android: {
+  //     senderID: '104492237304',
+  //   },
+  //   ios: {
+  //     alert: 'true',
+  //     badge: 'true',
+  //     sound: 'true',
+  //   },
+  //   windows: {},
+  // });
+  //
+  // push.on('registration', function(data) {
+  //     window.localStorage.registrationId = data.registrationId;
+  //     var body = {
+  //       token: data.registrationId,
+  //     };
+  //     var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
+  //     $http.post(url, body)
+  //       .success(function(res) {
+  //         console.log(res);
+  //       })
+  //       .error(function(err) {
+  //         console.log(err);
+  //       });
+  // });
+  //
+  // push.on('notification', function(data) {
+  //   console.log(JSON.stringify(data));
+  //   var alarmTime = new Date();
+  //   alarmTime.setMinutes(alarmTime.getSeconds() + 3);
+  //   $cordovaLocalNotification.add({
+  //     date: alarmTime,
+  //     message: data.message,
+  //     title: 'Your order',
+  //     autoCancel: true,
+  //     sound: null,
+  //   }).then(function() {
+  //     console.log('The notification has been set');
+  //   });
+  // });
+  //
+  // push.on('error', function(err) {
+  //   console.log(err);
+  // });
 
-  var push = PushNotification.init({
-    android: {
-      senderID: '104492237304',
-    },
-    ios: {
-      alert: 'true',
-      badge: 'true',
-      sound: 'true',
-    },
-    windows: {},
-  });
-
-  push.on('registration', function(data) {
-      window.localStorage.registrationId = data.registrationId;
-      var body = {
-        token: data.registrationId,
-      };
-      var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
-      $http.post(url, body)
-        .success(function(res) {
-          console.log(res);
-        })
-        .error(function(err) {
-          console.log(err);
-        });
-  });
-
-  push.on('notification', function(data) {
-    console.log(JSON.stringify(data));
-    var alarmTime = new Date();
-    alarmTime.setMinutes(alarmTime.getSeconds() + 3);
-    $cordovaLocalNotification.add({
-      date: alarmTime,
-      message: data.message,
-      title: 'Your order',
-      autoCancel: true,
-      sound: null,
-    }).then(function() {
-      console.log('The notification has been set');
-    });
-  });
-
-  push.on('error', function(err) {
-    console.log(err);
-  });
-
-
-
-
-    $scope.favorites = [
-      {
-        title: 'Favoriter',
-        icon: 'ion-android-favorite',
-        products:
-          [
-            {
-              id:1,
-              name: 'Moocha',
-              price: 20,
-            },
-            {
-              id:2,
-              name: 'Cappucino',
-              price: 20,
-            },
-          ],
-        },
-    ];
-
-  // END HERE
-
-  $scope.items = [
-      {
-        title: 'Varma Drycker',
-        icon: 'ion-coffee',
-        products:
-          [
-            {
-              id:1,
-              name: 'Stor Kaffe',
-              price: 20,
-            },
-            {
-              id:2,
-              name: 'Cappucino',
-              price: 20,
-            },
-            {
-              id:3,
-              name: 'Black',
-              price: 10,
-            },
-            {
-              id:4,
-              name: 'Large',
-              price: 14,
-            },
-            {
-              id:5,
-              name: 'Cordova',
-              price: 18,
-            },
-          ],
-      },
-      {
-        title: 'Ätbart',
-        icon: 'ion-android-restaurant',
-        products:
-          [
-            {
-              id:6,
-              name: 'Pasta',
-              price: 20,
-            },
-            {
-              id:7,
-              name: 'Smörgås',
-              price: 22,
-            },
-            {
-              id:8,
-              name: 'Tårta',
-              price: 20,
-            },
-            {
-              id:9,
-              name: 'Kakor',
-              price: 22,
-            },
-            {
-              id:10,
-              name: 'Frukt',
-              price: 20,
-            },
-          ],
-      },
-      {
-        title: 'Övrigt',
-        icon: 'ion-icecream',
-        products:
-          [
-            {
-              id:11,
-              name: 'Julmust',
-              price: 10,
-            },
-            {
-              id:12,
-              name: 'Cider',
-              price: 15,
-            },
-            {
-              id:13,
-              name: 'Öl',
-              price: 22,
-            },
-            {
-              id:14,
-              name: 'Läsk',
-              price: 20,
-            },
-            {
-              id:15,
-              name: 'Saft',
-              price: 19,
-            },
-          ],
-      },
-  ];
 
   $scope.expand = function(vote) {
      vote.show = !vote.show;
@@ -231,11 +108,29 @@ angular.module('controllers', ['factories', 'config', ])
   // Get product menu
   MenuFactory.getProducts(function(data) {
     $scope.products = data;
+    console.log($scope.products);
   });
 
-  MenuFactory.getFavourites(function(data) {
-    $scope.favourites = data;
-  });
+  // Add favorites -- New function!
+
+  $scope.addFavorites(item){
+    // ATT GÖRA:
+    // Skapa array för att spara produkt
+    // Uppdatera localstorage
+  };
+
+  // Get favorites -- New function!
+  $scope.getFavorites(){
+    // ATT GÖRA:
+    // Hämta datan från localstorage
+    // Returnera till menysidan
+
+  }
+
+  // MenuFactory.getFavourites(function(data) {
+  //   $scope.favourites = data;
+  //   console.log($scope.favourites);
+  // });
 
   // Add item to cart
   $scope.addToCart = function(product) {

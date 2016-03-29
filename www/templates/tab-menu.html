@@ -10,29 +10,25 @@
     <div ng-repeat="fav in favorites" ng-click="expand(fav)" class="menuCard margin"  ng-class="fav.show ? 'item-expand active' : 'item-expand inactive'">
       <ion-list>
         <h3 class="menuTitle text-center">{{fav.title}}</h3>
-        <p class="text-center">This is a description.....</p>
         <ion-item class="product" ng-show="fav.show" ng-repeat="item in fav.products" ng-click="alert('hej');$event.stopPropagation();">
           <div class="productInfo">
             <h2 class="product-title">{{item.name}}</p>
             <p class="product-price">{{item.price}} kr</p>
           </div>
           <div class="buttonContainer">
-            <!-- <img src="img/remove.svg" id="icon-remove" class="cart-icon" ng-show="inCart(item) >= 0" ng-click="removeFromCart(product)"/> -->
-            <!-- <p id="qty">ADD</p> -->
+            <button ng-click="" class="button button-outline button-assertive ion-heart">
             <button ng-click="showConfirm(item)" class="button button-outline button-assertive">
               BUY
             </button>
-            <!-- <img src="img/add.svg" id="icon-add" class="cart-icon" ng-click="addToCart(item)"></img> -->
           </div>
         </ion-item>
       </ion-list>
     </div>
     <!-- Menu items -->
-  <div ng-repeat="list in items" ng-click="expand(list)" class="menuCard margin"  ng-class="list.show ? 'item-expand active' : 'item-expand inactive'">
+  <div ng-repeat="list in products" ng-click="expand(list)" class="menuCard margin"  ng-class="list.show ? 'item-expand active' : 'item-expand inactive'">
     <ion-list>
-      <h3 class="menuTitle text-center">{{list.title}}</h3>
-      <p class="text-center">This is a description.....</p>
-      <ion-item class="product" ng-show="list.show" ng-repeat="item in list.products" ng-click="alert('hej');$event.stopPropagation();">
+      <h3 class="menuTitle text-center">{{list[0].category}}</h3>
+      <ion-item class="product" ng-show="list.show" ng-repeat="item in list" ng-click="$event.stopPropagation();">
         <div class="productInfo">
           <h2 class="product-title">{{item.name}}</p>
           <p class="product-price">{{item.price}} kr</p>
@@ -40,6 +36,7 @@
         <div class="buttonContainer">
           <!-- <img src="img/remove.svg" id="icon-remove" class="cart-icon" ng-show="inCart(item) >= 0" ng-click="removeFromCart(product)"/> -->
           <!-- <p id="qty">ADD</p> -->
+          <button ng-click="addFavorite(item)" class="heart button button-clear ion-ios-heart-outline">
           <button ng-click="addToCart(item)" class="button button-outline button-assertive">
             ADD
           </button>
