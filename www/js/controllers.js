@@ -5,6 +5,22 @@ angular.module('controllers', ['factories', 'config', ])
     console.log(data);
     $scope.rating = data;
   });
+
+  $scope.ratingsObject = {
+    iconOn: 'ion-ios-star',
+    iconOff: 'ion-ios-star-outline',
+    iconOnColor: 'rgb(0, 0, 0)',
+    iconOffColor:  'rgb(100, 100, 100)',
+    rating:  2,
+    minRating: 1,
+    callback: function(rating) {
+      $scope.ratingsCallback(rating);
+    },
+  };
+
+  $scope.ratingsCallback = function(rating) {
+    console.log('Selected rating is : ', rating);
+  };
 })
    // logout Hassan
 .controller('logoutController', function($scope, $state) {
