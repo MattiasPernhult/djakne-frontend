@@ -35,7 +35,10 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-inappbrowser"
+    "cordova-plugin-inappbrowser",
+    "phonegap-plugin-push",
+    "de.appplant.cordova.plugin.local-notification",
+    "cordova-plugin-x-toast"
   ],
   "cordovaPlatforms": [
     "ios",

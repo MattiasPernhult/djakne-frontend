@@ -1,20 +1,20 @@
 angular.module('controllers', ['factories', 'config', ])
 
 .controller('HomeController', function($scope, RatingFactory) {
-  RatingFactory.getRating(function(data) {
-    console.log(data);
-    $scope.rating = data;
-  });
-})
-   // logout Hassan
-.controller('logoutController', function($scope, $state) {
-  $scope.logout = function() {
-    $state.go('login');
-  };
-})
+    RatingFactory.getRating(function(data) {
+      console.log(data);
+      $scope.rating = data;
+    });
+  })
+  // logout Hassan
+  .controller('logoutController', function($scope, $state) {
+    $scope.logout = function() {
+      $state.go('login');
+    };
+  })
 
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
-  MenuFactory, $cordovaLocalNotification) {
+  MenuFactory, $cordovaLocalNotification, $ionicPlatform) {
 
   var push = PushNotification.init({
     android: {
@@ -29,35 +29,47 @@ angular.module('controllers', ['factories', 'config', ])
   });
 
   push.on('registration', function(data) {
-    if (!window.localStorage.registrationId) {
-      window.localStorage.registrationId = data.registrationId;
-      var body = {
-        token: data.registrationId,
-      };
-      var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
-      $http.post(url, body)
-        .success(function(res) {
-          console.log(res);
-        })
-        .error(function(err) {
-          console.log(err);
-        });
-    }
+    alert(data.registrationId);
+    window.localStorage.registrationId = data.registrationId;
+    var body = {
+      token: data.registrationId,
+    };
+    var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
+    $http.post(url, body)
+      .success(function(res) {
+        console.log(res);
+      })
+      .error(function(err) {
+        console.log(err);
+      });
   });
 
   push.on('notification', function(data) {
     console.log(JSON.stringify(data));
-    var alarmTime = new Date();
-    alarmTime.setMinutes(alarmTime.getSeconds() + 3);
-    $cordovaLocalNotification.add({
-      date: alarmTime,
-      message: data.message,
+
+    $cordovaLocalNotification.schedule({
+      id: 1,
       title: 'Your order',
-      autoCancel: true,
-      sound: null,
-    }).then(function() {
-      console.log('The notification has been set');
+      text: data.message,
+      data: {
+        customProperty: 'custom value',
+      },
+    }).then(function(result) {
+      // ...
     });
+
+
+    // var alarmTime = new Date();
+    // alarmTime.setMinutes(alarmTime.getSeconds() + 3);
+    // $cordovaLocalNotification.add({
+    //   date: alarmTime,
+    //   message: data.message,
+    //   title: 'Your order',
+    //   autoCancel: true,
+    //   sound: null,
+    // }).then(function() {
+    //   console.log('The notification has been set');
+    // });
   });
 
   push.on('error', function(err) {
