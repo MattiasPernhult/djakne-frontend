@@ -90,15 +90,16 @@ angular.module('factories', ['config'])
   };
 
   var getProducts = function(done) {
-    if (products)  {
-      return done(products);
-    }
+    // if (products)  {
+    //   return done(products);
+    // }
     var url;
-    if (accessFactory.getAccessToken()) {
-      url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
-    } else {
-      url = 'data/menu.json';
-    }
+    // if (accessFactory.getAccessToken()) {
+    //   url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
+    // } else {
+    //   url = 'data/menu.json';
+    // }
+    url = HOST.hostAdress + ':4000/menu/categories';
     $http.get(url)
       .then(function(response) {
         // Handle Success
@@ -115,7 +116,7 @@ angular.module('factories', ['config'])
   };
 })
 
-.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoading) {
+.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoading, $location) {
   // Cart array
   var cart = [];
 
@@ -204,17 +205,18 @@ angular.module('factories', ['config'])
           }
         });
       } else {
-        data.products.push({id: singleItem.qty});
+        data.products.push({id: singleItem.id});
       }
       console.log(data);
       console.log("Köpet är gjort!");
       $http.post(HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken(), data)
       .success(function(res) {
 
-        alert('Din order är skickad!');
-        // $state.go('menu');
-        alert('success');
-        alert(JSON.stringify(res));
+        //alert('Din order är skickad!');
+        cart.length = 0;
+        $location.path('/tab/menu');
+        //alert('success');
+        //alert(JSON.stringify(res));
       })
       .error(function(err) {
         // alert('Something went wrong there, try again');

@@ -25,10 +25,9 @@ angular.module('controllers', ['factories', 'config', ])
 })
 
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
-  MenuFactory, $cordovaLocalNotification, ProfileFactory) {
+  MenuFactory, $cordovaLocalNotification, ProfileFactory, $ionicPopup) {
 
 
-/*
   var push = PushNotification.init({
     android: {
       senderID: '104492237304',
@@ -42,7 +41,6 @@ angular.module('controllers', ['factories', 'config', ])
   });
 
   push.on('registration', function(data) {
-    if (!window.localStorage.registrationId) {
       window.localStorage.registrationId = data.registrationId;
       var body = {
         token: data.registrationId,
@@ -55,7 +53,6 @@ angular.module('controllers', ['factories', 'config', ])
         .error(function(err) {
           console.log(err);
         });
-    }
   });
 
   push.on('notification', function(data) {
@@ -76,7 +73,7 @@ angular.module('controllers', ['factories', 'config', ])
   push.on('error', function(err) {
     console.log(err);
   });
-*/
+
 
 
 
@@ -254,24 +251,25 @@ angular.module('controllers', ['factories', 'config', ])
     Cart.priceRequest();
   };
 
+
   // Place order
   $scope.placeOrder = function() {
     var singleItem = false;
     var message = '';
-    var takeaway = 0;
+    var takeaway = false;
     var comment = document.getElementById("comment").value;
 
     if ($scope.orderSettings.Lactos.checked) {
       message += 'Laktosfritt: Ja';
     }
     if ($scope.orderSettings.Takeaway.checked) {
-      takeaway = 1;
+      takeaway = true;
     }
     if (comment) {
       if (message) {
-        message += '\nKommentar: ' + comment;
+        message += '\n ' + comment;
       }else {
-        message += 'Kommentar: ' + comment;
+        message += comment;
       }
     }
 
@@ -279,12 +277,13 @@ angular.module('controllers', ['factories', 'config', ])
   };
 
   $scope.buyNow = function(item) {
-    var takeaway = 0;
+    var takeaway = false;
     var message = '';
     item.qty = 1;
 
+
     if (window.localStorage.Takeaway) {
-      takeaway = 1;
+      takeaway = true;
     }
     if (window.localStorage.Lactos) {
       message += 'Laktosfritt: Ja';
@@ -292,7 +291,22 @@ angular.module('controllers', ['factories', 'config', ])
 
     Cart.order(message, takeaway, item);
 
-  }
+  };
+
+  $scope.showConfirm = function(item) {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Lägga beställning?',
+   });
+
+   confirmPopup.then(function(res) {
+     if(res) {
+       console.log(item);
+       $scope.buyNow(item);
+     } else {
+       console.log('Snabbeställning avbruten');
+     }
+   });
+ };
 
   // Watch for changes in product total
   $scope.$watch(function() {

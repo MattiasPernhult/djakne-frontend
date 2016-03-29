@@ -1,6 +1,6 @@
 <ion-view view-title="Djäkne">
   <ion-nav-buttons side="right">
-    <div ng-click="cartQty === 0 || isLocal(); go('cart')">
+    <div ng-click="cartQty === 0 || go('cart')">
       <button class=" button button-icon ion-bag"></button>
       <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
     </div>
@@ -19,7 +19,7 @@
           <div class="buttonContainer">
             <!-- <img src="img/remove.svg" id="icon-remove" class="cart-icon" ng-show="inCart(item) >= 0" ng-click="removeFromCart(product)"/> -->
             <!-- <p id="qty">ADD</p> -->
-            <button ng-click="buyNow(item)" class="button button-outline button-assertive">
+            <button ng-click="showConfirm(item)" class="button button-outline button-assertive">
               BUY
             </button>
             <!-- <img src="img/add.svg" id="icon-add" class="cart-icon" ng-click="addToCart(item)"></img> -->
