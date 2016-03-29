@@ -80,7 +80,7 @@ angular.module('controllers', ['factories', 'config', ])
 })
 
 .controller('EventDescriptionController', function($scope, EventFactory) {
-  var eventData = EventFactory.getEvent();
+  var eventData = EvenstFactory.getEvent();
   $scope.chosenEvent = eventData;
 
   $scope.$watch(function() {

@@ -73,11 +73,11 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
     },
   })
 
-  .state('tab.social', {
-      url: '/social',
+  .state('tab.co', {
+      url: '/co',
       views: {
-        'tab-social': {
-          templateUrl: 'templates/tab-social.html',
+        'tab-co': {
+          templateUrl: 'templates/tab-co.html',
           controller: 'EventController',
         },
       },
