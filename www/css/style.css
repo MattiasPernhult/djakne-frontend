@@ -1,4 +1,7 @@
 /* Empty. Add your own CSS if you like */
+
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
+
 .item
 {
   display: flex;
@@ -189,13 +192,12 @@ p.desc_text {
     text-align: center;
     padding-top: 20px;
     font-family: Georgia, serif;
-
  }
 
 
  .coCard {
   text-align: center;
-  font-family: Georgia, serif;
+  font-family: Alegreya Sans, serif;
 
 }
 
@@ -215,6 +217,10 @@ p.desc_text {
 
    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
 
+}
+
+.filter {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
  /* Event pages */
