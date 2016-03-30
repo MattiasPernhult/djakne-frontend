@@ -69,13 +69,22 @@ angular.module('controllers', ['factories', 'config', ])
   );
 })
 
-.controller('EventController', function($scope, EventFactory) {
+.controller('EventController', function($scope, EventFactory, $state) {
   EventFactory.getEvents(function(data) {
     console.log(data);
     $scope.events = data;
   });
   $scope.setEvent = function(chosenEvent) {
     EventFactory.setEvent(chosenEvent);
+  };
+  $scope.gotoeventMain = function() {
+    $state.go('eventMain');
+  };
+  $scope.gotoBoard = function() {
+    $state.go('boardMain');
+  };
+  $scope.gotoNews = function() {
+    $state.go('newsMain');
   };
 })
 

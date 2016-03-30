@@ -1,58 +1,48 @@
 <ion-view view-title=".Co">
 
+  <ion-nav-buttons side="left">
+    <button class="button button-icon ion-ios-arrow-left" ui-sref="tab.home"></button>
+  </ion-nav-buttons>
 
-  <ion-content>
+  <ion-content class="padding">
+    <h2 class="co-title">Co-Working</h2>
 
-    <h2 class="social-title">Händer på Djäkne</h2>
+    <p class="desc_text">Djäkne är platsen för att möten och jobb. En plats för kreativa och drivna nytänkare.
+      Huset är fyllt med kreativitet och startups och vi välkomnar dig till att joina vår gemenskap. </p>
 
-    <p class="desc_text"> Ta del av gemenskapen på Djäkne! Inte medlem? Inga problem, alla är välkomna!</p>
+    <div class="membership.title">
+      <h4 class="co-title">Våra medlemskap</h2>
+    </div>
 
-  <div class="text-center padding">
-    <button class="button button-block button-dark" ui-sref="addEvent">Skapa event</button>
-  </div>
+    <div class="item-image padding">
+      <img class="membership" src="img/medlemskap.png">
+    </div>
 
-<!--
-  <div class="card">
-        <ul class="list">
+        <button class="button button-block button-dark">Läs mer</button>
 
-          <li class="item product-name" ng-repeat="event in events">
-            <div class="item item-thumbnail-left">
-                <div class="col col-75">
-                  <a class="default" ui-sref="events_description" ng-click="setEvent(event)">
-                      <h2>{{event.title}}</h2>
-                      <h4>{{event.date | date:'MM/dd/yyyy'}}</h4>
 
-                      <img src="img/coWorking.png">
-                      <p>{{event.text}}</p>
-                  </a>
-                </div>
-            </div>
-          </li>
-        </ul>
-  </div>
+    <div class="list card padding" ng-click="gotoeventMain()">
+        <h2 class="coCard">Events</h2>
+        <div class="item item-body">
+              <span class="cardDescs">Events @ Djäkne</span>
+        </div>
+    </div>
 
--->
+    <div class="list card padding" ng-click="gotoBoard()">
+        <h2 class="coCard">Note board</h2>
+        <div class="item item-body">
+              <span class="cardDescs">Stuff @ Djäkne</span>
+        </div>
+    </div>
 
-<div class="list">
+    <div class="list card padding" ng-click="gotoNews()">
+        <h2 class="coCard">News</h2>
+        <div class="item item-body">
+              <span class="cardDescs">News @ Djäkne</span>
+        </div>
 
-  <a ng-repeat="event in events"
-     class="item item-thumbnail-left"
-     ui-sref="events_description"
-     ng-click="setEvent(event)">
-
-  <div class="padding thumbnail">
-
-      <h2>{{ event.title }}</h2>
-      <h3>{{ event.date | date:'MM/dd/yyyy' }}</h3>
-      <p>{{event.text}}</p>
-  </div>
-
-  </a>
-
-</div>
-
+    </div>
 
 
   </ion-content>
-
 </ion-view>

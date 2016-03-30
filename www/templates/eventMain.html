@@ -1,0 +1,40 @@
+<ion-view view-title="Events">
+
+  <ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon ion-ios-arrow-left" ui-sref="tab.co"></button>
+  </ion-nav-buttons>
+</ion-nav-bar>
+
+    <ion-content class="padding">
+
+    <h2 class="social-title">Events på Djäkne</h2>
+
+    <p class="desc_text"> Ta del av gemenskapen på Djäkne! Inte medlem? Inga problem, alla är välkomna!</p>
+
+      <div class="text-center padding">
+        <button class="button button-block button-dark" ui-sref="addEvent">Skapa event</button>
+      </div>
+
+      <div class="list">
+
+        <a ng-repeat="event in events"
+           class="item item-thumbnail-left"
+           ui-sref="events_description"
+           ng-click="setEvent(event)">
+
+        <div class="padding thumbnail">
+
+            <h2>{{ event.title }}</h2>
+            <h3>{{ event.date | date:'MM/dd/yyyy' }}</h3>
+            <p>{{event.text}}</p>
+
+        </div>
+
+        </a>
+
+      </div>
+
+  </ion-content>
+
+</ion-view>

@@ -192,6 +192,31 @@ p.desc_text {
 
  }
 
+
+ .coCard {
+  text-align: center;
+  font-family: Georgia, serif;
+
+}
+
+.cardDescs {
+  font-family: Georgia, serif;
+
+}
+
+.co-title {
+   font-family: Georgia, serif;
+   text-align: center;
+   padding-top: 10px;
+
+}
+
+.list.card.padding {
+
+   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+
+}
+
  /* Event pages */
 
  .button.button-block.button-dark {

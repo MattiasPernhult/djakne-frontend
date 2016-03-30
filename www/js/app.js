@@ -43,6 +43,12 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       controller: 'ProductController',
     })
 
+    .state('eventMain', {
+        url: '/eventMain',
+        templateUrl: 'templates/eventMain.html',
+        controller: 'EventController',
+      })
+
     .state('events_description', {
       url: '/events_description',
       templateUrl: 'templates/events_description.html',
@@ -53,6 +59,18 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       url: '/addEvent',
       templateUrl: 'templates/addEvent.html',
       controller: 'AddEventController',
+    })
+
+    .state('boardMain', {
+      url: '/boardMain',
+      templateUrl: 'templates/boardMain.html',
+      controller: 'EventController',
+    })
+
+    .state('newsMain', {
+      url: '/newsMain',
+      templateUrl: 'templates/newsMain.html',
+      controller: 'EventController',
     })
 
   // setup an abstract state for the tabs directive
