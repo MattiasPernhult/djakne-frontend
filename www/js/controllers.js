@@ -36,47 +36,47 @@ angular.module('controllers', ['factories', 'config', ])
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory) {
 
-  var push = PushNotification.init({
-    android: {
-      senderID: '104492237304',
-    },
-    ios: {
-      alert: 'true',
-      badge: 'true',
-      sound: 'true',
-    },
-    windows: {},
-  });
-
-  push.on('registration', function(data) {
-    // alert(data.registrationId);
-    window.localStorage.registrationId = data.registrationId;
-    var body = {
-      token: data.registrationId,
-    };
-    var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
-    $http.post(url, body)
-      .success(function(res) {
-        console.log(res);
-      })
-      .error(function(err) {
-        console.log(err);
-      });
-  });
-
-  push.on('notification', function(data) {
-    console.log(JSON.stringify(data));
-
-    $cordovaLocalNotification.schedule({
-      id: 1,
-      title: 'Your order',
-      text: data.message,
-      data: {
-        customProperty: 'custom value',
-      },
-    }).then(function(result) {
-      // ...
-    });
+  // var push = PushNotification.init({
+  //   android: {
+  //     senderID: '104492237304',
+  //   },
+  //   ios: {
+  //     alert: 'true',
+  //     badge: 'true',
+  //     sound: 'true',
+  //   },
+  //   windows: {},
+  // });
+  //
+  // push.on('registration', function(data) {
+  //   // alert(data.registrationId);
+  //   window.localStorage.registrationId = data.registrationId;
+  //   var body = {
+  //     token: data.registrationId,
+  //   };
+  //   var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
+  //   $http.post(url, body)
+  //     .success(function(res) {
+  //       console.log(res);
+  //     })
+  //     .error(function(err) {
+  //       console.log(err);
+  //     });
+  // });
+  //
+  // push.on('notification', function(data) {
+  //   console.log(JSON.stringify(data));
+  //
+  //   $cordovaLocalNotification.schedule({
+  //     id: 1,
+  //     title: 'Your order',
+  //     text: data.message,
+  //     data: {
+  //       customProperty: 'custom value',
+  //     },
+  //   }).then(function(result) {
+  //     // ...
+  //   });
 
 
     // var alarmTime = new Date();
@@ -90,16 +90,16 @@ angular.module('controllers', ['factories', 'config', ])
     // }).then(function() {
     //   console.log('The notification has been set');
     // });
-  });
-
-  push.on('error', function(err) {
-    console.log(err);
-  });
+  // });
+  //
+  // push.on('error', function(err) {
+  //   console.log(err);
+  // });
 
   $scope.userFavorites = $scope.userFavorites || [];
 
   $scope.expand = function(vote) {
-     vote.show = !vote.show;
+    vote.show = !vote.show;
   };
 
   // Get settings
@@ -267,7 +267,7 @@ angular.module('controllers', ['factories', 'config', ])
    });
 
    confirmPopup.then(function(res) {
-     if(res) {
+     if (res) {
        console.log(item);
        $scope.buyNow(item);
      } else {
@@ -288,7 +288,8 @@ angular.module('controllers', ['factories', 'config', ])
 })
 
 .controller('LoginController',
-  function($scope, $state, $http, $location, $rootScope, accessFactory, HOST, $ionicSlideBoxDelegate) {
+  function($scope, $state, $http, $location, $rootScope, accessFactory,
+    HOST, $ionicSlideBoxDelegate) {
     console.log(HOST.hostAdress);
     $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
     $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';

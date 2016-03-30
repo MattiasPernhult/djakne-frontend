@@ -1,4 +1,5 @@
 /* Empty. Add your own CSS if you like */
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
 
 body {
   font-family: Georgia, Times, "Times New Roman", serif !important;
@@ -115,8 +116,9 @@ ion-view {
 
 .product-title{
   font-weight: 400 !important;
-  font-size:19px !important;
-
+  font-size:22px !important;
+  color: black;
+  /*font-family: 'Alegreya Sans', sans-serif !important;*/
 }
 
 .product-price{
@@ -139,8 +141,9 @@ ion-view {
 
 .menuCard{
   width:100%;
-  height:25%;
+  height:23%;
   position:relative;
+  background-color: rgba(000, 000, 000, 0.3);
 }
 
 .product:first-of-type{
@@ -177,17 +180,31 @@ ion-view {
 .item-expand.active {
   height: auto;
   transition: height 0.3s ease-out;
+
 }
 
+.item {
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  margin-bottom: 3%;
+  border: none;
+  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0.40);
+}
 /* Title in menu cards */
 
 h3.menuTitle.ng-binding {
-  margin-top: 50px !important;
+  margin-top: 10% !important;
+  font-family: 'Alegreya Sans', sans-serif !important;
+  font-size: 36px;
+  color: white;
 }
 
 h3.menuTitle.favourites{
-  margin-top: 5%;
+  margin-top: 10%;
   text-align: center;
+  font-family: 'Alegreya Sans', sans-serif !important;
+  font-size: 36px;
+  color: white;
 }
 
 /* Login template */
