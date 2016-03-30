@@ -16,18 +16,19 @@
         <button class="button button-block button-dark" ui-sref="addEvent">Skapa event</button>
       </div>
 
-      <div class="list">
+      <div class="list card" ng-repeat="event in events">
 
-        <a ng-repeat="event in events"
-           class="item item-thumbnail-left"
+
+        <a class="item item-thumbnail-left"
            ui-sref="events_description"
            ng-click="setEvent(event)">
 
-        <div class="padding thumbnail">
+
+        <div class="thumbnail padding">
 
             <h2>{{ event.title }}</h2>
             <h3>{{ event.date | date:'MM/dd/yyyy' }}</h3>
-            <p>{{event.text}}</p>
+            <p class="cardDescs">{{event.text}}</p>
 
         </div>
 

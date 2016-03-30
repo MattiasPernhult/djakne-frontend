@@ -1,7 +1,7 @@
 <ion-view view-title="Event">
   <ion-nav-bar>
     <ion-nav-buttons side="left">
-      <button class=" button button-icon ion-ios-arrow-left" ui-sref="tab.co"></button>
+      <button class=" button button-icon ion-ios-arrow-left" ui-sref="eventMain"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
@@ -19,19 +19,19 @@
       <img class="full-image" src="img/coWorking.png">
     </div>
 
-    <div class="row">
-      <div class="col col-75">
-        <p>{{chosenEvent.text}}</p>
-      </div>
+    <div class="list">
 
-      <p>Description</p>
-      <p>
-        {{chosenEvent.text}}
-      </p>
-      <div class="text-center">
+        <h4>Description:</h4>
+        <p class="cardDescs">{{chosenEvent.text}}</p>
+
+    </div>
+
+
+
+
+    <div class="text-center">
         <!-- FUNKTION MÅSTE SKAPAS! -->
-        <button class="button icon icon-right ion-chevron-right" ng-click="signUp()"> Sign up</button>
-      </div>
+      <button class="button button-block button-dark" ng-click="signUp()"> Sign up</button>
     </div>
 
     </div>

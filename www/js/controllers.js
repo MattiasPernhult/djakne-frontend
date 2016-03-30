@@ -70,10 +70,22 @@ angular.module('controllers', ['factories', 'config', ])
 })
 
 .controller('EventController', function($scope, EventFactory, $state) {
+
+  $scope.isVisible = false;
+  $scope.toggleElement = function() {
+
+    if ($scope.isVisible === false) {
+      $scope.isVisible = true;
+    } else {
+      $scope.isVisible = false;
+    }
+  };
+
   EventFactory.getEvents(function(data) {
     console.log(data);
     $scope.events = data;
   });
+
   $scope.setEvent = function(chosenEvent) {
     EventFactory.setEvent(chosenEvent);
   };
@@ -88,7 +100,8 @@ angular.module('controllers', ['factories', 'config', ])
   };
 })
 
-.controller('EventDescriptionController', function($scope, $http, EventFactory, accessFactory, HOST) {
+.controller('EventDescriptionController',
+  function($scope, $http, EventFactory, accessFactory, HOST) {
   var eventData = EventFactory.getEvent();
   $scope.chosenEvent = eventData;
 
