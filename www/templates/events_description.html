@@ -23,16 +23,14 @@
       <div class="col col-75">
         <p>{{chosenEvent.text}}</p>
       </div>
-    </div>
 
-    <div class="text-center"> 
-      <button class="button button-block button-dark" ng-click="signupLunch()">Anmäl till event</button>
-    </div>
-
-    <div class="row">
-      <div class="col col-75">
-        <h4>Deltagare:</h4>
-        <p>Bilder på medlemmar som är anmälda från linkedIn</p>
+      <p>Description</p>
+      <p>
+        {{chosenEvent.text}}
+      </p>
+      <div class="text-center">
+        <!-- FUNKTION MÅSTE SKAPAS! -->
+        <button class="button icon icon-right ion-chevron-right" ng-click="signUp()"> Sign up</button>
       </div>
     </div>
 

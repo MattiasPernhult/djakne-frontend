@@ -23,7 +23,7 @@ angular.module('factories', ['config'])
   var oneEvent;
 
   var getEvents = function(done) {
-    var url = 'http://localhost:3000/events';
+    var url = HOST.hostAdress + ':4000/events';
 
     if (events) {
       return done(events);
@@ -57,6 +57,7 @@ angular.module('factories', ['config'])
   };
 })
 
+
 .factory('MenuFactory', function($http, accessFactory, HOST) {
 
   var products;
@@ -67,7 +68,7 @@ angular.module('factories', ['config'])
     }
     var url;
     if (accessFactory.getAccessToken()) {
-      url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
+      url = HOST.hostAdress + ':4000/menu?token=' + accessFactory.getAccessToken();
     } else {
       url = 'data/menu.json';
     }
