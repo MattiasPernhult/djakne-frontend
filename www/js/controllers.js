@@ -1,17 +1,18 @@
 angular.module('controllers', ['factories', 'config', ])
 
-.controller('HomeController', function($scope, CoffeeFactory) {
+.controller('HomeController', function($scope, CoffeeFactory, $http, HOST, accessFactory) {
   CoffeeFactory.getCoffee(function(data) {
     console.log(data);
     $scope.rating = data;
   });
+  $scope.votes = 2;
 
   $scope.ratingsObject = {
     iconOn: 'ion-ios-star',
     iconOff: 'ion-ios-star-outline',
     iconOnColor: 'rgb(0, 0, 0)',
     iconOffColor:  'rgb(100, 100, 100)',
-    rating:  2,
+    rating:  $scope.votes,
     minRating: 1,
     callback: function(rating) {
       $scope.ratingsCallback(rating);
@@ -20,6 +21,26 @@ angular.module('controllers', ['factories', 'config', ])
 
   $scope.ratingsCallback = function(rating) {
     console.log('Selected rating is : ', rating);
+    $scope.votes = rating;
+  };
+
+  $scope.body = {};
+
+  $scope.send = function() {
+
+    var rating = {
+      vote:  String($scope.votes),
+      token: accessFactory.getAccessToken(),
+    };
+    console.log(rating);
+    var url = HOST.hostAdress + ':4000/coffee/vote';
+    $http.put(url, rating)
+    .success(function(res) {
+      console.log(res);
+    })
+    .error(function(err) {
+      console.log(err);
+    });
   };
 })
    // logout Hassan
