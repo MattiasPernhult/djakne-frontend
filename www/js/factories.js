@@ -97,10 +97,10 @@ angular.module('factories', ['config'])
     // if (accessFactory.getAccessToken()) {
     //   url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
     // } else {
-      url = 'data/test.json';
+    //    url = 'data/test.json';
     // }
 
-    // url = HOST.hostAdress + ':4000/menu/categories';
+     url = HOST.hostAdress + ':4000/menu/categories';
 
     $http.get(url)
       .then(function(response) {

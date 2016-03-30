@@ -7,7 +7,7 @@
   </ion-nav-buttons>
   <ion-content overflow-scroll="true">
     <!-- Favorites -->
-    <div class="menuCard margin">
+    <div class="menuCard item-expand active margin" ng-show="userFavorites.length > 0">
       <ion-list>
         <h3 class="menuTitle text-center">Favoriter</h3>
         <ion-item class="product" ng-repeat="item in userFavorites" ng-click="$event.stopPropagation();">
@@ -16,6 +16,9 @@
             <p class="product-price">{{item.price}} kr</p>
           </div>
           <div class="buttonContainer">
+            <button ng-click="removeFavorite(item)" class="button button-outline button-assertive">
+              Remove
+            </button>
             <button ng-click="showConfirm(item)" class="button button-outline button-assertive">
               BUY
             </button>
@@ -33,13 +36,10 @@
           <p class="product-price">{{item.price}} kr</p>
         </div>
         <div class="buttonContainer">
-          <!-- <img src="img/remove.svg" id="icon-remove" class="cart-icon" ng-show="inCart(item) >= 0" ng-click="removeFromCart(product)"/> -->
-          <!-- <p id="qty">ADD</p> -->
-          <button ng-click="addFavorite(item)" class="heart button button-clear" ng-class="active ? 'ion-heart' : 'ion-ios-heart-outline'">
+          <button ng-click="isFavorite(item)" class="heart button button-clear" ng-class="item.isFavorite ? 'ion-ios-heart' : 'ion-ios-heart-outline'">
           <button ng-click="addToCart(item)" class="button button-outline button-assertive">
             ADD
           </button>
-          <!-- <img src="img/add.svg" id="icon-add" class="cart-icon" ng-click="addToCart(item)"></img> -->
         </div>
       </ion-item>
     </ion-list>

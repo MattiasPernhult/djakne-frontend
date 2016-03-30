@@ -118,27 +118,40 @@ angular.module('controllers', ['factories', 'config', ])
   // Add favorites -- New function!
 
   $scope.addFavorite = function(item) {
-    // ATT GÖRA:
-    // Skapa array för att spara produkt
-    // Uppdatera localstorage
-
+    console.log(item);
     $scope.userFavorites.push(item);
-
     window.localStorage.setItem('favorites',JSON.stringify($scope.userFavorites));
+  };
 
-    $scope.active = false;
+  // New function - Remove favorite
+  $scope.removeFavorite = function(index) {
+    $scope.userFavorites.splice(index,1);
+    window.localStorage.setItem('favorites',JSON.stringify($scope.userFavorites));
   };
 
   // Get favorites -- New function!
   $scope.getFavorites = function() {
-    // ATT GÖRA:
-    // Hämta datan från localstorage
-    // Returnera till menysidan
     var res;
     var favorites;
     res = window.localStorage.getItem('favorites');
     favorites = JSON.parse(res);
     return favorites;
+  };
+
+  $scope.isFavorite = function(item) {
+    var exists;
+    for (var index = 0; index < $scope.userFavorites.length; index++) {
+      if (item.id === $scope.userFavorites[index].id) {
+        exists = true;
+        item.isFavorite = false;
+        $scope.removeFavorite(index);
+        break;
+      }
+    }
+    if (!exists) {
+      item.isFavorite = true;
+      $scope.addFavorite(item);
+    }
   };
 
   // MenuFactory.getFavourites(function(data) {
