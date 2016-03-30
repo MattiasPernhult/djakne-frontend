@@ -105,7 +105,7 @@ angular.module('factories', ['config'])
     $http.get(url)
       .then(function(response) {
         // Handle Success
-        products = response.data;
+        products = response.data.products;
         console.log(products);
         return done(products);
       }, function(response) {

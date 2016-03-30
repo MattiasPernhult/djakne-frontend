@@ -154,6 +154,11 @@ h3.menuTitle.ng-binding {
   margin-top: 50px !important;
 }
 
+h3.menuTitle.favourites{
+  margin-top: 5%;
+  text-align: center;
+}
+
 /* Login template */
 
 .slider {

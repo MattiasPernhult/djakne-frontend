@@ -27,52 +27,52 @@ angular.module('controllers', ['factories', 'config', ])
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification, ProfileFactory, $ionicPopup) {
 
-  //
-  // var push = PushNotification.init({
-  //   android: {
-  //     senderID: '104492237304',
-  //   },
-  //   ios: {
-  //     alert: 'true',
-  //     badge: 'true',
-  //     sound: 'true',
-  //   },
-  //   windows: {},
-  // });
-  //
-  // push.on('registration', function(data) {
-  //     window.localStorage.registrationId = data.registrationId;
-  //     var body = {
-  //       token: data.registrationId,
-  //     };
-  //     var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
-  //     $http.post(url, body)
-  //       .success(function(res) {
-  //         console.log(res);
-  //       })
-  //       .error(function(err) {
-  //         console.log(err);
-  //       });
-  // });
-  //
-  // push.on('notification', function(data) {
-  //   console.log(JSON.stringify(data));
-  //   var alarmTime = new Date();
-  //   alarmTime.setMinutes(alarmTime.getSeconds() + 3);
-  //   $cordovaLocalNotification.add({
-  //     date: alarmTime,
-  //     message: data.message,
-  //     title: 'Your order',
-  //     autoCancel: true,
-  //     sound: null,
-  //   }).then(function() {
-  //     console.log('The notification has been set');
-  //   });
-  // });
-  //
-  // push.on('error', function(err) {
-  //   console.log(err);
-  // });
+
+  var push = PushNotification.init({
+    android: {
+      senderID: '104492237304',
+    },
+    ios: {
+      alert: 'true',
+      badge: 'true',
+      sound: 'true',
+    },
+    windows: {},
+  });
+
+  push.on('registration', function(data) {
+      window.localStorage.registrationId = data.registrationId;
+      var body = {
+        token: data.registrationId,
+      };
+      var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
+      $http.post(url, body)
+        .success(function(res) {
+          console.log(res);
+        })
+        .error(function(err) {
+          console.log(err);
+        });
+  });
+
+  push.on('notification', function(data) {
+    console.log(JSON.stringify(data));
+    var alarmTime = new Date();
+    alarmTime.setMinutes(alarmTime.getSeconds() + 3);
+    $cordovaLocalNotification.add({
+      date: alarmTime,
+      message: data.message,
+      title: 'Your order',
+      autoCancel: true,
+      sound: null,
+    }).then(function() {
+      console.log('The notification has been set');
+    });
+  });
+
+  push.on('error', function(err) {
+    console.log(err);
+  });
 
   $scope.userFavorites = $scope.userFavorites || [];
 
@@ -154,10 +154,15 @@ angular.module('controllers', ['factories', 'config', ])
     }
   };
 
-  // MenuFactory.getFavourites(function(data) {
-  //   $scope.favourites = data;
-  //   console.log($scope.favourites);
-  // });
+
+  $scope.isActive = function(item) {
+   for (var index = 0; index < $scope.userFavorites.length; index++) {
+     if (item.id === $scope.userFavorites[index].id) {
+       item.isFavorite = true;
+       break;
+     }
+   }
+ };
 
   // Add item to cart
   $scope.addToCart = function(product) {
