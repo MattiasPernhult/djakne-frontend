@@ -118,9 +118,9 @@ angular.module('factories', ['config'])
     // if (products)  {
     //   return done(products);
     // }
-    var url;
+    // var url;
     // if (accessFactory.getAccessToken()) {
-    //   url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
+    // url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
     // } else {
     //    url = 'data/test.json';
     // }
@@ -146,7 +146,7 @@ angular.module('factories', ['config'])
   };
 })
 
-.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoading, $location) {
+.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoading, $location, $cordovaToast) {
   // Cart array
   var cart = [];
   var totalPrice = 0;
@@ -247,6 +247,11 @@ angular.module('factories', ['config'])
         //alert('Din order är skickad!');
         cart.length = 0;
         $location.path('/tab/menu');
+        $cordovaToast.showLongBottom('Din order har lagts').then(function(success) {
+           // success
+         }, function (error) {
+           // error
+         });
         //alert('success');
         //alert(JSON.stringify(res));
       })
@@ -254,6 +259,11 @@ angular.module('factories', ['config'])
         // alert('Something went wrong there, try again');
         alert('error');
         alert(JSON.stringify(err));
+        $cordovaToast.showLongBottom('Problem med order').then(function(success) {
+           // success
+         }, function (error) {
+           // error
+         });
       });
 
       return data;

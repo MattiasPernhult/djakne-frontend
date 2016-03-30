@@ -36,33 +36,33 @@ angular.module('controllers', ['factories', 'config', ])
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory) {
 
-  // var push = PushNotification.init({
-  //   android: {
-  //     senderID: '104492237304',
-  //   },
-  //   ios: {
-  //     alert: 'true',
-  //     badge: 'true',
-  //     sound: 'true',
-  //   },
-  //   windows: {},
-  // });
-  //
-  // push.on('registration', function(data) {
-  //   // alert(data.registrationId);
-  //   window.localStorage.registrationId = data.registrationId;
-  //   var body = {
-  //     token: data.registrationId,
-  //   };
-  //   var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
-  //   $http.post(url, body)
-  //     .success(function(res) {
-  //       console.log(res);
-  //     })
-  //     .error(function(err) {
-  //       console.log(err);
-  //     });
-  // });
+  var push = PushNotification.init({
+    android: {
+      senderID: '104492237304',
+    },
+    ios: {
+      alert: 'true',
+      badge: 'true',
+      sound: 'true',
+    },
+    windows: {},
+  });
+
+  push.on('registration', function(data) {
+    // alert(data.registrationId);
+    window.localStorage.registrationId = data.registrationId;
+    var body = {
+      token: data.registrationId,
+    };
+    var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
+    $http.post(url, body)
+      .success(function(res) {
+        console.log(res);
+      })
+      .error(function(err) {
+        console.log(err);
+      });
+  });
   //
   // push.on('notification', function(data) {
   //   console.log(JSON.stringify(data));

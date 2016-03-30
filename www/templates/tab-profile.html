@@ -21,7 +21,7 @@
                 <i class="icon ion-clipboard"></i> Bookings
             </a>
         </div>
-        <ion-toggle ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
+        <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
     </ion-content>
 </ion-view>
 
