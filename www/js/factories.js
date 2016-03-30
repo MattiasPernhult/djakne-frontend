@@ -124,13 +124,14 @@ angular.module('factories', ['config'])
     // } else {
     //    url = 'data/test.json';
     // }
-
+    // url = 'data/test.json';
     url = HOST.hostAdress + ':4000/menu/categories';
 
     $http.get(url)
       .then(function(response) {
         // Handle Success
         products = response.data.products;
+        // products = response.data;
         console.log(products);
         return done(products);
       }, function(response) {
