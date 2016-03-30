@@ -207,6 +207,7 @@ p.desc_text {
 
 h3.coworkTitle {
   margin-top: 10% !important;
+  margin-bottom: 10% !important;
   font-family: 'Alegreya Sans', sans-serif !important;
   font-size: 36px;
   color: white;
@@ -218,8 +219,20 @@ h3.coworkTitle {
   height:23%;
   position:relative;
   background-color: rgba(000, 000, 000, 0.3);
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
+.box {
+  height: 140px;
+  background-color: rgba(000, 000, 000, 0.6);
+  border-radius: 5%;
+  text-align: center;
+  padding: 2em;
+  color: white;
+  font-family: 'Alegreya Sans', sans-serif !important;
+}
  /* Event pages */
 
  .button.button-block.button-dark {
