@@ -74,6 +74,7 @@ angular.module('controllers', ['factories', 'config', ])
   //   console.log(err);
   // });
 
+  $scope.userFavorites = $scope.userFavorites || [];
 
   $scope.expand = function(vote) {
      vote.show = !vote.show;
@@ -87,6 +88,10 @@ angular.module('controllers', ['factories', 'config', ])
   $scope.$on('$ionicView.enter', function() {
     ProfileFactory.checkOrderSettings('Takeaway');
     ProfileFactory.checkOrderSettings('Lactos');
+
+    if (window.localStorage.favorites) {
+      $scope.userFavorites = $scope.getFavorites();
+    }
   });
 
   $scope.go = $state.go.bind($state);
@@ -108,24 +113,33 @@ angular.module('controllers', ['factories', 'config', ])
   // Get product menu
   MenuFactory.getProducts(function(data) {
     $scope.products = data;
-    console.log($scope.products);
   });
 
   // Add favorites -- New function!
 
-  $scope.addFavorites(item){
+  $scope.addFavorite = function(item) {
     // ATT GÖRA:
     // Skapa array för att spara produkt
     // Uppdatera localstorage
+
+    $scope.userFavorites.push(item);
+
+    window.localStorage.setItem('favorites',JSON.stringify($scope.userFavorites));
+
+    $scope.active = false;
   };
 
   // Get favorites -- New function!
-  $scope.getFavorites(){
+  $scope.getFavorites = function() {
     // ATT GÖRA:
     // Hämta datan från localstorage
     // Returnera till menysidan
-
-  }
+    var res;
+    var favorites;
+    res = window.localStorage.getItem('favorites');
+    favorites = JSON.parse(res);
+    return favorites;
+  };
 
   // MenuFactory.getFavourites(function(data) {
   //   $scope.favourites = data;
@@ -211,6 +225,7 @@ angular.module('controllers', ['factories', 'config', ])
       $scope.total = newVal;
     }
   );
+
 })
 
 .controller('LoginController',

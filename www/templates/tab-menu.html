@@ -7,16 +7,15 @@
   </ion-nav-buttons>
   <ion-content overflow-scroll="true">
     <!-- Favorites -->
-    <div ng-repeat="fav in favorites" ng-click="expand(fav)" class="menuCard margin"  ng-class="fav.show ? 'item-expand active' : 'item-expand inactive'">
+    <div class="menuCard margin">
       <ion-list>
-        <h3 class="menuTitle text-center">{{fav.title}}</h3>
-        <ion-item class="product" ng-show="fav.show" ng-repeat="item in fav.products" ng-click="alert('hej');$event.stopPropagation();">
+        <h3 class="menuTitle text-center">Favoriter</h3>
+        <ion-item class="product" ng-repeat="item in userFavorites" ng-click="$event.stopPropagation();">
           <div class="productInfo">
             <h2 class="product-title">{{item.name}}</p>
             <p class="product-price">{{item.price}} kr</p>
           </div>
           <div class="buttonContainer">
-            <button ng-click="" class="button button-outline button-assertive ion-heart">
             <button ng-click="showConfirm(item)" class="button button-outline button-assertive">
               BUY
             </button>
@@ -36,7 +35,7 @@
         <div class="buttonContainer">
           <!-- <img src="img/remove.svg" id="icon-remove" class="cart-icon" ng-show="inCart(item) >= 0" ng-click="removeFromCart(product)"/> -->
           <!-- <p id="qty">ADD</p> -->
-          <button ng-click="addFavorite(item)" class="heart button button-clear ion-ios-heart-outline">
+          <button ng-click="addFavorite(item)" class="heart button button-clear" ng-class="active ? 'ion-heart' : 'ion-ios-heart-outline'">
           <button ng-click="addToCart(item)" class="button button-outline button-assertive">
             ADD
           </button>

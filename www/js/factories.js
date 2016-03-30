@@ -97,16 +97,20 @@ angular.module('factories', ['config'])
     // if (accessFactory.getAccessToken()) {
     //   url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
     // } else {
-    //   url = 'data/menu.json';
+      url = 'data/test.json';
     // }
-    url = HOST.hostAdress + ':4000/menu/categories';
+
+    // url = HOST.hostAdress + ':4000/menu/categories';
+
     $http.get(url)
       .then(function(response) {
         // Handle Success
-        products = response.data.products;
+        products = response.data;
+        console.log(products);
         return done(products);
       }, function(response) {
         // Handle Failure
+        console.log(response);
         return done(response.data);
       });
   };

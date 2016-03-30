@@ -151,7 +151,7 @@ ion-view {
 /* Title in menu cards */
 
 h3.menuTitle.ng-binding {
-  margin-top: 50px;
+  margin-top: 50px !important;
 }
 
 /* Login template */
