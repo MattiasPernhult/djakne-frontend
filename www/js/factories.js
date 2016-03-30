@@ -1,5 +1,6 @@
 angular.module('factories', ['config'])
 
+
 .factory('accessFactory', function() {
   var accessToken;
 
@@ -17,6 +18,7 @@ angular.module('factories', ['config'])
   };
 })
 
+<<<<<<< HEAD
 .factory('ProfileFactory', function() {
   var orderSettings = {
     Takeaway:
@@ -59,6 +61,32 @@ angular.module('factories', ['config'])
       }
       return false;
     },
+=======
+.factory('RatingFactory', function($http, HOST) {
+
+  var rating;
+
+  var getRating = function(done) {
+    var url = HOST.hostAdress + ':4000/coffee/current';
+
+    if (rating) {
+      return done(rating);
+    }
+    $http.get(url)
+      .then(function(response) {
+        // Handle Success
+        console.log('success: ' + response);
+        rating = response.data.result;
+        return done(rating);
+      }, function(response) {
+        // Handle Failure
+        console.log('ERROR' + response);
+        return done(response.data.error);
+      });
+  };
+  return {
+    getRating: getRating,
+>>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
   };
 })
 
@@ -123,6 +151,7 @@ angular.module('factories', ['config'])
 .factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoading, $location) {
   // Cart array
   var cart = [];
+  var totalPrice = 0;
 
   return {
     list: function() {
@@ -176,6 +205,7 @@ angular.module('factories', ['config'])
       });
       return total;
     },
+<<<<<<< HEAD
     priceRequest: function() {
       var data = {
         "products":[
@@ -192,14 +222,41 @@ angular.module('factories', ['config'])
         alert('error');
         alert(JSON.stringify(err));
         $ionicLoading.hide();
+=======
+    getProductsId: function() {
+      var productsId = [];
+      for (var index in cart) {
+        var object = cart[index];
+        productsId.push({id: object.id});
+      }
+      return productsId;
+    },
+    priceRequest: function(data, done) {
+      $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' +
+      accessFactory.getAccessToken(), data)
+      .success(function(res) {
+        totalPrice = res.totalPrice;
+        return done(null);
+      })
+      .error(function(err) {
+        return done(err);
+>>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
       });
-
+    },
+    getTotalPrice: function() {
+      return totalPrice;
     },
     order: function(message, takeaway, singleItem)  {
       var data = {
+<<<<<<< HEAD
         message: message,
         takeaway: takeaway,
         products: [],
+=======
+        'message': 'asdf',
+        'takeaway': 1,
+        'products':[{'id': 1}]
+>>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
       };
 
       if (!singleItem) {
