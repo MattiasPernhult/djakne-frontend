@@ -5,7 +5,6 @@ body {
   color: #222222;
 }
 
-<<<<<<< HEAD
 div.scroll{
   height:100%;
 }
@@ -13,6 +12,30 @@ div.scroll{
 .list{
   height:100%;
 }
+
+.containerCartIcons {
+  display:flex;
+}
+
+.containerCartIcons h1#qty-amount {
+  margin:0;
+}
+
+.cartIcon {
+  min-width: 45px !important;
+  max-width: 45px !important;
+  line-height: 0 !important;
+  margin: 0 10px;
+}
+
+#add {
+  float:right;
+}
+
+#remove {
+  float:left;
+}
+
 h1 {
   text-align: center;
   margin-top: 10px;
@@ -375,7 +398,12 @@ img#icon-add {
 }
 
 #qty-amount {
-  margin: 0;
+  margin: 0 10px;
+  font-size: 27px;
+}
+
+#qty-amount span {
+  font-size:16px;
 }
 
 #addOne {
