@@ -203,6 +203,8 @@ p.desc_text {
 
 .cardDescs {
   font-family: Georgia, serif;
+  padding-right: 5px;
+  width: 250px;
 
 }
 

@@ -9,17 +9,21 @@
     <h2 class="co-title">Co-Working</h2>
 
     <p class="desc_text">Djäkne är platsen för att möten och jobb. En plats för kreativa och drivna nytänkare.
-      Huset är fyllt med kreativitet och startups och vi välkomnar dig till att joina vår gemenskap. </p>
+      Huset är fyllt med kreativitet och startups och vi välkomnar dig till att joina vår gemenskap.
+    </p>
 
-    <div class="membership.title">
-      <h4 class="co-title">Våra medlemskap</h2>
+
+    <div class="text-center">
+      <button ng-click="toggleElement()" class="button button-block button-dark">Våra medlemskap</button>
     </div>
 
-    <div class="item-image padding">
+
+
+
+    <div ng-show="isVisible" class="item-image padding">
       <img class="membership" src="img/medlemskap.png">
+      <p class="desc_text">...</p>
     </div>
-
-        <button class="button button-block button-dark">Läs mer</button>
 
 
     <div class="list card padding" ng-click="gotoeventMain()">
