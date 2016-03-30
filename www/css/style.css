@@ -194,18 +194,8 @@ p.desc_text {
     font-family: Georgia, serif;
  }
 
-
- .coCard {
-  text-align: center;
-  font-family: Alegreya Sans, serif;
-
-}
-
-.cardDescs {
-  font-family: Georgia, serif;
-  padding-right: 5px;
-  width: 250px;
-
+.filter {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .co-title {
@@ -215,14 +205,19 @@ p.desc_text {
 
 }
 
-.list.card.padding {
-
-   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
-
+h3.coworkTitle {
+  margin-top: 10% !important;
+  font-family: 'Alegreya Sans', sans-serif !important;
+  font-size: 36px;
+  color: white;
+  text-align: center !important;
 }
 
-.filter {
-  background-color: rgba(0, 0, 0, 0.2);
+.menuCard {
+  width:100%;
+  height:23%;
+  position:relative;
+  background-color: rgba(000, 000, 000, 0.3);
 }
 
  /* Event pages */

@@ -4,7 +4,7 @@
     <button class="button button-icon ion-ios-arrow-left" ui-sref="tab.home"></button>
   </ion-nav-buttons>
 
-<!--  <ion-content class="padding"> --> <ion-content overflow-scroll="true" ng-style="{ 'background-image': 'url(img/coBackground1.jpg)' }">
+<ion-content overflow-scroll="true" ng-style="{ 'background-image': 'url(img/coBackground1.jpg)' }">
 <div class="filter">
     <h2 class="co-title">Co-Working</h2>
 
@@ -17,36 +17,25 @@
       <button ng-click="toggleElement()" class="button button-block button-dark">Våra medlemskap</button>
     </div>
 
-
-
-
     <div ng-show="isVisible" class="item-image padding">
       <img class="membership" src="img/medlemskap.png">
       <p class="desc_text">...</p>
     </div>
 
+    <ion-list>
+        <ion-item class="menuCard" ng-click="gotoeventMain()">
+            <h3 class="coworkTitle">Events</h3>
+        </ion-item>
 
-    <div class="list card padding" ng-click="gotoeventMain()">
-        <h2 class="coCard">Events</h2>
-        <div class="item item-body">
-              <span class="cardDescs">Events @ Djäkne</span>
-        </div>
-    </div>
+        <ion-item  class="menuCard" ng-click="gotoBoard()">
+            <h3 class="coworkTitle text-center">Note board</h3>
+        </ion-item>
 
-    <div class="list card padding" ng-click="gotoBoard()">
-        <h2 class="coCard">Note board</h2>
-        <div class="item item-body">
-              <span class="cardDescs">Stuff @ Djäkne</span>
-        </div>
-    </div>
+        <ion-item class="menuCard" ng-click="gotoNews()">
+            <h3 class="coworkTitle text-center">News</h3>
+        </ion-item>
 
-    <div class="list card padding" ng-click="gotoNews()">
-        <h2 class="coCard">News</h2>
-        <div class="item item-body">
-              <span class="cardDescs">News @ Djäkne</span>
-        </div>
-
-    </div>
+    </ion-list>
 
 </div>
   </ion-content>
