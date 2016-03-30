@@ -77,12 +77,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
         views: {
           'tab-profile': {
             templateUrl: 'templates/tab-profile.html',
-<<<<<<< HEAD
             controller: 'ProfileController',
-=======
-            //logout Hassan
-            controller: 'logoutController',
->>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
           },
         },
       })

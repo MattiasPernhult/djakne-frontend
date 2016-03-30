@@ -18,7 +18,6 @@ angular.module('factories', ['config'])
   };
 })
 
-<<<<<<< HEAD
 .factory('ProfileFactory', function() {
   var orderSettings = {
     Takeaway:
@@ -61,12 +60,11 @@ angular.module('factories', ['config'])
       }
       return false;
     },
-=======
-.factory('RatingFactory', function($http, HOST) {
-
-  var rating;
-
-  var getRating = function(done) {
+  }
+})
+  .factory('RatingFactory', function($http, HOST) {
+    var rating;
+    var getRating = function(done) {
     var url = HOST.hostAdress + ':4000/coffee/current';
 
     if (rating) {
@@ -84,11 +82,10 @@ angular.module('factories', ['config'])
         return done(response.data.error);
       });
   };
-  return {
+    return {
     getRating: getRating,
->>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
   };
-})
+  })
 
 .factory('MenuFactory', function($http, accessFactory, HOST) {
 
@@ -128,7 +125,7 @@ angular.module('factories', ['config'])
     //    url = 'data/test.json';
     // }
 
-     url = HOST.hostAdress + ':4000/menu/categories';
+    url = HOST.hostAdress + ':4000/menu/categories';
 
     $http.get(url)
       .then(function(response) {
@@ -152,7 +149,6 @@ angular.module('factories', ['config'])
   // Cart array
   var cart = [];
   var totalPrice = 0;
-
   return {
     list: function() {
       return cart;
@@ -169,9 +165,8 @@ angular.module('factories', ['config'])
       } else {
         this.increaseQty(index);
       }
-
     },
-    remove: function(item)  {
+    remove: function(item)  {
       var index = this.contains(item);
       if (index >= 0) {
         if (cart[index].qty > 1) {
@@ -205,58 +200,33 @@ angular.module('factories', ['config'])
       });
       return total;
     },
-<<<<<<< HEAD
-    priceRequest: function() {
-      var data = {
-        "products":[
-          {"id": 1}
-        ]
-      };
-      $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' + accessFactory.getAccessToken(), data)
-      .success(function(res) {
-        alert('success');
-        alert(JSON.stringify(res));
-        $ionicLoading.hide();
-      })
-      .error(function(err) {
-        alert('error');
-        alert(JSON.stringify(err));
-        $ionicLoading.hide();
-=======
-    getProductsId: function() {
-      var productsId = [];
-      for (var index in cart) {
-        var object = cart[index];
-        productsId.push({id: object.id});
-      }
-      return productsId;
-    },
+    getProductsId: function() {
+    var productsId = [];
+    for (var index in cart) {
+      var object = cart[index];
+      productsId.push({id: object.id});
+    }
+    return productsId;
+  },
     priceRequest: function(data, done) {
-      $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' +
-      accessFactory.getAccessToken(), data)
-      .success(function(res) {
-        totalPrice = res.totalPrice;
-        return done(null);
-      })
-      .error(function(err) {
-        return done(err);
->>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
-      });
-    },
+    $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' +
+    accessFactory.getAccessToken(), data)
+    .success(function(res) {
+      totalPrice = res.totalPrice;
+      return done(null);
+    })
+    .error(function(err) {
+      return done(err);
+    });
+  },
     getTotalPrice: function() {
-      return totalPrice;
-    },
-    order: function(message, takeaway, singleItem)  {
+    return totalPrice;
+  },
+    order: function(message, takeaway, singleItem)  {
       var data = {
-<<<<<<< HEAD
         message: message,
         takeaway: takeaway,
         products: [],
-=======
-        'message': 'asdf',
-        'takeaway': 1,
-        'products':[{'id': 1}]
->>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
       };
 
       if (!singleItem) {
@@ -265,7 +235,7 @@ angular.module('factories', ['config'])
             data.products.push({id: obj.qty});
           }
         });
-      } else {
+      } else {
         data.products.push({id: singleItem.id});
       }
       console.log(data);

@@ -1,7 +1,6 @@
 angular.module('controllers', ['factories', 'config', ])
 
-<<<<<<< HEAD
-.controller('ProfileController', function($scope, SessionFactory, ProfileFactory) {
+.controller('ProfileController', function($scope, SessionFactory, ProfileFactory, $state) {
 
   // When user enters view, check settings
   $scope.$on('$ionicView.enter', function() {
@@ -12,7 +11,9 @@ angular.module('controllers', ['factories', 'config', ])
     $scope.orderSettings = ProfileFactory.getOrderSettings();
 
   });
-
+  $scope.logout = function() {
+    $state.go('login');
+  };
   // When user changes settings, add or remove localstorage
   $scope.change = function(name, value) {
 
@@ -25,26 +26,15 @@ angular.module('controllers', ['factories', 'config', ])
 
 })
 
-.controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
-  MenuFactory, $cordovaLocalNotification, ProfileFactory, $ionicPopup) {
-
-=======
 .controller('HomeController', function($scope, RatingFactory) {
     RatingFactory.getRating(function(data) {
       console.log(data);
       $scope.rating = data;
     });
   })
-  // logout Hassan
-  .controller('logoutController', function($scope, $state) {
-    $scope.logout = function() {
-      $state.go('login');
-    };
-  })
 
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
-  MenuFactory, $cordovaLocalNotification, $ionicPlatform) {
->>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
+  MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory) {
 
   var push = PushNotification.init({
     android: {
@@ -59,21 +49,7 @@ angular.module('controllers', ['factories', 'config', ])
   });
 
   push.on('registration', function(data) {
-<<<<<<< HEAD
-      window.localStorage.registrationId = data.registrationId;
-      var body = {
-        token: data.registrationId,
-      };
-      var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
-      $http.post(url, body)
-        .success(function(res) {
-          console.log(res);
-        })
-        .error(function(err) {
-          console.log(err);
-        });
-=======
-    alert(data.registrationId);
+    // alert(data.registrationId);
     window.localStorage.registrationId = data.registrationId;
     var body = {
       token: data.registrationId,
@@ -86,7 +62,6 @@ angular.module('controllers', ['factories', 'config', ])
       .error(function(err) {
         console.log(err);
       });
->>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
   });
 
   push.on('notification', function(data) {
@@ -121,22 +96,11 @@ angular.module('controllers', ['factories', 'config', ])
     console.log(err);
   });
 
-<<<<<<< HEAD
   $scope.userFavorites = $scope.userFavorites || [];
 
   $scope.expand = function(vote) {
      vote.show = !vote.show;
   };
-=======
-  $scope.specials = [{
-      name: 'Laktosfritt',
-      checked: false,
-    }, {
-      name: 'Takeaway',
-      checked: false,
-    },
->>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
-
 
   // Get settings
   $scope.orderSettings = ProfileFactory.getOrderSettings();
@@ -163,19 +127,12 @@ angular.module('controllers', ['factories', 'config', ])
     }
   );
 
-<<<<<<< HEAD
-=======
   $scope.$watch(function() {
     return Cart.getTotalPrice();
   }, function(newVal) {
     $scope.totalPrice = newVal;
   });
 
-  $scope.updateLocalStorage = function() {
-
-  };
-
->>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
   $scope.inCart = function(product) {
     return Cart.contains(product);
   };
@@ -185,7 +142,6 @@ angular.module('controllers', ['factories', 'config', ])
     $scope.products = data;
   });
 
-<<<<<<< HEAD
   // Add favorites -- New function!
 
   $scope.addFavorite = function(item) {
@@ -234,11 +190,6 @@ angular.module('controllers', ['factories', 'config', ])
      }
    }
  };
-=======
-  MenuFactory.getFavourites(function(data)  {
-    $scope.favourites = data;
-  });
->>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
 
   // Add item to cart
   $scope.addToCart = function(product) {
@@ -284,15 +235,9 @@ angular.module('controllers', ['factories', 'config', ])
     }
     if (comment) {
       if (message) {
-<<<<<<< HEAD
         message += '\n ' + comment;
       }else {
         message += comment;
-=======
-        message += '\nKommentar: ' + comment;
-      } else {
-        message += 'Kommentar: ' + comment;
->>>>>>> 50684a976ba10047704b305e5bc623459deb66f7
       }
     }
 
