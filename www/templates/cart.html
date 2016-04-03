@@ -10,7 +10,7 @@
   </ion-nav-bar>
   <ion-content class="padding">
       <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
-      <div ng-show="cartQty > 0">
+      <div ng-if="cartQty > 0 || goToMenu()">
       <ion-list>
         <ion-item ng-repeat="item in customersProducts">
           <div class="productInfo cart">
