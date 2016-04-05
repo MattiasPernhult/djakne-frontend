@@ -23,15 +23,6 @@ ion-view {
   position:relative;
 }
 
-.bar-stable {
-  background-color: rgb(0, 0, 0)!important;
-}
-
-.title.header-item {
-  color: white!important;
-  margin: 0px;
-}
-
 .slider {
   height: 100%;
 }
@@ -272,8 +263,4 @@ img#icon-add {
 
 .ionic_ratings .icon {
    font-size: 50px;
- }
-
- .logout {
-   color: white!important;
  }
