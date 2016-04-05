@@ -14,7 +14,7 @@
     <div class="list padding test">
 
       <h3>{{chosenEvent.title}}</h3>
-      <h5>Datum: {{chosenEvent.date | date:'MM/dd/yyyy'}}</h5>
+      <h5 class="dateDescs">Datum: {{chosenEvent.date | date:'MM/dd/yyyy'}}</h5>
 
 
 
@@ -30,7 +30,7 @@
 
 
   <div class="text-center padding">
-    <button class="button button-block button-dark" id="attend" ng-click="signUp()"> Sign up</button>
+    <button class="button button-block" id="attend" ng-click="signUp()"> Sign up</button>
   </div>
 
   </ion-content>

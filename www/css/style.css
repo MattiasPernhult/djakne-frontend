@@ -339,6 +339,11 @@ h3.coworkTitle {
   text-align: center !important;
 }
 
+h5.dateDescs {
+  font-family: Georgia, serif;
+
+}
+
 .menuCard {
   width:100%;
   height:23%;
@@ -371,8 +376,12 @@ p.pbox {
 button#cowork {
   padding-left: 10px;
   padding-right: 10px;
-  color: grey;
+  margin-bottom: 0px;
+  color: dark;
   opacity: 1;
+  border-radius: none;
+  font-family: Georgia, serif;
+  background-color: #EFECEC;
 }
 
 button#membership {
@@ -385,8 +394,10 @@ button#membership {
 button#attend {
   padding-left: 10px;
   padding-right: 10px;
-  color: grey;
+  color: white;
   opacity: 0.95;
+  font-family: Georgia, serif;
+  background-color: #444141;
 }
 
 
@@ -444,7 +455,7 @@ button#attend {
 }
 
  #benefits {
-  opacity: 0.85;
+  opacity: 0.90;
 
 }
  .box.addEvent {
