@@ -16,10 +16,6 @@ div.scroll{
   height:100%;
 }
 
-.list{
-  height:100%;
-}
-
 .containerCartIcons {
   display:flex;
   float: right;
