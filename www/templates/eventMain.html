@@ -1,0 +1,42 @@
+<ion-view view-title="Events">
+
+  <ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon ion-ios-arrow-left" ui-sref="tab.co"></button>
+  </ion-nav-buttons>
+</ion-nav-bar>
+
+    <ion-content ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo">
+
+    <div class="box">
+    <h2 class="social-title">Events på Djäkne</h2>
+
+  </div>
+
+      <div class="text-center padding">
+        <button  class="button button-outline icon-right icon ion-chevron-down" id="cowork" ui-sref="addEvent">Skapa event</button>
+      </div>
+
+      <div class="list card" ng-repeat="event in events">
+
+
+        <a class="item item-thumbnail-left"
+           ui-sref="events_description"
+           ng-click="setEvent(event)">
+
+
+        <div class="thumbnail padding">
+
+            <h2>{{ event.title }}</h2>
+            <h3>{{ event.date | date:'MM/dd/yyyy' }}</h3>
+            <p class="cardDescs">{{event.text}}</p>
+
+        </div>
+
+        </a>
+
+      </div>
+
+  </ion-content>
+
+</ion-view>

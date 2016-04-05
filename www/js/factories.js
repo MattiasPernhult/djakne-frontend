@@ -28,20 +28,79 @@ angular.module('factories', ['config'])
     if (coffee) {
       return done(coffee);
     }
+
     $http.get(url)
-      .then(function(response) {
+      .success(function(response) {
         // Handle Success
         console.log('success: ' + response);
         coffee = response.data.result;
         return done(coffee);
-      }, function(response) {
+      }).error(function(err) {
         // Handle Failure
-        console.log('ERROR' + response);
-        return done(response.data.error);
+        console.log('ERROR' + err);
+        return done(err.data.error);
+      });
+    };
+
+    return {
+      getCoffee: getCoffee,
+    };
+  })
+
+.factory('MembersFactory', function($http, HOST) {
+  var getMembers = function(done) {
+    var url = HOST.hostAdress + ':4000/member/today';
+    $http.get(url)
+      .success(function(result) {
+        done(null, result);
+      })
+      .error(function(err) {
+        done({error: err}, null);
       });
   };
+
   return {
-    getCoffee: getCoffee,
+    getMembers: getMembers,
+  };
+})
+
+.factory('EventFactory', function($http, accessFactory, HOST) {
+
+  var events;
+  var oneEvent;
+
+  var getEvents = function(done) {
+    var url = HOST.hostAdress + ':4000/events';
+
+    if (events) {
+      return done(events);
+    }
+
+    $http.get(url)
+      .success(function(result) {
+        console.log('success: ' + result);
+        events = result.data.result;
+        return done(events);
+      })
+      .error(function(err) {
+        console.log('ERROR' + err);
+        return done(err.data.error);
+      });
+  };
+
+  var setEvent = function(chosenEvent) {
+    oneEvent = chosenEvent;
+    console.log('nytt event satt: ' + oneEvent.title);
+  };
+
+  var getEvent = function() {
+    return oneEvent;
+  };
+
+  return {
+    getEvents: getEvents,
+    getEvent: getEvent,
+    setEvent: setEvent,
   };
 })
 
@@ -78,7 +137,7 @@ angular.module('factories', ['config'])
     }
     var url;
     if (accessFactory.getAccessToken()) {
-      url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
+      url = HOST.hostAdress + ':4000/menu?token=' + accessFactory.getAccessToken();
     } else {
       url = 'data/menu.json';
     }
@@ -154,24 +213,26 @@ angular.module('factories', ['config'])
       });
       return total;
     },
-    getProductsId: function() {
+    getProductsId: function()  {
       var productsId = [];
       for (var index in cart) {
         var object = cart[index];
-        productsId.push({id: object.id});
+        productsId.push({
+          id: object.id
+        });
       }
       return productsId;
     },
     priceRequest: function(data, done) {
       $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' +
-      accessFactory.getAccessToken(), data)
-      .success(function(res) {
-        totalPrice = res.totalPrice;
-        return done(null);
-      })
-      .error(function(err) {
-        return done(err);
-      });
+          accessFactory.getAccessToken(), data)
+        .success(function(res) {
+          totalPrice = res.totalPrice;
+          return done(null);
+        })
+        .error(function(err) {
+          return done(err);
+        });
     },
     getTotalPrice: function() {
       return totalPrice;
@@ -180,22 +241,24 @@ angular.module('factories', ['config'])
       var data = {
         'message': 'asdf',
         'takeaway': 1,
-        'products':[{'id': 1}]
+        'products': [{
+          'id': 1
+        }]
       };
 
       $http.post(HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken(), data)
-      .success(function(res) {
+        .success(function(res) {
 
-        alert('Din order är skickad!');
-        // $state.go('menu');
-        alert('success');
-        alert(JSON.stringify(res));
-      })
-      .error(function(err) {
-        // alert('Something went wrong there, try again');
-        alert('error');
-        alert(JSON.stringify(err));
-      });
+          alert('Din order är skickad!');
+          // $state.go('menu');
+          alert('success');
+          alert(JSON.stringify(res));
+        })
+        .error(function(err) {
+          // alert('Something went wrong there, try again');
+          alert('error');
+          alert(JSON.stringify(err));
+        });
 
       return data;
     },
