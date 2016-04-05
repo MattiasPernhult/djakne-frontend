@@ -2,10 +2,42 @@
 
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
 
+/* Tabs and header */
+
+.tab-nav.tabs {
+  background-color: #1C1C1C;
+  border: none;
+}
+
+.bar.bar-stable {
+  background-color:#1C1C1C;
+  border: none;
+
+}
+
+.bar.bar-stable .title {
+  color: white;
+  font-family: Georgia, serif;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active,
+ion-tabs.tabs-color-active-positive .tab-item.active,
+ion-tabs.tabs-color-active-positive .tab-item.activated {
+    color: grey;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item {
+  color: white;
+  opacity: 1;
+}
+
+
+/* ...... */
+
 .item {
   display: flex;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right:10px;
 }
 
 body {
@@ -149,7 +181,7 @@ ion-slide p {
   display: flex;
   margin-bottom: 5px;
   border: none;
-  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0.40);
+  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0.35);
 }
 
 .row {
@@ -306,14 +338,14 @@ p.desc_text {
     font-style: bold;
     text-align: center;
     font-family: Georgia, serif;
-    padding-top: 30px;
+    padding-top: 15px;
 
  }
 
  .social-title {
     font-style: bold;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
     font-family: Georgia, serif;
  }
 
@@ -345,13 +377,14 @@ h3.coworkTitle {
   margin-left: auto;
   margin-right: auto;
   display: block;
+
 }
 
 .box {
   height: auto;
   background-color: rgba(444, 444, 444, 0.8);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   margin-top: 30px;
@@ -367,9 +400,18 @@ p.pbox {
 button#cowork {
   padding-left: 10px;
   padding-right: 10px;
-  margin: 10px;
-  color: #539272;
+  margin: 3px;
+  color: grey;
+  opacity: 0.95;
 }
+
+button#membership {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 20px;
+  color: grey;
+}
+
 
  /* Event pages */
 
@@ -412,3 +454,22 @@ button#cowork {
    font-family: Georgia, serif;
 
  }
+
+ .item-input input{
+  padding-left: 10px;
+
+}
+
+ #backgroundCo {
+
+  background-size: contain;
+
+}
+
+#benefits {
+  opacity: 0.85;
+
+}
+.box.addEvent {
+  padding-bottom: 20px;
+}

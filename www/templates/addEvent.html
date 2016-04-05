@@ -8,6 +8,7 @@
 
   <ion-content ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo">
 
+  <div class="box addEvent">
     <h3 class="addEvent-title">Skapa nytt event</h3>
 
     <form ng-submit="sendPost()">
@@ -44,15 +45,17 @@
         </label>
 
       </div>
+    </div>
 
 
     <div class="text-center padding">
-      <button type="submit" name="name" class="button button-block button-dark">
+      <button type="submit" name="name" class="button button-block">
         Lägg till event
       </button>
     </div>
 
     </form>
+
 
   </ion-content>
 
