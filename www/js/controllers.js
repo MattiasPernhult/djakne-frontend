@@ -1,6 +1,8 @@
 angular.module('controllers', ['factories', 'config', ])
 
-.controller('HomeController', function($scope, CoffeeFactory, $http, HOST, accessFactory) {
+.controller('HomeController', function($scope, CoffeeFactory, $http, HOST,
+  accessFactory, $ionicModal, MembersFactory) {
+
   CoffeeFactory.getCoffee(function(data) {
     console.log(data);
     $scope.rating = data;
@@ -32,6 +34,7 @@ angular.module('controllers', ['factories', 'config', ])
       vote:  String($scope.votes),
       token: accessFactory.getAccessToken(),
     };
+
     console.log(rating);
     var url = HOST.hostAdress + ':4000/coffee/vote';
     $http.put(url, rating)

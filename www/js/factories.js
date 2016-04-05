@@ -33,19 +33,19 @@ angular.module('factories', ['config'])
       .success(function(response) {
         // Handle Success
         console.log('success: ' + response);
-        coffee = response.data.result;
+        coffee = response.result;
         return done(coffee);
       }).error(function(err) {
         // Handle Failure
         console.log('ERROR' + err);
-        return done(err.data.error);
+        return done(err.error);
       });
-    };
+  };
 
-    return {
-      getCoffee: getCoffee,
-    };
-  })
+  return {
+    getCoffee: getCoffee,
+  };
+})
 
 .factory('MembersFactory', function($http, HOST) {
   var getMembers = function(done) {
@@ -218,7 +218,7 @@ angular.module('factories', ['config'])
       for (var index in cart) {
         var object = cart[index];
         productsId.push({
-          id: object.id
+          id: object.id,
         });
       }
       return productsId;
