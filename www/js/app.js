@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories', 'config'])
+angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories', 'config',
+'ngCordova',])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -87,6 +88,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
     views: {
       'tab-home': {
         templateUrl: 'templates/tab-home.html',
+        controller: 'HomeController',
       },
     },
   })
@@ -106,7 +108,8 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
         views: {
           'tab-profile': {
             templateUrl: 'templates/tab-profile.html',
-            controller: 'RatingController',
+            //logout Hassan
+            controller: 'logoutController',
           },
         },
       })
@@ -122,6 +125,5 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
   });
 
   // if none of the above states are matched, use this as the fallback
-
-  $urlRouterProvider.otherwise('/tab/menu');
+  $urlRouterProvider.otherwise('/tab/home');
 });

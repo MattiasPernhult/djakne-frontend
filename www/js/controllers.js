@@ -1,29 +1,140 @@
 angular.module('controllers', ['factories', 'config', ])
 
-.controller('RatingController', function($scope) {
+.controller('HomeController', function($scope, RatingFactory, MembersFactory, $ionicModal) {
+    RatingFactory.getRating(function(data) {
+      console.log(data);
+      $scope.rating = data;
+    });
 
-  $scope.ratingsObject = {
-    iconOn: 'ion-ios-star',
-    iconOff: 'ion-ios-star-outline',
-    iconOnColor: 'rgb(200, 200, 100)',
-    iconOffColor: 'rgb(96, 96, 96)',
-    rating: 2,
-    minRating: 1,
-    readOnly: true,
-    callback: function(rating) {
-      $scope.ratingsCallback(rating);
+    $ionicModal.fromTemplateUrl('modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+    }).then(function(modal)  {
+      $scope.modal = modal;
+    });
+
+    $scope.openModal = function(member) {
+      $scope.member = member;
+      console.log($scope.member);
+      $scope.modal.show();
+    };
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+
+    $scope.gotoLinkedIn = function() {
+      var ref = window.open($scope.member.linkedInProfile, '_system');
+    };
+
+    MembersFactory.getMembers(function(err, data)  {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(data);
+        $scope.members = [];
+        for (var i = 0; i < data.members.length; i += 2) {
+          $scope.members.push(data.members.slice(i, i + 2));
+        }
+        // $scope.members = data.members;
+      }
+    });
+  })
+  // logout Hassan
+  .controller('logoutController', function($scope, $state) {
+    $scope.logout = function() {
+      $state.go('login');
+    };
+  })
+
+.controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
+  MenuFactory, $cordovaLocalNotification, $ionicPlatform) {
+
+  var push = PushNotification.init({
+    android: {
+      senderID: '104492237304',
     },
-  };
+    ios: {
+      alert: 'true',
+      badge: 'true',
+      sound: 'true',
+    },
+    windows: {},
+  });
 
-  $scope.ratingsCallback = function(rating) {
-    console.log('Selected rating is : ', rating);
-  };
+  push.on('registration', function(data) {
+    alert(data.registrationId);
+    window.localStorage.registrationId = data.registrationId;
+    var body = {
+      token: data.registrationId,
+    };
+    var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
+    $http.post(url, body)
+      .success(function(res) {
+        console.log(res);
+      })
+      .error(function(err) {
+        console.log(err);
+      });
+  });
 
-})
+  push.on('notification', function(data) {
+    console.log(JSON.stringify(data));
 
-.controller('ProductController', function($scope, $state, Cart, MenuFactory) {
+    $cordovaLocalNotification.schedule({
+      id: 1,
+      title: 'Your order',
+      text: data.message,
+      data: {
+        customProperty: 'custom value',
+      },
+    }).then(function(result) {
+      // ...
+    });
 
-  $scope.go = $state.go.bind($state);
+
+    // var alarmTime = new Date();
+    // alarmTime.setMinutes(alarmTime.getSeconds() + 3);
+    // $cordovaLocalNotification.add({
+    //   date: alarmTime,
+    //   message: data.message,
+    //   title: 'Your order',
+    //   autoCancel: true,
+    //   sound: null,
+    // }).then(function() {
+    //   console.log('The notification has been set');
+    // });
+  });
+
+  push.on('error', function(err) {
+    console.log(err);
+  });
+
+  $scope.specials = [{
+      name: 'Laktosfritt',
+      checked: false,
+    }, {
+      name: 'Takeaway',
+      checked: false,
+    },
+
+  ];
+
+  // $scope.go = $state.go.bind($state);
   $scope.customersProducts = Cart.list();
 
   // Watch for changes in cart size
@@ -35,6 +146,16 @@ angular.module('controllers', ['factories', 'config', ])
     }
   );
 
+  $scope.$watch(function() {
+    return Cart.getTotalPrice();
+  }, function(newVal) {
+    $scope.totalPrice = newVal;
+  });
+
+  $scope.updateLocalStorage = function() {
+
+  };
+
   $scope.inCart = function(product) {
     return Cart.contains(product);
   };
@@ -42,6 +163,10 @@ angular.module('controllers', ['factories', 'config', ])
   // Get product menu
   MenuFactory.getProducts(function(data) {
     $scope.products = data;
+  });
+
+  MenuFactory.getFavourites(function(data)  {
+    $scope.favourites = data;
   });
 
   // Add item to cart
@@ -54,9 +179,48 @@ angular.module('controllers', ['factories', 'config', ])
     Cart.remove(product);
   };
 
+  $scope.goToMenu = function() {
+    $state.go('tab.menu');
+  };
+
+  $scope.priceRequest = function() {
+    var data = {
+      products: Cart.getProductsId(),
+    };
+    data = JSON.stringify(data);
+    Cart.priceRequest(data, function(err, resp) {
+      if (err) {
+        alert('ERROR');
+      } else {
+        $state.go('cart');
+      }
+    });
+  };
+
   // Place order
   $scope.placeOrder = function() {
-    console.log(Cart.order());
+
+    var message = '';
+    var takeaway = 0;
+    var comment = document.getElementById("comment").value;
+
+    if ($scope.specials[0].checked) {
+      message += $scope.specials[0].name + ': Ja';
+    }
+    if ($scope.specials[1].checked) {
+      takeaway = 1;
+    }
+    if (comment) {
+      if (message) {
+        message += '\nKommentar: ' + comment;
+      } else {
+        message += 'Kommentar: ' + comment;
+      }
+    }
+
+    console.log(message);
+
+    Cart.order();
   };
 
   // Watch for changes in product total
@@ -156,7 +320,7 @@ angular.module('controllers', ['factories', 'config', ])
 })
 
 .controller('LoginController',
-  function($scope, $http, $location, $rootScope, accessFactory, HOST) {
+  function($scope, $state, $http, $location, $rootScope, accessFactory, HOST, $ionicSlideBoxDelegate) {
     console.log(HOST.hostAdress);
     $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
     $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';
@@ -177,12 +341,35 @@ angular.module('controllers', ['factories', 'config', ])
               var token = body.substring(body.indexOf('{') + 10, body.lastIndexOf('}') - 1);
               accessFactory.changeAccessToken(token);
               ref.close();
-              $rootScope.$apply(function() {
-                $location.path('/tab/home');
-              });
-            }
-          );
+              $state.go('tab.home');
+            });
         }
       });
+    };
+
+    $scope.gallery = [{
+      url: 'img/coffeeData.jpeg',
+      title: 'Stay Connected',
+      desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+    }, {
+      url: 'img/djakne.png',
+      title: 'Enjoy great coffee',
+      desc: 'Donec dapibus, magna quis tincidunt finibus, tellus odio porttitor nisi.',
+    }, {
+      url: 'img/business1.jpeg',
+      title: 'Evolve and share',
+      desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+    }, ];
+
+    $scope.next = function() {
+      $ionicSlideBoxDelegate.next();
+    };
+    $scope.previous = function() {
+      $ionicSlideBoxDelegate.previous();
+    };
+
+    // Called each time the slide changes
+    $scope.slideChanged = function(index) {
+      $scope.slideIndex = index;
     };
   });

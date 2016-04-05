@@ -2,7 +2,7 @@
 <ion-view view-title="Cart">
   <ion-nav-bar>
     <ion-nav-buttons side="left">
-      <button ng-click="go('tab.menu')" class=" button button-icon ion-ios-arrow-left"></button>
+      <button ng-click="goToMenu()" class=" button button-icon ion-ios-arrow-left"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
       <button class=" button button-icon ion-bag"></button>
@@ -11,6 +11,7 @@
   </ion-nav-bar>
   <ion-content class="padding">
       <h4 class="text-center" ng-show="cartQty === 0">There are no products in the cart</h4>
+      <div ng-show="cartQty > 0">
       <ul class="list">
         <li class="item product-name" ng-repeat="product in customersProducts">
           <div class="row">
@@ -23,22 +24,31 @@
             </div>
             <div class="col col-20">
               <div class="qty-container">
-                <div id="removeOne" class="qty-symbol" ng-click="removeFromCart(product)">-</div>
-                <h1 id="qty-amount">{{product.qty}}</h1>
-                <div id="addOne" class="qty-symbol" ng-click="addToCart(product)">+</div>
+                <!-- <div id="removeOne" class="qty-symbol" ng-click="removeFromCart(product)">-</div> -->
+                <h1 id="qty-amount">{{product.qty}}st</h1>
+                <!-- <div id="addOne" class="qty-symbol" ng-click="addToCart(product)">+</div> -->
               </div>
             </div>
           </div>
         </li>
       </ul>
+      <form class="list">
+        <label class="item item-input">
+            <span class="input-label"><h3>Meddelande:</h3></span>
+            <input type="text" id="comment" placeholder="Skriv ytterligare önskemål..">
+        </label>
+        <ion-toggle ng-model="item.checked" value="Laktosfritt" ng-repeat="item in specials"><h3>{{item.name}}</h3></ion-toggle>
+      </form>
       <div class="cart-total-container">
         <div class="total-desc">
           <h4 id="cart-total-title">Totalt:</h4>
-          <p id="cart-total-price">{{total}} kr</p>
+          <p id="cart-total-price">{{totalPrice}} kr</p>
         </div>
       </div>
       <div class="text-center">
         <button class="button button-block button-dark" ng-click="placeOrder()"> Beställ</button>
+        <button class="button button-block button-dark" ng-click="priceRequest()"> Beställ</button>
       </div>
+    </div>
   </ion-content>
 </ion-view>

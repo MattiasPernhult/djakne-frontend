@@ -1,5 +1,51 @@
 <ion-view view-title="Djäkne">
-  <ion-content class="padding">
+  <ion-content class="home">
+    <div class="list card">
+      <h1>Veckans Kaffe</h1>
+      <h3>{{rating.title}}</h3>
+      <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
+      <img ng-src="{{rating.image}}"></img>
+      <p>{{rating.description}}</p>
+    </div>
+    <!--
+    <div class="list card" ng-repeat="member in members">
+      <div class="item item-avatar">
+        <img ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+        <h2>{{member.firstName}} {{member.lastName}}</h2>
+      </div>
+    </div>
+    -->
+
+    <div class="row" ng-repeat="member in members">
+      <div class="col col-50" ng-repeat="eachMember in member">
+        <div ng-click="openModal(eachMember)" class="item item-avatar">
+          <img ng-src="data:image/jpeg;base64,{{eachMember.image}}"></img>
+          <h2>{{eachMember.firstName}}</h2>
+        </div>
+      </div>
+    </div>
+
+    <script id="modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar>
+          <h1 class="title">{{member.firstName}} {{member.lastName}}</h1>
+          <button class="button icon icon-left ion-ios-close-outline" ng-click="closeModal()"></button>
+        </ion-header-bar>
+
+        <ion-content>
+          <div style="display: block; margin: 0 auto; padding: 10px;">
+            <img ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+            <h4>Jobbar med</h4>
+            <p>{{member.headline}}</p>
+            <h4>Intressen</h4>
+            <p>{{member.interests}}</p>
+            <h4>Bor</h4>
+            <p>{{member.location}}</p>
+            <a ng-click="gotoLinkedIn()"href="">LinkedIn</a>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
 
   </ion-content>
 </ion-view>
