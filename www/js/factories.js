@@ -18,6 +18,23 @@ angular.module('factories', ['config'])
   };
 })
 
+.factory('MembersFactory', function($http, HOST) {
+  var getMembers = function(done) {
+    var url = HOST.hostAdress + ':4000/member/today';
+    $http.get(url)
+    .success(function(result) {
+      done(null, result);
+    })
+    .error(function(err) {
+      done({error: err}, null);
+    });
+  };
+
+  return {
+    getMembers: getMembers,
+  };
+})
+
 .factory('RatingFactory', function($http, HOST) {
 
   var rating;

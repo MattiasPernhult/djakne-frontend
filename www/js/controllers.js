@@ -1,9 +1,57 @@
 angular.module('controllers', ['factories', 'config', ])
 
-.controller('HomeController', function($scope, RatingFactory) {
+.controller('HomeController', function($scope, RatingFactory, MembersFactory, $ionicModal) {
     RatingFactory.getRating(function(data) {
       console.log(data);
       $scope.rating = data;
+    });
+
+    $ionicModal.fromTemplateUrl('modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+    }).then(function(modal)  {
+      $scope.modal = modal;
+    });
+
+    $scope.openModal = function(member) {
+      $scope.member = member;
+      console.log($scope.member);
+      $scope.modal.show();
+    };
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+
+    $scope.gotoLinkedIn = function() {
+      var ref = window.open($scope.member.linkedInProfile, '_system');
+    };
+
+    MembersFactory.getMembers(function(err, data)  {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(data);
+        $scope.members = [];
+        for (var i = 0; i < data.members.length; i += 2) {
+          $scope.members.push(data.members.slice(i, i + 2));
+        }
+        // $scope.members = data.members;
+      }
     });
   })
   // logout Hassan
