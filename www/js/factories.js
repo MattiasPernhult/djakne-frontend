@@ -20,16 +20,14 @@ angular.module('factories', ['config'])
 
 .factory('ProfileFactory', function() {
   var orderSettings = {
-    Takeaway:
-      {
-        name: 'Takeaway',
-        checked: 'false',
-      },
-    Lactos:
-      {
-        name: 'Lactos',
-        checked: 'false',
-      },
+    Takeaway: {
+      name: 'Takeaway',
+      checked: 'false',
+    },
+    Lactos: {
+      name: 'Lactos',
+      checked: 'false',
+    },
   };
 
   return {
@@ -39,17 +37,17 @@ angular.module('factories', ['config'])
     checkOrderSettings: function(name) {
       if (window.localStorage[name]) {
         orderSettings[name].checked = true;
-      }else {
-        orderSettings[name].checked  = false;
+      } else {
+        orderSettings[name].checked = false;
       }
     },
   };
 })
 
-.factory('SessionFactory', function() {
+.factory('SessionFactory', function()  {
   return {
-    add: function(name,value) {
-      window.localStorage.setItem(name,value);
+    add: function(name, value) {
+      window.localStorage.setItem(name, value);
     },
     remove: function(name) {
       window.localStorage.removeItem(name);
@@ -60,38 +58,101 @@ angular.module('factories', ['config'])
       }
       return false;
     },
-  }
+  };
 })
-  .factory('RatingFactory', function($http, HOST) {
-    var rating;
-    var getRating = function(done) {
+
+.factory('CoffeeFactory', function(HOST, $http) {
+
+  var coffee;
+
+  var getCoffee = function(done) {
     var url = HOST.hostAdress + ':4000/coffee/current';
 
-    if (rating) {
-      return done(rating);
+    if (coffee) {
+      return done(coffee);
     }
+
     $http.get(url)
-      .then(function(response) {
+      .success(function(response) {
         // Handle Success
         console.log('success: ' + response);
-        rating = response.data.result;
-        return done(rating);
-      }, function(response) {
+        coffee = response.result;
+        return done(coffee);
+      }).error(function(err) {
         // Handle Failure
-        console.log('ERROR' + response);
-        return done(response.data.error);
+        console.log('ERROR' + err);
+        return done(err.error);
       });
   };
-    return {
-    getRating: getRating,
+
+  return {
+    getCoffee: getCoffee,
   };
-  })
+})
+
+.factory('MembersFactory', function($http, HOST) {
+  var getMembers = function(done) {
+    var url = HOST.hostAdress + ':4000/member/today';
+    $http.get(url)
+      .success(function(result) {
+        done(null, result);
+      })
+      .error(function(err) {
+        done({
+          error: err,
+        }, null);
+      });
+  };
+
+  return {
+    getMembers: getMembers,
+  };
+})
+
+.factory('EventFactory', function($http, accessFactory, HOST) {
+
+  var events;
+  var oneEvent;
+
+  var getEvents = function(done) {
+    var url = HOST.hostAdress + ':4000/events';
+
+    if (events) {
+      return done(events);
+    }
+
+    $http.get(url)
+      .success(function(result) {
+        console.log('success: ' + result);
+        events = result.data.result;
+        return done(events);
+      })
+      .error(function(err) {
+        console.log('ERROR' + err);
+        return done(err.data.error);
+      });
+  };
+
+  var setEvent = function(chosenEvent) {
+    oneEvent = chosenEvent;
+    console.log('nytt event satt: ' + oneEvent.title);
+  };
+
+  var getEvent = function() {
+    return oneEvent;
+  };
+
+  return {
+    getEvents: getEvents,
+    getEvent: getEvent,
+    setEvent: setEvent,
+  };
+})
 
 .factory('MenuFactory', function($http, accessFactory, HOST) {
 
   var products;
   var favourites;
-
 
   var getFavourites = function(done) {
     if (favourites)  {
@@ -103,29 +164,19 @@ angular.module('factories', ['config'])
     }
 
     $http.get(url)
-      .then(function(response) {
+      .success(function(response) {
         // Handle Success
         favourites = response.data.products;
         console.log(favourites);
         return done(favourites);
-      }, function(response) {
+      }).error(function(response) {
         // Handle Failure
         return done(response.data);
       });
   };
 
   var getProducts = function(done) {
-    // if (products)  {
-    //   return done(products);
-    // }
-    // var url;
-    // if (accessFactory.getAccessToken()) {
-    // url = HOST.hostAdress + ':3000/menu?token=' + accessFactory.getAccessToken();
-    // } else {
-    //    url = 'data/test.json';
-    // }
-    // url = 'data/test.json';
-    url = HOST.hostAdress + ':4000/menu/categories';
+    var url = HOST.hostAdress + ':4000/menu/categories';
 
     $http.get(url)
       .then(function(response) {
@@ -140,13 +191,15 @@ angular.module('factories', ['config'])
         return done(response.data);
       });
   };
+
   return {
     getProducts: getProducts,
     getFavourites: getFavourites,
   };
 })
 
-.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoading, $location, $cordovaToast) {
+.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoading, $location,
+  $cordovaToast) {
   // Cart array
   var cart = [];
   var totalPrice = 0;
@@ -167,7 +220,7 @@ angular.module('factories', ['config'])
         this.increaseQty(index);
       }
     },
-    remove: function(item)  {
+    remove: function(item) {
       var index = this.contains(item);
       if (index >= 0) {
         if (cart[index].qty > 1) {
@@ -202,28 +255,30 @@ angular.module('factories', ['config'])
       return total;
     },
     getProductsId: function() {
-    var productsId = [];
-    for (var index in cart) {
-      var object = cart[index];
-      productsId.push({id: object.id});
-    }
-    return productsId;
-  },
+      var productsId = [];
+      for (var index in cart) {
+        var object = cart[index];
+        productsId.push({
+          id: object.id,
+        });
+      }
+      return productsId;
+    },
     priceRequest: function(data, done) {
-    $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' +
-    accessFactory.getAccessToken(), data)
-    .success(function(res) {
-      totalPrice = res.totalPrice;
-      return done(null);
-    })
-    .error(function(err) {
-      return done(err);
-    });
-  },
+      $http.post(HOST.hostAdress + ':3000/menu/pricerequest?token=' +
+          accessFactory.getAccessToken(), data)
+        .success(function(res) {
+          totalPrice = res.totalPrice;
+          return done(null);
+        })
+        .error(function(err) {
+          return done(err);
+        });
+    },
     getTotalPrice: function() {
-    return totalPrice;
-  },
-    order: function(message, takeaway, singleItem)  {
+      return totalPrice;
+    },
+    order: function(message, takeaway, singleItem) {
       var data = {
         message: message,
         takeaway: takeaway,
@@ -231,42 +286,41 @@ angular.module('factories', ['config'])
       };
 
       if (!singleItem) {
-        angular.forEach(cart,function(obj) {
+        angular.forEach(cart, function(obj) {
           for (var i = 0; i < obj.qty; i++) {
-            data.products.push({id: obj.qty});
+            data.products.push({
+              id: obj.qty,
+            });
           }
         });
       } else {
-        data.products.push({id: singleItem.id});
+        data.products.push({
+          id: singleItem.id,
+        });
       }
       console.log(data);
-      console.log("Köpet är gjort!");
+      console.log('Köpet är gjort!');
       $http.post(HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken(), data)
-      .success(function(res) {
-
-        //alert('Din order är skickad!');
-        cart.length = 0;
-        $location.path('/tab/menu');
-        $cordovaToast.showLongBottom('Din order har lagts').then(function(success) {
-           // success
-         }, function (error) {
-           // error
-         });
-        //alert('success');
-        //alert(JSON.stringify(res));
-      })
-      .error(function(err) {
-        // alert('Something went wrong there, try again');
-        alert('error');
-        alert(JSON.stringify(err));
-        $cordovaToast.showLongBottom('Problem med order').then(function(success) {
-           // success
-         }, function (error) {
-           // error
-         });
-      });
-
-      return data;
+        .success(function(res) {
+          cart.length = 0;
+          $location.path('/tab/menu');
+          $cordovaToast.showLongBottom('Din order har lagts').then(function(success) {
+            // success
+          }, function(error) {
+            // error
+          });
+          // alert('success');
+          // alert(JSON.stringify(res));
+        }).error(function(err) {
+          // alert('Something went wrong there, try again');
+          alert('error');
+          alert(JSON.stringify(err));
+          $cordovaToast.showLongBottom('Problem med order').then(function(success) {
+            // success
+          }, function(error) {
+            // error
+          });
+        });
     },
   };
 });
