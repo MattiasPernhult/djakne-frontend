@@ -144,13 +144,6 @@ img#icon-add
  }
 
 /* Testkod för Social-tabben (event branch) */
-h2.main {
-  padding-left:10px;
-  padding-top: 14px;
-  font-size: 22px;
-  text-transform: uppercase;
-  font-family: Georgia, serif;
-}
 
  .card h2 {
    font-size: 20px;
@@ -169,14 +162,12 @@ a.default {
 p.desc_text {
    font-size: 15px;
    text-align: center;
-   font-style: italic;
    padding-bottom: 13px;
    font-family: Georgia, serif;
  }
 
- img#CoWork {
-   height: 250px;
-   padding: 20px;
+ #backgroundCo {
+   background-size: 90%;
  }
 
  .addEvent-title {
@@ -225,14 +216,29 @@ h3.coworkTitle {
 }
 
 .box {
-  height: 140px;
-  background-color: rgba(000, 000, 000, 0.6);
-  border-radius: 5%;
-  text-align: center;
-  padding: 2em;
-  color: white;
-  font-family: 'Alegreya Sans', sans-serif !important;
+  height: auto;
+  background-color: rgba(444, 444, 444, 0.8);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
+
+p.pbox {
+  text-align: center;
+  color: #000;
+  font-size: 1.1em;
+}
+
+button#cowork {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 10px;
+  color: #539272;
+}
+
  /* Event pages */
 
  .button.button-block.button-dark {

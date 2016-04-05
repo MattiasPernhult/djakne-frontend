@@ -6,14 +6,15 @@
   </ion-nav-buttons>
 </ion-nav-bar>
 
-    <ion-content class="padding">
+    <ion-content ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo">
 
+    <div class="box">
     <h2 class="social-title">Events på Djäkne</h2>
 
-    <p class="desc_text"> Ta del av gemenskapen på Djäkne! Inte medlem? Inga problem, alla är välkomna!</p>
+  </div>
 
       <div class="text-center padding">
-        <button class="button button-block button-dark" ui-sref="addEvent">Skapa event</button>
+        <button  class="button button-outline icon-right icon ion-chevron-down" id="cowork" ui-sref="addEvent">Skapa event</button>
       </div>
 
       <div class="list card" ng-repeat="event in events">

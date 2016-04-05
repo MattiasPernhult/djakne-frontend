@@ -6,11 +6,12 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content>
+  <ion-content ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo">
 
     <h3 class="addEvent-title">Skapa nytt event</h3>
 
     <form ng-submit="sendPost()">
+
       <div class="list">
         <label class="item item-input item-stacked-label">
           <span class="input-label">Eventnamn</span>
