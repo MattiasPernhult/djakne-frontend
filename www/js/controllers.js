@@ -298,7 +298,28 @@ angular.module('controllers', ['factories', 'config', ])
     $scope.clientSecret = 'UVKqpbFQchFA8ku0';
     $scope.login = function() {
 
-      var ref = window.open($scope.urlStep1, '_self');
+      // var ref = window.open($scope.urlStep1, '_self');
+      var ref = cordova.ThemeableBrowser.open($scope.urlStep1, '_blank', {
+        statusbar: {
+          color: '#000',
+        },
+        toolbar: {
+          height: 0,
+          color: '#000',
+        },
+        title: {
+          color: '#FFFFFF',
+          showPageTitle: true,
+          staticText: 'Login',
+        },
+        backButtonCanClose: true,
+
+      }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
+          console.error(e.message);
+        }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
+          console.log(e.message);
+})
+
 
       ref.addEventListener('loadstop', function(event) {
         if ((event.url).startsWith($scope.redirectUri)) {
