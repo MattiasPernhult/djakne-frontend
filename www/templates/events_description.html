@@ -5,18 +5,18 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
- <div class="box eventDescription">
-    <div class="list">
+
+    <div class="list padding">
+
+      <h3>{{chosenEvent.title}}</h3>
+
 
     <div class="list padding test">
 
       <h3>{{chosenEvent.title}}</h3>
-      <h4>Datum: {{chosenEvent.date | date:'MM/dd/yyyy'}}</h4>
+      <h5>Datum: {{chosenEvent.date | date:'MM/dd/yyyy'}}</h5>
 
 
-    <div class="item item-body border">
-      <img class="full-image" src="img/coWorking.png">
-    </div>
 
     <div class="list">
 
@@ -28,10 +28,9 @@
 
     </div>
 
-  </div>
 
   <div class="text-center padding">
-    <button class="button button-block" id="attend" ng-click="signUp()"> Sign up</button>
+    <button class="button button-block button-dark" id="attend" ng-click="signUp()"> Sign up</button>
   </div>
 
   </ion-content>
