@@ -302,6 +302,10 @@ angular.module('controllers', ['factories', 'config', ])
   $scope.gotoNews = function() {
     $state.go('newsMain');
   };
+  $scope.gotoMembership = function() {
+    $state.go('memberships');
+  };
+
 })
 
 .controller('EventDescriptionController',

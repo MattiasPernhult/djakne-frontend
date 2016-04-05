@@ -9,11 +9,7 @@
 
     <div class="box">
       <h2 class="co-title">Co-Working</h2>
-      <p class="pbox">Djäkne är platsen för möten och jobb. En plats för kreativa och drivna nytänkare.
-        Huset är fyllt med kreativitet och startups och vi välkomnar dig att joina vår gemenskap!
-
-        <button ng-click="toggleElement()" class="button button-outline button-icon icon-right ion-ios-arrow-right" id="membership">Läs om våra medlemskap</button>
-      </p>
+      <p class="pbox">Djäkne är platsen för för kreativa och drivna nytänkare.</p>
     </div>
 
 
@@ -23,6 +19,11 @@
     </div>
 
     <ion-list>
+
+        <ion-item class="menuCard" ng-click="gotoMembership()">
+            <h3 class="coworkTitle">Våra medlemskap</h3>
+        </ion-item>
+
         <ion-item class="menuCard" ng-click="gotoeventMain()">
             <h3 class="coworkTitle">Events</h3>
         </ion-item>

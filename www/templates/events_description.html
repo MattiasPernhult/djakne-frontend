@@ -5,8 +5,7 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo">
-
+ <div class="box eventDescription">
     <div class="list">
 
     <div class="list padding test">
@@ -25,16 +24,14 @@
         <p class="cardDescs">{{chosenEvent.text}}</p>
 
     </div>
-
-
-
-
-    <div class="text-center">
-      <button class="button button-block button-dark" ng-click="signUp()"> Sign up</button>
     </div>
 
     </div>
 
+  </div>
+
+  <div class="text-center padding">
+    <button class="button button-block" id="attend" ng-click="signUp()"> Sign up</button>
   </div>
 
   </ion-content>
