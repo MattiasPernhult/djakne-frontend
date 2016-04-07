@@ -143,7 +143,6 @@ angular.module('controllers', ['factories', 'config', ])
   });
 
   push.on('registration', function(data) {
-    // alert(data.registrationId);
     window.localStorage.registrationId = data.registrationId;
     var body = {
       token: data.registrationId,
@@ -157,38 +156,25 @@ angular.module('controllers', ['factories', 'config', ])
         console.log(err);
       });
   });
-  //
-  // push.on('notification', function(data) {
-  //   console.log(JSON.stringify(data));
-  //
-  //   $cordovaLocalNotification.schedule({
-  //     id: 1,
-  //     title: 'Your order',
-  //     text: data.message,
-  //     data: {
-  //       customProperty: 'custom value',
-  //     },
-  //   }).then(function(result) {
-  //     // ...
-  //   });
 
+  push.on('notification', function(data) {
+    console.log(JSON.stringify(data));
 
-  // var alarmTime = new Date();
-  // alarmTime.setMinutes(alarmTime.getSeconds() + 3);
-  // $cordovaLocalNotification.add({
-  //   date: alarmTime,
-  //   message: data.message,
-  //   title: 'Your order',
-  //   autoCancel: true,
-  //   sound: null,
-  // }).then(function() {
-  //   console.log('The notification has been set');
-  // });
-  // });
-  //
-  // push.on('error', function(err) {
-  //   console.log(err);
-  // });
+    $cordovaLocalNotification.schedule({
+      id: 1,
+      title: 'Your order',
+      text: data.message,
+      data: {
+        customProperty: 'custom value',
+      },
+    }).then(function(result) {
+      // ...
+    });
+  });
+
+  push.on('error', function(err) {
+    console.log(err);
+  });
 
   $scope.userFavorites = $scope.userFavorites  || [];
 
@@ -275,7 +261,6 @@ angular.module('controllers', ['factories', 'config', ])
     }
   };
 
-
   $scope.isActive = function(item) {
     for (var index = 0; index < $scope.userFavorites.length; index++) {
       if (item.id === $scope.userFavorites[index].id) {
@@ -313,13 +298,12 @@ angular.module('controllers', ['factories', 'config', ])
     });
   };
 
-
   // Place order
   $scope.placeOrder = function() {
     var singleItem = false;
     var message = '';
     var takeaway = false;
-    var comment = document.getElementById("comment").value;
+    var comment = document.getElementById('comment').value;
 
     if ($scope.orderSettings.Lactos.checked) {
       message += 'Laktosfritt: Ja';
@@ -352,7 +336,6 @@ angular.module('controllers', ['factories', 'config', ])
     }
 
     Cart.order(message, takeaway, item);
-
   };
 
   $scope.showConfirm = function(item) {
@@ -378,7 +361,6 @@ angular.module('controllers', ['factories', 'config', ])
       $scope.total = newVal;
     }
   );
-
 })
 
 .controller('EventController', function($scope, EventFactory, $state) {
@@ -498,7 +480,7 @@ angular.module('controllers', ['factories', 'config', ])
         console.error(e.message);
       }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
         console.log(e.message);
-      })
+      });
 
 
       ref.addEventListener('loadstop', function(event) {
