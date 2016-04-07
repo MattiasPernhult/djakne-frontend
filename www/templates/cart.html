@@ -1,4 +1,3 @@
-
 <ion-view view-title="Cart">
   <ion-nav-bar>
     <ion-nav-buttons side="left">
@@ -10,34 +9,35 @@
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content class="padding">
-      <h4 class="text-center" ng-show="cartQty === 0">There are no products in the cart</h4>
-      <div ng-show="cartQty > 0">
-      <ul class="list">
-        <li class="item product-name" ng-repeat="product in customersProducts">
-          <div class="row">
-            <div class="col col-60">
-              <h3>{{product.name}}</h3>
-              <p class="product-desc">This is a product description..</p>
-            </div>
-            <div class="col col-20">
-              <div class="col text-center"><p>{{product.price}} kr</p></div>
-            </div>
-            <div class="col col-20">
-              <div class="qty-container">
-                <!-- <div id="removeOne" class="qty-symbol" ng-click="removeFromCart(product)">-</div> -->
-                <h1 id="qty-amount">{{product.qty}}st</h1>
-                <!-- <div id="addOne" class="qty-symbol" ng-click="addToCart(product)">+</div> -->
-              </div>
-            </div>
+      <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
+      <div ng-if="cartQty > 0 || goToMenu()">
+      <ion-list>
+        <ion-item ng-repeat="item in customersProducts">
+          <div class="productInfo cart">
+            <h2 class="product-title">{{item.name}}</p>
+            <p class="product-price">{{item.price}} kr</p>
           </div>
-        </li>
-      </ul>
+          <div class="containerCartIcons">
+            <button ng-click="removeFromCart(item)" id="add" class="button button-outline button-assertive ion-minus cartIcon">
+
+            </button>
+            <div id="qtyContainer">
+              <h1 id="qty-amount">{{item.qty}}<span>st</span></h1>
+            </div>
+            <button ng-click="addToCart(item)" id="remove" class=" remove button button-outline button-assertive ion-plus cartIcon">
+
+            </button>
+          </div>
+        </ion-item>
+      </ion-list>
       <form class="list">
         <label class="item item-input">
             <span class="input-label"><h3>Meddelande:</h3></span>
             <input type="text" id="comment" placeholder="Skriv ytterligare önskemål..">
         </label>
-        <ion-toggle ng-model="item.checked" value="Laktosfritt" ng-repeat="item in specials"><h3>{{item.name}}</h3></ion-toggle>
+        <!-- <ion-toggle ng-model="takeaway.checked" ng-checked="takeaway.checked"><h3>{{takeaway.name}}</h3></ion-toggle> -->
+        <!-- <ion-toggle ng-model="lactos.checked" ng-checked="lactos.checked"><h3>{{lactos.name}}</h3></ion-toggle> -->
+        <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked"><h3>{{item.name}}</h3></ion-toggle>
       </form>
       <div class="cart-total-container">
         <div class="total-desc">
@@ -47,7 +47,6 @@
       </div>
       <div class="text-center">
         <button class="button button-block button-dark" ng-click="placeOrder()"> Beställ</button>
-        <button class="button button-block button-dark" ng-click="priceRequest()"> Beställ</button>
       </div>
     </div>
   </ion-content>

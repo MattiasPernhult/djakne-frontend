@@ -1,26 +1,45 @@
-<ion-view view-title="Menu">
+<ion-view view-title="Djäkne">
   <ion-nav-buttons side="right">
     <div ng-click="cartQty === 0 || priceRequest()">
       <button class="button button-icon ion-bag"></button>
       <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
     </div>
   </ion-nav-buttons>
- <ion-content ng-style="{ 'background-image': 'url(img/menu.jpg)' }">
-     <ul class="list card products">
-       <li class="item product-name" ng-repeat="product in products">
-         <img src="img/remove.svg" id="icon-remove" class="cart-icon" ng-show="inCart(product) >= 0" ng-click="removeFromCart(product)"/>
-         <div class="row">
-           <div class="col col-75">
-             <h3 ng-click="showme = !showme">{{product.name}}</h3>
-             <p class="product-desc" ng-show="showme">This is a product description..</p>
-           </div>
-           <div class="col col-25">
-             <p class="product-price">{{product.price}} kr</p>
-           </div>
-         </div>
-         <img src="img/add.svg" id="icon-add" class="cart-icon" ng-click="addToCart(product)"></img>
-       </li>
-     </ul>
-     <ion-toggle ng-model="specials[1].checked" value="takeaway" ng-checked="updateLocalStorage()"><h3>{{specials[1].name}}</h3></ion-toggle>
- </ion-content>
+  <ion-content overflow-scroll="true" ng-style="{ 'background-image': 'url(img/menu.jpg)' }">
+    <!-- Favorites -->
+    <div class="menuCard item-expand active margin" ng-show="userFavorites.length > 0">
+      <ion-list>
+        <h3 class="menuTitle favourites">Favoriter</h3>
+        <ion-item class="product" ng-repeat="item in userFavorites" ng-click="$event.stopPropagation();">
+          <div class="productInfo">
+            <h2 class="product-title">{{item.name}}</p>
+            <p class="product-price">{{item.price}} kr</p>
+          </div>
+          <div class="buttonContainer">
+            <button ng-click="showConfirm(item)" class="button button-outline button-assertive">
+              BUY
+            </button>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+    <!-- Menu items -->
+  <div ng-repeat="list in products" ng-click="expand(list)" class="menuCard margin"  ng-class="list.show ? 'item-expand active' : 'item-expand inactive'">
+    <ion-list>
+      <h3 class="menuTitle text-center">{{list[0].category}}</h3>
+      <ion-item ng-init="isActive(item)" class="product" ng-show="list.show" ng-repeat="item in list" ng-click="$event.stopPropagation();">
+        <div class="productInfo">
+          <h2 class="product-title">{{item.name}}</p>
+          <p class="product-price">{{item.price}} kr</p>
+        </div>
+        <div class="buttonContainer">
+          <button ng-click="isFavorite(item)" class="heart button button-clear" ng-class="item.isFavorite ? 'ion-ios-heart' : 'ion-ios-heart-outline'">
+          <button ng-click="addToCart(item)" class="button button-outline button-assertive">
+            ADD
+          </button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+  </ion-content>
 </ion-view>

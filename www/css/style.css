@@ -1,5 +1,4 @@
 /* Empty. Add your own CSS if you like */
-
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
 
 
@@ -15,9 +14,38 @@ body {
   color: #222222;
 }
 
+div.scroll{
+  height:100%;
+}
+
+.containerCartIcons {
+  display:flex;
+  float: right;
+}
+
+.containerCartIcons h1#qty-amount {
+  margin:0;
+}
+
+.cartIcon {
+  min-width: 45px !important;
+  max-width: 45px !important;
+  line-height: 0 !important;
+  margin: 0 10px;
+}
+
+#add {
+  float:right;
+}
+
+#remove {
+  float:left;
+}
+
 .tab {
   padding-top: 3px!important;
 }
+
 
 h1 {
   text-align: center;
@@ -31,9 +59,170 @@ ion-view {
   position:relative;
 }
 
+
+.heart {
+  font-size:40px;
+  color:red !important;
+}
+
+/* Profile */
+
+.hero{
+    height: 230px;
+
+}
+
+.hero h3 {
+  margin-top:0;
+}
+
+#iconSettings {
+  display:flex;
+  margin-top: 10px 0;
+  background-color: #e42112;
+}
+
+#iconSettings .icon {
+  color: white;
+  font-size: 30px;
+}
+
+#iconSettings a {
+  color: white;
+}
+
+.content {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+  top: 30px;
+}
+
+.content h4 {
+  font-size: 14px;
+}
+
+#profileTitle {
+  color: black;
+}
+
+.avatar {
+  height: 88px;
+  width: 88px;
+  background-position: center;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: 10px;
+  position: relative;
+  left: auto;
+  background-size: contain;
+}
+
+/* MENU */
+
+/* Product Information */
+
+.product-title{
+  font-weight: 400 !important;
+  font-size:22px !important;
+  color: black;
+  /*font-family: 'Alegreya Sans', sans-serif !important;*/
+}
+
+.product-price{
+  font-size: 14px !important;
+}
+
+.productInfo{
+  width:60%;
+  display:inline-block;
+  float:left;
+}
+
+/* Container for add and buy button */
+
+.buttonContainer{
+  float:right;
+}
+
+/* Items in menu template */
+
+.menuCard{
+  width:100%;
+  height:23%;
+  position:relative;
+  background-color: rgba(000, 000, 000, 0.3);
+}
+
+.product:first-of-type{
+  border-top: none !important;
+}
+
+.product:last-of-type{
+  border-bottom: none !important;
+}
+
+.item-expand:last-child {
+  border-top: 1px solid #e2e2e2;
+  border-bottom:none;
+}
+
+.item-expand {
+  position: relative;
+  width: 100%;
+  transition: height 0.1s ease-out;
+  overflow: hidden;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.item-expand.inactive:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  height: 10%;
+  width: 100%;
+  display: block;
+}
+
+.item-expand.active {
+  height: auto;
+  transition: height 0.3s ease-out;
+
+}
+
+.item {
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  margin-bottom: 3%;
+  border: none;
+  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0.40);
+  display: block !important;
+}
+/* Title in menu cards */
+
+h3.menuTitle.ng-binding {
+  margin-top: 10% !important;
+  font-family: 'Alegreya Sans', sans-serif !important;
+  font-size: 36px;
+  color: white;
+}
+
+h3.menuTitle.favourites{
+  margin-top: 10%;
+  text-align: center;
+  font-family: 'Alegreya Sans', sans-serif !important;
+  font-size: 36px;
+  color: white;
+}
+
 .item-avatar {
   flex: 0 0 auto;
 }
+
+/* Login template */
 
 .slider {
   height: 100%;
@@ -142,6 +331,7 @@ ion-slide p {
 
 /* List item content - menu template / cart template */
 
+
 .products {
   background: none;
 }
@@ -158,9 +348,6 @@ ion-slide p {
   padding: 0;
 }
 
-.product-price {
-  text-align: center;
-}
 .product-desc {
   display:block;
   font-size:12px;
@@ -188,27 +375,26 @@ ion-slide p {
 }
 
 .cart-icon {
-  height:40px;
-  width: 40px;
+  height:30px;
+  width: 30px;
 }
 
 /* Icons for adding and removing items - menu template */
 
-img#icon-remove {
-  margin-right:9px;
-  width: 20px;
-  height: 20px;
-  vertical-align: bottom!important;
+
+.productInfo.cart{
+  font-size: 8px !important;
+  width: 150px !important;
 }
 
-img#icon-add {
-  margin-left:9px;
-  margin-right:6px;
-  width: 25px;
-  height: 25px;
-  vertical-align: bottom!important;
+.toggleSpecials:last-child{
+  border-top-style: solid;
+  border-radius: 0.1px;
 }
 
+.toggleSpecials{
+  box-shadow: none !important;
+}
 /* Product total - cart template */
 
 .cart-total-container {
@@ -252,7 +438,12 @@ img#icon-add {
 }
 
 #qty-amount {
-  margin: 0;
+  margin: 0 10px;
+  font-size: 27px;
+}
+
+#qty-amount span {
+  font-size:16px;
 }
 
 #addOne {
@@ -377,7 +568,7 @@ button#cowork {
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 0px;
-  color: #444; 
+  color: #444;
   opacity: 1;
   border-radius: none;
   font-family: Georgia, serif;

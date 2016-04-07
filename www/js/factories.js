@@ -18,7 +18,50 @@ angular.module('factories', ['config'])
   };
 })
 
-.factory('CoffeeFactory', function($http, HOST) {
+.factory('ProfileFactory', function() {
+  var orderSettings = {
+    Takeaway: {
+      name: 'Takeaway',
+      checked: 'false',
+    },
+    Lactos: {
+      name: 'Lactos',
+      checked: 'false',
+    },
+  };
+
+  return {
+    getOrderSettings: function() {
+      return orderSettings;
+    },
+    checkOrderSettings: function(name) {
+      if (window.localStorage[name]) {
+        orderSettings[name].checked = true;
+      } else {
+        orderSettings[name].checked = false;
+      }
+    },
+  };
+})
+
+.factory('SessionFactory', function()  {
+  return {
+    add: function(name, value) {
+      window.localStorage.setItem(name, value);
+    },
+    remove: function(name) {
+      window.localStorage.removeItem(name);
+    },
+    exists: function(name) {
+      if (window.localStorage[name]) {
+        return true;
+      }
+      return false;
+    },
+  };
+})
+
+.factory('CoffeeFactory', function(HOST, $http) {
 
   var coffee;
 
@@ -55,7 +98,9 @@ angular.module('factories', ['config'])
         done(null, result);
       })
       .error(function(err) {
-        done({error: err}, null);
+        done({
+          error: err,
+        }, null);
       });
   };
 
@@ -115,7 +160,6 @@ angular.module('factories', ['config'])
   var products;
   var favourites;
 
-
   var getFavourites = function(done) {
     if (favourites)  {
       return done(favourites);
@@ -126,48 +170,45 @@ angular.module('factories', ['config'])
     }
 
     $http.get(url)
-      .then(function(response) {
+      .success(function(response) {
         // Handle Success
         favourites = response.data.products;
         console.log(favourites);
         return done(favourites);
-      }, function(response) {
+      }).error(function(response) {
         // Handle Failure
         return done(response.data);
       });
   };
 
   var getProducts = function(done) {
-    if (products)  {
-      return done(products);
-    }
-    var url;
-    if (accessFactory.getAccessToken()) {
-      url = HOST.hostAdress + ':4000/menu?token=' + accessFactory.getAccessToken();
-    } else {
-      url = 'data/menu.json';
-    }
+    var url = HOST.hostAdress + ':4000/menu/categories';
+
     $http.get(url)
       .then(function(response) {
         // Handle Success
         products = response.data.products;
+        // products = response.data;
+        console.log(products);
         return done(products);
       }, function(response) {
         // Handle Failure
+        console.log(response);
         return done(response.data);
       });
   };
+
   return {
     getProducts: getProducts,
     getFavourites: getFavourites,
   };
 })
 
-.factory('Cart', function($http, accessFactory, HOST, $state) {
+.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoading, $location,
+  $cordovaToast) {
   // Cart array
   var cart = [];
   var totalPrice = 0;
-
   return {
     list: function() {
       return cart;
@@ -185,7 +226,7 @@ angular.module('factories', ['config'])
         this.increaseQty(index);
       }
     },
-    remove: function(item)  {
+    remove: function(item) {
       var index = this.contains(item);
       if (index >= 0) {
         if (cart[index].qty > 1) {
@@ -219,7 +260,7 @@ angular.module('factories', ['config'])
       });
       return total;
     },
-    getProductsId: function()  {
+    getProductsId: function() {
       var productsId = [];
       for (var index in cart) {
         var object = cart[index];
@@ -243,30 +284,49 @@ angular.module('factories', ['config'])
     getTotalPrice: function() {
       return totalPrice;
     },
-    order: function()  {
+    order: function(message, takeaway, singleItem) {
       var data = {
-        'message': 'asdf',
-        'takeaway': 1,
-        'products': [{
-          'id': 1
-        }]
+        message: message,
+        takeaway: takeaway,
+        products: [],
       };
 
+      if (!singleItem) {
+        angular.forEach(cart, function(obj) {
+          for (var i = 0; i < obj.qty; i++) {
+            data.products.push({
+              id: obj.qty,
+            });
+          }
+        });
+      } else {
+        data.products.push({
+          id: singleItem.id,
+        });
+      }
+      console.log(data);
+      console.log('Köpet är gjort!');
       $http.post(HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken(), data)
         .success(function(res) {
-
-          alert('Din order är skickad!');
-          // $state.go('menu');
-          alert('success');
-          alert(JSON.stringify(res));
-        })
-        .error(function(err) {
+          cart.length = 0;
+          $location.path('/tab/menu');
+          $cordovaToast.showLongBottom('Din order har lagts').then(function(success) {
+            // success
+          }, function(error) {
+            // error
+          });
+          // alert('success');
+          // alert(JSON.stringify(res));
+        }).error(function(err) {
           // alert('Something went wrong there, try again');
           alert('error');
           alert(JSON.stringify(err));
+          $cordovaToast.showLongBottom('Problem med order').then(function(success) {
+            // success
+          }, function(error) {
+            // error
+          });
         });
-
-      return data;
     },
   };
 });
