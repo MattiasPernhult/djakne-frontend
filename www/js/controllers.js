@@ -414,11 +414,14 @@ angular.module('controllers', ['factories', 'config', ])
       }
     );
     $scope.signUp = function() {
-      var url = HOST.hostAdress + ':4000/events/register' + '/' + $scope.chosenEvent._id +
-      '?token=' + accessFactory.getAccessToken();
-      console.log('URL till signup: ' + url);
-      console.log('accessToken : ' + accessFactory.getAccessToken());
-      $http.post(url, {})
+      var url = HOST.hostAdress + ':4000/events/register/' + $scope.chosenEvent._id;
+      var body = {
+        token: accessFactory.getAccessToken(),
+      };
+      // console.log('URL till signup: ' + url);
+      // console.log('accessToken : ' + accessFactory.getAccessToken());
+      console.log(url);
+      $http.post(url, body)
         .success(function(data, status, headers, config) {
           console.log('SUCCESS data: ' + data);
         })
