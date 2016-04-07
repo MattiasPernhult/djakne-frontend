@@ -460,6 +460,7 @@ button#attend {
 }
  .box.addEvent {
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 
  .box.eventDescription {
