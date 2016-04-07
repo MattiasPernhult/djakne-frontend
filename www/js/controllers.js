@@ -321,7 +321,7 @@ angular.module('controllers', ['factories', 'config', ])
     }
   );
   $scope.signUp = function() {
-    var url = HOST.hostAdress + ':4000/events' + '/' + $scope.chosenEvent._id + '?token=' +
+    var url = HOST.hostAdress + ':4000/events/register' + '/' + $scope.chosenEvent._id + '?token=' +
     accessFactory.getAccessToken();
     console.log('URL till signup: ' + url);
     console.log('accessToken : ' + accessFactory.getAccessToken());

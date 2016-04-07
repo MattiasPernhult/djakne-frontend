@@ -78,7 +78,7 @@ angular.module('factories', ['config'])
 
     $http.get(url)
       .success(function(res) {
-        console.log('success: ' + res)
+        console.log('success: ' + res);
         console.log(JSON.stringify(res));
         events = res.result;
         return done(events);
@@ -87,6 +87,10 @@ angular.module('factories', ['config'])
         console.log('ERROR' + err);
         return done(err.error);
       });
+  };
+
+  var getListOfEvents = function() {
+    return events;
   };
 
   var setEvent = function(chosenEvent) {
@@ -102,6 +106,7 @@ angular.module('factories', ['config'])
     getEvents: getEvents,
     getEvent: getEvent,
     setEvent: setEvent,
+    getListOfEvents: getListOfEvents,
   };
 })
 
