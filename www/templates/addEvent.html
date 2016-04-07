@@ -8,51 +8,59 @@
 
   <ion-content ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo">
 
-    <h3 class="addEvent-title">Skapa nytt event</h3>
+    <div class="box">
+      <h3 class="addEvent-title">Skapa nytt event</h3>
+    </div>
 
-    <form ng-submit="sendPost()">
+    <div class="box addEvent">
 
-      <div class="list">
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Eventnamn</span>
-          <input type="text" placeholder="ex. Staff meeting" ng-model="event.title">
-        </label>
+      <form ng-submit="sendPost()">
 
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Ditt namn</span>
-          <input type="text" placeholder="Kalle Kula" ng-model="event.author">
-        </label>
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Eventnamn</span>
+            <input type="text" placeholder="ex. Staff meeting" ng-model="event.title">
+          </label>
 
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Beskrivning</span>
-          <input type="text" placeholder="Beskriv ditt event" ng-model="event.text">
-        </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Ditt namn</span>
+            <input type="text" placeholder="Kalle Kula" ng-model="event.author">
+          </label>
 
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Beskrivning</span>
+            <input type="text" placeholder="Beskriv ditt event" ng-model="event.text">
+          </label>
+          <!--
         <label class="item item-input item-stacked-label">
           <span class="input-label">Plats</span>
           <input type="text" placeholder="Djakne" ng-model="event.text">
         </label>
 
         <label class="item item-input item-stacked-label">
-          <span class="input-label">Datum</span>
-          <input type="date" placeholder="2016-05-06" ng-model="event.date">
-        </label>
-
-        <label class="item item-input item-stacked-label">
           <span class="input-label">Tid</span>
           <input type="time" placeholder="10:00:00" ng-model="event.date">
         </label>
+-->
 
-      </div>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Datum och tid</span>
+            <input type="text" placeholder="2016-06-10 08:00" ng-model="event.date">
+          </label>
 
-
-    <div class="text-center padding">
-      <button type="submit" name="name" class="button button-block button-dark">
-        Lägg till event
-      </button>
+        </div>
+        <div class="text-center padding">
+          <button type="submit" name="name" class="button button-dark" id="cowork">
+            Lägg till event
+          </button>
+        </div>
     </div>
 
+
+
+
     </form>
+
 
   </ion-content>
 

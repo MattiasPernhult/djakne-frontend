@@ -135,15 +135,29 @@ angular.module('controllers', ['factories', 'config', ])
       senderID: '104492237304',
     },
     ios: {
-      alert: 'true',
-      badge: 'true',
-      sound: 'true',
+      alert: true,
+      badge: true,
+      sound: true,
     },
     windows: {},
   });
 
+  push.on('notification', function(data) {
+    console.log(JSON.stringify(data));
+
+    $cordovaLocalNotification.schedule({
+      id: 1,
+      title: 'Your order',
+      text: data.message,
+      data: {
+        customProperty: 'custom value',
+      },
+    }).then(function(result) {
+      // ...
+    });
+  });
+
   push.on('registration', function(data) {
-    // alert(data.registrationId);
     window.localStorage.registrationId = data.registrationId;
     var body = {
       token: data.registrationId,
@@ -157,38 +171,10 @@ angular.module('controllers', ['factories', 'config', ])
         console.log(err);
       });
   });
-  //
-  // push.on('notification', function(data) {
-  //   console.log(JSON.stringify(data));
-  //
-  //   $cordovaLocalNotification.schedule({
-  //     id: 1,
-  //     title: 'Your order',
-  //     text: data.message,
-  //     data: {
-  //       customProperty: 'custom value',
-  //     },
-  //   }).then(function(result) {
-  //     // ...
-  //   });
 
-
-  // var alarmTime = new Date();
-  // alarmTime.setMinutes(alarmTime.getSeconds() + 3);
-  // $cordovaLocalNotification.add({
-  //   date: alarmTime,
-  //   message: data.message,
-  //   title: 'Your order',
-  //   autoCancel: true,
-  //   sound: null,
-  // }).then(function() {
-  //   console.log('The notification has been set');
-  // });
-  // });
-  //
-  // push.on('error', function(err) {
-  //   console.log(err);
-  // });
+  push.on('error', function(err) {
+    console.log(err);
+  });
 
   $scope.userFavorites = $scope.userFavorites  || [];
 
@@ -196,18 +182,15 @@ angular.module('controllers', ['factories', 'config', ])
     vote.show = !vote.show;
   };
 
-  // Get settings
-  $scope.orderSettings = ProfileFactory.getOrderSettings();
+  $scope.specials = [{
+      name: 'Laktosfritt',
+      checked: false,
+    }, {
+      name: 'Takeaway',
+      checked: false,
+    },
 
-  // When user enters view check status for ordersettings
-  $scope.$on('$ionicView.enter', function() {
-    ProfileFactory.checkOrderSettings('Takeaway');
-    ProfileFactory.checkOrderSettings('Lactos');
-
-    if (window.localStorage.favorites) {
-      $scope.userFavorites = $scope.getFavorites();
-    }
-  });
+  ];
 
   // $scope.go = $state.go.bind($state);
   $scope.customersProducts = Cart.list();
@@ -275,7 +258,6 @@ angular.module('controllers', ['factories', 'config', ])
     }
   };
 
-
   $scope.isActive = function(item) {
     for (var index = 0; index < $scope.userFavorites.length; index++) {
       if (item.id === $scope.userFavorites[index].id) {
@@ -313,13 +295,12 @@ angular.module('controllers', ['factories', 'config', ])
     });
   };
 
-
   // Place order
   $scope.placeOrder = function() {
     var singleItem = false;
     var message = '';
     var takeaway = false;
-    var comment = document.getElementById("comment").value;
+    var comment = document.getElementById('comment').value;
 
     if ($scope.orderSettings.Lactos.checked) {
       message += 'Laktosfritt: Ja';
@@ -352,7 +333,6 @@ angular.module('controllers', ['factories', 'config', ])
     }
 
     Cart.order(message, takeaway, item);
-
   };
 
   $scope.showConfirm = function(item) {
@@ -378,7 +358,6 @@ angular.module('controllers', ['factories', 'config', ])
       $scope.total = newVal;
     }
   );
-
 })
 
 .controller('EventController', function($scope, EventFactory, $state) {
@@ -397,7 +376,13 @@ angular.module('controllers', ['factories', 'config', ])
     console.log(data);
     $scope.events = data;
   });
-
+  $scope.$watch(function() {
+      return EventFactory.getListOfEvents();
+    },
+    function(newVal) {
+      $scope.events = newVal;
+    }
+  );
   $scope.setEvent = function(chosenEvent) {
     EventFactory.setEvent(chosenEvent);
   };
@@ -410,6 +395,10 @@ angular.module('controllers', ['factories', 'config', ])
   $scope.gotoNews = function() {
     $state.go('newsMain');
   };
+  $scope.gotoMembership = function() {
+    $state.go('memberships');
+  };
+
 })
 
 .controller('EventDescriptionController',
@@ -425,8 +414,8 @@ angular.module('controllers', ['factories', 'config', ])
       }
     );
     $scope.signUp = function() {
-      var url = HOST.hostAdress + ':4000/events' + '/' + $scope.chosenEvent._id + '?token=' +
-        accessFactory.getAccessToken();
+      var url = HOST.hostAdress + ':4000/events/register' + '/' + $scope.chosenEvent._id +
+      '?token=' + accessFactory.getAccessToken();
       console.log('URL till signup: ' + url);
       console.log('accessToken : ' + accessFactory.getAccessToken());
       $http.post(url, {})
@@ -439,7 +428,7 @@ angular.module('controllers', ['factories', 'config', ])
     };
   })
 
-.controller('AddEventController', function($scope, $http, HOST) {
+.controller('AddEventController', function($scope, $http, HOST, EventFactory) {
 
   $scope.event = {};
 
@@ -459,6 +448,9 @@ angular.module('controllers', ['factories', 'config', ])
     $http.post(url, formData)
       .success(function(data, status, headers, config) {
         console.log('Data: ' + data);
+        EventFactory.getEvents(function() {
+          return;
+        });
       })
       .error(function(err, status, headers, config) {
         console.log('ERROR: ' + err);
@@ -498,7 +490,7 @@ angular.module('controllers', ['factories', 'config', ])
         console.error(e.message);
       }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
         console.log(e.message);
-      })
+      });
 
 
       ref.addEventListener('loadstop', function(event) {
