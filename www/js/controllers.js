@@ -3,182 +3,182 @@ angular.module('controllers', ['factories', 'config', ])
 .controller('HomeController', function($scope, CoffeeFactory, $http, HOST,
   accessFactory, $ionicModal, MembersFactory) {
 
-  CoffeeFactory.getCoffee(function(data) {
-    console.log(data);
-    $scope.rating = data;
-  });
-  $scope.votes = 2;
-
-  $scope.ratingsObject = {
-    iconOn: 'ion-ios-star',
-    iconOff: 'ion-ios-star-outline',
-    iconOnColor: 'rgb(0, 0, 0)',
-    iconOffColor:  'rgb(100, 100, 100)',
-    rating:  $scope.votes,
-    minRating: 1,
-    callback: function(rating) {
-      $scope.ratingsCallback(rating);
-    },
-  };
-
-  $scope.ratingsCallback = function(rating) {
-    console.log('Selected rating is : ', rating);
-    $scope.votes = rating;
-  };
-
-  $scope.body = {};
-
-  $scope.send = function() {
-
-    var rating = {
-      vote:  String($scope.votes),
-      token: accessFactory.getAccessToken(),
-    };
-
-    console.log(rating);
-    var url = HOST.hostAdress + ':4000/coffee/vote';
-    $http.put(url, rating)
-    .success(function(res) {
-      console.log(res);
-    })
-    .error(function(err) {
-      console.log(err);
-    });
-  };
-
-  $ionicModal.fromTemplateUrl('modal.html', {
-    scope: $scope,
-    animation: 'slide-in-up',
-  }).then(function(modal)  {
-    $scope.modal = modal;
-  });
-
-  $scope.openModal = function(member) {
-    $scope.member = member;
-    console.log($scope.member);
-    $scope.modal.show();
-  };
-
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
-
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-    // Execute action
-  });
-
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
-
-  $scope.gotoLinkedIn = function() {
-    var ref = window.open($scope.member.linkedInProfile, '_system');
-  };
-
-  MembersFactory.getMembers(function(err, data)  {
-    if (err) {
-      console.log(err);
-    } else {
+    CoffeeFactory.getCoffee(function(data) {
       console.log(data);
-      $scope.members = [];
-      for (var i = 0; i < data.members.length; i += 2) {
-        $scope.members.push(data.members.slice(i, i + 2));
-      }
-      // $scope.members = data.members;
-    }
-  });
-})
-   // logout Hassan
-.controller('logoutController', function($scope, $state) {
-  $scope.logout = function() {
-    $state.go('login');
-  };
-})
+      $scope.rating = data;
+    });
+    $scope.votes = 2;
 
-.controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
-  MenuFactory, $cordovaLocalNotification, $ionicPlatform) {
-
-  var push = PushNotification.init({
-    android: {
-      senderID: '104492237304',
-    },
-    ios: {
-      alert: 'true',
-      badge: 'true',
-      sound: 'true',
-    },
-    windows: {},
-  });
-
-  push.on('registration', function(data) {
-    alert(data.registrationId);
-    window.localStorage.registrationId = data.registrationId;
-    var body = {
-      token: data.registrationId,
+    $scope.ratingsObject = {
+      iconOn: 'ion-ios-star',
+      iconOff: 'ion-ios-star-outline',
+      iconOnColor: 'rgb(0, 0, 0)',
+      iconOffColor:  'rgb(100, 100, 100)',
+      rating:  $scope.votes,
+      minRating: 1,
+      callback: function(rating) {
+        $scope.ratingsCallback(rating);
+      },
     };
-    var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
-    $http.post(url, body)
+
+    $scope.ratingsCallback = function(rating) {
+      console.log('Selected rating is : ', rating);
+      $scope.votes = rating;
+    };
+
+    $scope.body = {};
+
+    $scope.send = function() {
+
+      var rating = {
+        vote:  String($scope.votes),
+        token: accessFactory.getAccessToken(),
+      };
+
+      console.log(rating);
+      var url = HOST.hostAdress + ':4000/coffee/vote';
+      $http.put(url, rating)
       .success(function(res) {
         console.log(res);
       })
       .error(function(err) {
         console.log(err);
       });
-  });
+    };
 
-  push.on('notification', function(data) {
-    console.log(JSON.stringify(data));
-
-    $cordovaLocalNotification.schedule({
-      id: 1,
-      title: 'Your order',
-      text: data.message,
-      data: {
-        customProperty: 'custom value',
-      },
-    }).then(function(result) {
-      // ...
+    $ionicModal.fromTemplateUrl('modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+    }).then(function(modal)  {
+      $scope.modal = modal;
     });
 
+    $scope.openModal = function(member) {
+      $scope.member = member;
+      console.log($scope.member);
+      $scope.modal.show();
+    };
 
-    // var alarmTime = new Date();
-    // alarmTime.setMinutes(alarmTime.getSeconds() + 3);
-    // $cordovaLocalNotification.add({
-    //   date: alarmTime,
-    //   message: data.message,
-    //   title: 'Your order',
-    //   autoCancel: true,
-    //   sound: null,
-    // }).then(function() {
-    //   console.log('The notification has been set');
-    // });
-  });
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
 
-  push.on('error', function(err) {
-    console.log(err);
-  });
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
 
-  $scope.specials = [{
-      name: 'Laktosfritt',
-      checked: false,
-    }, {
-      name: 'Takeaway',
-      checked: false,
-    },
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
 
-  ];
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
 
-  // $scope.go = $state.go.bind($state);
-  $scope.customersProducts = Cart.list();
+    $scope.gotoLinkedIn = function() {
+      var ref = window.open($scope.member.linkedInProfile, '_system');
+    };
 
-  // Watch for changes in cart size
-  $scope.$watch(function() {
+    MembersFactory.getMembers(function(err, data)  {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(data);
+        $scope.members = [];
+        for (var i = 0; i < data.members.length; i += 2) {
+          $scope.members.push(data.members.slice(i, i + 2));
+        }
+        // $scope.members = data.members;
+      }
+    });
+  })
+  // logout Hassan
+  .controller('logoutController', function($scope, $state) {
+    $scope.logout = function() {
+      $state.go('login');
+    };
+  })
+
+  .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
+    MenuFactory, $cordovaLocalNotification, $ionicPlatform) {
+
+      var push = PushNotification.init({
+        android: {
+          senderID: '104492237304',
+        },
+        ios: {
+          alert: 'true',
+          badge: 'true',
+          sound: 'true',
+        },
+        windows: {},
+      });
+
+      push.on('registration', function(data) {
+        alert(data.registrationId);
+        window.localStorage.registrationId = data.registrationId;
+        var body = {
+          token: data.registrationId,
+        };
+        var url = HOST.hostAdress + ':3000/push/token/gcm?token=' + accessFactory.getAccessToken();
+        $http.post(url, body)
+        .success(function(res) {
+          console.log(res);
+        })
+        .error(function(err) {
+          console.log(err);
+        });
+      });
+
+      push.on('notification', function(data) {
+        console.log(JSON.stringify(data));
+
+        $cordovaLocalNotification.schedule({
+          id: 1,
+          title: 'Your order',
+          text: data.message,
+          data: {
+            customProperty: 'custom value',
+          },
+        }).then(function(result) {
+          // ...
+        });
+
+
+        // var alarmTime = new Date();
+        // alarmTime.setMinutes(alarmTime.getSeconds() + 3);
+        // $cordovaLocalNotification.add({
+        //   date: alarmTime,
+        //   message: data.message,
+        //   title: 'Your order',
+        //   autoCancel: true,
+        //   sound: null,
+        // }).then(function() {
+        //   console.log('The notification has been set');
+        // });
+      });
+
+      push.on('error', function(err) {
+        console.log(err);
+      });
+
+      $scope.specials = [{
+        name: 'Laktosfritt',
+        checked: false,
+      }, {
+        name: 'Takeaway',
+        checked: false,
+      },
+
+    ];
+
+    // $scope.go = $state.go.bind($state);
+    $scope.customersProducts = Cart.list();
+
+    // Watch for changes in cart size
+    $scope.$watch(function() {
       return Cart.size();
     },
     function(newVal) {
@@ -265,12 +265,12 @@ angular.module('controllers', ['factories', 'config', ])
 
   // Watch for changes in product total
   $scope.$watch(function() {
-      return Cart.total();
-    },
-    function(newVal) {
-      $scope.total = newVal;
-    }
-  );
+    return Cart.total();
+  },
+  function(newVal) {
+    $scope.total = newVal;
+  }
+);
 })
 
 .controller('EventController', function($scope, EventFactory, $state) {
@@ -289,50 +289,59 @@ angular.module('controllers', ['factories', 'config', ])
     console.log(data);
     $scope.events = data;
   });
-
-  $scope.setEvent = function(chosenEvent) {
-    EventFactory.setEvent(chosenEvent);
-  };
-  $scope.gotoeventMain = function() {
-    $state.go('eventMain');
-  };
-  $scope.gotoBoard = function() {
-    $state.go('boardMain');
-  };
-  $scope.gotoNews = function() {
-    $state.go('newsMain');
-  };
-  $scope.gotoMembership = function() {
-    $state.go('memberships');
-  };
+  EventFactory.getEvents(function(data) {
+    $scope.events=data;
+  });
+  $scope.$watch(function() {
+    return EventFactory.getListOfEvents();
+  },
+  function(newVal) {
+    $scope.events = newVal;
+  }
+);
+$scope.setEvent = function(chosenEvent) {
+  EventFactory.setEvent(chosenEvent);
+};
+$scope.gotoeventMain = function() {
+  $state.go('eventMain');
+};
+$scope.gotoBoard = function() {
+  $state.go('boardMain');
+};
+$scope.gotoNews = function() {
+  $state.go('newsMain');
+};
+$scope.gotoMembership = function() {
+  $state.go('memberships');
+};
 
 })
 
 .controller('EventDescriptionController',
-  function($scope, $http, EventFactory, accessFactory, HOST) {
+function($scope, $http, EventFactory, accessFactory, HOST) {
   var eventData = EventFactory.getEvent();
   $scope.chosenEvent = eventData;
 
   $scope.$watch(function() {
-      return EventFactory.getEvent();
-    },
-    function(newVal) {
-      $scope.chosenEvent = newVal;
-    }
-  );
-  $scope.signUp = function() {
-    var url = HOST.hostAdress + ':4000/events/register' + '/' + $scope.chosenEvent._id + '?token=' +
-    accessFactory.getAccessToken();
-    console.log('URL till signup: ' + url);
-    console.log('accessToken : ' + accessFactory.getAccessToken());
-    $http.post(url, {})
-      .success(function(data, status, headers, config) {
-        console.log('SUCCESS data: ' + data);
-      })
-      .error(function(err, status, headers, config) {
-        console.log('ERROR: ' + err);
-      });
-  };
+    return EventFactory.getEvent();
+  },
+  function(newVal) {
+    $scope.chosenEvent = newVal;
+  }
+);
+$scope.signUp = function() {
+  var url = HOST.hostAdress + ':4000/events/register' + '/' + $scope.chosenEvent._id + '?token=' +
+  accessFactory.getAccessToken();
+  console.log('URL till signup: ' + url);
+  console.log('accessToken : ' + accessFactory.getAccessToken());
+  $http.post(url, {})
+  .success(function(data, status, headers, config) {
+    console.log('SUCCESS data: ' + data);
+  })
+  .error(function(err, status, headers, config) {
+    console.log('ERROR: ' + err);
+  });
+};
 })
 
 .controller('AddEventController', function($scope, $http, HOST) {
@@ -353,67 +362,67 @@ angular.module('controllers', ['factories', 'config', ])
     console.log('i sendPost');
     console.log('formData : ' + formData.title);
     $http.post(url, formData)
-      .success(function(data, status, headers, config) {
-        console.log('Data: ' + data);
-      })
-      .error(function(err, status, headers, config) {
-        console.log('ERROR: ' + err);
-        console.log(JSON.stringify(err));
-      });
+    .success(function(data, status, headers, config) {
+      console.log('Data: ' + data);
+    })
+    .error(function(err, status, headers, config) {
+      console.log('ERROR: ' + err);
+      console.log(JSON.stringify(err));
+    });
   };
 })
 
 .controller('LoginController',
-  function($scope, $state, $http, $location, $rootScope, accessFactory, HOST, $ionicSlideBoxDelegate) {
-    console.log(HOST.hostAdress);
-    $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
-    $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';
-    $scope.grantType = 'authorization_code';
-    $scope.cliendId = '77fqlypcm1ourl';
-    $scope.clientSecret = 'UVKqpbFQchFA8ku0';
-    $scope.login = function() {
+function($scope, $state, $http, $location, $rootScope, accessFactory, HOST, $ionicSlideBoxDelegate) {
+  console.log(HOST.hostAdress);
+  $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
+  $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';
+  $scope.grantType = 'authorization_code';
+  $scope.cliendId = '77fqlypcm1ourl';
+  $scope.clientSecret = 'UVKqpbFQchFA8ku0';
+  $scope.login = function() {
 
-      var ref = window.open($scope.urlStep1, '_self');
+    var ref = window.open($scope.urlStep1, '_self');
 
-      ref.addEventListener('loadstop', function(event) {
-        if ((event.url).startsWith($scope.redirectUri)) {
-          ref.executeScript({
-              code: 'document.body.innerHTML',
-            },
-            function(values) {
-              var body = values[0];
-              var token = body.substring(body.indexOf('{') + 10, body.lastIndexOf('}') - 1);
-              accessFactory.changeAccessToken(token);
-              ref.close();
-              $state.go('tab.home');
-            });
-        }
-      });
-    };
+    ref.addEventListener('loadstop', function(event) {
+      if ((event.url).startsWith($scope.redirectUri)) {
+        ref.executeScript({
+          code: 'document.body.innerHTML',
+        },
+        function(values) {
+          var body = values[0];
+          var token = body.substring(body.indexOf('{') + 10, body.lastIndexOf('}') - 1);
+          accessFactory.changeAccessToken(token);
+          ref.close();
+          $state.go('tab.home');
+        });
+      }
+    });
+  };
 
-    $scope.gallery = [{
-      url: 'img/coffeeData.jpeg',
-      title: 'Stay Connected',
-      desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
-    }, {
-      url: 'img/djakne.png',
-      title: 'Enjoy great coffee',
-      desc: 'Donec dapibus, magna quis tincidunt finibus, tellus odio porttitor nisi.',
-    }, {
-      url: 'img/business1.jpeg',
-      title: 'Evolve and share',
-      desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
-    }, ];
+  $scope.gallery = [{
+    url: 'img/coffeeData.jpeg',
+    title: 'Stay Connected',
+    desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+  }, {
+    url: 'img/djakne.png',
+    title: 'Enjoy great coffee',
+    desc: 'Donec dapibus, magna quis tincidunt finibus, tellus odio porttitor nisi.',
+  }, {
+    url: 'img/business1.jpeg',
+    title: 'Evolve and share',
+    desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+  }, ];
 
-    $scope.next = function() {
-      $ionicSlideBoxDelegate.next();
-    };
-    $scope.previous = function() {
-      $ionicSlideBoxDelegate.previous();
-    };
+  $scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+  };
+  $scope.previous = function() {
+    $ionicSlideBoxDelegate.previous();
+  };
 
-    // Called each time the slide changes
-    $scope.slideChanged = function(index) {
-      $scope.slideIndex = index;
-    };
-  });
+  // Called each time the slide changes
+  $scope.slideChanged = function(index) {
+    $scope.slideIndex = index;
+  };
+});

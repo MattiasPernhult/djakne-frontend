@@ -377,7 +377,7 @@ button#cowork {
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 0px;
-  color: dark;
+  color: #444; 
   opacity: 1;
   border-radius: none;
   font-family: Georgia, serif;
