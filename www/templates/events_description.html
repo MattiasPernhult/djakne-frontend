@@ -1,38 +1,25 @@
 <ion-view view-title="Event">
   <ion-nav-bar>
     <ion-content ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo">
-    <ion-nav-buttons side="left">
-      <button class=" button button-icon ion-ios-arrow-left" ui-sref="eventMain"></button>
-    </ion-nav-buttons>
+      <ion-nav-buttons side="left">
+        <button class=" button button-icon ion-ios-arrow-left" ui-sref="eventMain"></button>
+      </ion-nav-buttons>
   </ion-nav-bar>
-
-
-    <div class="list padding">
-
-      <h3>{{chosenEvent.title}}</h3>
-
-
-    <div class="list padding test">
+  <div class="list">
+    <div class="box eventDescription">
 
       <h3>{{chosenEvent.title}}</h3>
       <h5 class="dateDescs">Datum: {{chosenEvent.date | date:'MM/dd/yyyy'}}</h5>
 
-
-
-    <div class="list">
-
-        <h4>Description:</h4>
+      <div class="list">
         <p class="cardDescs">{{chosenEvent.text}}</p>
-
+      </div>
     </div>
-    </div>
-
-    </div>
-
-
-  <div class="text-center padding">
-    <button class="button button-block" id="attend" ng-click="signUp()"> Sign up</button>
   </div>
 
+  <div class="text-center padding">
+    <button class="button button-dark" id="cowork" ng-click="signUp()"> Sign up</button>
+  </div>
+  </div>
   </ion-content>
 </ion-view>
