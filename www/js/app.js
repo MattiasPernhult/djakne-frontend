@@ -74,6 +74,12 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       controller: 'EventController',
     })
 
+    .state('memberships', {
+      url: '/memberships',
+      templateUrl: 'templates/memberships.html',
+      controller: 'EventController',
+    })
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -124,5 +130,5 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/tab/home');
 });
