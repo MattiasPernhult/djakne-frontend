@@ -130,6 +130,18 @@ angular.module('controllers', ['factories', 'config', ])
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory) {
 
+  var push = PushNotification.init({
+    android: {
+      senderID: '104492237304',
+    },
+    ios: {
+      alert: true,
+      badge: true,
+      sound: true,
+    },
+    windows: {},
+  });
+
   push.on('notification', function(data) {
     console.log(JSON.stringify(data));
 
@@ -143,19 +155,6 @@ angular.module('controllers', ['factories', 'config', ])
     }).then(function(result) {
       // ...
     });
-
-
-    // var alarmTime = new Date();
-    // alarmTime.setMinutes(alarmTime.getSeconds() + 3);
-    // $cordovaLocalNotification.add({
-    //   date: alarmTime,
-    //   message: data.message,
-    //   title: 'Your order',
-    //   autoCancel: true,
-    //   sound: null,
-    // }).then(function() {
-    //   console.log('The notification has been set');
-    // });
   });
 
   push.on('registration', function(data) {
@@ -171,21 +170,6 @@ angular.module('controllers', ['factories', 'config', ])
       .error(function(err) {
         console.log(err);
       });
-  });
-
-  push.on('notification', function(data) {
-    console.log(JSON.stringify(data));
-
-    $cordovaLocalNotification.schedule({
-      id: 1,
-      title: 'Your order',
-      text: data.message,
-      data: {
-        customProperty: 'custom value',
-      },
-    }).then(function(result) {
-      // ...
-    });
   });
 
   push.on('error', function(err) {
