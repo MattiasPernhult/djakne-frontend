@@ -31,7 +31,9 @@ div.scroll{
   max-width: 45px !important;
   line-height: 0 !important;
   margin: 0 10px;
+  color: black !important;
 }
+
 
 #add {
   float:right;
@@ -402,7 +404,7 @@ ion-slide p {
 }
 
 .ion-bag {
-  color: white!important;
+  color: black!important;
 }
 
 .cart-icon {
