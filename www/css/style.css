@@ -1,9 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
 
+
+
 .item {
   display: flex;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right:10px;
 }
 
 body {
@@ -12,10 +14,6 @@ body {
 }
 
 div.scroll{
-  height:100%;
-}
-
-.list{
   height:100%;
 }
 
@@ -352,6 +350,13 @@ ion-slide p {
   background: none;
 }
 
+.item {
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  margin-bottom: 5px;
+  border: none;
+  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0.4);
+}
 
 .row {
   padding: 0;
@@ -511,14 +516,14 @@ p.desc_text {
     font-style: bold;
     text-align: center;
     font-family: Georgia, serif;
-    padding-top: 30px;
+    padding-top: 15px;
 
  }
 
  .social-title {
     font-style: bold;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
     font-family: Georgia, serif;
  }
 
@@ -534,33 +539,40 @@ p.desc_text {
 }
 
 h3.coworkTitle {
-  margin-top: 10% !important;
-  margin-bottom: 10% !important;
+  margin-top: 5% !important;
+  margin-bottom: 5% !important;
   font-family: 'Alegreya Sans', sans-serif !important;
   font-size: 36px;
   color: white;
   text-align: center !important;
 }
 
+h5.dateDescs {
+  font-family: Georgia, serif;
+
+}
+
 .menuCard {
   width:100%;
   height:23%;
   position:relative;
-  background-color: rgba(000, 000, 000, 0.3);
+  background-color: rgba(000, 000, 000, 0.4);
   margin-left: auto;
   margin-right: auto;
   display: block;
+  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0);
+
+
 }
 
 .box {
   height: auto;
   background-color: rgba(444, 444, 444, 0.8);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 p.pbox {
@@ -572,9 +584,30 @@ p.pbox {
 button#cowork {
   padding-left: 10px;
   padding-right: 10px;
-  margin: 10px;
-  color: #539272;
+  margin-bottom: 0px;
+  color: #444;
+  opacity: 1;
+  border-radius: none;
+  font-family: Georgia, serif;
+  background-color: #EFECEC;
 }
+
+button#membership {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 20px;
+  color: grey;
+}
+
+button#attend {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  opacity: 0.95;
+  font-family: Georgia, serif;
+  background-color: #444141;
+}
+
 
  /* Event pages */
 
@@ -617,3 +650,40 @@ button#cowork {
    font-family: Georgia, serif;
 
  }
+
+ .item-input input{
+  padding-left: 10px;
+
+}
+
+ #backgroundCo {
+
+  background-size: contain;
+
+}
+
+ #benefits {
+  opacity: 0.90;
+
+}
+ .box.addEvent {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+ .box.eventDescription {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 35px;
+ }
+
+.list.card {
+  opacity: 0.92;
+
+}
+
+.cardDescs {
+  padding-right: 2px;
+}

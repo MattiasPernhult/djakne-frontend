@@ -134,20 +134,21 @@ angular.module('factories', ['config'])
   var getEvents = function(done) {
     var url = HOST.hostAdress + ':4000/events';
 
-    if (events) {
-      return done(events);
-    }
-
     $http.get(url)
-      .success(function(result) {
-        console.log('success: ' + result);
-        events = result.result;
+      .success(function(res) {
+        console.log('success: ' + res);
+        console.log(JSON.stringify(res));
+        events = res.result;
         return done(events);
       })
       .error(function(err) {
         console.log('ERROR' + err);
         return done(err.error);
       });
+  };
+
+  var getListOfEvents = function() {
+    return events;
   };
 
   var setEvent = function(chosenEvent) {
@@ -163,6 +164,7 @@ angular.module('factories', ['config'])
     getEvents: getEvents,
     getEvent: getEvent,
     setEvent: setEvent,
+    getListOfEvents: getListOfEvents,
   };
 })
 
