@@ -117,10 +117,6 @@ angular.module('factories', ['config'])
   var getEvents = function(done) {
     var url = HOST.hostAdress + ':4000/events';
 
-    if (events) {
-      return done(events);
-    }
-
     $http.get(url)
       .success(function(res) {
         console.log('success: ' + res);

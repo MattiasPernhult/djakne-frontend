@@ -392,9 +392,6 @@ angular.module('controllers', ['factories', 'config', ])
     console.log(data);
     $scope.events = data;
   });
-  EventFactory.getEvents(function(data) {
-    $scope.events = data;
-  });
   $scope.$watch(function() {
       return EventFactory.getListOfEvents();
     },
@@ -447,7 +444,7 @@ angular.module('controllers', ['factories', 'config', ])
     };
   })
 
-.controller('AddEventController', function($scope, $http, HOST) {
+.controller('AddEventController', function($scope, $http, HOST, EventFactory) {
 
   $scope.event = {};
 
@@ -467,6 +464,9 @@ angular.module('controllers', ['factories', 'config', ])
     $http.post(url, formData)
       .success(function(data, status, headers, config) {
         console.log('Data: ' + data);
+        EventFactory.getEvents(function() {
+          return;
+        });
       })
       .error(function(err, status, headers, config) {
         console.log('ERROR: ' + err);
