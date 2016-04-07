@@ -325,7 +325,7 @@ angular.module('controllers', ['factories', 'config', ])
     var singleItem = false;
     var message = '';
     var takeaway = false;
-    var comment = document.getElementById("comment").value;
+    var comment = document.getElementById('comment').value;
 
     if ($scope.orderSettings.Lactos.checked) {
       message += 'Laktosfritt: Ja';
@@ -493,18 +493,12 @@ angular.module('controllers', ['factories', 'config', ])
           height: 0,
           color: '#000',
         },
-        title: {
-          color: '#FFFFFF',
-          showPageTitle: true,
-          staticText: 'Login',
-        },
-        backButtonCanClose: true,
 
       }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
         console.error(e.message);
       }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
         console.log(e.message);
-      })
+      });
 
 
       ref.addEventListener('loadstop', function(event) {

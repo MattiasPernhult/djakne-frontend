@@ -20,8 +20,7 @@ angular.module('factories', ['config'])
 
 .factory('ProfileFactory', function(HOST, $http, accessFactory) {
   var url;
- var user;
- var orderSettings = {
+  var orderSettings = {
    Takeaway: {
      name: 'Takeaway',
      checked: 'false',
@@ -51,9 +50,7 @@ angular.module('factories', ['config'])
      return done(userInfo);
    })
    .error(function(err) {
-//      done({
-//        error: err,
-//      }, null);
+     console.log(err);
    });
  };
 
@@ -333,8 +330,9 @@ angular.module('factories', ['config'])
           // alert(JSON.stringify(res));
         }).error(function(err) {
           // alert('Something went wrong there, try again');
-          alert('error');
-          alert(JSON.stringify(err));
+          // alert('error');
+          // alert(JSON.stringify(err));
+          console.log(err);
           $cordovaToast.showLongBottom('Problem med order').then(function(success) {
             // success
           }, function(error) {
