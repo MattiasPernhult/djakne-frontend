@@ -10,7 +10,7 @@ angular.module('controllers', ['factories', 'config', ])
 
     // Get ordersettings
     $scope.orderSettings = ProfileFactory.getOrderSettings();
-
+    console.log($scope.orderSettings);
   });
   ProfileFactory.getUser(function(data) {
     $scope.user = JSON.parse(data);
@@ -135,7 +135,13 @@ angular.module('controllers', ['factories', 'config', ])
 
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory) {
-
+  $scope.$on('$ionicView.enter', function() {
+      ProfileFactory.checkOrderSettings('Takeaway');
+      ProfileFactory.checkOrderSettings('Lactos');
+      // Get ordersettings
+      $scope.orderSettings = ProfileFactory.getOrderSettings();
+      console.log($scope.orderSettings);
+    });
   var push = PushNotification.init({
     android: {
       senderID: '104492237304',
