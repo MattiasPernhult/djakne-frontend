@@ -18,30 +18,50 @@ angular.module('factories', ['config'])
   };
 })
 
-.factory('ProfileFactory', function() {
-  var orderSettings = {
-    Takeaway: {
-      name: 'Takeaway',
-      checked: 'false',
-    },
-    Lactos: {
-      name: 'Lactos',
-      checked: 'false',
-    },
-  };
+.factory('ProfileFactory', function(HOST, $http, accessFactory) {
+  var url;
+ var user;
+ var orderSettings = {
+   Takeaway: {
+     name: 'Takeaway',
+     checked: 'false',
+   },
+   Lactos: {
+     name: 'Lactos',
+     checked: 'false',
+   },
+ };
+  var getOrderSettings = function() {
+   return orderSettings;
+ };
+
+  var checkOrderSettings = function(name) {
+   if (window.localStorage[name]) {
+     orderSettings[name].checked = true;
+   } else {
+     orderSettings[name].checked = false;
+   }
+ };
+
+  var getUser = function(done) {
+   url = HOST.hostAdress + ':3000/member?token=' + accessFactory.getAccessToken();
+   $http.get(url)
+   .success(function(response) {
+     var userInfo = JSON.stringify(response.member);
+     return done(userInfo);
+   })
+   .error(function(err) {
+//      done({
+//        error: err,
+//      }, null);
+   });
+ };
 
   return {
-    getOrderSettings: function() {
-      return orderSettings;
-    },
-    checkOrderSettings: function(name) {
-      if (window.localStorage[name]) {
-        orderSettings[name].checked = true;
-      } else {
-        orderSettings[name].checked = false;
-      }
-    },
-  };
+   getUser: getUser,
+   getOrderSettings: getOrderSettings,
+   checkOrderSettings: checkOrderSettings,
+ };
 })
 
 .factory('SessionFactory', function()  {
@@ -124,12 +144,12 @@ angular.module('factories', ['config'])
     $http.get(url)
       .success(function(result) {
         console.log('success: ' + result);
-        events = result.data.result;
+        events = result.result;
         return done(events);
       })
       .error(function(err) {
         console.log('ERROR' + err);
-        return done(err.data.error);
+        return done(err.error);
       });
   };
 

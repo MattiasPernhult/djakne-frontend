@@ -7,10 +7,16 @@ angular.module('controllers', ['factories', 'config', ])
     ProfileFactory.checkOrderSettings('Takeaway');
     ProfileFactory.checkOrderSettings('Lactos');
 
+
     // Get ordersettings
     $scope.orderSettings = ProfileFactory.getOrderSettings();
 
   });
+  ProfileFactory.getUser(function(data) {
+    $scope.user = JSON.parse(data);
+    console.log($scope.user);
+  });
+
   $scope.logout = function() {
     $state.go('login');
   };
