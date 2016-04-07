@@ -313,7 +313,6 @@ angular.module('controllers', ['factories', 'config', ])
     var message = '';
     var takeaway = false;
     var comment = document.getElementById('comment').value;
-
     if ($scope.orderSettings.Lactos.checked) {
       message += 'Laktosfritt: Ja';
     }
@@ -322,7 +321,7 @@ angular.module('controllers', ['factories', 'config', ])
     }
     if (comment) {
       if (message) {
-        message += '\n ' + comment;
+        message += '. ' + comment;
       } else {
         message += comment;
       }
