@@ -7,7 +7,7 @@
   </ion-nav-buttons>
   <ion-content overflow-scroll="true" ng-style="{ 'background-image': 'url(img/menu.png)' }">
     <!-- Favorites -->
-    <div class="menuCard item-expand active margin" ng-show="userFavorites.length > 0">
+    <div class="menuCard item-expand active margin padding" ng-show="userFavorites.length > 0">
       <ion-list>
         <h3 class="menuTitle favourites">Favoriter</h3>
         <ion-item class="product padding" ng-repeat="item in userFavorites" ng-click="$event.stopPropagation();">

@@ -35,8 +35,6 @@
             <span class="input-label"><h3>Meddelande:</h3></span>
             <input type="text" id="comment" placeholder="Skriv ytterligare önskemål..">
         </label>
-        <!-- <ion-toggle ng-model="takeaway.checked" ng-checked="takeaway.checked"><h3>{{takeaway.name}}</h3></ion-toggle> -->
-        <!-- <ion-toggle ng-model="lactos.checked" ng-checked="lactos.checked"><h3>{{lactos.name}}</h3></ion-toggle> -->
         <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked"><h3>{{item.name}}</h3></ion-toggle>
       </form>
       <div class="cart-total-container">

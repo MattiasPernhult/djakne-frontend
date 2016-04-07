@@ -10,7 +10,7 @@ angular.module('controllers', ['factories', 'config', ])
 
     // Get ordersettings
     $scope.orderSettings = ProfileFactory.getOrderSettings();
-
+    console.log($scope.orderSettings);
   });
   ProfileFactory.getUser(function(data) {
     $scope.user = JSON.parse(data);
@@ -145,7 +145,13 @@ angular.module('controllers', ['factories', 'config', ])
 
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory) {
-
+  $scope.$on('$ionicView.enter', function() {
+      ProfileFactory.checkOrderSettings('Takeaway');
+      ProfileFactory.checkOrderSettings('Lactos');
+      // Get ordersettings
+      $scope.orderSettings = ProfileFactory.getOrderSettings();
+      console.log($scope.orderSettings);
+    });
   var push = PushNotification.init({
     android: {
       senderID: '104492237304',
@@ -317,7 +323,6 @@ angular.module('controllers', ['factories', 'config', ])
     var message = '';
     var takeaway = false;
     var comment = document.getElementById('comment').value;
-
     if ($scope.orderSettings.Lactos.checked) {
       message += 'Laktosfritt: Ja';
     }
@@ -326,7 +331,7 @@ angular.module('controllers', ['factories', 'config', ])
     }
     if (comment) {
       if (message) {
-        message += '\n ' + comment;
+        message += '. ' + comment;
       } else {
         message += comment;
       }
@@ -430,11 +435,14 @@ angular.module('controllers', ['factories', 'config', ])
       }
     );
     $scope.signUp = function() {
-      var url = HOST.hostAdress + ':4000/events/register' + '/' + $scope.chosenEvent._id +
-      '?token=' + accessFactory.getAccessToken();
-      console.log('URL till signup: ' + url);
-      console.log('accessToken : ' + accessFactory.getAccessToken());
-      $http.post(url, {})
+      var url = HOST.hostAdress + ':4000/events/register/' + $scope.chosenEvent._id;
+      var body = {
+        token: accessFactory.getAccessToken(),
+      };
+      // console.log('URL till signup: ' + url);
+      // console.log('accessToken : ' + accessFactory.getAccessToken());
+      console.log(url);
+      $http.post(url, body)
         .success(function(data, status, headers, config) {
           console.log('SUCCESS data: ' + data);
         })

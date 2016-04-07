@@ -31,8 +31,9 @@ angular.module('factories', ['config'])
    },
  };
   var getOrderSettings = function() {
-   return orderSettings;
- };
+    console.log(orderSettings);
+    return orderSettings;
+  };
 
   var checkOrderSettings = function(name) {
    if (window.localStorage[name]) {
