@@ -33,7 +33,7 @@ angular.module('controllers', ['factories', 'config', ])
 })
 
 .controller('HomeController', function($scope, CoffeeFactory, $http, HOST,
-    accessFactory, $ionicModal, MembersFactory) {
+    accessFactory, $ionicModal, MembersFactory, $cordovaToast) {
 
     CoffeeFactory.getCoffee(function(data) {
       console.log(data);
@@ -72,9 +72,19 @@ angular.module('controllers', ['factories', 'config', ])
       $http.put(url, rating)
         .success(function(res) {
           console.log(res);
+          $cordovaToast.showLongBottom('Ditt resultat har skickats').then(function(success) {
+            // success
+          }, function(error) {
+            // error
+          });
         })
         .error(function(err) {
           console.log(err);
+          $cordovaToast.showLongBottom(err.result).then(function(success) {
+            // success
+          }, function(error) {
+            // error
+          });
         });
     };
 

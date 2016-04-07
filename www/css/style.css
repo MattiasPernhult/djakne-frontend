@@ -342,6 +342,22 @@ ion-slide p {
   font-weight: 600;
 }
 
+.homeBackground {
+  height: 200px;
+}
+
+.homeLogo {
+  font-weight: bold;
+  color: white;
+}
+
+#checkedIn {
+  margin-top: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
 #overflowingContent {
   width: -webkit-max-content;
   width: max-content;
@@ -351,6 +367,8 @@ ion-slide p {
   display:block;
   float:left;
   padding: 3px;
+  margin-top: 100px;
+  background: none!important;
 }
 
 #homeAvatar {
@@ -503,6 +521,19 @@ ion-slide p {
  }
 
 /* Testkod för Social-tabben (event branch) */
+
+.item.activated {
+  background-color: rgba(000, 000, 000, 0.4);
+}
+
+.co-work {
+  margin-bottom: 0px!important;
+}
+
+.events {
+  margin-bottom: 0px;
+  border-bottom: 1px solid #E2E2E2!important;
+}
 
  .card h2 {
    font-size: 20px;

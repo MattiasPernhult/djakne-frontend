@@ -1,15 +1,21 @@
 <ion-view view-title="Djäkne">
   <ion-content class="home">
-    <div>
-      <h5 class="text-center  ">Incheckade personer på Kaffebaren</h5>
-      <ion-scroll direction="x">
-        <div id="overflowingContent">
-          <div class="people" ng-repeat="member in members" ng-click="openModal(member)">
-            <img id="homeAvatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+
+    <div class="homeBackground text-center"  style="background-image: url(./img/cowork.jpg)">
+      <h1 class="homeLogo">Djäkne</h1>
+      <h3 class="homeLogo">Startup Studio</h3>
+      <h4 id="checkedIn">@Kaffebaren</h4>
+      <div class="content">
+        <ion-scroll direction="x">
+          <div id="overflowingContent">
+            <div class="people" ng-repeat="member in members" ng-click="openModal(member)">
+              <img id="homeAvatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+            </div>
           </div>
-        </div>
-      </ion-scroll>
-  </div>
+        </ion-scroll>
+      </div>
+    </div>
+
 
     <div class="list card">
       <h1>Veckans Kaffe</h1>
