@@ -118,11 +118,11 @@ angular.module('controllers', ['factories', 'config', ])
         console.log(err);
       } else {
         console.log(data);
-        $scope.members = [];
-        for (var i = 0; i < data.members.length; i += 2) {
-          $scope.members.push(data.members.slice(i, i + 2));
-        }
-        // $scope.members = data.members;
+        // $scope.members = [];
+        // for (var i = 0; i < data.members.length; i += 2) {
+        //   $scope.members.push(data.members.slice(i, i + 2));
+        // }
+        $scope.members = data.members;
       }
     });
   })
