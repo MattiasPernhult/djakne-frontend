@@ -18,30 +18,48 @@ angular.module('factories', ['config'])
   };
 })
 
-.factory('ProfileFactory', function() {
+.factory('ProfileFactory', function(HOST, $http, accessFactory) {
+  var url;
   var orderSettings = {
-    Takeaway: {
-      name: 'Takeaway',
-      checked: 'false',
-    },
-    Lactos: {
-      name: 'Lactos',
-      checked: 'false',
-    },
+   Takeaway: {
+     name: 'Takeaway',
+     checked: 'false',
+   },
+   Lactos: {
+     name: 'Lactos',
+     checked: 'false',
+   },
+ };
+  var getOrderSettings = function() {
+    console.log(orderSettings);
+    return orderSettings;
   };
 
+  var checkOrderSettings = function(name) {
+   if (window.localStorage[name]) {
+     orderSettings[name].checked = true;
+   } else {
+     orderSettings[name].checked = false;
+   }
+ };
+
+  var getUser = function(done) {
+   url = HOST.hostAdress + ':3000/member?token=' + accessFactory.getAccessToken();
+   $http.get(url)
+   .success(function(response) {
+     var userInfo = JSON.stringify(response.member);
+     return done(userInfo);
+   })
+   .error(function(err) {
+     console.log(err);
+   });
+ };
+
   return {
-    getOrderSettings: function() {
-      return orderSettings;
-    },
-    checkOrderSettings: function(name) {
-      if (window.localStorage[name]) {
-        orderSettings[name].checked = true;
-      } else {
-        orderSettings[name].checked = false;
-      }
-    },
-  };
+   getUser: getUser,
+   getOrderSettings: getOrderSettings,
+   checkOrderSettings: checkOrderSettings,
+ };
 })
 
 .factory('SessionFactory', function()  {
@@ -315,8 +333,9 @@ angular.module('factories', ['config'])
           // alert(JSON.stringify(res));
         }).error(function(err) {
           // alert('Something went wrong there, try again');
-          alert('error');
-          alert(JSON.stringify(err));
+          // alert('error');
+          // alert(JSON.stringify(err));
+          console.log(err);
           $cordovaToast.showLongBottom('Problem med order').then(function(success) {
             // success
           }, function(error) {

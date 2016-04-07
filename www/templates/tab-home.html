@@ -1,5 +1,16 @@
 <ion-view view-title="Djäkne">
   <ion-content class="home">
+    <div>
+      <h5 class="text-center  ">Incheckade personer på Kaffebaren</h5>
+      <ion-scroll direction="x">
+        <div id="overflowingContent">
+          <div class="people" ng-repeat="member in members" ng-click="openModal(member)">
+            <img id="homeAvatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+          </div>
+        </div>
+      </ion-scroll>
+  </div>
+
     <div class="list card">
       <h1>Veckans Kaffe</h1>
       <h3>{{rating.title}}</h3>
@@ -13,16 +24,7 @@
       <h3>{{rating.startDate | date:'V.ww'}}</h3>
       <h5>Kaffe från {{rating.title}}</h3>
       <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
-        <button class="button button-full button" ng-click="send()">Skicka</button>
-    </div>
-
-    <div class="row" ng-repeat="member in members">
-      <div class="col col-50" ng-repeat="eachMember in member">
-        <div ng-click="openModal(eachMember)" class="item item-avatar">
-          <img ng-src="data:image/jpeg;base64,{{eachMember.image}}"></img>
-          <h2>{{eachMember.firstName}}</h2>
-        </div>
-      </div>
+        <button class="button button-block button-dark" ng-click="send()">Skicka</button>
     </div>
 
     <script id="modal.html" type="text/ng-template">

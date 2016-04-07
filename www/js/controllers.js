@@ -7,10 +7,16 @@ angular.module('controllers', ['factories', 'config', ])
     ProfileFactory.checkOrderSettings('Takeaway');
     ProfileFactory.checkOrderSettings('Lactos');
 
+
     // Get ordersettings
     $scope.orderSettings = ProfileFactory.getOrderSettings();
-
+    console.log($scope.orderSettings);
   });
+  ProfileFactory.getUser(function(data) {
+    $scope.user = JSON.parse(data);
+    console.log($scope.user);
+  });
+
   $scope.logout = function() {
     $state.go('login');
   };
@@ -112,11 +118,11 @@ angular.module('controllers', ['factories', 'config', ])
         console.log(err);
       } else {
         console.log(data);
-        $scope.members = [];
-        for (var i = 0; i < data.members.length; i += 2) {
-          $scope.members.push(data.members.slice(i, i + 2));
-        }
-        // $scope.members = data.members;
+        // $scope.members = [];
+        // for (var i = 0; i < data.members.length; i += 2) {
+        //   $scope.members.push(data.members.slice(i, i + 2));
+        // }
+        $scope.members = data.members;
       }
     });
   })
@@ -129,7 +135,13 @@ angular.module('controllers', ['factories', 'config', ])
 
 .controller('ProductController', function($scope, $state, $http, HOST, accessFactory, Cart,
   MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory) {
-
+  $scope.$on('$ionicView.enter', function() {
+      ProfileFactory.checkOrderSettings('Takeaway');
+      ProfileFactory.checkOrderSettings('Lactos');
+      // Get ordersettings
+      $scope.orderSettings = ProfileFactory.getOrderSettings();
+      console.log($scope.orderSettings);
+    });
   var push = PushNotification.init({
     android: {
       senderID: '104492237304',
@@ -301,7 +313,6 @@ angular.module('controllers', ['factories', 'config', ])
     var message = '';
     var takeaway = false;
     var comment = document.getElementById('comment').value;
-
     if ($scope.orderSettings.Lactos.checked) {
       message += 'Laktosfritt: Ja';
     }
@@ -310,7 +321,7 @@ angular.module('controllers', ['factories', 'config', ])
     }
     if (comment) {
       if (message) {
-        message += '\n ' + comment;
+        message += '. ' + comment;
       } else {
         message += comment;
       }
@@ -482,12 +493,6 @@ angular.module('controllers', ['factories', 'config', ])
           height: 0,
           color: '#000',
         },
-        title: {
-          color: '#FFFFFF',
-          showPageTitle: true,
-          staticText: 'Login',
-        },
-        backButtonCanClose: true,
 
       }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
         console.error(e.message);

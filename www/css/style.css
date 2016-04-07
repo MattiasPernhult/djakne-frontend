@@ -1,4 +1,3 @@
-/* Empty. Add your own CSS if you like */
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
 
 
@@ -32,7 +31,9 @@ div.scroll{
   max-width: 45px !important;
   line-height: 0 !important;
   margin: 0 10px;
+  color: black !important;
 }
+
 
 #add {
   float:right;
@@ -68,7 +69,7 @@ ion-view {
 /* Profile */
 
 .hero{
-    height: 230px;
+    height: 300px;
 
 }
 
@@ -78,17 +79,30 @@ ion-view {
 
 #iconSettings {
   display:flex;
-  margin-top: 10px 0;
-  background-color: #e42112;
+  padding: 5px 0;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 238px;
+  opacity: 0.7;
 }
 
 #iconSettings .icon {
   color: white;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 #iconSettings a {
   color: white;
+}
+
+#iconSettings a:first-child {
+  border-right: 1px solid #ccc;
+}
+
+#iconSettings a:last-child {
+  border-left: 1px solid #ccc;
 }
 
 .content {
@@ -100,29 +114,31 @@ ion-view {
 }
 
 .content h4 {
-  font-size: 14px;
+  font-size: 11px;
 }
 
 #profileTitle {
   color: black;
+  font-size: 28px;
 }
 
 .avatar {
-  height: 88px;
-  width: 88px;
+  height: 100px;
+  width: 100px;
   background-position: center;
-  border: 1px solid rgba(255,255,255,.8);
   border-radius: 50%;
   display: inline-block;
   margin-bottom: 10px;
   position: relative;
   left: auto;
   background-size: contain;
+  box-shadow: 0 0 2px 1px;
 }
 
 /* MENU */
 
 /* Product Information */
+
 
 .product-title{
   font-weight: 400 !important;
@@ -321,11 +337,28 @@ ion-slide p {
 
 .home p {
   font-family: 'Alegreya Sans', sans-serif;
-  text-align: center;
+  text-align: justify;;
   color: #222222;
   padding: 12px;
   font-size: 18px;
   font-weight: 600;
+}
+
+#overflowingContent {
+  width: -webkit-max-content;
+  width: max-content;
+}
+
+.people {
+  display:block;
+  float:left;
+  padding: 3px;
+}
+
+#homeAvatar {
+  border-radius: 20%;
+  width: 50px;
+  height: 50px;
 }
 
 
@@ -371,7 +404,7 @@ ion-slide p {
 }
 
 .ion-bag {
-  color: white!important;
+  color: black!important;
 }
 
 .cart-icon {
@@ -388,12 +421,15 @@ ion-slide p {
 }
 
 .toggleSpecials:last-child{
-  border-top-style: solid;
-  border-radius: 0.1px;
+  border-top: 1px solid #e5e5e5;
 }
 
 .toggleSpecials{
   box-shadow: none !important;
+}
+
+.toggleSpecials h3 {
+  margin-left: 10px;
 }
 /* Product total - cart template */
 

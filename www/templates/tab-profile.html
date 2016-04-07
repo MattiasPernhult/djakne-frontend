@@ -2,33 +2,28 @@
   <ion-nav-buttons side="right">
       <button class="button icon-left ion-log-out button-stable" ng-click="logout()">Logout</button>
   </ion-nav-buttons>
-    <ion-content>
-        <div class="hero text-center">
-            <div class="content">
-                <div class="avatar" style="background-image: url('img/profile.jpg');"></div>
-                <h3><a id="profileTitle">Eric Eriksson</a></h3>
-                <h4>Awesome, awesome and awesome</h4>
-            </div>
-        </div>
-        <div id="iconSettings">
-            <a ui-sref="app.activity" class="tab-item">
-                <i class="icon ion-arrow-graph-up-right"></i> Statistics
-            </a>
-            <a ui-sref="app.friends" class="tab-item">
-                <i class="icon ion-gear-a"></i> Settings
-            </a>
-            <a ui-sref="app.gallery" class="tab-item">
-                <i class="icon ion-clipboard"></i> Bookings
-            </a>
-        </div>
-        <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
-    </ion-content>
-</ion-view>
-
-
-<!-- <ion-view view-title="Profile">
-  <ion-content class="profile">
-<<<<<<< HEAD
-    <ion-toggle ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'1')"><h3>{{item.name}}</h3></ion-toggle>
+  <ion-content>
+    <div class="hero text-center" style="background-image: url(./img/test.jpg)">
+      <div class="content">
+        <div class="avatar" style="background-image: url(data:image/gif;base64,{{user.image}}) ;"></div>
+        <h3><a id="profileTitle">{{user.firstName}} {{user.lastName}}</a></h3>
+        <h4>{{user.headline}}</h4>
+      </div>
+    </div>
+    <div id="iconSettings">
+      <a class="tab-item">
+        <i class="icon ion-gear-a"></i> Allmänt
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-clipboard"></i> Bokningar
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-arrow-graph-up-right"></i> Statistik
+      </a>
+    </div>
+    <div>
+      <!-- Div for gear -->
+      <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
+    </div>
   </ion-content>
-</ion-view> -->
+</ion-view>
