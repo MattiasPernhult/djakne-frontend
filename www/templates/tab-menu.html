@@ -10,7 +10,7 @@
     <div class="menuCard item-expand active margin" ng-show="userFavorites.length > 0">
       <ion-list>
         <h3 class="menuTitle favourites">Favoriter</h3>
-        <ion-item class="product" ng-repeat="item in userFavorites" ng-click="$event.stopPropagation();">
+        <ion-item class="product padding" ng-repeat="item in userFavorites" ng-click="$event.stopPropagation();">
           <div class="productInfo">
             <h2 class="product-title">{{item.name}}</p>
             <p class="product-price">{{item.price}} kr</p>
@@ -24,7 +24,7 @@
       </ion-list>
     </div>
     <!-- Menu items -->
-  <div ng-repeat="list in products" ng-click="expand(list)" class="menuCard margin"  ng-class="list.show ? 'item-expand active' : 'item-expand inactive'">
+  <div ng-repeat="list in products" ng-click="expand(list)" class="menuCard margin padding"  ng-class="list.show ? 'item-expand active' : 'item-expand inactive'">
     <ion-list>
       <h3 class="menuTitle text-center">{{list[0].category}}</h3>
       <ion-item ng-init="isActive(item)" class="product" ng-show="list.show" ng-repeat="item in list" ng-click="$event.stopPropagation();">
