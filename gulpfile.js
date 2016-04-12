@@ -32,17 +32,6 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-var exitOnJSHintError = map(function(file, cb) {
-  if (!file.jshint.success) {
-    notify({
-      title: 'JSHINT error',
-      message: 'You have JSHINT errors in file: ' + file +
-      '\nPlease fix them before commiting',
-    });
-    process.exit(1);
-  }
-});
-
 gulp.task('pre-commit', guppy.src('pre-commit', function(files) {
   var gulpFilter = require('gulp-filter');
   var jshint = require('gulp-jshint');
@@ -52,7 +41,7 @@ gulp.task('pre-commit', guppy.src('pre-commit', function(files) {
     .pipe(filter)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter(stylish))
-    .pipe(exitOnJSHintError)
+    .pipe(jshint.reporter('fail'))
     .pipe(jscs('.jscsrc'))
     .pipe(notify({
       title: 'Git commit',
