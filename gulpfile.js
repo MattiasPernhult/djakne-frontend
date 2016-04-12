@@ -9,7 +9,6 @@ var sh = require('shelljs');
 var notify = require('gulp-notify');
 var jscs = require('gulp-jscs');
 var guppy = require('git-guppy')(gulp);
-var map = require('map-stream');
 
 var paths = {
   sass: ['./scss/**/*.scss'],

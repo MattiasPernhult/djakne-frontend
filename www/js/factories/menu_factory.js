@@ -24,7 +24,6 @@ factories.factory('MenuFactory', function($http, accessFactory, HOST, httpServic
 
   var getProducts = function(done) {
     var url = HOST.hostAdress + ':4000/menu/categories';
-    var products;
     if (products) {
       return done(products);
     }
