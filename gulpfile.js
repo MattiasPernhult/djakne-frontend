@@ -41,14 +41,10 @@ gulp.task('pre-commit', guppy.src('pre-commit', function(files) {
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'))
-    .pipe(notify({
-      title: 'JSHINT',
-      message: 'JSHINT Passed. Lucky bastard...',
-    }))
     .pipe(jscs('.jscsrc'))
     .pipe(notify({
-      title: 'JSCS',
-      message: 'JSCS Passed. Lucky bastard...',
+      title: 'Git commit',
+      message: 'JSCS and JSHINT passed, so your commit was successful. Lucky bastard...',
     }));
 }));
 
