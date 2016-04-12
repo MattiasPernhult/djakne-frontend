@@ -27,7 +27,13 @@
     "commitizen": "^2.5.0",
     "cz-conventional-changelog": "^1.1.5",
     "git-guppy": "^1.2.1",
+    "gulp": "^3.9.1",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-notify-growl": "^1.0.2",
     "gulp-util": "^2.2.14",
+    "jshint-stylish": "^2.1.0",
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [

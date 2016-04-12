@@ -6,6 +6,8 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var notify = require('gulp-notify');
+var jscs = require('gulp-jscs');
 var guppy = require('git-guppy')(gulp);
 
 var paths = {
@@ -36,9 +38,14 @@ gulp.task('pre-commit', guppy.src('pre-commit', function(files) {
   var filter = gulpFilter(['*.js', '!www/js/app.js', '!www/js/ng-cordova.min.js']);
   return gulp.src(files)
     .pipe(filter)
-    .pipe(jshint())
+    .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter(stylish))
-    .pipe(jshint.reporter('fail'));
+    .pipe(jshint.reporter('fail'))
+    .pipe(jscs('.jscsrc'))
+    .pipe(notify({
+      title: 'JSCS',
+      message: 'JSCS Passed. Let it fly!',
+    }));
 }));
 
 gulp.task('watch', function() {
