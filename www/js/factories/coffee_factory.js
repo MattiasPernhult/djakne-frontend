@@ -2,7 +2,12 @@ factories.factory('CoffeeFactory', function(HOST, httpService) {
   var coffee;
 
   var getCoffee = function(done) {
-    var url = HOST.hostAdress + ':4000/coffee/current';
+    var url;
+    if (window.cordova) {
+      url = HOST.hostAdress + ':4000/coffee/current';
+    } else {
+      url = '/data/coffee_current.json';
+    }
 
     if (coffee) {
       return done(coffee);

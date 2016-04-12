@@ -3,7 +3,7 @@ function($scope, $state, $http, HOST, accessFactory, Cart,
 MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory,
 notificationService, httpService) {
 
-  if (cordova.window) {
+  if (window.cordova) {
     var push = PushNotification.init({
       android: {
         senderID: '104492237304',

@@ -4,7 +4,12 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
   var oneEvent;
 
   var getEvents = function(done) {
-    var url = HOST.hostAdress + ':4000/events';
+    var url;
+    if (window.cordova) {
+      url = HOST.hostAdress + ':4000/events';
+    } else {
+      url = '/data/events.json';
+    }
 
     httpService.get(url, function(err, result) {
       if (err) {

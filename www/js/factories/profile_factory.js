@@ -1,5 +1,4 @@
 factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpService) {
-  var url;
   var orderSettings = {
     Takeaway: {
       name: 'Takeaway',
@@ -24,7 +23,12 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
   };
 
   var getUser = function(done) {
-    url = HOST.hostAdress + ':3000/member?token=' + accessFactory.getAccessToken();
+    var url;
+    if (window.cordova) {
+      url = HOST.hostAdress + ':3000/member?token=' + accessFactory.getAccessToken();
+    } else {
+      url = '/data/member.json';
+    }
     httpService.get(url, function(err, result)  {
       if (!err) {
         var userInfo = JSON.stringify(result.member);

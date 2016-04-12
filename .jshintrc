@@ -13,7 +13,9 @@
     "controllers": false,
     "factories": false,
     "services": false,
-    "alert": false
+    "alert": false,
+    "PushNotification": false,
+    "document": false
   },
   "camelcase": true,
   "curly": true,

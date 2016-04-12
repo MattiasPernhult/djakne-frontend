@@ -23,7 +23,12 @@ factories.factory('MenuFactory', function($http, accessFactory, HOST, httpServic
   };
 
   var getProducts = function(done) {
-    var url = HOST.hostAdress + ':4000/menu/categories';
+    var url;
+    if (window.cordova) {
+      url = HOST.hostAdress + ':4000/menu/categories';
+    } else {
+      url = '/data/menu_categories.json';
+    }
     if (products) {
       return done(products);
     }
@@ -32,7 +37,7 @@ factories.factory('MenuFactory', function($http, accessFactory, HOST, httpServic
       if (err) {
         return done(result.data);
       }
-      products = result.data.products;
+      products = result.products;
       return done(products);
     });
   };

@@ -1,0 +1,29 @@
+{
+  "result": [{
+    "__v": 0,
+    "_id": "5703727633a839ef0ceaa5a1",
+    "attendee": [],
+    "author": "Anna",
+    "date": "2016-06-25T06:00:00.000Z",
+    "text": "Vi kör en AW i kaffebaren på torsdag kl 18.30.",
+    "title": "Lunch",
+    "attendants": ["691"]
+  }, {
+    "__v": 0,
+    "_id": "57075e13520f96ae2cb39672",
+    "author": "Felix Ahlbin",
+    "date": "2016-05-10T06:00:00.000Z",
+    "text": "Ja vad kan detta innebära",
+    "title": "Hackaton",
+    "attendants": []
+  }, {
+    "__v": 0,
+    "_id": "57057e7a7932597d06166500",
+    "attendee": [],
+    "author": "Carl",
+    "date": "2016-05-06T07:00:00.000Z",
+    "text": "Fotboll någonstans",
+    "title": "Fotboll",
+    "attendants": []
+  }]
+}

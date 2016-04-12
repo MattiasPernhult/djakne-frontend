@@ -2,28 +2,32 @@ services.service('httpService', function($http) {
 
   var post = function(url, postBody, afterCall) {
     $http.post(url, postBody)
-    .success(handleSuccess)
-    .error(handleError);
+    .success(function(result) {
+      afterCall(null, result);
+    })
+    .error(function(err) {
+      afterCall(err, null);
+    });
   };
 
   var put = function(url, putBody, afterCall) {
     $http.put(url, putBody)
-    .success(handleSuccess)
-    .error(handleError);
+    .success(function(result) {
+      afterCall(null, result);
+    })
+    .error(function(err) {
+      afterCall(err, null);
+    });
   };
 
   var get = function(url, afterCall) {
     $http.get(url)
-    .success(handleSuccess)
-    .error(handleError);
-  };
-
-  var handleSuccess = function(result, afterCall) {
-    afterCall(null, result);
-  };
-
-  var handleError = function(err, afterCall) {
-    afterCall(err, null);
+    .success(function(result) {
+      afterCall(null, result);
+    })
+    .error(function(err) {
+      afterCall(err, null);
+    });
   };
 
   return {
