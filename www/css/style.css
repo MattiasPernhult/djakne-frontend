@@ -726,10 +726,6 @@ button#attend {
   opacity: 0.90;
 
 }
- .box.addEvent {
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
 
  .box.eventDescription {
   padding-bottom: 30px;
@@ -746,4 +742,15 @@ button#attend {
 
 .cardDescs {
   padding-right: 2px;
+}
+
+
+#addEventForm{
+  background-color: grey;
+  padding: 3%;
+}
+
+textarea{
+  resize: none;
+  background-color: lightgrey;
 }
