@@ -7,7 +7,8 @@
     "date": "2016-06-25T06:00:00.000Z",
     "text": "Vi kör en AW i kaffebaren på torsdag kl 18.30.",
     "title": "Lunch",
-    "attendants": ["691"]
+    "attendants": "691",
+    "location": "TGI fridays"
   }, {
     "__v": 0,
     "_id": "57075e13520f96ae2cb39672",
