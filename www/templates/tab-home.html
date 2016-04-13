@@ -1,7 +1,6 @@
 <ion-view view-title="Djäkne">
   <ion-content class="home">
-
-    <ion-slide-box class="slider home" auto-play="false" does-continue="true" on-slide-changed="slideChanged(index)">
+    <ion-slide-box class="slider home" show-pager="false" does-continue="true" on-slide-changed="slideChanged(index)">
       <ion-slide class="login text-center" ng-repeat="image in gallery" ng-style="{ 'background-image': 'url(' + image.url + ')' }">
         <div class="text-login-container">
 
@@ -65,13 +64,21 @@
     </div>
 
     <ul class="flex-container djakne">
-      <a class="item card">Events</a>
-      <li class="item card">News</li>
+      <li class="item card">
+        <img class="whatsOn" src="img/djakne.png">
+      </li>
+      <li class="item card">
+        <img class="whatsOn" src="img/menu.png">
+      </li>
     </ul>
 
     <ul class="flex-container djakne">
-      <a class="item card">News</a>
-      <li class="item card">Join us!</li>
+      <li class="item card">
+        <img class="whatsOn" src="img/djakne.png">
+      </li>
+      <li class="item card">
+        <img class="whatsOn" src="img/menu.png">
+      </li>
     </ul>
 
 
