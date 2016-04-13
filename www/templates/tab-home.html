@@ -1,27 +1,30 @@
 <ion-view view-title="Djäkne">
   <ion-content class="home">
 
-    <div class="homeBackground text-center"  style="background-image: url(./img/cowork.jpg)">
-      <h1 class="homeLogo">Djäkne</h1>
-      <h3 class="homeLogo">Startup Studio</h3>
-      <h4 id="checkedIn">@Kaffebaren</h4>
-      <div class="content">
-        <ion-scroll direction="x">
-          <div id="overflowingContent">
-            <div class="people" ng-repeat="member in members" ng-click="openModal(member)">
-              <img id="homeAvatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
-            </div>
+    <ion-slide-box class="slider home" auto-play="false" does-continue="true" on-slide-changed="slideChanged(index)">
+      <ion-slide class="login text-center" ng-repeat="image in gallery" ng-style="{ 'background-image': 'url(' + image.url + ')' }">
+        <div class="text-login-container">
+
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <div>
+      <ion-scroll direction="x">
+        <div id="overflowingContent">
+          <div class="people" ng-repeat="member in members" ng-click="openModal(member)">
+            <img id="homeAvatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
           </div>
-        </ion-scroll>
-      </div>
+        </div>
+      </ion-scroll>
     </div>
 
-
+<!--
     <div class="list card">
       <h1>Veckans Kaffe</h1>
       <h3>{{rating.title}}</h3>
       <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
-      <img ng-src="{{rating.image}}"></img>
+      <img id="coffeeImage" ng-src="{{rating.image}}"></img>
       <p>{{rating.description}}</p>
     </div>
 
@@ -32,6 +35,7 @@
       <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
         <button class="button button-block button-dark" ng-click="send()">Skicka</button>
     </div>
+-->
 
     <script id="modal.html" type="text/ng-template">
       <ion-modal-view>
@@ -54,5 +58,25 @@
         </ion-content>
       </ion-modal-view>
     </script>
+
+    <div class="box co-work">
+      <h4 class="co-title">Aktuellt @ Djäkne</h4>
+    </div>
+
+    <ul class="flex-container djakne">
+      <a class="item card">Veckans kaffe</a>
+      <li class="item card">Veckans baguette</li>
+    </ul>
+
+    <div class="box co-work">
+      <h4 class="co-title">Co-working</h4>
+    </div>
+
+    <ul class="flex-container">
+      <li class="item card home">Medlemskap</li>
+      <li class="item card home">Nyheter</li>
+      <li class="item card home">Events</li>
+    </ul>
+
   </ion-content>
 </ion-view>

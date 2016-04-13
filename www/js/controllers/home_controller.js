@@ -1,5 +1,5 @@
 controllers.controller('HomeController', function($scope, CoffeeFactory, $http, HOST,
-  accessFactory, $ionicModal, MembersFactory, httpService, toastService) {
+  accessFactory, $ionicModal, MembersFactory, httpService, toastService, $ionicSlideBoxDelegate) {
 
   $scope.votes = 2;
   $scope.body = {};
@@ -72,4 +72,30 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   $scope.gotoLinkedIn = function() {
     window.open($scope.member.linkedInProfile, '_system');
   };
+
+  $scope.gallery = [{
+     url: 'img/coffeeData.jpeg',
+     title: 'Stay Connected',
+     desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+   }, {
+     url: 'img/djakne.png',
+     title: 'Enjoy great coffee',
+     desc: 'Donec dapibus, magna quis tincidunt finibus, tellus odio porttitor nisi.',
+   }, {
+     url: 'img/business1.jpeg',
+     title: 'Evolve and share',
+     desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+   }, ];
+
+  $scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+   };
+  $scope.previous = function() {
+     $ionicSlideBoxDelegate.previous();
+   };
+
+   // Called each time the slide changes
+   $scope.slideChanged = function(index) {
+     $scope.slideIndex = index;
+   };
 });
