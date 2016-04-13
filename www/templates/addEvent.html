@@ -14,22 +14,22 @@
 
     <div class="box addEvent">
 
-      <form ng-submit="sendPost()">
+      <form ng-submit="sendPost()" name="validEvent">
 
         <div class="list">
           <label class="item item-input item-stacked-label">
             <span class="input-label">Eventnamn</span>
-            <input type="text" placeholder="ex. Staff meeting" ng-model="event.title">
+            <input type="text" placeholder="ex. Staff meeting" ng-model="event.title" required>
           </label>
 
           <label class="item item-input item-stacked-label">
             <span class="input-label">Ditt namn</span>
-            <input type="text" placeholder="Kalle Kula" ng-model="event.author">
+            <input type="text" placeholder="Kalle Kula" ng-model="event.author" required>
           </label>
 
           <label class="item item-input item-stacked-label">
             <span class="input-label">Beskrivning</span>
-            <input type="text" placeholder="Beskriv ditt event" ng-model="event.text">
+            <input type="text" placeholder="Beskriv ditt event" ng-model="event.text" required>
           </label>
           <!--
         <label class="item item-input item-stacked-label">
@@ -45,14 +45,15 @@
 
           <label class="item item-input item-stacked-label">
             <span class="input-label">Datum och tid</span>
-            <input type="text" placeholder="2016-06-10 08:00" ng-model="event.date">
+            <input type="text" placeholder="2016-06-10 08:00" ng-model="event.date" required>
           </label>
 
         </div>
         <div class="text-center padding">
-          <button type="submit" name="name" class="button button-dark" id="cowork">
+          <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-dark" id="cowork">
             Lägg till event
           </button>
+          <p ng-hide="validEvent.$valid" ng-style="{color: 'red'}">Fyll i alla fält</p>
         </div>
     </div>
 
