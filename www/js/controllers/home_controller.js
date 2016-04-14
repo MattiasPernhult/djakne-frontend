@@ -5,6 +5,15 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   $scope.votes = 2;
   $scope.body = {};
 
+  $scope.doRefresh = function() {
+   MembersFactory.getMembers(function(err, data)  {
+     if (!err) {
+       $scope.members = data.members;
+     }
+   });
+   $scope.$broadcast('scroll.refreshComplete');
+ };
+
   $scope.ratingsObject = {
     iconOn: 'ion-ios-star',
     iconOff: 'ion-ios-star-outline',

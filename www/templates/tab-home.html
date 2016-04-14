@@ -1,6 +1,10 @@
 <ion-view view-title="Djäkne">
   <ion-content class="home">
 
+  <ion-refresher on-refresh="doRefresh()">
+
+  </ion-refresher>
+
   <ion-slide-box class="slider home" show-pager="false" auto-play="false" does-continue="false" on-slide-changed="slideChanged(index)">
   <ion-slide class="homeSlider" ng-style="{ 'background-image': 'url(' + currentCoffee.image + ')' }">
     <div class="slider-home-container text-center">
