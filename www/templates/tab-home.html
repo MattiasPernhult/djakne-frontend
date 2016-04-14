@@ -2,6 +2,10 @@
   <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
   <ion-content class="home">
 
+  <ion-refresher on-refresh="doRefresh()" disable-pulling-rotation="false">
+
+  </ion-refresher>
+
   <ion-slide-box class="slider home" show-pager="false" auto-play="false" does-continue="false" on-slide-changed="slideChanged(index)">
   <ion-slide class="homeSlider" ng-style="{ 'background-image': 'url(' + currentCoffee.image + ')' }">
     <div class="slider-home-container text-center">
@@ -95,30 +99,38 @@
 
 
     <div class="box co-work">
-      <h4 class="home-title">What's on @ Djäkne</h4>
+      <h4 class="home-title">Updates</h4>
     </div>
 
     <ul class="flex-container djakne">
       <li class="item card text">
-        <img class="whatsOn" src="img/Icons/event.png">
-        <h3>{{currentEvent.title}}</h3>
-
+        <!-- <img class="whatsOn" src="img/Icons/event_BlackNoBG.png"> -->
+        <h1>#Events</h1>
+        <h5>{{currentEvent.title}}</h5>
+        <p></p>
       </li>
-      <li class="item card">
-        <img class="whatsOn" src="img/Icons/news.png">
+      <li class="item card text">
+        <!-- <img class="whatsOn" src="img/Icons/news_BlackNoBG.png"> -->
+          <h1>#News</h1>
+        <h5>Nyhet</h5>
+        <p></p>
       </li>
     </ul>
 
     <ul class="flex-container djakne">
-      <li class="item card">
-        <img class="whatsOn" src="img/Icons/book.png">
+      <li class="item card text">
+        <!-- <img class="whatsOn" src="img/Icons/book_BlackNoBG.png"> -->
+          <h1>#Member</h1>
+        <h5>Available</h5>
+        <p></p>
       </li>
-      <li class="item card">
-        <img class="whatsOn" src="img/Icons/join.png">
+      <li class="item card text">
+        <!-- <img class="whatsOn" src="img/Icons/join_BlackNoBG.png"> -->
+          <h1>#Join us</h1>
+        <h5>How to!</h5>
+        <p></p>
       </li>
     </ul>
-
-
 
   </ion-content>
 </ion-view>

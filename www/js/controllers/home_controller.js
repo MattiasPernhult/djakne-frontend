@@ -1,10 +1,20 @@
 controllers.controller('HomeController', function($scope, CoffeeFactory, $http, HOST,
   accessFactory, $ionicModal, MembersFactory, httpService, toastService, $ionicSlideBoxDelegate,
-  EventFactory) {
+  EventFactory, $timeout) {
 
   $scope.votes = 2;
   $scope.body = {};
 
+  $scope.doRefresh = function() {
+    MembersFactory.getMembers(function(err, data)  {
+      if (!err) {
+        $timeout(function() {
+          $scope.members = data.members;
+          $scope.$broadcast('scroll.refreshComplete');
+        }, 1000);
+      }
+    });
+  };
   $scope.ratingsObject = {
     iconOn: 'ion-ios-star',
     iconOff: 'ion-ios-star-outline',
