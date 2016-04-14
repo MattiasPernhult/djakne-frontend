@@ -1,7 +1,7 @@
 <ion-view view-title="Djäkne">
   <ion-content class="home">
 
-  <ion-refresher on-refresh="doRefresh()">
+  <ion-refresher on-refresh="doRefresh()" disable-pulling-rotation="false">
 
   </ion-refresher>
 
@@ -71,19 +71,19 @@
     </script>
 
     <div class="box co-work">
-      <h4 class="home-title">What's on @ Djäkne</h4>
+      <h4 class="home-title">Updates</h4>
     </div>
 
     <ul class="flex-container djakne">
       <li class="item card text">
-        <img class="whatsOn" src="img/Icons/event.png">
-        <h2>Latest events</h2>
+        <!-- <img class="whatsOn" src="img/Icons/event_BlackNoBG.png"> -->
+        <h1>#Events</h1>
         <h5>{{currentEvent.title}}</h5>
         <p></p>
       </li>
       <li class="item card text">
-        <img class="whatsOn" src="img/Icons/news.png">
-        <h2>Latest news</h2>
+        <!-- <img class="whatsOn" src="img/Icons/news_BlackNoBG.png"> -->
+          <h1>#News</h1>
         <h5>Nyhet</h5>
         <p></p>
       </li>
@@ -91,20 +91,18 @@
 
     <ul class="flex-container djakne">
       <li class="item card text">
-        <img class="whatsOn" src="img/Icons/book.png">
-        <h2>Schedule</h2>
+        <!-- <img class="whatsOn" src="img/Icons/book_BlackNoBG.png"> -->
+          <h1>#Member</h1>
         <h5>Available</h5>
         <p></p>
       </li>
       <li class="item card text">
-        <img class="whatsOn" src="img/Icons/join.png">
-        <h2>Membership</h2>
+        <!-- <img class="whatsOn" src="img/Icons/join_BlackNoBG.png"> -->
+          <h1>#Join us</h1>
         <h5>How to!</h5>
         <p></p>
       </li>
     </ul>
-
-
 
   </ion-content>
 </ion-view>

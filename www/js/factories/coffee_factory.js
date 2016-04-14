@@ -16,6 +16,7 @@ factories.factory('CoffeeFactory', function(HOST, httpService) {
       if (err) {
         return done(err.error);
       }
+      alert(JSON.stringify(result));
       coffee = result.result;
       return done(coffee);
     });
