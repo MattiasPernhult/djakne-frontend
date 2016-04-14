@@ -9,18 +9,15 @@
     <ion-content ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo">
 
     <div class="box">
-    <h2 class="social-title">Events på Djäkne</h2>
+    <h2 class="social-title">Upcoming events</h2>
 
   </div>
 
-      <div class="text-center padding">
+      <!-- <div class="text-center padding">
         <button class="button button-dark" id="cowork" ui-sref="addEvent">Skapa event</button>
-      </div>
+      </div> -->
 
-      <div class="list card" ng-repeat="event in events">
-
-
-        <a class="item item-thumbnail-left"
+        <!-- <a class="item item-thumbnail-left"
            ui-sref="events_description"
            ng-click="setEvent(event)">
 
@@ -33,9 +30,27 @@
 
         </div>
 
-        </a>
+        </a> -->
+        <div class="card padding" ng-repeat="event in events">
+          <h4>{{ event.title }}</h4>
+          <h6>{{ event.date | date:'MM/dd/yyyy' }}</h6>
+          <hr>
+          <p>{{event.text}}</p>
+          <p ng-show="show" ng-if="{{event.attendants}}">Attendants: {{event.attendants}}</p>
+          <p ng-show="show">Location: {{event.location}}</p>
+          <button class="button button-small button-dark" id="cowork" ng-click="signUp()" ng-show="show"> Sign up</button>
+          <button class="button button-small button-clear" ng-click="show = !show" ng-show="!show">
+            See more
+          </button>
+          <button class="button button-small button-clear" ng-click="show = !show" ng-show="show">
+            See less
+          </button>
 
-      </div>
+
+        </ion-item>
+
+
+
 
   </ion-content>
 
