@@ -761,6 +761,7 @@ textarea{
 
 /* View events */
 
+
 .card.padding{
   width: 86%;
   margin-left: 7%;
@@ -794,7 +795,11 @@ textarea{
 
 #cowork{
   float: right;
-  display: block;
+  margin-top: -10px;
+}
+
+.larger {
+    font-size: larger;
 }
 
 .button.button-small.button-clear{
