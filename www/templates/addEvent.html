@@ -65,10 +65,10 @@
     <input type="email" placeholder="Email" ng-model="event.email" required>
   </label>
   <label class="item item-input">
-    <input type="text" placeholder="ex 2016-06-10" ng-model="event.date" required>
+    <button type="button" ng-click="openDatePicker()" name="button" ng-model="event.date">datum</button>
   </label>
   <label class="item item-input">
-    <input type="text" placeholder="ex 10:00" ng-model="event.time" required>
+    <input type="time" placeholder="ex 10:00" ng-model="event.time" required>
   </label>
  <div class="padding">
    <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-block addevent" id="cowork">

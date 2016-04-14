@@ -1,5 +1,6 @@
 controllers.controller('AddEventController',
-  function($scope, $http, HOST, EventFactory, $cordovaToast, httpService, toastService) {
+  function($scope, $http, HOST, EventFactory, $cordovaToast, httpService,
+    toastService, ionicDatePicker) {
 
     $scope.event = {};
 
@@ -23,4 +24,15 @@ controllers.controller('AddEventController',
         }
       });
     };
+
+    var ipObj1 = {
+        callback: function(val) {
+          console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+        },
+      };
+
+    $scope.openDatePicker = function() {
+      ionicDatePicker.openDatePicker(ipObj1);
+    };
+
   });

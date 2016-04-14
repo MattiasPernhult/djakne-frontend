@@ -1,5 +1,5 @@
-angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories', 'config',
-'ngCordova',])
+angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories'
+, 'config', 'ngCordova','ionic-datepicker',])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -17,7 +17,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, ionicDatePickerProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -121,6 +121,27 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       },
     },
   });
+
+
+  var datePickerObj = {
+    inputDate: new Date(),
+    setLabel: 'Set',
+    todayLabel: 'Today',
+    closeLabel: 'Close',
+    mondayFirst: false,
+    weeksList: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    monthsList: ['Ja','Feb', 'March', 'April', 'May', 'June', 'July', 'Aug',
+    'Sept', 'Oct', 'Nov', 'Dec',],
+    templateType: 'popup',
+    from: new Date(2012, 8, 1),
+    to: new Date(2018, 8, 1),
+    showTodayButton: true,
+    dateFormat: 'dd MMMM yyyy',
+    closeOnSelect: false,
+    disableWeekdays: [6],
+  };
+  ionicDatePickerProvider.configDatePicker(datePickerObj);
+
 
   // if none of the above states are matched, use this as the fallback
   if (window.cordova) {
