@@ -832,7 +832,7 @@ button#attend {
 
 .whatsOn {
   float: left;
-  margin-top: 10px!important;
-  height: 75px;
-  width: 75px;
+  margin-top: 20px!important;
+  height: 60px;
+  width: 60px;
 }

@@ -1,14 +1,14 @@
 <ion-view view-title="Djäkne">
   <ion-content class="home">
 
-    <ion-slide-box class="slider home" show-pager="false" auto-play="true" does-continue="false" on-slide-changed="slideChanged(index)">
-  <ion-slide class="homeSlider" ng-repeat="obj in sliderGallery" ng-style="{ 'background-image': 'url(' + obj.image + ')' }">
+  <ion-slide-box class="slider home" show-pager="false" auto-play="false" does-continue="false" on-slide-changed="slideChanged(index)">
+  <ion-slide class="homeSlider" ng-style="{ 'background-image': 'url(' + currentCoffee.image + ')' }">
     <div class="slider-home-container text-center">
       <div class="text-home-container">
         <!-- Obj title -->
-        <h1>{{obj.title}}</h1>
+        <h1>{{currentCoffee.title}}</h1>
         <!-- Obj text -->
-        <p>{{ obj.text | limitTo: 45 }}{{obj.text.length > 20 ? ' Läs mer..' : ''}}</p>
+        <p>{{ currentCoffee.text | limitTo: 45 }}{{obj.text.length > 20 ? ' Läs mer..' : ''}}</p>
       </div>
     </div>
   </ion-slide>
@@ -71,22 +71,22 @@
     </div>
 
     <ul class="flex-container djakne">
-      <li class="item card">
-        <img class="whatsOn" src="img/Icons/event.png">
-        <h3>{{sliderGallery[0].title}}</h3>
+      <li class="item card text">
+        <img class="whatsOn" src="img/Icons/event_Black.png">
+        <h3>{{currentEvent.title}}</h3>
 
       </li>
       <li class="item card">
-        <img class="whatsOn" src="img/Icons/news.png">
+        <img class="whatsOn" src="img/Icons/news_Black.png">
       </li>
     </ul>
 
     <ul class="flex-container djakne">
       <li class="item card">
-        <img class="whatsOn" src="img/Icons/book.png">
+        <img class="whatsOn" src="img/Icons/book_Black.png">
       </li>
       <li class="item card">
-        <img class="whatsOn" src="img/Icons/join.png">
+        <img class="whatsOn" src="img/Icons/join_Black.png">
       </li>
     </ul>
 
