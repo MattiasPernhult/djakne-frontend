@@ -252,7 +252,7 @@ h3.menuTitle.favourites{
 }
 
 .slider-pager {
-  bottom: 15%;
+  bottom: 80px;
 }
 
 ion-slide p {
@@ -810,9 +810,31 @@ button#attend {
   line-height: 50px;
   text-align: left;
   border-top: 1px solid #ccc;
-  margin: 1px 2px 5px 2px!important;
+  margin: 1px 0px 5px 0px!important;
   box-shadow: none!important;
 
+}
+
+.item.card.text h2 {
+  margin-top: 20px;
+  text-align: left!important;
+  text-indent: 4px;
+  font-size: 15px!important;
+  font-weight: 300;
+}
+
+.item.card.text h5 {
+  margin-top: 5px;
+  text-align: left!important;
+  text-indent: 5px;
+  font-size: 15px;
+}
+
+.item.card.text p {
+  line-height: 0px;
+  font-size: 10px;
+  padding: 6px;
+  margin-top: 5px;
 }
 
 .item.card.home {
