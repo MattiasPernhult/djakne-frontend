@@ -1,23 +1,73 @@
-<ion-view view-title=".Co">
+<ion-view view-title=>
 
   <ion-nav-buttons side="left">
     <button class="button button-icon ion-ios-arrow-left" ui-sref="tab.home"></button>
   </ion-nav-buttons>
 
-<ion-content ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo">
+<ion-content > <!-- ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo" -->
 
 
-    <div class="box co-work">
-      <h2 class="co-title">Co-Working</h2>
-      <p class="pbox">Djäkne är platsen för kreativa och drivna nytänkare.</p>
+    <div class="box_test" ng-style="{ 'background-image': 'url(img/cowork.jpg)' }" id="backgroundCo">
+      <h1 class="co-title">Co-Work</h1>
     </div>
+    <p class="pbox">
+    <h4>#1 Skip the queue</h4>
+    Send us your order and we let you know when it's ready for pick up! <br>
+
+    <h4>#2 Get social!</h4>
+    We encourage Djäkne to be a meeting place for entrepreneurs and start-ups.
+    Why not sign up for a creative business blind date? <br>
+
+    <h4>#3 Who's here?</h4>
+    Looking for someone or some ninja skills? Find it easy using the app! <br>
+
+    <h4>#4 A place to work (with great coffee too!)</h4>
+    Here you won't get the evil eye for spending your hole day. We have plenty of power outlets, and there is great Wi-Fi. <br>
+
+    </p>
+
+
+
+  <h2 class="social-title">Join us</h2>
+  <p class="pbox">Here comes some info about the different member types.</p>
+
+  <div class="text-center padding">
+    <button class="button button-dark" id="cowork" ui-sref="addEvent">SIGN UP</button>
+  </div>
+
+1
+  <h2 class="social-title">Events</h2>
+
+<!--  <button class="button button-dark" id="cowork" ui-sref="addEvent">ADD</button> -->
+
+
+
+      <div class="list card" ng-repeat="event in events">
+
+
+        <a class="item item-thumbnail-left"
+           ui-sref="events_description"
+           ng-click="setEvent(event)">
+
+
+        <div class="thumbnail padding">
+
+            <h2>{{ event.title }}</h2>
+            <h3>{{ event.date | date:'MM/dd/yyyy' }}</h3>
+            <p class="cardDescs">{{event.text}}</p>
+
+        </div>
+
+        </a>
+
+      </div>
 
 
     <div ng-show="isVisible" class="item-image padding">
       <img class="membership" src="img/medlemskap.png" id="benefits">
       <p class="desc_text">...</p>
     </div>
-
+<!--
     <ion-list>
 
         <ion-item class="menuCard events" ng-click="gotoMembership()">
@@ -37,6 +87,6 @@
         </ion-item>
 
     </ion-list>
-
+-->
   </ion-content>
 </ion-view>

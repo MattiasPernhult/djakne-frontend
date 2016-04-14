@@ -595,7 +595,6 @@ p.desc_text {
    font-family: Georgia, serif;
    text-align: center;
    padding-top: 10px;
-
 }
 
 h3.coworkTitle {
@@ -625,8 +624,8 @@ h5.dateDescs {
 
 }
 
-.box {
-  height: auto;
+.box_test {
+  height: 200px;
   background-color: rgba(444, 444, 444, 0.8);
   padding-top: 5px;
   padding-bottom: 5px;
@@ -638,7 +637,8 @@ h5.dateDescs {
 p.pbox {
   text-align: center;
   color: #000;
-  font-size: 1.1em;
+  font-size: 1em;
+  padding: 10px;
 }
 
 button#cowork {
@@ -648,7 +648,7 @@ button#cowork {
   color: #444;
   opacity: 1;
   border-radius: none;
-  font-family: Georgia, serif;
+  font-family: 'Vollkorn', serif;
   background-color: #EFECEC;
 }
 
