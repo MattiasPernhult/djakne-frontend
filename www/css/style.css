@@ -569,7 +569,7 @@ p.desc_text {
  }
 
  #backgroundCo {
-   background-size: 90%;
+   background-position: center;
  }
 
  .addEvent-title {
@@ -746,8 +746,19 @@ button#attend {
 
 
 #addEventForm{
-  background-color: grey;
   padding: 3%;
+  box-shadow: none !important;
+  border: 1px;
+  border-style: solid;
+  width: 90%;
+  /*margin-left: 4%;*/
+  margin: 5%;
+}
+
+.item.item-input{
+  box-shadow: none !important;
+  /*border-bottom: 1px;*/
+  color: blue;
 }
 
 .button.button-block.addevent{
@@ -771,21 +782,21 @@ textarea{
   text-align: center;
   float: left;
   margin-top: 0px;
+  color: white;
+  padding: 6px;
 }
 
 .card.padding h6{
   text-align: center;
   float: right;
   margin-top: 3px;
-}
-
-.card.padding hr{
-  display: block;
-  margin-top: 12%;
+  color: white;
+  padding: 6px;
 }
 
 .card.padding p{
   display: block;
+  margin-top: 5%;
 }
 
 .button.button-small.button-clear{
@@ -795,11 +806,29 @@ textarea{
 
 #cowork{
   float: right;
-  margin-top: -10px;
+  color: grey;
+}
+
+#cardHeadMedlem{
+  background-color: #62CCB3;
+  display: block;
+  min-height: 35px;
+}
+
+#cardHead{
+  background-color: #F28918;
+  display: block;
+  min-height: 35px;
+}
+
+.coLogo{
+  margin-top: 5%;
+  margin-left: 35%;
+  height: 20%;
 }
 
 .larger {
-    font-size: larger;
+    font-size: 25px;
 }
 
 .button.button-small.button-clear{
