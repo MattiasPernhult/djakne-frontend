@@ -1,5 +1,6 @@
 controllers.controller('HomeController', function($scope, CoffeeFactory, $http, HOST,
-  accessFactory, $ionicModal, MembersFactory, httpService, toastService, $ionicSlideBoxDelegate) {
+  accessFactory, $ionicModal, MembersFactory, httpService, toastService, $ionicSlideBoxDelegate,
+  EventFactory) {
 
   $scope.votes = 2;
   $scope.body = {};
@@ -73,20 +74,6 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     window.open($scope.member.linkedInProfile, '_system');
   };
 
-  $scope.gallery = [{
-     url: 'img/coffeeData.jpeg',
-     title: 'Stay Connected',
-     desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
-   }, {
-     url: 'img/djakne.png',
-     title: 'Enjoy great coffee',
-     desc: 'Donec dapibus, magna quis tincidunt finibus, tellus odio porttitor nisi.',
-   }, {
-     url: 'img/business1.jpeg',
-     title: 'Evolve and share',
-     desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
-   }, ];
-
   $scope.next = function() {
     $ionicSlideBoxDelegate.next();
   };
@@ -99,4 +86,27 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   $scope.slideChanged = function(index) {
      $scope.slideIndex = index;
    };
+
+  $scope.sliderGallery = [];
+  EventFactory.getEvents(function(data) {
+   var events = data;
+   console.log(events);
+   var obj = events.sort(function(a,b) {
+     return new Date(a.date) - new Date(b.date);
+   });
+   var currentEvent = obj[0];
+   // Ta bort rad 13 sen när events fått bilder
+   currentEvent.image = 'http://m.c.lnkd.licdn.com/mpr/mpr/AAEAAQAAAAAAAAgOAAAAJGEwMzU4Y2EyLWM5ZWUtNDRmYy1hMzcxLTdjMjdhNTA2YjI3Mg.jpg';
+   $scope.sliderGallery.push(currentEvent);
+ });
+
+  // För veckans kaffe
+
+
+  CoffeeFactory.getCoffee(function(data) {
+  $scope.rating = data;
+  $scope.rating.text = $scope.rating.description;
+  $scope.sliderGallery.push($scope.rating);
+});
+
 });

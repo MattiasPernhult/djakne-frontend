@@ -1,12 +1,19 @@
 <ion-view view-title="Djäkne">
   <ion-content class="home">
-    <ion-slide-box class="slider home" show-pager="false" does-continue="true" on-slide-changed="slideChanged(index)">
-      <ion-slide class="login text-center" ng-repeat="image in gallery" ng-style="{ 'background-image': 'url(' + image.url + ')' }">
-        <div class="text-login-container">
 
-        </div>
-      </ion-slide>
-    </ion-slide-box>
+    <ion-slide-box class="slider home" show-pager="false" auto-play="true" does-continue="false" on-slide-changed="slideChanged(index)">
+  <ion-slide class="homeSlider" ng-repeat="obj in sliderGallery" ng-style="{ 'background-image': 'url(' + obj.image + ')' }">
+    <div class="slider-home-container text-center">
+      <div class="text-home-container">
+        <!-- Obj title -->
+        <h1>{{obj.title}}</h1>
+        <!-- Obj text -->
+        <p>{{ obj.text | limitTo: 45 }}{{obj.text.length > 20 ? ' Läs mer..' : ''}}</p>
+      </div>
+    </div>
+  </ion-slide>
+</ion-slide-box>
+
 
     <div>
       <h4 class="home-title">@ Djäkne</h4>
@@ -65,19 +72,21 @@
 
     <ul class="flex-container djakne">
       <li class="item card">
-        <img class="whatsOn" src="img/djakne.png">
+        <img class="whatsOn" src="img/Icons/event.png">
+        <h3>{{sliderGallery[0].title}}</h3>
+
       </li>
       <li class="item card">
-        <img class="whatsOn" src="img/menu.png">
+        <img class="whatsOn" src="img/Icons/news.png">
       </li>
     </ul>
 
     <ul class="flex-container djakne">
       <li class="item card">
-        <img class="whatsOn" src="img/djakne.png">
+        <img class="whatsOn" src="img/Icons/book.png">
       </li>
       <li class="item card">
-        <img class="whatsOn" src="img/menu.png">
+        <img class="whatsOn" src="img/Icons/join.png">
       </li>
     </ul>
 

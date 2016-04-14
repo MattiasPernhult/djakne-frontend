@@ -329,6 +329,40 @@ ion-slide p {
   bottom: 80%!important;
 }
 
+.homeSlider {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.slider-home-container{
+  background-color: white;
+  opacity: 0.7;
+  width:100%;
+  height:auto;
+  position: absolute;
+  bottom: 0;
+}
+
+.text-home-container {
+  height: 60px;
+  width: 100%;
+  padding: 5px;
+}
+
+.text-home-container h1 {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.text-home-container p {
+  font-size: 12px !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+
 .home img {
   display: block;
   margin: 0 auto;
@@ -384,10 +418,6 @@ ion-slide p {
   border-radius: 20%;
   width: 50px;
   height: 50px;
-}
-
-#coffeeImage {
-  max-height: 250px;
 }
 
 /* List item content - menu template / cart template */
@@ -770,6 +800,7 @@ button#attend {
    padding: 0px 0px 0px 0px;
    margin: 0px 0px 0px 0px;
    list-style: none;
+   text-align: left;
 }
 
 .item.card {
@@ -778,7 +809,7 @@ button#attend {
   font-size: 12px;
   line-height: 50px;
   text-align: left;
-  border: 1px solid #ccc;
+  border-top: 1px solid #ccc;
   margin: 1px 2px 5px 2px!important;
   box-shadow: none!important;
 
