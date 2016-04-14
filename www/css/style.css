@@ -750,12 +750,21 @@ button#attend {
   padding: 3%;
 }
 
+.button.button-block.addevent{
+  bottom: -40px !important;
+}
+
 textarea{
   resize: none;
   background-color: lightgrey;
 }
 
 /* View events */
+
+.card.padding{
+  width: 86%;
+  margin-left: 7%;
+}
 
 .card.padding h4{
   text-align: center;
@@ -786,4 +795,8 @@ textarea{
 #cowork{
   float: right;
   display: block;
+}
+
+.button.button-small.button-clear{
+  margin-bottom: -15px !important;
 }
