@@ -51,21 +51,22 @@
           </button>
           <p ng-hide="validEvent.$valid" ng-style="{color: 'red'}">Fyll i alla fält</p>
         </div>
-    </div> -->
-<form id="addEventForm" ng-submit="sendPost()" name="validEvent">
+    </div>
+  -->
+<!-- <form id="addEventForm" ng-submit="sendPost()" name="validEvent">
   <h4 class="addEvent-title">Add some info about the event!</h4>
   <label class="item item-input">
     <input type="text" placeholder="Event name" ng-model="event.title" required>
   </label>
   <label class="item item-input">
     <input type="text" placeholder="Event description" ng-model="event.text" required>
-    <!-- <textarea rows="3" cols="50" placeholder="Event description" ng-model="event.text" required></textarea> -->
+    <!-- <textarea rows="3" cols="50" placeholder="Event description" ng-model="event.text" required></textarea>
   </label>
   <label class="item item-input">
     <input type="email" placeholder="Email" ng-model="event.email" required>
   </label>
   <label class="item item-input">
-    <button type="button" ng-click="openDatePicker()" name="button" ng-model="event.date">datum</button>
+    <button class="button button-small" ng-click="openDatePicker()" name="button" id="dateButton" ng-model="event.date">datum</button>
   </label>
   <label class="item item-input">
     <input type="time" placeholder="ex 10:00" ng-model="event.time" required>
@@ -75,6 +76,30 @@
      Submit
    </button>
   </div>
+</form> -->
+
+<form class="form-style-4" ng-submit="sendPost()" name="validEvent">
+<label>
+<input type="text" placeholder="Event name" ng-model="event.title" required>
+</label>
+<label>
+<input type="text" placeholder="Event description" ng-model="event.text" required>
+</label>
+<label>
+<input type="email" placeholder="Email" ng-model="event.email" required>
+</label>
+<!-- <label ng-click="openDatepicker()">
+<input type="text" placeholder="Date" ng-click="openDatePicker()" name="date" id="dateButton" ng-model="event.date" required>
+<span ng-if="date">{{date | date : 'EEEE, MMM d, y'}}</span>
+</label> -->
+<label>
+  <input type="datetime-local" ng-model="event.date" required>
+</label>
+<label>
+<button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-full button-dark">
+  Submit
+</button>
+</label>
 </form>
 
 

@@ -12,6 +12,8 @@ controllers.controller('AddEventController',
         date: $scope.event.date,
       };
 
+      console.log($scope.event.date);
+
       var url = HOST.hostAdress + ':4000/events';
       httpService.post(url, formData, function(err, result)  {
         if (err) {
