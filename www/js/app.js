@@ -1,6 +1,11 @@
 angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories', 'config',
 'ngCordova',])
 
+.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.tabs.position('bottom');
+})
+
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -73,6 +78,12 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       controller: 'EventController',
     })
 
+    .state('profile', {
+        url: '/profile',
+        templateUrl: 'templates/profile.html',
+        controller: 'ProfileController',
+      })
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -101,16 +112,6 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
         },
       },
     })
-
-    .state('tab.profile', {
-        url: '/profile',
-        views: {
-          'tab-profile': {
-            templateUrl: 'templates/tab-profile.html',
-            controller: 'ProfileController',
-          },
-        },
-      })
 
   .state('tab.menu', {
     url: '/menu',
