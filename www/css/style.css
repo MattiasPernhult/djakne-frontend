@@ -165,13 +165,6 @@ ion-view {
 
 /* Items in menu template */
 
-.menuCard{
-  width:100%;
-  height:23%;
-  position:relative;
-  background-color: rgba(000, 000, 000, 0.3);
-}
-
 .product:first-of-type{
   border-top: none !important;
 }
@@ -220,7 +213,7 @@ ion-view {
 /* Title in menu cards */
 
 h3.menuTitle.ng-binding {
-  margin-top: 10% !important;
+  margin-top: 7% !important;
   font-family: 'Alegreya Sans', sans-serif !important;
   font-size: 36px;
   color: white;
@@ -640,7 +633,7 @@ h5.dateDescs {
 
 .menuCard {
   width:100%;
-  height:23%;
+  height:16%;
   position:relative;
   background-color: rgba(000, 000, 000, 0.4);
   margin-left: auto;

@@ -3,10 +3,10 @@
       <button class="button icon-left ion-android-person button-outline" ui-sref="profile"></button>
   </ion-nav-buttons>
 <ion-content scroll="false">
-  <div ng-style="{ 'height':'170px','width':'100%','background-color':'#444' }">
-    <div id="logo"></div>
+  <div ng-style="{ 'height':'195px','width':'100%','background-color':'#444' }">
+    <img id="logo" ng-src="{{icon.src}}"></img>
   </div>
-    <ion-slide-box show-pager="false" ion-slide-tabs>
+    <ion-slide-box on-slide-changed="changeLogo()"show-pager="false" ion-slide-tabs>
       <!-- Slide ett -->
         <ion-slide ion-slide-tab-label="Recent">
           <ion-content scroll="true">
@@ -65,24 +65,24 @@
         <!-- Slide tre -->
         <ion-slide ion-slide-tab-label="Events" ng-controller="EventController">
           <!-- Innehåll slide tre -->
-          <button class="button button-dark" id="cowork" ui-sref="addEvent">Skapa event</button>
-          <div class="card padding" ng-repeat="event in events" >
-          <div id="cardHead">
-            <h4>{{ event.title }}</h4>
-            <h6>{{ event.date | date:'MM/dd/yyyy' }}</h6>
-          </div>
-          <p>{{event.text}}</p>
-          <img ng-src="data:image/gif;base64,{{event.attendants}}" ng-show="show" ng-if="event.attendants != false"</img>
-          <p ng-show="show">Location: {{event.location}}</p>
-          <button class="button button-small button-dark" id="cowork" ng-click="signUp()" ng-show="show"> Sign up</button>
-          <button class="button button-small button-clear" ng-click="show = !show">
-            <p ng-if="!show">See more</p>
-            <p ng-if="show">See less</p>
-          </button>
+          <ion-content scroll="true">
+            <button class="button button-dark" id="cowork" ui-sref="addEvent">Skapa event</button>
+            <div class="card padding" ng-repeat="event in events" >
+            <div id="cardHead">
+              <h4>{{ event.title }}</h4>
+              <h6>{{ event.date | date:'MM/dd/yyyy' }}</h6>
+            </div>
+            <p>{{event.text}}</p>
+            <img ng-src="data:image/gif;base64,{{event.attendants}}" ng-show="show" ng-if="event.attendants != false"</img>
+            <p ng-show="show">Location: {{event.location}}</p>
+            <button class="button button-small button-dark" id="cowork" ng-click="signUp()" ng-show="show"> Sign up</button>
+            <button class="button button-small button-clear" ng-click="show = !show">
+              <p ng-if="!show">See more</p>
+              <p ng-if="show">See less</p>
+            </button>
         </div>
-
-
-        </ion-slide>
+        </ion-content>
+      </ion-slide>
     </ion-slide-box>
 </ion-content>
 

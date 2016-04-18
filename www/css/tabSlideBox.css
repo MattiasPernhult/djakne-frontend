@@ -6,7 +6,7 @@
 .scroll-view{
   /*position: inherit !important;*/
   position: absolute;
-  top: 122px;
+  top: 146px;
   width: 99%;
 }
 
@@ -27,7 +27,7 @@
 
 #logo{
   position: absolute;
-  top: 20px;
+  top: 51px;
   left: 0;
   right: 0;
   bottom: 0;

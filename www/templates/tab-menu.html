@@ -5,6 +5,9 @@
       <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
     </div>
   </ion-nav-buttons>
+  <div ng-style="{ 'height':'195px','width':'100%','background-color':'#444' }">
+    <img id="logo" src="img/Icons/home/coffee_black.png"></img>
+  </div>
   <ion-content overflow-scroll="true" ng-style="{ 'background-image': 'url(img/menu.png)' }">
     <!-- Favorites -->
     <div class="menuCard item-expand active margin padding" ng-show="userFavorites.length > 0">
