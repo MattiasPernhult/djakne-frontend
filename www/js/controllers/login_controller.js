@@ -1,6 +1,6 @@
 controllers.controller('LoginController',
   function($scope, $state, $http, $location, $rootScope, accessFactory,
-    HOST, $ionicSlideBoxDelegate) {
+    HOST, $ionicSlideBoxDelegate, toastService) {
 
     $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
     $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';
@@ -32,10 +32,24 @@ controllers.controller('LoginController',
             },
             function(values) {
               var body = values[0];
-              var token = body.substring(body.indexOf('{') + 10, body.lastIndexOf('}') - 1);
-              accessFactory.changeAccessToken(token);
+              var token = JSON.parse(body.substring(body.indexOf('{'), body.lastIndexOf('}') + 1));
+              if (!token.token) {
+                if (token.error) {
+                  if (token.error === 'User not found') {
+                    $scope.error = 'You are not a accepted member. Please contact an admin';
+                    toastService.showLongBottom($scope.error);
+                  }
+                }  else if (token.name) {
+                  if (token.name === 'CSRF Alert') {
+                    $scope.error = 'There was a security problem when logging in to LinkedIn';
+                    toastService.showLongBottom($scope.error);
+                  }
+                }
+              } else {
+                accessFactory.changeAccessToken(token.token);
+                $state.go('tab.home');
+              }
               ref.close();
-              $state.go('tab.home');
             });
         }
       });
