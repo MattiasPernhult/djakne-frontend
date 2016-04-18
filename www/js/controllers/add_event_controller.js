@@ -4,15 +4,20 @@ controllers.controller('AddEventController',
 
     $scope.event = {};
 
-    $scope.sendPost = function() {
-      console.log('scope.date : ' + $scope.event.date);
-      var newDate = new Date($scope.event.date);
-      var newTime = new Date($scope.event.time);
-      console.log(newDate);
-      var correctDate = newDate.getFullYear() + '-' + (newDate.getUTCMonth() + 1) + '-'
-      + (newDate.getUTCDate() + 1) + 'T' + newTime.getHours() + ':' + newTime.getMinutes();
+    $scope.modify = function(input) {
+      input = Number(input);
+      if (input < 10) {
+        input = '0' + input;
+      }
+      return input;
+    };
 
-      console.log('correctDate :' + correctDate);
+    $scope.sendPost = function() {
+      var date = new Date($scope.event.date);
+
+      var correctDate = date.getFullYear() + '-' + $scope.modify((date.getUTCMonth() + 1)) +
+      '-' + $scope.modify((date.getUTCDate() + 1)) + 'T' + $scope.modify(date.getHours()) +
+      ':' + $scope.modify(date.getMinutes()) + ':00';
 
       var formData = {
         title: $scope.event.title,
@@ -20,8 +25,6 @@ controllers.controller('AddEventController',
         author: $scope.event.author,
         date: correctDate,
       };
-      console.log('time: ' + $scope.event.time);
-      console.log('date : ' + formData.date);
 
       var url = HOST.hostAdress + ':4000/events';
       httpService.post(url, formData, function(err, result)  {
@@ -37,15 +40,14 @@ controllers.controller('AddEventController',
     };
 
     var ipObj1 = {
-        callback: function(val) {
-          console.log(val);
-          $scope.event.date = val;
-          console.log('Return value from the datepicker popup is : ' + val);
-        },
-      };
+      callback: function(val) {
+        console.log(val);
+        $scope.event.date = val;
+        console.log('Return value from the datepicker popup is : ' + val);
+      },
+    };
 
     $scope.openDatePicker = function() {
       ionicDatePicker.openDatePicker(ipObj1);
     };
-
   });
