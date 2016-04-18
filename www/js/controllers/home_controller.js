@@ -2,13 +2,16 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   accessFactory, $ionicModal, MembersFactory, httpService, toastService, $ionicSlideBoxDelegate,
   EventFactory, $timeout) {
 
+  $scope.votes = 2;
+  $scope.body = {};
+
   // For the icons
   $scope.getCurrentIndex = function() {
     return $ionicSlideBoxDelegate.currentIndex();
   };
 
   $scope.doRefresh = function() {
-    MembersFactory.getMembers(function(err, data)  {
+    MembersFactory.getMembers(function(err, data)  {
       if (!err) {
         $timeout(function() {
           $scope.members = data.members;
@@ -17,10 +20,6 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
       }
     });
   };
-
-  $scope.votes = 2;
-  $scope.body = {};
-
   $scope.ratingsObject = {
     iconOn: 'ion-ios-star',
     iconOff: 'ion-ios-star-outline',
@@ -44,10 +43,19 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   });
 
   $ionicModal.fromTemplateUrl('modal.html', {
+    id: '1',
     scope: $scope,
     animation: 'slide-in-up',
   }).then(function(modal)  {
     $scope.modal = modal;
+  });
+
+  $ionicModal.fromTemplateUrl('currentCoffee.html', {
+    id: '2',
+    scope: $scope,
+    animation: 'slide-in-up',
+  }).then(function(modal)  {
+    $scope.modalCoffee = modal;
   });
 
   $scope.ratingsCallback = function(rating) {
@@ -76,6 +84,15 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     $scope.member = member;
     console.log($scope.member);
     $scope.modal.show();
+  };
+
+  $scope.openCoffeeModal = function(coffee) {
+    console.log($scope.currentCoffee);
+    $scope.modalCoffee.show();
+  };
+
+  $scope.closeCoffeeModal = function() {
+    $scope.modalCoffee.hide();
   };
 
   $scope.closeModal = function() {

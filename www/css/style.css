@@ -252,12 +252,13 @@ h3.menuTitle.favourites{
 }
 
 .slider-pager {
-  bottom: 15%;
+  bottom: 80px;
 }
 
 ion-slide p {
-  width: 330px;
+  width: 200px;
   margin: 0 auto;
+  font-family: 'Alegreya Sans', sans-serif !important;
 }
 
 .text-login-container {
@@ -272,7 +273,7 @@ ion-slide p {
 
 .text-login-container h3 {
   font-size: 28px;
-  font-family: Georgia, Times, "Times New Roman", serif !important;
+  font-family: 'Alegreya Sans', sans-serif !important;
 }
 
 
@@ -300,11 +301,10 @@ ion-slide p {
 }
 
 .login-container h1 {
-  font-size: 55px;
-  margin-bottom: 0;
-  font-family: Georgia, Times, "Times New Roman", serif !important;
+ font-size: 50px;
+ margin-bottom: 0;
+ font-family: Georgia, Times, "Times New Roman", serif !important;
 }
-
 /* Login - subtitle */
 
 .login-button-container {
@@ -346,7 +346,7 @@ ion-slide p {
 }
 
 .text-home-container {
-  height: 60px;
+  height: 110px;
   width: 100%;
   padding: 5px;
 }
@@ -559,7 +559,7 @@ ion-slide p {
 }
 
 .ionic_ratings .icon {
-   font-size: 50px;
+   font-size: 45px;
  }
 
 /* Testkod för Social-tabben (event branch) */
@@ -803,16 +803,53 @@ button#attend {
    text-align: left;
 }
 
+.button.readMore {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  width: 30%;
+  border-radius: 20px;
+  font-family: Georgia, serif;
+}
+
 .item.card {
-  width: 100%;
+  width: 49%;
   height: 100px;
   font-size: 12px;
   line-height: 50px;
-  text-align: left;
+  text-align: center!important;
   border-top: 1px solid #ccc;
-  margin: 1px 2px 5px 2px!important;
+  margin: 1px 0px 5px 0px!important;
   box-shadow: none!important;
 
+}
+
+.item.card.text h1 {
+  font-family: 'Alegreya Sans', sans-serif !important;
+  font-weight: 600!important;
+  margin-top: 10px;
+  text-indent: 4px;
+  font-size: 25px!important;
+  font-weight: 300;
+}
+
+.item.card.text h2 {
+  margin-top: 20px;
+  text-indent: 4px;
+  font-size: 15px!important;
+  font-weight: 300;
+}
+
+.item.card.text h5 {
+  margin-top: 5px;
+  text-indent: 5px;
+  font-size: 15px;
+}
+
+.item.card.text p {
+  line-height: 0px;
+  font-size: 10px;
+  padding: 6px;
+  margin-top: 5px;
 }
 
 .item.card.home {
@@ -827,14 +864,48 @@ button#attend {
 
 .home-title {
   text-align: center;
+  font-size: 17px;
+  font-family: 'Vollkorn', serif;
+  text-align: left;
+  font-family: 'Alegreya Sans', sans-serif !important;
+  margin-left: 5px;
   font-size: 15px
 }
 
 .whatsOn {
-  float: left;
+  /*float: left;*/
   margin-top: 20px!important;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
+}
+
+.coffeeModal {
+  padding: 15px 10px 0px 10px;
+  font-style: 'Vollkorn', serif;
+
+}
+
+#coffeeImage {
+  width: 100%;
+  height: 220px;
+
+}
+
+.coffeeVote {
+  font-size: 20px;
+  padding-bottom: 0;
+  margin-bottom: 3px;
+
+}
+
+.button.button-block.button-dark.vote {
+  margin-top: 3px;
+
+
+}
+.button.icon.icon-right.ion-ios-close-outline {
+  background: none;
+
 }
 
 .homeNav{
