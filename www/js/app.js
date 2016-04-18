@@ -42,40 +42,10 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       controller: 'ProductController',
     })
 
-    .state('eventMain', {
-        url: '/eventMain',
-        templateUrl: 'templates/eventMain.html',
-        controller: 'EventController',
-      })
-
-    .state('events_description', {
-      url: '/events_description',
-      templateUrl: 'templates/events_description.html',
-      controller: 'EventDescriptionController',
-    })
-
     .state('addEvent', {
       url: '/addEvent',
       templateUrl: 'templates/addEvent.html',
       controller: 'AddEventController',
-    })
-
-    .state('boardMain', {
-      url: '/boardMain',
-      templateUrl: 'templates/boardMain.html',
-      controller: 'EventController',
-    })
-
-    .state('newsMain', {
-      url: '/newsMain',
-      templateUrl: 'templates/newsMain.html',
-      controller: 'EventController',
-    })
-
-    .state('memberships', {
-      url: '/memberships',
-      templateUrl: 'templates/memberships.html',
-      controller: 'EventController',
     })
 
     .state('profile', {
@@ -102,16 +72,6 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       },
     },
   })
-
-  .state('tab.co', {
-      url: '/co',
-      views: {
-        'tab-co': {
-          templateUrl: 'templates/tab-co.html',
-          controller: 'EventController',
-        },
-      },
-    })
 
   .state('tab.menu', {
     url: '/menu',
