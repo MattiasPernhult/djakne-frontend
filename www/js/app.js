@@ -122,30 +122,9 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories'
     },
   });
 
-
-  var datePickerObj = {
-    inputDate: new Date(),
-    setLabel: 'Set',
-    todayLabel: 'Today',
-    closeLabel: 'Close',
-    mondayFirst: false,
-    weeksList: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-    monthsList: ['Ja','Feb', 'March', 'April', 'May', 'June', 'July', 'Aug',
-    'Sept', 'Oct', 'Nov', 'Dec',],
-    templateType: 'popup',
-    from: new Date(),
-    to: new Date(2018, 8, 1),
-    showTodayButton: true,
-    dateFormat: 'dd MMMM yyyy',
-    closeOnSelect: false,
-    disableWeekdays: [6],
-  };
-  ionicDatePickerProvider.configDatePicker(datePickerObj);
-
-
   // if none of the above states are matched, use this as the fallback
   if (window.cordova) {
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/tab/home');
   } else {
     $urlRouterProvider.otherwise('/tab/home');
   }

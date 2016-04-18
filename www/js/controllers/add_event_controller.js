@@ -23,6 +23,7 @@ controllers.controller('AddEventController',
         title: $scope.event.title,
         text: $scope.event.text,
         author: $scope.event.author,
+        location: $scope.event.location,
         date: correctDate,
       };
 
@@ -34,22 +35,11 @@ controllers.controller('AddEventController',
           toastService.showLongBottom(err.message);
         } else {
           toastService.showLongBottom('Eventet har skapats');
+          $scope.event = {};
           EventFactory.getEvents(function() {
             return;
           });
         }
       });
-    };
-
-    var ipObj1 = {
-      callback: function(val) {
-        console.log(val);
-        $scope.event.date = val;
-        console.log('Return value from the datepicker popup is : ' + val);
-      },
-    };
-
-    $scope.openDatePicker = function() {
-      ionicDatePicker.openDatePicker(ipObj1);
     };
   });

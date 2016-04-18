@@ -8,99 +8,28 @@
 
   <ion-content>
 
-    <!-- <div class="box addEvent"> -->
-
-      <!-- <form ng-submit="sendPost()" name="validEvent">
-
-        <div class="list">
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Eventnamn</span>
-            <input type="text" placeholder="ex. Staff meeting" ng-model="event.title" required>
-          </label>
-
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Ditt namn</span>
-            <input type="text" placeholder="Kalle Kula" ng-model="event.author" required>
-          </label>
-
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Beskrivning</span>
-            <input type="text" placeholder="Beskriv ditt event" ng-model="event.text" required>
-          </label>
-          <!--
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Plats</span>
-          <input type="text" placeholder="Djakne" ng-model="event.text">
-        </label>
-
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Tid</span>
-          <input type="time" placeholder="10:00:00" ng-model="event.date">
-        </label>
-
-
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Datum och tid</span>
-            <input type="text" placeholder="2016-06-10 08:00" ng-model="event.date" required>
-          </label>
-
-        </div>
-        <div class="text-center padding">
-          <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-dark" id="cowork">
-            Lägg till event
-          </button>
-          <p ng-hide="validEvent.$valid" ng-style="{color: 'red'}">Fyll i alla fält</p>
-        </div>
-    </div>
-  -->
-<!-- <form id="addEventForm" ng-submit="sendPost()" name="validEvent">
-  <h4 class="addEvent-title">Add some info about the event!</h4>
-  <label class="item item-input">
-    <input type="text" placeholder="Event name" ng-model="event.title" required>
-  </label>
-  <label class="item item-input">
-    <input type="text" placeholder="Event description" ng-model="event.text" required>
-    <textarea rows="3" cols="50" placeholder="Event description" ng-model="event.text" required></textarea>
-  </label>
-  <label class="item item-input">
-    <input type="email" placeholder="Email" ng-model="event.author" required>
-  </label>
-  <label class="item item-input">
-    <button class="button button-small" ng-click="openDatePicker()" name="button" id="dateButton" ng-model="event.date">datum</button>
-  </label>
-  <label class="item item-input">
-    <input type="time" placeholder="ex 10:00" ng-model="event.time" required>
-  </label>
- <div class="padding">
-   <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-block addevent" id="cowork">
-     Submit
-   </button>
-  </div>
-</form> -->
-
-<form class="form-style-4" ng-submit="sendPost()" name="validEvent">
-<label>
-<input type="text" placeholder="Event name" ng-model="event.title" required>
-</label>
-<label>
-<input type="text" placeholder="Event description" ng-model="event.text" required>
-</label>
-<label>
-<input type="email" placeholder="Email" ng-model="event.email" required>
-</label>
-<!-- <label ng-click="openDatepicker()">
-<input type="text" placeholder="Date" ng-click="openDatePicker()" name="date" id="dateButton" ng-model="event.date" required>
-<span ng-if="date">{{date | date : 'EEEE, MMM d, y'}}</span>
-</label> -->
-<label>
-  <input type="datetime-local" ng-model="event.date" required>
-</label>
-<label>
-<button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-full button-dark">
-  Submit
-</button>
-</label>
-</form>
+    <form class="form-style-4" ng-submit="sendPost()" name="validEvent">
+      <label>
+      <input type="text" placeholder="Event name" ng-model="event.title" required>
+      </label>
+      <label>
+      <input type="text" placeholder="Event description" ng-model="event.text" required>
+      </label>
+      <label>
+      <input type="text" placeholder="Event location" ng-model="location.text" required>
+      </label>
+      <label>
+      <input type="email" placeholder="Email" ng-model="event.email" required>
+      </label>
+      <label>
+        <input type="datetime-local" ng-model="event.date" required>
+      </label>
+      <label>
+      <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-full button-dark">
+        Submit
+      </button>
+      </label>
+    </form>
 
 
   </ion-content>
