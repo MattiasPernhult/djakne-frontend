@@ -933,3 +933,7 @@ button#attend {
 .slider-pager{
   display: none;
 }
+
+.scroll-content{
+  position: static !important;
+}

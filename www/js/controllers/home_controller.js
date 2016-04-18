@@ -10,6 +10,26 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     return $ionicSlideBoxDelegate.currentIndex();
   };
 
+  $scope.changeLogo = function() {
+    var index = $scope.getCurrentIndex();
+    return $scope.logos[index].url;
+  };
+
+  $scope.icons = [
+    {
+      name: 'Recent',
+      src: 'img/Icons/home/news_black.png',
+    },
+    {
+      name: 'Co-work',
+      src: 'img/Icons/home/join_black.png',
+    },
+    {
+      name: 'Events',
+      src: 'img/Icons/home/event_black.png',
+    },
+  ];
+
   $scope.doRefresh = function() {
     MembersFactory.getMembers(function(err, data)  {
       if (!err) {
