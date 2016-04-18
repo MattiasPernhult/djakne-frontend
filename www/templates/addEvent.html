@@ -7,7 +7,7 @@
   </ion-nav-bar>
 
   <ion-content>
-    
+
     <form class="form-style-4" ng-submit="sendPost()" name="validEvent">
       <label>
       <input type="text" placeholder="Event name" ng-model="event.title" required>
@@ -16,10 +16,10 @@
       <input type="text" placeholder="Event description" ng-model="event.text" required>
       </label>
       <label>
-      <input type="text" placeholder="Event location" ng-model="location.text" required>
+      <input type="text" placeholder="Event location" ng-model="event.location" required>
       </label>
       <label>
-      <input type="email" placeholder="Email" ng-model="event.email" required>
+      <input type="email" placeholder="Email" ng-model="event.author" required>
       </label>
       <label>
         <input type="datetime-local" ng-model="event.date" required>
