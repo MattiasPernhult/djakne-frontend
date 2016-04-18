@@ -66,13 +66,14 @@
         <ion-slide ion-slide-tab-label="Events" ng-controller="EventController">
           <!-- Innehåll slide tre -->
           <ion-content scroll="true">
-            <button class="button button-dark" id="cowork" ui-sref="addEvent">Skapa event</button>
-            <div class="card padding" ng-repeat="event in events" >
+            <a class="ion-edit" ui-sref="addEvent"></a>
+            <div class="card padding events" ng-repeat="event in events" >
             <div id="cardHead">
               <h4>{{ event.title }}</h4>
               <h6>{{ event.date | date:'MM/dd/yyyy' }}</h6>
+              <hr>
             </div>
-            <p>{{event.text}}</p>
+            <p id="infoText">{{event.text}}</p>
             <img ng-src="data:image/gif;base64,{{event.attendants}}" ng-show="show" ng-if="event.attendants != false"</img>
             <p ng-show="show">Location: {{event.location}}</p>
             <button class="button button-small button-dark" id="cowork" ng-click="signUp()" ng-show="show"> Sign up</button>

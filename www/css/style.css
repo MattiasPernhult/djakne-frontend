@@ -1005,3 +1005,36 @@ button#attend {
 .form-style-4 input[type=button]:hover{
 background: #394D61;
 }
+
+.ion-edit{
+  display: block;
+  margin-left: 90%;
+  color: black;
+  margin-top: 2%;
+  font-size: 20px;
+}
+
+.card.padding.events{
+  margin-top: 5px;
+}
+
+#cardHead{
+
+  min-height: 40px;
+  padding: 1%;
+}
+
+#cardHead h4{
+  float: left;
+  color: black;
+
+}
+
+#cardHead h6{
+  color: black;
+  float: right;
+}
+
+#cardHead hr{
+  margin-top: 15%;
+}
