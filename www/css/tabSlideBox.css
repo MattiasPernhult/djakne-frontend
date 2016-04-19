@@ -6,8 +6,8 @@
 .scroll-view{
   /*position: inherit !important;*/
   position: absolute;
-  top: 146px;
-  width: 99%;
+  top: 109px;
+  width: 100%;
 }
 
 .event-img{
@@ -27,7 +27,7 @@
 
 #logo{
   position: absolute;
-  top: 51px;
+  top: 15px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -48,6 +48,10 @@
 }
 
 /* Tar bort en vit linje uppe vid headern*/
+
+.has-header.homeSlider {
+    /*top: -5px;*/
+}
 
 ion-header-bar.bar-dark.bar.bar-header {
   background-image: none;
@@ -129,4 +133,8 @@ ion-slide:nth-child(2n) {
 
 .card{
   text-align: center;
+}
+
+.tabs-striped .tabs {
+  border-bottom: none!important;
 }
