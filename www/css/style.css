@@ -70,11 +70,7 @@ ion-view {
 
 .hero{
     height: 300px;
-
-}
-
-.hero h3 {
-  margin-top:0;
+    color: white;
 }
 
 #iconSettings {
@@ -113,12 +109,9 @@ ion-view {
   top: 30px;
 }
 
-.content h4 {
-  font-size: 11px;
-}
 
 #profileTitle {
-  color: black;
+  color: white;
   font-size: 28px;
 }
 
@@ -128,7 +121,7 @@ ion-view {
   background-position: center;
   border-radius: 50%;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-top: 20px;
   position: relative;
   left: auto;
   background-size: contain;
@@ -139,6 +132,16 @@ ion-view {
 
 /* Product Information */
 
+.menuCard {
+  width:100%;
+  height:16%;
+  position:relative;
+  background-color: rgba(000, 000, 000, 0.4);
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0);
+}
 
 .product-title{
   font-weight: 400 !important;
@@ -313,81 +316,6 @@ ion-slide p {
 
 /* Home/Djäkne template */
 
-.slider.home {
-  height: 50%;
-  position: static;
-}
-
-.slider-pager.home {
-  bottom: 80%!important;
-}
-
-.homeSlider {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.slider-home-container{
-  background-color: white;
-  opacity: 0.7;
-  width:100%;
-  height:auto;
-  position: absolute;
-  bottom: 0;
-}
-
-.text-home-container {
-  height: 110px;
-  width: 100%;
-  padding: 5px;
-}
-
-.text-home-container h1 {
-  font-size: 20px;
-  margin-bottom: 2px;
-}
-
-.text-home-container p {
-  font-size: 12px !important;
-  padding: 0 !important;
-  text-align: center !important;
-}
-
-
-.home img {
-  display: block;
-  margin: 0 auto;
-}
-
-.home h3 {
-  font-family: 'Alegreya Sans', sans-serif;
-  text-align: center;
-}
-
-.home h5 {
-  font-family: 'Alegreya Sans', sans-serif;
-  text-align: center;
-}
-
-.home p {
-  font-family: 'Alegreya Sans', sans-serif;
-  text-align: justify;;
-  color: #222222;
-  padding: 12px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.homeBackground {
-  height: 200px;
-}
-
-.homeLogo {
-  font-weight: bold;
-  color: white;
-}
 
 .checkedIn {
   text-align: center;
@@ -551,222 +479,6 @@ ion-slide p {
    font-size: 45px;
  }
 
-/* Testkod för Social-tabben (event branch) */
-
-.item.activated {
-  background-color: rgba(000, 000, 000, 0.4);
-}
-
-.co-work {
-  margin-bottom: 0px!important;
-}
-
-.events {
-  margin-bottom: 0px;
-  border-bottom: 1px solid #E2E2E2!important;
-}
-
- .card h2 {
-   font-size: 20px;
- }
-
- .card h4 {
-   font-size: 16px;
-   color: #aaa;
-   font-family: Georgia, serif;
- }
-
-a.default {
-   text-decoration: none;
- }
-
-p.desc_text {
-   font-size: 15px;
-   text-align: center;
-   padding-bottom: 13px;
-   font-family: Georgia, serif;
- }
-
- #backgroundCo {
-   background-size: 90%;
- }
-
- .addEvent-title {
-    font-style: bold;
-    text-align: center;
-    font-family: Georgia, serif;
-    padding-top: 15px;
-
- }
-
- .social-title {
-    font-style: bold;
-    text-align: center;
-    padding-top: 15px;
-    font-family: Georgia, serif;
- }
-
-.filter {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.co-title {
-   font-family: Georgia, serif;
-   text-align: center;
-   padding-top: 10px;
-
-}
-
-h3.coworkTitle {
-  margin-top: 5% !important;
-  margin-bottom: 5% !important;
-  font-family: 'Alegreya Sans', sans-serif !important;
-  font-size: 36px;
-  color: white;
-  text-align: center !important;
-}
-
-h5.dateDescs {
-  font-family: Georgia, serif;
-
-}
-
-.menuCard {
-  width:100%;
-  height:16%;
-  position:relative;
-  background-color: rgba(000, 000, 000, 0.4);
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0);
-
-
-}
-
-.box {
-  height: auto;
-  background-color: rgba(444, 444, 444, 0.8);
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-bottom: 15px;
-}
-
-p.pbox {
-  text-align: center;
-  color: #000;
-  font-size: 1.1em;
-}
-
-button#cowork {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 0px;
-  color: #444;
-  opacity: 1;
-  border-radius: none;
-  font-family: Georgia, serif;
-  background-color: #EFECEC;
-}
-
-button#membership {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 20px;
-  color: grey;
-}
-
-button#attend {
-  padding-left: 10px;
-  padding-right: 10px;
-  color: white;
-  opacity: 0.95;
-  font-family: Georgia, serif;
-  background-color: #444141;
-}
-
-
- /* Event pages */
-
- .button.button-block.button-dark {
-    font-weight:bold;
-    font-family: Georgia, serif;
-
- }
-
- .full-image{
-    height: 150px;
-
- }
-
- .row p{
-   padding-top: 15px;
-   font-size: 16px;
-   font-family: Georgia, serif;
-
- }
-
- .border {
-
-   border: none;
-   border-top: 1px solid grey !important;
-   border-bottom: 1px solid grey !important;
- }
-
- .padding.test h4 {
-    font-family: Georgia, serif;
-
- }
-
- .padding.test h3 {
-    font-family: Georgia, serif;
-
- }
-
- .padding.thumbnail h2, h3 {
-   font-family: Georgia, serif;
-
- }
-
- .item-input input{
-  padding-left: 10px;
-
-}
-
- #backgroundCo {
-
-  background-size: contain;
-
-}
-
- #benefits {
-  opacity: 0.90;
-
-}
- .box.addEvent {
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
-
- .box.eventDescription {
-  padding-bottom: 30px;
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-top: 35px;
- }
-
-.list.card {
-  opacity: 0.92;
-
-}
-
-.cardDescs {
-  padding-right: 2px;
-}
-
  /* Homecards */
 
 
@@ -798,74 +510,6 @@ button#attend {
   width: 30%;
   border-radius: 20px;
   font-family: Georgia, serif;
-}
-
-.item.card {
-  width: 49%;
-  height: 100px;
-  font-size: 12px;
-  line-height: 50px;
-  text-align: center!important;
-  border-top: 1px solid #ccc;
-  margin: 1px 0px 5px 0px!important;
-  box-shadow: none!important;
-
-}
-
-.item.card.text h1 {
-  font-family: 'Alegreya Sans', sans-serif !important;
-  font-weight: 600!important;
-  margin-top: 10px;
-  text-indent: 4px;
-  font-size: 25px!important;
-  font-weight: 300;
-}
-
-.item.card.text h2 {
-  margin-top: 20px;
-  text-indent: 4px;
-  font-size: 15px!important;
-  font-weight: 300;
-}
-
-.item.card.text h5 {
-  margin-top: 5px;
-  text-indent: 5px;
-  font-size: 15px;
-}
-
-.item.card.text p {
-  line-height: 0px;
-  font-size: 10px;
-  padding: 6px;
-  margin-top: 5px;
-}
-
-.item.card.home {
-  width: 26%;
-  height: 100px;
-  font-size: 10px;
-  line-height: 50px;
-  text-align: center;
-  border: 1px solid #ccc;
-  margin: 5px 10px;
-}
-
-.home-title {
-  text-align: center;
-  font-size: 17px;
-  font-family: 'Vollkorn', serif;
-  text-align: left;
-  font-family: 'Alegreya Sans', sans-serif !important;
-  margin-left: 5px;
-  font-size: 15px
-}
-
-.whatsOn {
-  /*float: left;*/
-  margin-top: 20px!important;
-  height: 40px;
-  width: 40px;
 }
 
 .coffeeModal {
