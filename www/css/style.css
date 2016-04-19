@@ -13,7 +13,7 @@ body {
   color: #222222;
 }
 
-.has-header {
+.has-header.homeSlider {
     top: -5px;
 }
 

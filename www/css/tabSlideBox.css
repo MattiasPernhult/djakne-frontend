@@ -49,6 +49,10 @@
 
 /* Tar bort en vit linje uppe vid headern*/
 
+.has-header.homeSlider {
+    top: -5px;
+}
+
 ion-header-bar.bar-dark.bar.bar-header {
   background-image: none;
 }
