@@ -4,7 +4,7 @@ function($scope, SessionFactory, ProfileFactory, $state) {
   // When user enters view, check settings
   $scope.$on('$ionicView.enter', function() {
     ProfileFactory.checkOrderSettings('Takeaway');
-    ProfileFactory.checkOrderSettings('Lactos');
+    ProfileFactory.checkOrderSettings('Lactose');
 
     // Get ordersettings
     $scope.orderSettings = ProfileFactory.getOrderSettings();

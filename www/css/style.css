@@ -100,7 +100,7 @@ ion-view {
   text-align: center;
   width: 100%;
   z-index: 1;
-  top: 30px;
+  top: 9px;
 }
 
 #profileTitle {
@@ -119,6 +119,14 @@ ion-view {
   left: auto;
   background-size: contain;
   box-shadow: 0 0 2px 1px;
+}
+
+.credit{
+  color: white;
+}
+
+#credits-amount{
+  vertical-align: text-bottom;
 }
 
 /* MENU */
@@ -358,18 +366,18 @@ ion-slide p {
 /* Nav buttons */
 
 .circle {
-  height: 15px;
-  width: 15px;
+  height: 17px;
+  width: 17px;
   border-radius: 50%;
   text-align: center;
-  font-size:9px;
-  position:absolute;
-  right:3px;
-  top:8px;
-  z-index:1;
-  color:white;
-  background-color:#444;
-  line-height: 15px;
+  font-size: 12px;
+  position: absolute;
+  right: 0px;
+  top: 3px;
+  z-index: 1;
+  color: white;
+  background-color: tomato;
+  line-height: 13px;
 }
 
 .cart-icon {

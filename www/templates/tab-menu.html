@@ -2,8 +2,9 @@
   <ion-nav-buttons side="right">
     <button class="button icon-left ion-bag button-outline"
       ng-disabled="cartQty === 0"
-      ng-click="toggleCart()">
+      ng-click="toggleCart(); priceRequest()">
     </button>
+    <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
   </ion-nav-buttons>
   <ion-side-menus>
   	<ion-side-menu-content>
@@ -29,14 +30,14 @@
             </ion-content>
           </ion-slide>
         </ion-slide-box>
-        </ion-side-menu-content>
-        <ion-side-menu side="right" expose-aside-when="false;">
+      </ion-side-menu-content>
+        <ion-side-menu side="right" expose-aside-when="false">
       	  <ion-header-bar class="bar-dark">
       			<h1 class="title">Left Menu</h1>
       		</ion-header-bar>
 
           <!-- Slider content -->
-          <ion-content class="padding">
+          <ion-content class="padding" ng-style="{'background-color':'#f2f2f2'}">
               <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
               <ion-list>
                 <ion-item ng-repeat="item in customersProducts" class="cart-item">

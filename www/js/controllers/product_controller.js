@@ -3,48 +3,6 @@ function($scope, $state, $http, HOST, accessFactory, Cart,
 MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory,
 notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) {
 
-
-$scope.toggleGroup = function(group) {
-  if (group.shown) {
-    group.shown = false;
-  } else {
-    group.shown = true;
-  }
-  $ionicScrollDelegate.resize();
-};
-
-$scope.isGroupShown = function(group) {
-  return group.shown;
-}
-$scope.toggleLeft = function() {
-  $ionicSideMenuDelegate.toggleLeft();
-};
-
-$scope.showAllGroups = function() {
-  var arrayLength = $scope.groups.length;
-  for (var i = 0; i < arrayLength; i++) {
-    $scope.groups[i].shown = true;
-  }
-  $ionicScrollDelegate.resize();
-};
-
-$scope.showNoGroups = function() {
-  var arrayLength = $scope.groups.length;
-  for (var i = 0; i < arrayLength; i++) {
-    $scope.groups[i].shown = false;
-  }
-  $ionicScrollDelegate.resize();
-};
-
-$scope.toggleAllGroups = function(searchtext) {
-  if (searchtext.length > 1){
-    $scope.showAllGroups();
-  } else {
-    $scope.showNoGroups();
-  }
-  $ionicScrollDelegate.resize();
-};
-
   $scope.toggleCart = function() {
     $ionicSideMenuDelegate.toggleRight();
   };
@@ -93,18 +51,18 @@ $scope.toggleAllGroups = function(searchtext) {
 
   $scope.customersProducts = Cart.list();
   $scope.userFavorites = $scope.userFavorites  || [];
-  $scope.specials = [{
-      name: 'Laktosfritt',
-      checked: false,
-    }, {
-      name: 'Takeaway',
-      checked: false,
-    },
-  ];
+  // $scope.specials = [{
+  //     name: 'Laktosfritt',
+  //     checked: false,
+  //   }, {
+  //     name: 'Takeaway',
+  //     checked: false,
+  //   },
+  // ];
 
   $scope.$on('$ionicView.enter', function() {
     ProfileFactory.checkOrderSettings('Takeaway');
-    ProfileFactory.checkOrderSettings('Lactos');
+    ProfileFactory.checkOrderSettings('Lactose');
     // Get ordersettings
     $scope.orderSettings = ProfileFactory.getOrderSettings();
   });
@@ -212,7 +170,7 @@ $scope.toggleAllGroups = function(searchtext) {
     var message = '';
     var takeaway = false;
     var comment = document.getElementById('comment').value;
-    if ($scope.orderSettings.Lactos.checked) {
+    if ($scope.orderSettings.Lactose.checked) {
       message += 'Laktosfritt: Ja';
     }
     if ($scope.orderSettings.Takeaway.checked) {
@@ -236,7 +194,7 @@ $scope.toggleAllGroups = function(searchtext) {
     if (window.localStorage.Takeaway) {
       takeaway = true;
     }
-    if (window.localStorage.Lactos) {
+    if (window.localStorage.Lactose) {
       message += 'Laktosfritt: Ja';
     }
 
