@@ -574,22 +574,17 @@ ion-slide p {
 #addEvent{
     min-width: 100%;
     font-size: 16px;
-    background: #495C70;
+    background: #444;
     padding: 30px 30px 15px 30px;
     min-height: 100%;
+    margin-top: 20px;
     /*border: 5px solid #53687E;*/
 }
-​
-.form-style-4{
-  margin-top: 10%;
-}
-​
+
+​​
 .form-style-4 input[type=submit],
-.form-style-4 input[type=button],
 .form-style-4 input[type=text],
-.form-style-4 input[type=email],
-.form-style-4 textarea,
-.form-style-4 label
+.form-style-4 input[type=email]
 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 16px;
@@ -616,18 +611,6 @@ ion-slide p {
     padding: 0px 0px 0px 0px;
     font-style: italic;
 }
-.form-style-4 textarea{
-    font-style: italic;
-    padding: 0px 0px 0px 0px;
-    background: transparent;
-    outline: none;
-    border: none;
-    border-bottom: 1px dashed #83A4C5;
-    width: 275px;
-    overflow: hidden;
-    resize:none;
-    height:20px;
-}
 ​
 .form-style-4 textarea:focus,
 .form-style-4 input[type=text]:focus,
@@ -637,17 +620,16 @@ ion-slide p {
     border-bottom: 1px dashed #D9FFA9;
 }
 ​
-.form-style-4 input[type=submit],
-.form-style-4 input[type=button]{
+.form-style-4 input[type=submit]{
     background: #576E86;
     border: none;
     padding: 8px 10px 8px 10px;
     border-radius: 5px;
     color: #A8BACE;
 }
-.form-style-4 input[type=submit]:hover,
-.form-style-4 input[type=button]:hover{
-background: #394D61;
+
+.button.button-full.button-light{
+  margin-top: 10%;
 }
 
 .ion-edit{
@@ -663,7 +645,6 @@ background: #394D61;
 }
 
 #cardHead{
-
   min-height: 40px;
   padding: 1%;
 }
