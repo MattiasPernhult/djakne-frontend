@@ -16,9 +16,9 @@ factories.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoa
           name: item.name,
           price: item.price,
         });
-      } else {
-        this.increaseQty(index);
       }
+      this.increaseQty(index);
+
     },
     remove: function(item) {
       var index = this.contains(item);
@@ -45,7 +45,13 @@ factories.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoa
       return -1;
     },
     size: function() {
-      return cart.length;
+      // return cart.length;
+      var size = 0;
+      angular.forEach(cart, function(item) {
+        size += item.qty;
+      });
+
+      return size;
     },
     total: function() {
       var total = 0;

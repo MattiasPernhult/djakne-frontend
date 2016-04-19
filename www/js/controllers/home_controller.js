@@ -5,8 +5,9 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   $scope.votes = 2;
   $scope.body = {};
   $scope.icon = {
-    src: '/img/Icons/home/news_black.png',
+    src: './img/Icons/home/news_black.png',
   };
+
   // For the icons
   $scope.getCurrentIndex = function() {
     return $ionicSlideBoxDelegate.currentIndex();
@@ -18,16 +19,20 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     $scope.icon.src = src;
   };
 
-  $scope.icons = [{
-    name: 'Recent',
-    src: '/img/Icons/home/news_black.png',
-  }, {
-    name: 'Co-work',
-    src: 'img/Icons/home/join_black.png',
-  }, {
-    name: 'Events',
-    src: 'img/Icons/home/event_black.png',
-  }, ];
+  $scope.icons = [
+    {
+      name: 'Recent',
+      src: 'img/Icons/home/news_black.png',
+    },
+    {
+      name: 'Co-work',
+      src: 'img/Icons/home/join_black.png',
+    },
+    {
+      name: 'Events',
+      src: 'img/Icons/home/event_black.png',
+    },
+  ];
 
   $scope.doRefresh = function() {
     MembersFactory.getMembers(function(err, data) {

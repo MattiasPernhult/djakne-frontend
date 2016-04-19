@@ -1,11 +1,6 @@
 angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories', 'config',
 'ngCordova',])
 
-.config(function($ionicConfigProvider) {
-  $ionicConfigProvider.tabs.position('bottom');
-})
-
-
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -22,7 +17,9 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+  $ionicConfigProvider.tabs.position('bottom');
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
