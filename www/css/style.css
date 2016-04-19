@@ -316,28 +316,11 @@ ion-slide p {
 
 /* Home/Djäkne template */
 
-.checkedIn {
-  text-align: center;
-}
-
-#overflowingContent {
-  max-height: 100px;
-  width: -webkit-max-content;
-  width: max-content;
-}
-
-.people {
-  display:block;
-  float:left;
-  padding: 3px;
-  margin-top: 10px;
-  background: none!important;
-}
-
 #homeAvatar {
   border-radius: 20%;
   width: 50px;
   height: 50px;
+  margin-left: 5px;
 }
 
 /* List item content - menu template / cart template */
