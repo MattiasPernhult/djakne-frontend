@@ -9,6 +9,7 @@ controllers.controller('AddEventController',
         text: $scope.event.text,
         author: $scope.event.author,
         date: $scope.event.date,
+        location: $scope.event.location,
       };
 
       var url = HOST.hostAdress + ':4000/events';

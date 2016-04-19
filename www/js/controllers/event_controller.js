@@ -11,6 +11,7 @@ controllers.controller('EventController', function($scope, EventFactory, $state)
   };
 
   EventFactory.getEvents(function(data) {
+    console.log('resultat från getEvents: ' + JSON.stringify(data, null, 4));
     $scope.events = data;
   });
 
