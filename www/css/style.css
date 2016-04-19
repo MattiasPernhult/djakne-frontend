@@ -551,10 +551,6 @@ ion-slide p {
   margin-left:200px;
 }
 
-.slider-pager{
-  display: none;
-}
-
 #addEvent{
     min-width: 100%;
     font-size: 16px;

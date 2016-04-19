@@ -9,7 +9,7 @@
     <ion-slide-box on-slide-changed="changeLogo()"show-pager="false" ion-slide-tabs>
       <!-- Slide ett -->
         <ion-slide ion-slide-tab-label="Recent">
-          <ion-content overflow-scroll="false">
+          <ion-content overflow-scroll="false" class="expandList">
             <!-- Innehåll för slide ett -->
               <div class="list card">
                 <div class="item item-avatar">
@@ -65,7 +65,7 @@
         <!-- Slide tre -->
         <ion-slide ion-slide-tab-label="Events" ng-controller="EventController">
           <!-- Innehåll slide tre -->
-          <ion-content overflow-scroll="false">
+          <ion-content overflow-scroll="false" class="expandList">
             <a class="ion-edit" ui-sref="addEvent"></a>
             <div class="card padding events" ng-repeat="event in events" >
             <div id="cardHead">
