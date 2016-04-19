@@ -1,43 +1,132 @@
+<ion-view title="Djäkne">
+  <ion-nav-buttons side="right">
+      <button class="button icon-left ion-android-person button-outline" ui-sref="profile"></button>
+  </ion-nav-buttons>
+<ion-content scroll="false">
+  <div ng-style="{ 'height':'195px','width':'100%','background-color':'#444' }">
+    <img id="logo" ng-src="{{icon.src}}"></img>
+  </div>
+    <ion-slide-box on-slide-changed="changeLogo()"show-pager="false" ion-slide-tabs>
+      <!-- Slide ett -->
+        <ion-slide ion-slide-tab-label="Recent">
+          <ion-content scroll="true">
+            <!-- Innehåll för slide ett -->
+              <div class="list card">
+                <div class="item item-avatar">
+                  <img  src="img/profile.jpg">
+                  <div class="event-header">
+                    <h2>Afterwork på Pinchos</h2>
+                    <p>Maj 02, 2016</p>
+                  </div>
+                </div>
+                <div class="item item-body">
+                  <img class="event-img" src="http://glitzy.shapemeup.se/files/2015/11/pinchos.jpg">
+                  <p>
+                    This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+                    the content is from a card-body consisting of an image and paragraph text. The footer
+                    consists of tabs, icons aligned left, within the card-footer.
+                  </p>
+                  <p>
+                    <a href="#" class="subdued">1 Like</a>
+                    <a href="#" class="subdued">5 Comments</a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="list card">
+                <div class="item item-avatar">
+                  <img src="img/profile.jpg">
+                  <div class="event-header">
+                    <h2>Afterwork på Pinchos</h2>
+                    <p>Juni 07, 2016</p>
+                  </div>
+                </div>
+
+                <div class="item item-body">
+                  <img class="event-img" src="http://glitzy.shapemeup.se/files/2015/11/pinchos.jpg">
+                  <p>
+                    This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+                    the content is from a card-body consisting of an image and paragraph text. The footer
+                    consists of tabs, icons aligned left, within the card-footer.
+                  </p>
+                  <p>
+                    <a href="#" class="subdued">1 Like</a>
+                    <a href="#" class="subdued">5 Comments</a>
+                  </p>
+                </div>
+              </div>
+            </ion-content>
+        </ion-slide>
+        <!-- Slide två -->
+        <ion-slide ion-slide-tab-label="Co-work">
+          <!-- Innehåll slide två -->
+          <h1>Tab 2</h1>
+        </ion-slide>
+        <!-- Slide tre -->
+        <ion-slide ion-slide-tab-label="Events" ng-controller="EventController">
+          <!-- Innehåll slide tre -->
+          <ion-content scroll="true">
+            <a class="ion-edit" ui-sref="addEvent"></a>
+            <div class="card padding events" ng-repeat="event in events" >
+            <div id="cardHead">
+              <h4>{{ event.title }}</h4>
+              <h6>{{ event.date | date:'MM/dd/yyyy' }}</h6>
+              <hr>
+            </div>
+            <p id="infoText">{{event.text}}</p>
+            <img ng-src="data:image/gif;base64,{{event.attendants}}" ng-show="show" ng-if="event.attendants != false"</img>
+            <p ng-show="show">Location: {{event.location}}</p>
+            <button class="button button-small button-dark" id="cowork" ng-click="signUp()" ng-show="show"> Sign up</button>
+            <button class="button button-small button-clear" ng-click="show = !show">
+              <p ng-if="!show">See more</p>
+              <p ng-if="show">See less</p>
+            </button>
+        </div>
+        </ion-content>
+      </ion-slide>
+    </ion-slide-box>
+</ion-content>
+
+<!--
 <ion-view view-title="Djäkne">
+  <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
   <ion-content class="home">
 
-    <div class="homeBackground text-center"  style="background-image: url(./img/cowork.jpg)">
-      <h1 class="homeLogo">Djäkne</h1>
-      <h3 class="homeLogo">Startup Studio</h3>
-      <h4 id="checkedIn">@Kaffebaren</h4>
-      <div class="content">
-        <ion-scroll direction="x">
-          <div id="overflowingContent">
-            <div class="people" ng-repeat="member in members" ng-click="openModal(member)">
-              <img id="homeAvatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
-            </div>
-          </div>
-        </ion-scroll>
+  <ion-refresher on-refresh="doRefresh()" disable-pulling-rotation="false">
+
+  </ion-refresher>
+
+  <ion-slide-box class="slider home" show-pager="false" auto-play="false" does-continue="false" on-slide-changed="slideChanged(index)">
+  <ion-slide class="homeSlider" ng-style="{ 'background-image': 'url(' + currentCoffee.image + ')' }">
+    <div class="slider-home-container text-center">
+      <div class="text-home-container">
+
+         <h1>{{currentCoffee.title}}</h1>
+        <! Obj text -->
+        <!-- <p>{{ currentCoffee.text | limitTo: 45 }}{{obj.text.length > 20 ? ' Läs mer..' : ''}}</p>
+        <button class="button button-small readMore" ng-click="openCoffeeModal(coffee)">Read more</button>
       </div>
     </div>
+  </ion-slide>
+</ion-slide-box> -->
 
 
-    <div class="list card">
-      <h1>Veckans Kaffe</h1>
-      <h3>{{rating.title}}</h3>
-      <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
-      <img ng-src="{{rating.image}}"></img>
-      <p>{{rating.description}}</p>
-    </div>
+    <!-- <div>
+      <h4 class="home-title">@ Djäkne</h4>
+      <ion-scroll direction="x">
+        <div id="overflowingContent">
+          <div class="people" ng-repeat="member in members" ng-click="openModal(member)">
+            <img id="homeAvatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+          </div>
+        </div>
+      </ion-scroll>
+    </div> -->
 
-    <div class="list card">
-      <h1>Rösta!</h1>
-      <h3>{{rating.startDate | date:'V.ww'}}</h3>
-      <h5>Kaffe från {{rating.title}}</h3>
-      <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
-        <button class="button button-block button-dark" ng-click="send()">Skicka</button>
-    </div>
-
-    <script id="modal.html" type="text/ng-template">
+    <!-- <script id="modal.html" type="text/ng-template">
       <ion-modal-view>
         <ion-header-bar>
           <h1 class="title">{{member.firstName}} {{member.lastName}}</h1>
-          <button class="button icon icon-left ion-ios-close-outline" ng-click="closeModal()"></button>
+          <button class="button icon icon-right ion-ios-close-outline" ng-click="closeModal()"></button>
         </ion-header-bar>
 
         <ion-content>
@@ -53,6 +142,85 @@
           </div>
         </ion-content>
       </ion-modal-view>
-    </script>
+    </script> -->
+<!--
+    <div class="list card">
+      <h1>Veckans Kaffe</h1>
+      <h3>{{rating.title}}</h3>
+      <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
+      <img id="coffeeImage" ng-src="{{rating.image}}"></img>
+      <p>{{rating.description}}</p>
+    </div>
+
+    <div class="list card">
+      <h1>Rösta!</h1>
+      <h3>{{rating.startDate | date:'V.ww'}}</h3>
+      <h5>Kaffe från {{rating.title}}</h3>
+      <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+        <button class="button button-block button-dark" ng-click="send()">Skicka</button>
+    </div>
+-->
+
+    <!-- <script id="currentCoffee.html" type="text/ng-template">
+      <ion-modal-view>
+      <ion-header-bar>
+        <h1 class="title">Veckans kaffe</h1>
+        <button class="button icon icon-right ion-ios-close-outline" ng-click="closeCoffeeModal()"></button>
+      </ion-header-bar>
+
+        <ion-content>
+          <div class="box coffeeModal">
+            <h3 class>{{rating.title}}</h3>
+            <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
+            <img id="coffeeImage" ng-src="{{rating.image}}"></img>
+            <p>{{rating.description}}</p>
+          </div>
+
+          <div class="box coffeeModal">
+            <h1 class="coffeeVote">Vote!</h1>
+            <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+            <div class="text-center padding">
+              <button class="button button-block button-dark vote" ng-click="send()">Submit your rating</button>
+            </div>
+          </div>
+       </ion-content>
+      </ion-modal-view>
+    </script> -->
+
+
+    <!-- <div class="box co-work">
+      <h4 class="home-title">Updates</h4>
+    </div> -->
+
+    <!-- <ul class="flex-container djakne">
+      <li class="item card text"> -->
+        <!-- <img class="whatsOn" src="img/Icons/event_BlackNoBG.png"> -->
+        <!-- <h1>#Events</h1>
+        <h5>{{currentEvent.title}}</h5>
+        <p></p>
+      </li>
+      <li class="item card text"> -->
+        <!-- <img class="whatsOn" src="img/Icons/news_BlackNoBG.png"> -->
+          <!-- <h1>#News</h1>
+        <h5>Nyhet</h5>
+        <p></p>
+      </li>
+    </ul> -->
+
+    <!-- <ul class="flex-container djakne">
+      <li class="item card text"> -->
+        <!-- <img class="whatsOn" src="img/Icons/book_BlackNoBG.png"> -->
+          <!-- <h1>#Member</h1>
+        <h5>Available</h5>
+        <p></p>
+      </li>
+      <li class="item card text"> -->
+        <!-- <img class="whatsOn" src="img/Icons/join_BlackNoBG.png"> -->
+          <!-- <h1>#Join us</h1>
+        <h5>How to!</h5>
+        <p></p>
+      </li>
+    </ul>
+
   </ion-content>
-</ion-view>
+</ion-view> -->

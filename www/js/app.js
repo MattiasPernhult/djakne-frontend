@@ -1,6 +1,11 @@
 angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories', 'config',
 'ngCordova',])
 
+.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.tabs.position('bottom');
+})
+
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -37,41 +42,17 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       controller: 'ProductController',
     })
 
-    .state('eventMain', {
-        url: '/eventMain',
-        templateUrl: 'templates/eventMain.html',
-        controller: 'EventController',
-      })
-
-    .state('events_description', {
-      url: '/events_description',
-      templateUrl: 'templates/events_description.html',
-      controller: 'EventDescriptionController',
-    })
-
     .state('addEvent', {
       url: '/addEvent',
       templateUrl: 'templates/addEvent.html',
       controller: 'AddEventController',
     })
 
-    .state('boardMain', {
-      url: '/boardMain',
-      templateUrl: 'templates/boardMain.html',
-      controller: 'EventController',
-    })
-
-    .state('newsMain', {
-      url: '/newsMain',
-      templateUrl: 'templates/newsMain.html',
-      controller: 'EventController',
-    })
-
-    .state('memberships', {
-      url: '/memberships',
-      templateUrl: 'templates/memberships.html',
-      controller: 'EventController',
-    })
+    .state('profile', {
+        url: '/profile',
+        templateUrl: 'templates/profile.html',
+        controller: 'ProfileController',
+      })
 
   // setup an abstract state for the tabs directive
     .state('tab', {
@@ -91,26 +72,6 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
       },
     },
   })
-
-  .state('tab.co', {
-      url: '/co',
-      views: {
-        'tab-co': {
-          templateUrl: 'templates/tab-co.html',
-          controller: 'EventController',
-        },
-      },
-    })
-
-    .state('tab.profile', {
-        url: '/profile',
-        views: {
-          'tab-profile': {
-            templateUrl: 'templates/tab-profile.html',
-            controller: 'ProfileController',
-          },
-        },
-      })
 
   .state('tab.menu', {
     url: '/menu',
