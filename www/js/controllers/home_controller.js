@@ -5,9 +5,9 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   $scope.votes = 2;
   $scope.body = {};
   $scope.icon = {
-    src: '/img/Icons/home/news_black.png',
+    src: './img/Icons/home/news_black.png',
   };
-  
+
   // For the icons
   $scope.getCurrentIndex = function() {
     return $ionicSlideBoxDelegate.currentIndex();
@@ -22,7 +22,7 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   $scope.icons = [
     {
       name: 'Recent',
-      src: '/img/Icons/home/news_black.png',
+      src: 'img/Icons/home/news_black.png',
     },
     {
       name: 'Co-work',

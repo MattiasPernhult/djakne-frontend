@@ -130,3 +130,7 @@ ion-slide:nth-child(2n) {
 .card{
   text-align: center;
 }
+
+.tabs-striped .tabs {
+  border-bottom: none!important;
+}
