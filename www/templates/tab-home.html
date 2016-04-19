@@ -63,9 +63,9 @@
           <h1>Tab 2</h1>
         </ion-slide>
         <!-- Slide tre -->
-        <ion-slide ion-slide-tab-label="Events" ng-controller="EventController">
+        <ion-slide ion-slide-tab-label="Events">
           <!-- Innehåll slide tre -->
-          <ion-content scroll="true">
+          <ion-content scroll="true" ng-init="getEvents()">
             <a class="ion-edit" ui-sref="addEvent"></a>
             <div class="card padding events" ng-repeat="event in events" >
             <div id="cardHead">
@@ -76,7 +76,7 @@
             <p id="infoText">{{event.text}}</p>
             <img ng-src="data:image/gif;base64,{{event.attendants}}" ng-show="show" ng-if="event.attendants != false"</img>
             <p ng-show="show">Location: {{event.location}}</p>
-            <button class="button button-small button-dark" id="cowork" ng-click="signUp()" ng-show="show"> Sign up</button>
+            <button class="button button-small button-dark" id="cowork" ng-click="signUp(event._id)" ng-show="show"> Sign up</button>
             <button class="button button-small button-clear" ng-click="show = !show">
               <p ng-if="!show">See more</p>
               <p ng-if="show">See less</p>

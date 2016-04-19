@@ -7,7 +7,6 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   $scope.icon = {
     src: '/img/Icons/home/news_black.png',
   };
-  
   // For the icons
   $scope.getCurrentIndex = function() {
     return $ionicSlideBoxDelegate.currentIndex();
@@ -19,23 +18,19 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     $scope.icon.src = src;
   };
 
-  $scope.icons = [
-    {
-      name: 'Recent',
-      src: '/img/Icons/home/news_black.png',
-    },
-    {
-      name: 'Co-work',
-      src: 'img/Icons/home/join_black.png',
-    },
-    {
-      name: 'Events',
-      src: 'img/Icons/home/event_black.png',
-    },
-  ];
+  $scope.icons = [{
+    name: 'Recent',
+    src: '/img/Icons/home/news_black.png',
+  }, {
+    name: 'Co-work',
+    src: 'img/Icons/home/join_black.png',
+  }, {
+    name: 'Events',
+    src: 'img/Icons/home/event_black.png',
+  }, ];
 
   $scope.doRefresh = function() {
-    MembersFactory.getMembers(function(err, data)  {
+    MembersFactory.getMembers(function(err, data) {
       if (!err) {
         $timeout(function() {
           $scope.members = data.members;
@@ -57,6 +52,7 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   };
 
   CoffeeFactory.getCoffee(function(data) {
+    console.log('getCoffee');
     $scope.rating = data;
   });
 
@@ -136,31 +132,62 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   };
 
   $scope.previous = function() {
-     $ionicSlideBoxDelegate.previous();
-   };
+    $ionicSlideBoxDelegate.previous();
+  };
 
   // Called each time the slide changes
   $scope.slideChanged = function(index) {
-     $scope.slideIndex = index;
-   };
+    $scope.slideIndex = index;
+  };
 
   // Kaffe
   CoffeeFactory.getCoffee(function(data) {
-     $scope.currentCoffee = data;
-     $scope.currentCoffee.text = $scope.currentCoffee.description;
-   });
+    $scope.currentCoffee = data;
+    $scope.currentCoffee.text = $scope.currentCoffee.description;
+  });
 
   // Event
-  EventFactory.getEvents(function(data) {
-      var events = data;
-      console.log(events);
-      var obj = events.sort(function(a,b) {
-        return new Date(a.date) - new Date(b.date);
-      });
-      $scope.currentEvent = obj[0];
-      // Ta bort rad 13 sen när events fått bilder
-      $scope.currentEvent.image = 'http://images.performgroup.com/di/library/omnisport/57/2a/zlatanibrahimovic-cropped_f8i6pz4q64rx1icnoarbakkw4.jpg?t=-617781839&w=620&h=430';
+  $scope.isVisible = false;
+  $scope.toggleElement = function() {
+
+    if ($scope.isVisible === false) {
+      $scope.isVisible = true;
+    } else {
+      $scope.isVisible = false;
+    }
+  };
+
+  $scope.getEvents = function() {
+    EventFactory.getEvents(function(data) {
+      console.log('i getEvents');
+      console.log('resultat från getEvents: ' + JSON.stringify(data, null, 4));
+      $scope.events = data;
     });
+  };
+
+  $scope.$watch(function() {
+      return EventFactory.getListOfEvents();
+    },
+    function(newVal) {
+      $scope.events = newVal;
+    }
+  );
+  $scope.signUp = function(eventId) {
+    console.log('eventId : ' + eventId);
+    var url = HOST.hostAdress + ':4000/events/register/' + eventId;
+    var body = {
+      token: 'AQR6F4gcbeciveBxr3x0_rwVEq-4DevuXXxV9p_d6s59aakTCU7-4MtZlxbwzW9suk4HDjvbf-x0bLoibz0Hxkr5vzK2iqIhj5CcgTKdlj7KjZcwUcs',
+    };
+
+    httpService.post(url, body, function(err, result) {
+      if (err) {
+        toastService.showLongBottom('Något blev fel så du är ej anmäld till eventet');
+      } else {
+        $scope.showImage = true;
+        toastService.showLongBottom('Du är nu anmäld till eventet');
+      }
+    });
+  };
 
 
 });
