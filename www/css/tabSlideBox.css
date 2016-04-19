@@ -4,8 +4,7 @@
 }
 
 .scroll-view{
-  /*position: inherit !important;*/
-  position: absolute;
+  position: inherit!important;
   top: 109px;
   width: 100%;
 }
