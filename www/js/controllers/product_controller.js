@@ -1,7 +1,53 @@
 controllers.controller('ProductController',
 function($scope, $state, $http, HOST, accessFactory, Cart,
 MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory,
-notificationService, httpService) {
+notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) {
+
+
+$scope.toggleGroup = function(group) {
+  if (group.shown) {
+    group.shown = false;
+  } else {
+    group.shown = true;
+  }
+  $ionicScrollDelegate.resize();
+};
+
+$scope.isGroupShown = function(group) {
+  return group.shown;
+}
+$scope.toggleLeft = function() {
+  $ionicSideMenuDelegate.toggleLeft();
+};
+
+$scope.showAllGroups = function() {
+  var arrayLength = $scope.groups.length;
+  for (var i = 0; i < arrayLength; i++) {
+    $scope.groups[i].shown = true;
+  }
+  $ionicScrollDelegate.resize();
+};
+
+$scope.showNoGroups = function() {
+  var arrayLength = $scope.groups.length;
+  for (var i = 0; i < arrayLength; i++) {
+    $scope.groups[i].shown = false;
+  }
+  $ionicScrollDelegate.resize();
+};
+
+$scope.toggleAllGroups = function(searchtext) {
+  if (searchtext.length > 1){
+    $scope.showAllGroups();
+  } else {
+    $scope.showNoGroups();
+  }
+  $ionicScrollDelegate.resize();
+};
+
+  $scope.toggleCart = function() {
+    $ionicSideMenuDelegate.toggleRight();
+  };
 
   if (window.cordova) {
     var push = PushNotification.init({

@@ -26,9 +26,10 @@ div.scroll{
   margin:0;
 }
 
+/* FIX */
 .cartIcon {
-  min-width: 45px !important;
-  max-width: 45px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
   line-height: 0 !important;
   margin: 0 10px;
   color: black !important;
@@ -142,7 +143,7 @@ ion-view {
 
 .product-title{
   font-weight: 400 !important;
-  font-size:22px !important;
+  font-size:17px !important;
   color: black;
   /*font-family: 'Alegreya Sans', sans-serif !important;*/
 }
@@ -475,8 +476,9 @@ ion-slide p {
   box-shadow: none !important;
 }
 
+/* FIX */
 .toggleSpecials h3 {
-  margin-left: 10px;
+
 }
 /* Product total - cart template */
 
@@ -729,9 +731,8 @@ button#attend {
    font-family: Georgia, serif;
 
  }
-
+/* FIX */
  .item-input input{
-  padding-left: 10px;
 
 }
 
@@ -923,9 +924,9 @@ button#attend {
   display: none;
 }
 
-.scroll-content{
+/*.scroll-content{
   position: static !important;
-}
+}*/
 
 #addEvent{
     min-width: 100%;
@@ -1037,4 +1038,110 @@ background: #394D61;
 
 #cardHead hr{
   margin-top: 15%;
+}
+
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+/* Menu */
+
+.menulist{
+  top: 195px;
+  margin: 15px 0;
+}
+
+#item-name {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  float: left;
+}
+
+#item-price {
+  margin-left: 0;
+  font-size: 18px;
+}
+
+.item-obj{
+  box-shadow: none !important;
+}
+
+.item-list{
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.item-button-container{
+  margin-top: 25px;
+  margin-right: 10;
+}
+
+p{
+  color: black !important;
+
+}
+
+.bg-slide{
+  background-color: #f0f0f0 !important;
+}
+
+/* Meny */
+
+p#meny-name {
+  font-size:17px;
+  margin-left: 0;
+  margin-top: 0;
+  text-align: left;
+  display:block;
+}
+
+p#meny-price {
+  font-size:17px;
+  margin-left: 0;
+  text-align: left;
+}
+
+.meny-container{
+  margin-top: 0;
+}
+
+.groupElement{
+  height: 75px;
+}
+
+h3.groupTitle {
+  font-size: 27px;
+  position: relative;
+  top: 2px;
+}
+/* FIX */
+.cart-item{
+  box-shadow: none;
+  border-bottom: 1px solid grey;
+}
+/* FIX */
+.cart-item:last-child{
+  box-shadow: none;
+  border: none;
+}
+
+/* FIX */
+label.item.item-input {
+  box-shadow: none;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.expandList{
+  margin-bottom: 200px;
 }
