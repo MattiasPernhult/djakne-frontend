@@ -1,4 +1,7 @@
 <ion-content overflow-scroll="false" class="expandList" ng-controller="EventController">
+  <ion-refresher on-refresh="doRefresh()" disable-pulling-rotation="false">
+
+  </ion-refresher>
   <a class="ion-edit" ui-sref="addEvent"></a>
     <div class="card padding events" ng-repeat="event in events">
     <div id="cardHead">
