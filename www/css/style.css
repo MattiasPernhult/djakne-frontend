@@ -333,6 +333,10 @@ ion-slide p {
   margin-left: 5px;
 }
 
+.event-header {
+  margin-left: 0px!important;
+}
+
 /* List item content - menu template / cart template */
 
 .products {

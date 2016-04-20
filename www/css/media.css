@@ -5,6 +5,11 @@
     height: 40px;
     margin-left: 5px;
   }
+
+  .event-header {
+    margin-left: 10px!important;
+  }
+
 }
 @media (max-width:481px) { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
 
