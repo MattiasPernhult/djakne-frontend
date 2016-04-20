@@ -11,7 +11,8 @@
         <ion-slide ion-slide-tab-label="Recent">
           <ion-content overflow-scroll="false" class="expandList">
             <!-- Innehåll för slide ett -->
-            <div ng-style="{ 'text-align':'center' }">
+            <div ng-style="{ 'text-align':'center'}">
+              <h6>@ Djakne</h6>
             <div ng-style="{ 'display':'inline-block' }" ng-repeat="member in members | limitTo: 6" ng-click="openModal(member)">
               <img id="homeAvatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
             </div>
