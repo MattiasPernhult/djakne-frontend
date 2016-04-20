@@ -122,7 +122,10 @@ ion-view {
 }
 
 .credit{
-  color: white;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: white !important;
+  vertical-align: text-bottom;
 }
 
 #credits-amount{
