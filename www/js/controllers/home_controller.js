@@ -34,11 +34,22 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     },
   ];
 
-  $scope.doRefresh = function() {
+  $scope.doMemberRefresh = function() {
     MembersFactory.getMembers(function(err, data) {
       if (!err) {
         $timeout(function() {
           $scope.members = data.members;
+          $scope.$broadcast('scroll.refreshComplete');
+        }, 1000);
+      }
+    });
+  };
+
+  $scope.doEventRefresh = function() {
+    EventFactory.getEvents(function(err, data) {
+      if (!err) {
+        $timeout(function() {
+          $scope.events = data.events;
           $scope.$broadcast('scroll.refreshComplete');
         }, 1000);
       }
