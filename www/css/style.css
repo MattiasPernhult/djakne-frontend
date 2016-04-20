@@ -750,7 +750,7 @@ label.item.item-input {
 
 /* Css for CO-WORK */
 
-.readMore {
+.button.button-small.readMore {
   margin-top: 10px;
   border: 1px solid #ccc;
   width: 100px;
