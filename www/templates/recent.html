@@ -1,9 +1,13 @@
 <ion-content overflow-scroll="false" class="expandList">
+  <ion-refresher on-refresh="doRefresh()" disable-pulling-rotation="false">
+
+  </ion-refresher>
+
   <!-- Innehåll för slide ett -->
-  <div ng-style="{ 'text-align':'center'}">
-    <h6>@ Djakne</h6>
-  <div ng-style="{ 'display':'inline-block' }" ng-repeat="member in members | limitTo: 6" ng-click="openModal(member)">
-    <img id="homeAvatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+  <div class="list card">
+    <h2>People @ Djakne</h2>
+  <div class="item">
+    <img id="homeAvatar" ng-click="openModal(member)" ng-repeat="member in members | limitTo: 6" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
   </div>
 </div>
     <div class="list card">
@@ -22,53 +26,3 @@
       </div>
     </div>
   </ion-content>
-
-  <script id="modal.html" type="text/ng-template">
-    <ion-modal-view>
-      <ion-header-bar>
-        <h1 class="title">{{member.firstName}} {{member.lastName}}</h1>
-        <button class="button icon icon-right ion-ios-close-outline" ng-click="closeModal()"></button>
-      </ion-header-bar>
-
-      <ion-content>
-        <div style="display: block; margin: 0 auto; padding: 10px;">
-          <img ng-src="data:image/jpeg;base64,{{member.image}}"></img>
-          <h4>Jobbar med</h4>
-          <p>{{member.headline}}</p>
-          <h4>Intressen</h4>
-          <p>{{member.interests}}</p>
-          <h4>Bor</h4>
-          <p>{{member.location}}</p>
-          <a ng-click="gotoLinkedIn()"href="">LinkedIn</a>
-        </div>
-      </ion-content>
-    </ion-modal-view>
-  </script>
-
-  <!-- COFFEE MODAL -->
-
-  <script id="currentCoffee.html" type="text/ng-template">
-    <ion-modal-view>
-    <ion-header-bar>
-      <h1 class="title">Veckans kaffe</h1>
-      <button class="button icon icon-right ion-ios-close-outline" ng-click="closeCoffeeModal()"></button>
-    </ion-header-bar>
-
-      <ion-content>
-        <div class="box coffeeModal">
-          <h3 class>{{rating.title}}</h3>
-          <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
-          <img id="coffeeImage" ng-src="{{rating.image}}"></img>
-          <p>{{rating.description}}</p>
-        </div>
-
-        <div class="box coffeeModal">
-          <h1 class="coffeeVote">Vote!</h1>
-          <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
-          <div class="text-center padding">
-            <button class="button button-block button-dark vote" ng-click="send()">Submit your rating</button>
-          </div>
-        </div>
-     </ion-content>
-    </ion-modal-view>
-  </script>

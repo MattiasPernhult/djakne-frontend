@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
-
+@import url(https://fonts.googleapis.com/css?family=Vollkorn);
 
 
 .item {
@@ -11,6 +11,12 @@
 body {
   font-family: Georgia, Times, "Times New Roman", serif !important;
   color: #222222;
+}
+
+h2 {
+  font-family: 'Vollkorn', serif!important;
+  font-size: 16px!important;
+  margin-top: 5px!important;
 }
 
 .containerCartIcons {
@@ -322,7 +328,6 @@ ion-slide p {
 /* Home/Djäkne template */
 
 #homeAvatar {
-  border-radius: 20%;
   width: 50px;
   height: 50px;
   margin-left: 5px;
