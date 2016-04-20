@@ -1,7 +1,7 @@
 controllers.controller('ProductController',
 function($scope, $state, $http, HOST, accessFactory, Cart,
 MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory,
-notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) {
+notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate, $ionicPopover) {
 
   $scope.toggleCart = function() {
     $ionicSideMenuDelegate.toggleRight();
@@ -71,12 +71,16 @@ notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) 
     vote.show = !vote.show;
   };
 
+
   // Watch for changes in cart size
   $scope.$watch(function() {
       return Cart.size();
     },
     function(newVal) {
       $scope.cartQty = newVal;
+      if (newVal === 0 && $ionicSideMenuDelegate.isOpen()) {
+        $ionicSideMenuDelegate.toggleRight();
+      }
     }
   );
 
@@ -94,6 +98,11 @@ notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) 
     $scope.products = data;
   });
 
+  $scope.favoritesSize = function() {
+    var favSize = $scope.userFavorites.length;
+    return favSize;
+  };
+
   $scope.addFavorite = function(item) {
     console.log(item);
     $scope.userFavorites.push(item);
@@ -110,6 +119,7 @@ notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) 
     var favorites;
     res = window.localStorage.getItem('favorites');
     favorites = JSON.parse(res);
+    $scope.favorites = favorites;
     return favorites;
   };
 

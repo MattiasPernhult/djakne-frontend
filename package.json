@@ -52,8 +52,8 @@
     "cordova plugin add cordova-plugin-themeablebrowser"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "android",
+    "ios"
   ],
   "config": {
     "commitizen": {

@@ -9,7 +9,61 @@
     <ion-slide-box on-slide-changed="changeLogo()"show-pager="false" ion-slide-tabs>
       <!-- Slide ett -->
         <ion-slide ion-slide-tab-label="Recent">
-          <div ng-include="'templates/recent.html'"></div>
+          <div ng-include="'templates/recent.html'">
+
+            <!-- CHECKED-IN MODAL -->
+
+            <script id="modal.html" type="text/ng-template">
+              <ion-modal-view>
+                <ion-header-bar>
+                  <h1 class="title">{{member.firstName}} {{member.lastName}}</h1>
+                  <button class="button icon icon-right ion-ios-close-outline" ng-click="closeModal()"></button>
+                </ion-header-bar>
+
+                <ion-content>
+                  <div style="display: block; margin: 0 auto; padding: 10px;">
+                    <img ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+                    <h4>Jobbar med</h4>
+                    <p>{{member.headline}}</p>
+                    <h4>Intressen</h4>
+                    <p>{{member.interests}}</p>
+                    <h4>Bor</h4>
+                    <p>{{member.location}}</p>
+                    <a ng-click="gotoLinkedIn()"href="">LinkedIn</a>
+                  </div>
+                </ion-content>
+              </ion-modal-view>
+            </script>
+
+              <!-- COFFEE MODAL -->
+
+              <script id="currentCoffee.html" type="text/ng-template">
+                <ion-modal-view>
+                <ion-header-bar>
+                  <h1 class="title">Veckans kaffe</h1>
+                  <button class="button icon icon-right ion-ios-close-outline" ng-click="closeCoffeeModal()"></button>
+                </ion-header-bar>
+
+                  <ion-content>
+                    <div class="box coffeeModal">
+                      <h3 class>{{rating.title}}</h3>
+                      <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
+                      <img id="coffeeImage" ng-src="{{rating.image}}"></img>
+                      <p>{{rating.description}}</p>
+                    </div>
+
+                    <div class="box coffeeModal">
+                      <h1 class="coffeeVote">Vote!</h1>
+                      <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+                      <div class="text-center padding">
+                        <button class="button button-block button-dark vote" ng-click="send()">Submit your rating</button>
+                      </div>
+                    </div>
+                 </ion-content>
+                </ion-modal-view>
+              </script>
+
+          </div>
         </ion-slide>
         <!-- Slide två -->
         <ion-slide ion-slide-tab-label="Co-work">
