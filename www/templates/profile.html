@@ -9,24 +9,22 @@
     <div class="hero text-center" style="background: #444">
       <div class="content">
         <div class="avatar" style="background-image: url(data:image/gif;base64,{{user.image}}) ;"></div>
-        <h3><a id="profileTitle">{{user.firstName}} {{user.lastName}}</a></h3>
-        <p class="credit"> Your credit is: <span id="credits-amount">{{user.credits}}</span>  kr</p>
+        <p><a id="profileTitle">{{user.firstName}} {{user.lastName}}</a></p>
+        <!-- <p class="credit">Your credit is: {{user.credits}} kr</p> -->
       </div>
     </div>
-    <div id="iconSettings">
-      <a class="tab-item">
-        <i class="icon ion-gear-a"></i> Allmänt
-      </a>
-      <a class="tab-item">
-        <i class="icon ion-clipboard"></i> Bokningar
-      </a>
-      <a class="tab-item">
-        <i class="icon ion-arrow-graph-up-right"></i> Statistik
-      </a>
-    </div>
-    <div>
-      <!-- Div for gear -->
+    <ion-list>
+      <!-- <ion-item class="ion-cash">
+        <span class="item-note">
+          {{user.credits}}
+        </span>
+      </ion-item>
+      <ion-item class="ion-wifi">
+        <span class="item-note">
+          Password:
+        </span>
+      </ion-item> -->
       <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
-    </div>
+    </ion-list>
   </ion-content>
 </ion-view>

@@ -11,11 +11,15 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
       url = '/data/events.json';
     }
 
-    httpService.get(url, function(err, result) {
+    console.log('HÄR url' + url);
+
+    httpService.get(url, function(err, res) {
       if (err) {
+        console.log('error: ' + err);
         return done(err.error);
       }
-      events = result.result;
+      console.log('i factory, events: ' + res);
+      events = res.result;
       return done(events);
     });
   };
