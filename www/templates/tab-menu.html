@@ -40,7 +40,46 @@
       </ion-side-menu-content>
         <ion-side-menu side="right" expose-aside-when="false">
           <!-- Slider content -->
-          <div ng-include="'templates/cart.html'"></div>
+          <!-- <div ng-include="'templates/cart.html'"></div> -->
+          <ion-content class="padding" ng-style="{'background-color':'#f2f2f2'}">
+                <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
+                <ion-list>
+                  <ion-item ng-repeat="item in customersProducts" class="cart-item">
+                    <div class="productInfo cart">
+                      <h2 class="product-title">{{item.name}}</p>
+                      <p class="product-price">{{item.price}} kr</p>
+                    </div>
+                    <div class="containerCartIcons">
+                      <button ng-click="removeFromCart(item)" id="add" class="button button-outline button-dark ion-minus cartIcon">
+
+                      </button>
+                      <div id="qtyContainer">
+                        <h1 id="qty-amount">{{item.qty}}<span>st</span></h1>
+                      </div>
+                      <button ng-click="addToCart(item)" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon">
+
+                      </button>
+                    </div>
+                  </ion-item>
+                </ion-list>
+                <form class="list">
+                  <label class="item item-input">
+                      <span class="input-label"><h3>Meddelande:</h3></span>
+                      <input type="text" id="comment" placeholder="Skriv ytterligare önskemål..">
+                  </label>
+                  <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked"><h3>{{item.name}}</h3></ion-toggle>
+                </form>
+                <div class="cart-total-container">
+                  <div class="total-desc">
+                    <h4 id="cart-total-title">Totalt:</h4>
+                    <p id="cart-total-price">{{totalPrice}} kr</p>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button class="button button-block button-dark" ng-click="placeOrder()"> Beställ</button>
+                </div>
+              </div>
+            </ion-content>
       	</ion-side-menu>
       </ion-side-menus>
 </ion-view>
