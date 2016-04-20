@@ -63,7 +63,7 @@ ion-view {
 /* Profile */
 
 .hero{
-    height: 300px;
+    height: 155px;
     color: white;
 }
 
@@ -105,24 +105,29 @@ ion-view {
 
 #profileTitle {
   color: white;
-  font-size: 28px;
+  font-size: 15px;
 }
 
 .avatar {
-  height: 100px;
-  width: 100px;
+  height: 90px;
+  width: 90px;
   background-position: center;
   border-radius: 50%;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 15px;
+  margin-bottom: 5px;
   position: relative;
   left: auto;
   background-size: contain;
   box-shadow: 0 0 2px 1px;
 }
 
-.credit{
-  color: white;
+.ion-wifi {
+  font-size: 30px;
+}
+
+.ion-cash {
+  font-size: 30px;
 }
 
 #credits-amount{
