@@ -9,112 +9,19 @@
     <ion-slide-box on-slide-changed="changeLogo()"show-pager="false" ion-slide-tabs>
       <!-- Slide ett -->
         <ion-slide ion-slide-tab-label="Recent">
-          <ion-content overflow-scroll="false" class="expandList">
-            <!-- Innehåll för slide ett -->
-            <div ng-style="{ 'text-align':'center'}">
-              <h6>@ Djakne</h6>
-            <div ng-style="{ 'display':'inline-block' }" ng-repeat="member in members | limitTo: 6" ng-click="openModal(member)">
-              <img id="homeAvatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
-            </div>
-          </div>
-              <div class="list card">
-                <div class="item item-avatar">
-                  <img src="img/Icons/home/coffee_black.png">
-                  <div class="event-header">
-                    <h2>{{rating.title}}</h2>
-                    <p>{{rating.startDate | date:'MM/dd/yyyy'}}</p>
-                  </div>
-                </div>
-                <div class="item item-body">
-                  <img class="event-img" ng-src="{{rating.image}}">
-                  <p>
-                    <a ng-click="openCoffeeModal(coffee)" class="subdued">Read More</a>
-                  </p>
-                </div>
-              </div>
-            </ion-content>
+          <div ng-include="'templates/recent.html'"></div>
         </ion-slide>
         <!-- Slide två -->
         <ion-slide ion-slide-tab-label="Co-work">
           <!-- Innehåll slide två -->
-          <h1>Tab 2</h1>
+          <div ng-include="'templates/co_work.html'"></div>
         </ion-slide>
         <!-- Slide tre -->
         <ion-slide ion-slide-tab-label="Events">
           <!-- Innehåll slide tre -->
-          <ion-content overflow-scroll="false" class="expandList" ng-init="getEvents()">
-            <a class="ion-edit" ui-sref="addEvent"></a>
-            <div class="card padding events" ng-repeat="event in events" >
-            <div id="cardHead">
-              <h4>{{ event.title }}</h4>
-              <h6>{{ event.date | date:'MM/dd/yyyy' }}</h6>
-              <hr>
-            </div>
-            <p id="infoText">{{event.text}}</p>
-            <img ng-src="data:image/gif;base64,{{event.attendants}}" ng-show="show" ng-if="event.attendants != false"</img>
-            <p ng-show="show">Location: {{event.location}}</p>
-            <button class="button button-small button-dark" id="cowork" ng-click="signUp(event._id)" ng-show="show"> Sign up</button>
-            <button class="button button-small button-clear" ng-click="show = !show">
-              <p ng-if="!show">See more</p>
-              <p ng-if="show">See less</p>
-            </button>
-        </div>
-        </ion-content>
+          <div ng-include="'templates/events.html'"></div>
       </ion-slide>
     </ion-slide-box>
-
-    <!-- CHECKED-IN MODAL -->
-
-    <script id="modal.html" type="text/ng-template">
-      <ion-modal-view>
-        <ion-header-bar>
-          <h1 class="title">{{member.firstName}} {{member.lastName}}</h1>
-          <button class="button icon icon-right ion-ios-close-outline" ng-click="closeModal()"></button>
-        </ion-header-bar>
-
-        <ion-content>
-          <div style="display: block; margin: 0 auto; padding: 10px;">
-            <img ng-src="data:image/jpeg;base64,{{member.image}}"></img>
-            <h4>Jobbar med</h4>
-            <p>{{member.headline}}</p>
-            <h4>Intressen</h4>
-            <p>{{member.interests}}</p>
-            <h4>Bor</h4>
-            <p>{{member.location}}</p>
-            <a ng-click="gotoLinkedIn()"href="">LinkedIn</a>
-          </div>
-        </ion-content>
-      </ion-modal-view>
-    </script>
-
-    <!-- COFFEE MODAL -->
-
-    <script id="currentCoffee.html" type="text/ng-template">
-      <ion-modal-view>
-      <ion-header-bar>
-        <h1 class="title">Veckans kaffe</h1>
-        <button class="button icon icon-right ion-ios-close-outline" ng-click="closeCoffeeModal()"></button>
-      </ion-header-bar>
-
-        <ion-content>
-          <div class="box coffeeModal">
-            <h3 class>{{rating.title}}</h3>
-            <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
-            <img id="coffeeImage" ng-src="{{rating.image}}"></img>
-            <p>{{rating.description}}</p>
-          </div>
-
-          <div class="box coffeeModal">
-            <h1 class="coffeeVote">Vote!</h1>
-            <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
-            <div class="text-center padding">
-              <button class="button button-block button-dark vote" ng-click="send()">Submit your rating</button>
-            </div>
-          </div>
-       </ion-content>
-      </ion-modal-view>
-    </script>
-
 </ion-content>
 
 <!--
