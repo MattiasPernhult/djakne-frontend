@@ -13,10 +13,6 @@ body {
   color: #222222;
 }
 
-div.scroll{
-  height:100%;
-}
-
 .containerCartIcons {
   display:flex;
   float: right;
@@ -26,14 +22,14 @@ div.scroll{
   margin:0;
 }
 
+/* FIX */
 .cartIcon {
-  min-width: 45px !important;
-  max-width: 45px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
   line-height: 0 !important;
   margin: 0 10px;
   color: black !important;
 }
-
 
 #add {
   float:right;
@@ -47,7 +43,6 @@ div.scroll{
   padding-top: 3px!important;
 }
 
-
 h1 {
   text-align: center;
   margin-top: 10px;
@@ -60,7 +55,6 @@ ion-view {
   position:relative;
 }
 
-
 .heart {
   font-size:40px;
   color:red !important;
@@ -70,11 +64,7 @@ ion-view {
 
 .hero{
     height: 300px;
-
-}
-
-.hero h3 {
-  margin-top:0;
+    color: white;
 }
 
 #iconSettings {
@@ -110,15 +100,11 @@ ion-view {
   text-align: center;
   width: 100%;
   z-index: 1;
-  top: 30px;
-}
-
-.content h4 {
-  font-size: 11px;
+  top: 9px;
 }
 
 #profileTitle {
-  color: black;
+  color: white;
   font-size: 28px;
 }
 
@@ -128,21 +114,39 @@ ion-view {
   background-position: center;
   border-radius: 50%;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-top: 20px;
   position: relative;
   left: auto;
   background-size: contain;
   box-shadow: 0 0 2px 1px;
 }
 
+.credit{
+  color: white;
+}
+
+#credits-amount{
+  vertical-align: text-bottom;
+}
+
 /* MENU */
 
 /* Product Information */
 
+.menuCard {
+  width:100%;
+  height:16%;
+  position:relative;
+  background-color: rgba(000, 000, 000, 0.4);
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0);
+}
 
 .product-title{
   font-weight: 400 !important;
-  font-size:22px !important;
+  font-size:17px !important;
   color: black;
   /*font-family: 'Alegreya Sans', sans-serif !important;*/
 }
@@ -164,13 +168,6 @@ ion-view {
 }
 
 /* Items in menu template */
-
-.menuCard{
-  width:100%;
-  height:23%;
-  position:relative;
-  background-color: rgba(000, 000, 000, 0.3);
-}
 
 .product:first-of-type{
   border-top: none !important;
@@ -220,7 +217,7 @@ ion-view {
 /* Title in menu cards */
 
 h3.menuTitle.ng-binding {
-  margin-top: 10% !important;
+  margin-top: 7% !important;
   font-family: 'Alegreya Sans', sans-serif !important;
   font-size: 36px;
   color: white;
@@ -252,12 +249,13 @@ h3.menuTitle.favourites{
 }
 
 .slider-pager {
-  bottom: 70px;
+  bottom: 80px;
 }
 
 ion-slide p {
-  width: 330px;
+  width: 200px;
   margin: 0 auto;
+  font-family: 'Alegreya Sans', sans-serif !important;
 }
 
 .text-login-container {
@@ -272,9 +270,8 @@ ion-slide p {
 
 .text-login-container h3 {
   font-size: 28px;
-  font-family: Georgia, Times, "Times New Roman", serif !important;
+  font-family: 'Alegreya Sans', sans-serif !important;
 }
-
 
 /* Color overlay on background image */
 
@@ -300,11 +297,10 @@ ion-slide p {
 }
 
 .login-container h1 {
-  font-size: 55px;
-  margin-bottom: 0;
-  font-family: Georgia, Times, "Times New Roman", serif !important;
+ font-size: 50px;
+ margin-bottom: 0;
+ font-family: Georgia, Times, "Times New Roman", serif !important;
 }
-
 /* Login - subtitle */
 
 .login-button-container {
@@ -320,68 +316,14 @@ ion-slide p {
 
 /* Home/Djäkne template */
 
-.home img {
-  display: block;
-  margin: 0 auto;
-}
-
-.home h3 {
-  font-family: 'Alegreya Sans', sans-serif;
-  text-align: center;
-}
-
-.home h5 {
-  font-family: 'Alegreya Sans', sans-serif;
-  text-align: center;
-}
-
-.home p {
-  font-family: 'Alegreya Sans', sans-serif;
-  text-align: justify;;
-  color: #222222;
-  padding: 12px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.homeBackground {
-  height: 200px;
-}
-
-.homeLogo {
-  font-weight: bold;
-  color: white;
-}
-
-#checkedIn {
-  margin-top: 30px;
-  font-weight: bold;
-  text-align: center;
-  color: white;
-}
-
-#overflowingContent {
-  width: -webkit-max-content;
-  width: max-content;
-}
-
-.people {
-  display:block;
-  float:left;
-  padding: 3px;
-  margin-top: 100px;
-  background: none!important;
-}
-
 #homeAvatar {
   border-radius: 20%;
   width: 50px;
   height: 50px;
+  margin-left: 5px;
 }
 
-
 /* List item content - menu template / cart template */
-
 
 .products {
   background: none;
@@ -407,22 +349,18 @@ ion-slide p {
 /* Nav buttons */
 
 .circle {
-  height: 15px;
-  width: 15px;
+  height: 17px;
+  width: 17px;
   border-radius: 50%;
   text-align: center;
-  font-size:9px;
-  position:absolute;
-  right:3px;
-  top:8px;
-  z-index:1;
-  color:white;
-  background-color:#444;
+  font-size: 12px;
+  position: absolute;
+  right: 0px;
+  top: 3px;
+  z-index: 1;
+  color: white;
+  background-color: tomato;
   line-height: 15px;
-}
-
-.ion-bag {
-  color: black!important;
 }
 
 .cart-icon {
@@ -431,7 +369,6 @@ ion-slide p {
 }
 
 /* Icons for adding and removing items - menu template */
-
 
 .productInfo.cart{
   font-size: 8px !important;
@@ -446,8 +383,9 @@ ion-slide p {
   box-shadow: none !important;
 }
 
+/* FIX */
 .toggleSpecials h3 {
-  margin-left: 10px;
+
 }
 /* Product total - cart template */
 
@@ -475,7 +413,6 @@ ion-slide p {
 }
 
 /* Item quantity - cart template */
-
 
 .qty-container {
   width: auto;
@@ -519,221 +456,306 @@ ion-slide p {
 }
 
 .ionic_ratings .icon {
-   font-size: 50px;
+   font-size: 45px;
  }
 
-/* Testkod för Social-tabben (event branch) */
+ /* Homecards */
 
-.item.activated {
-  background-color: rgba(000, 000, 000, 0.4);
+ .flex-container {
+   padding: 0px 0px 10px 0px;
+   margin: 0px 0px 20px 0px;
+   list-style: none;
+
+   display: -webkit-box;
+   display: -moz-box;
+   display: -ms-flexbox;
+   display: -webkit-flex;
+   display: flex;
+
+   -webkit-flex-flow: row wrap;
+   justify-content: space-around;
+ }
+
+.flex-container.djakne {
+   padding: 0px 0px 0px 0px;
+   margin: 0px 0px 0px 0px;
+   list-style: none;
+   text-align: left;
 }
 
-.co-work {
-  margin-bottom: 0px!important;
-}
-
-.events {
-  margin-bottom: 0px;
-  border-bottom: 1px solid #E2E2E2!important;
-}
-
- .card h2 {
-   font-size: 20px;
- }
-
- .card h4 {
-   font-size: 16px;
-   color: #aaa;
-   font-family: Georgia, serif;
- }
-
-a.default {
-   text-decoration: none;
- }
-
-p.desc_text {
-   font-size: 15px;
-   text-align: center;
-   padding-bottom: 13px;
-   font-family: Georgia, serif;
- }
-
- #backgroundCo {
-   background-size: 90%;
- }
-
- .addEvent-title {
-    font-style: bold;
-    text-align: center;
-    font-family: Georgia, serif;
-    padding-top: 15px;
-
- }
-
- .social-title {
-    font-style: bold;
-    text-align: center;
-    padding-top: 15px;
-    font-family: Georgia, serif;
- }
-
-.filter {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.co-title {
-   font-family: Georgia, serif;
-   text-align: center;
-   padding-top: 10px;
-
-}
-
-h3.coworkTitle {
-  margin-top: 5% !important;
-  margin-bottom: 5% !important;
-  font-family: 'Alegreya Sans', sans-serif !important;
-  font-size: 36px;
-  color: white;
-  text-align: center !important;
-}
-
-h5.dateDescs {
+.button.readMore {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  width: 30%;
+  border-radius: 20px;
   font-family: Georgia, serif;
+}
+
+.coffeeModal {
+  padding: 15px 10px 0px 10px;
+  font-style: 'Vollkorn', serif;
 
 }
 
-.menuCard {
-  width:100%;
-  height:23%;
+#coffeeImage {
+  width: 100%;
+  height: 220px;
+
+}
+
+.coffeeVote {
+  font-size: 20px;
+  padding-bottom: 0;
+  margin-bottom: 3px;
+
+}
+
+.button.button-block.button-dark.vote {
+  margin-top: 3px;
+
+
+}
+.button.icon.icon-right.ion-ios-close-outline {
+  background: none;
+
+}
+
+.homeNav{
   position:relative;
-  background-color: rgba(000, 000, 000, 0.4);
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0);
-
-
-}
-
-.box {
-  height: auto;
-  background-color: rgba(444, 444, 444, 0.8);
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-bottom: 15px;
-}
-
-p.pbox {
+  top:200px;
+  width:100%;
+  height:50px;
+  background-color: #444;
   text-align: center;
-  color: #000;
-  font-size: 1.1em;
 }
 
-button#cowork {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 0px;
-  color: #444;
-  opacity: 1;
-  border-radius: none;
-  font-family: Georgia, serif;
-  background-color: #EFECEC;
-}
-
-button#membership {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 20px;
-  color: grey;
-}
-
-button#attend {
-  padding-left: 10px;
-  padding-right: 10px;
+.homeNav li{
+  display:inline-block;
   color: white;
-  opacity: 0.95;
-  font-family: Georgia, serif;
-  background-color: #444141;
+  margin: 0 10px 0 10px;
+  line-height: 50px;
+  text-transform: uppercase;
+  border-bottom:1px solid #e2e2e2;
 }
 
+.homeItem{
+  margin-left:200px;
+}
 
- /* Event pages */
+#addEvent{
+    min-width: 100%;
+    font-size: 16px;
+    background: #495C70;
+    padding: 30px 30px 15px 30px;
+    min-height: 100%;
+    /*border: 5px solid #53687E;*/
+}
+​
+.form-style-4{
+  margin-top: 10%;
+}
+​
+.form-style-4 input[type=submit],
+.form-style-4 input[type=button],
+.form-style-4 input[type=text],
+.form-style-4 input[type=email],
+.form-style-4 textarea,
+.form-style-4 label
+{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    color: #fff;
+​
+}
+.form-style-4 label {
+    display:block;
+    margin-bottom: 10px;
+}
+.form-style-4 label > span{
+    display: inline-block;
+    float: left;
+    width: 150px;
+}
+.form-style-4 input[type=text],
+.form-style-4 input[type=email]
+{
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    width: 275px;
+    outline: none;
+    padding: 0px 0px 0px 0px;
+    font-style: italic;
+}
+.form-style-4 textarea{
+    font-style: italic;
+    padding: 0px 0px 0px 0px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    width: 275px;
+    overflow: hidden;
+    resize:none;
+    height:20px;
+}
+​
+.form-style-4 textarea:focus,
+.form-style-4 input[type=text]:focus,
+.form-style-4 input[type=email]:focus,
+.form-style-4 input[type=email] :focus
+{
+    border-bottom: 1px dashed #D9FFA9;
+}
+​
+.form-style-4 input[type=submit],
+.form-style-4 input[type=button]{
+    background: #576E86;
+    border: none;
+    padding: 8px 10px 8px 10px;
+    border-radius: 5px;
+    color: #A8BACE;
+}
+.form-style-4 input[type=submit]:hover,
+.form-style-4 input[type=button]:hover{
+background: #394D61;
+}
 
- .button.button-block.button-dark {
-    font-weight:bold;
-    font-family: Georgia, serif;
+.ion-edit{
+  display: block;
+  margin-left: 90%;
+  color: black;
+  margin-top: 2%;
+  font-size: 20px;
+}
 
- }
+.card.padding.events{
+  margin-top: 5px;
+}
 
- .full-image{
-    height: 150px;
+#cardHead{
 
- }
+  min-height: 40px;
+  padding: 1%;
+}
 
- .row p{
-   padding-top: 15px;
-   font-size: 16px;
-   font-family: Georgia, serif;
-
- }
-
- .border {
-
-   border: none;
-   border-top: 1px solid grey !important;
-   border-bottom: 1px solid grey !important;
- }
-
- .padding.test h4 {
-    font-family: Georgia, serif;
-
- }
-
- .padding.test h3 {
-    font-family: Georgia, serif;
-
- }
-
- .padding.thumbnail h2, h3 {
-   font-family: Georgia, serif;
-
- }
-
- .item-input input{
-  padding-left: 10px;
+#cardHead h4{
+  float: left;
+  color: black;
 
 }
 
- #backgroundCo {
+#cardHead h6{
+  color: black;
+  float: right;
+}
 
-  background-size: contain;
+#cardHead hr{
+  margin-top: 15%;
+}
+
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+/* Menu */
+
+.menulist{
+  top: 195px;
+  margin: 15px 0;
+}
+
+#item-name {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  float: left;
+}
+
+#item-price {
+  margin-left: 0;
+  font-size: 18px;
+}
+
+.item-obj{
+  box-shadow: none !important;
+}
+
+.item-list{
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.item-button-container{
+  margin-top: 25px;
+  margin-right: 10;
+}
+
+p{
+  color: black !important;
 
 }
 
- #benefits {
-  opacity: 0.90;
-
-}
- .box.addEvent {
-  padding-bottom: 20px;
-  padding-top: 20px;
+.bg-slide{
+  background-color: #f0f0f0 !important;
 }
 
- .box.eventDescription {
-  padding-bottom: 30px;
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-top: 35px;
- }
+/* Meny */
 
-.list.card {
-  opacity: 0.92;
-
+p#meny-name {
+  font-size:17px;
+  margin-left: 0;
+  margin-top: 0;
+  text-align: left;
+  display:block;
 }
 
-.cardDescs {
-  padding-right: 2px;
+p#meny-price {
+  font-size:17px;
+  margin-left: 0;
+  text-align: left;
+}
+
+.meny-container{
+  margin-top: 0;
+}
+
+.groupElement{
+  height: 75px;
+}
+
+h3.groupTitle {
+  font-size: 27px;
+  position: relative;
+  top: 2px;
+}
+/* FIX */
+.cart-item{
+  box-shadow: none;
+  border-bottom: 1px solid grey;
+}
+/* FIX */
+.cart-item:last-child{
+  box-shadow: none;
+  border: none;
+}
+
+/* FIX */
+label.item.item-input {
+  box-shadow: none;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.expandList{
+  margin-bottom: 150px;
 }

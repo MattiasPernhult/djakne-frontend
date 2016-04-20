@@ -75,17 +75,18 @@ controllers.controller('LoginController',
     };
 
     $scope.gallery = [{
-      url: 'img/coffeeData.jpeg',
-      title: 'Stay Connected',
-      desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+      url: 'img/business1.jpeg',
+      title: 'Evolve and share',
+      desc: 'A place for creative and driven builders',
     }, {
       url: 'img/djakne.png',
       title: 'Enjoy great coffee',
-      desc: 'Donec dapibus, magna quis tincidunt finibus, tellus odio porttitor nisi.',
+      desc: 'We believe great coffee leads to higher efficiency',
     }, {
-      url: 'img/business1.jpeg',
-      title: 'Evolve and share',
-      desc: 'Praesent faucibus nisi sagittis dolor tristique, a suscipit est vestibulum.',
+
+      url: 'img/coffeeData.jpeg',
+      title: 'Stay Connected',
+      desc: 'Secured & good Wi-Fi and power outlets provided',
     }, ];
 
     $scope.next = function() {

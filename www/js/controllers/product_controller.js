@@ -1,7 +1,11 @@
 controllers.controller('ProductController',
 function($scope, $state, $http, HOST, accessFactory, Cart,
 MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory,
-notificationService, httpService) {
+notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) {
+
+  $scope.toggleCart = function() {
+    $ionicSideMenuDelegate.toggleRight();
+  };
 
   if (window.cordova) {
     var push = PushNotification.init({
@@ -47,18 +51,18 @@ notificationService, httpService) {
 
   $scope.customersProducts = Cart.list();
   $scope.userFavorites = $scope.userFavorites  || [];
-  $scope.specials = [{
-      name: 'Laktosfritt',
-      checked: false,
-    }, {
-      name: 'Takeaway',
-      checked: false,
-    },
-  ];
+  // $scope.specials = [{
+  //     name: 'Laktosfritt',
+  //     checked: false,
+  //   }, {
+  //     name: 'Takeaway',
+  //     checked: false,
+  //   },
+  // ];
 
   $scope.$on('$ionicView.enter', function() {
     ProfileFactory.checkOrderSettings('Takeaway');
-    ProfileFactory.checkOrderSettings('Lactos');
+    ProfileFactory.checkOrderSettings('Lactose');
     // Get ordersettings
     $scope.orderSettings = ProfileFactory.getOrderSettings();
   });
@@ -166,7 +170,7 @@ notificationService, httpService) {
     var message = '';
     var takeaway = false;
     var comment = document.getElementById('comment').value;
-    if ($scope.orderSettings.Lactos.checked) {
+    if ($scope.orderSettings.Lactose.checked) {
       message += 'Laktosfritt: Ja';
     }
     if ($scope.orderSettings.Takeaway.checked) {
@@ -190,7 +194,7 @@ notificationService, httpService) {
     if (window.localStorage.Takeaway) {
       takeaway = true;
     }
-    if (window.localStorage.Lactos) {
+    if (window.localStorage.Lactose) {
       message += 'Laktosfritt: Ja';
     }
 

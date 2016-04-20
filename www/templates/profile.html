@@ -1,13 +1,16 @@
 <ion-view view-title="Profile">
+  <ion-nav-buttons side="left">
+    <button ui-sref="tab.home" class=" button button-icon ion-ios-arrow-left"></button>
+  </ion-nav-buttons>
   <ion-nav-buttons side="right">
-      <button class="button icon-left ion-log-out button-stable" ng-click="logout()">Logout</button>
+      <button class="button icon-left ion-log-out button" ng-click="logout()">Logout</button>
   </ion-nav-buttons>
   <ion-content>
-    <div class="hero text-center" style="background-image: url(./img/test.jpg)">
+    <div class="hero text-center" style="background: #444">
       <div class="content">
         <div class="avatar" style="background-image: url(data:image/gif;base64,{{user.image}}) ;"></div>
         <h3><a id="profileTitle">{{user.firstName}} {{user.lastName}}</a></h3>
-        <h4>{{user.headline}}</h4>
+        <p class="credit"> Your credit is: <span id="credits-amount">{{user.credits}}</span>  kr</p>
       </div>
     </div>
     <div id="iconSettings">
