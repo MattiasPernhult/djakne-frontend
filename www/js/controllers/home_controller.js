@@ -151,48 +151,4 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     $scope.currentCoffee.text = $scope.currentCoffee.description;
   });
 
-  // Event
-  $scope.isVisible = false;
-  $scope.toggleElement = function() {
-
-    if ($scope.isVisible === false) {
-      $scope.isVisible = true;
-    } else {
-      $scope.isVisible = false;
-    }
-  };
-
-  $scope.getEvents = function() {
-    EventFactory.getEvents(function(data) {
-      console.log('i getEvents');
-      console.log('resultat från getEvents: ' + JSON.stringify(data, null, 4));
-      $scope.events = data;
-    });
-  };
-
-  $scope.$watch(function() {
-      return EventFactory.getListOfEvents();
-    },
-    function(newVal) {
-      $scope.events = newVal;
-    }
-  );
-  $scope.signUp = function(eventId) {
-    console.log('eventId : ' + eventId);
-    var url = HOST.hostAdress + ':4000/events/register/' + eventId;
-    var body = {
-      token: 'AQR6F4gcbeciveBxr3x0_rwVEq-4DevuXXxV9p_d6s59aakTCU7-4MtZlxbwzW9suk4HDjvbf-x0bLoibz0Hxkr5vzK2iqIhj5CcgTKdlj7KjZcwUcs',
-    };
-
-    httpService.post(url, body, function(err, result) {
-      if (err) {
-        toastService.showLongBottom('Något blev fel så du är ej anmäld till eventet');
-      } else {
-        $scope.showImage = true;
-        toastService.showLongBottom('Du är nu anmäld till eventet');
-      }
-    });
-  };
-
-
 });

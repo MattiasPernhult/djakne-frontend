@@ -1,0 +1,199 @@
+<ion-content scroll="true">
+    <h4 class="priceTable">Membership Overview</h4>
+
+    <div id="MEM1">
+      <div class="box card membership1" >
+      <h2 class="membershipTitle">Djäkne</h2>
+        <div class="price">
+          <div class="amount-container">
+            <span class="amount">990</span>
+            <span class="currency">SEK</span>
+            <div class="period">MONTHLY</div>
+          </div>
+        </div>
+        <div class="list-container">
+          <ul ng-show="showBasic">
+              <li>
+                <div class='fa fa-check'></div>
+                Coffee
+              </li>
+              <li>
+                <div class='fa fa-check'></div>
+                Order coffee with our app
+              </li>
+              <li>
+                <div class='fa fa-check'></div>
+                Groundfloor workspace
+              </li>
+              <li>
+                <div class='fa fa-check'></div>
+                Conference room booking
+              </li>
+              <li>
+                <div class='fa fa-check'></div>
+                Access to our Wi-Fi
+              </li>
+              <li>
+                <div class='fa fa-close'></div>
+                Breakfast
+              </li>
+              <li>
+                <div class='fa fa-close'></div>
+                Postbox
+              </li>
+              <li>
+                <div class='fa fa-close'></div>
+                Personal locker
+              </li>
+              <li>
+                <div class='fa fa-close'></div>
+                Second floor workspace
+              </li>
+              <li>
+                <div class='fa fa-close'></div>
+                Conference room discounts
+              </li>
+            </ul>
+        </div>
+        <button class="button button-small button-clear" ng-click="showBasic = !showBasic">
+         <p class="button button-small readMore" ng-if="!showBasic">See more</p>
+         <p class="button button-small readMore" ng-if="showBasic">See less</p>
+        </button>
+    </div>
+    </div>
+
+    <div id="MEM2">
+        <div class="price">
+              <div class="box card membership2">
+              <h2 class="membershipTitle">Premium</h2>
+              <div class="amount-container">
+                <span class="amount">990</span>
+                <span class="currency">SEK</span>
+                <div class="period">MONTHLY</div>
+              </div>
+              <div class="list-container">
+                <ul ng-show="showPremium">
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Coffee
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Order coffee with our app
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Groundfloor workspace
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Conference room booking
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Access to our Wi-Fi
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Breakfast
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Postbox
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Personal locker
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Second floor workspace
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Conference room discounts
+                  </li>
+                </ul>
+            </div>
+              <button class="button button-small button-clear" ng-click="showPremium = !showPremium">
+               <p class="button button-small readMore" ng-if="!showPremium">See more</p>
+               <p class="button button-small readMore" ng-if="showPremium">See less</p>
+             </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="MEM1">
+      <div class="box card membership1" >
+      <h2 class="membershipTitle">Half-day pass</h2>
+        <div class="price">
+          <div class="amount-container">
+            <span class="amount">100</span>
+            <span class="currency">SEK</span>
+            <div class="period">DAILY</div>
+          </div>
+        </div>
+        <div class="list-container">
+          <ul ng-show="showHalfdayPass">
+              <li>
+                <div class='fa fa-check'></div>
+                Coffee
+              </li>
+              <li>
+                <div class='fa fa-check'></div>
+                Groundfloor workspace
+              </li>
+              <li>
+                <div class='fa fa-check'></div>
+                Access to our Wi-Fi
+              </li>
+              <li>
+                <div class='fa fa-check'></div>
+                Personal locker
+              </li>
+            </ul>
+        </div>
+        <button class="button button-small button-clear" ng-click="showHalfdayPass = !showHalfdayPass">
+         <p class="button button-small readMore" ng-if="!showHalfdayPass">See more</p>
+         <p class="button button-small readMore" ng-if="showHalfdayPass">See less</p>
+        </button>
+    </div>
+    </div>
+
+    <div id="MEM2">
+        <div class="price">
+              <div class="box card membership2">
+              <h2 class="membershipTitle">Day pass</h2>
+              <div class="amount-container">
+                <span class="amount">150</span>
+                <span class="currency">SEK</span>
+                <div class="period">DAILY</div>
+              </div>
+              <div class="list-container">
+                <ul ng-show="showDaypass">
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Coffee
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Groundfloor workspace
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Access to our Wi-Fi
+                  </li>
+                  <li>
+                    <div class='fa fa-check'></div>
+                    Personal locker
+                  </li>
+                </ul>
+            </div>
+              <button class="button button-small button-clear" ng-click="showDaypass = !showDaypass">
+               <p class="button button-small readMore" ng-if="!showDaypass">See more</p>
+               <p class="button button-small readMore" ng-if="showDaypass">See less</p>
+             </button>
+            </div>
+        </div>
+    </div>
+</ion-content>
