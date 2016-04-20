@@ -16,8 +16,9 @@ factories.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoa
           name: item.name,
           price: item.price,
         });
+      }else {
+        this.increaseQty(index);
       }
-      this.increaseQty(index);
 
     },
     remove: function(item) {
@@ -31,6 +32,7 @@ factories.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoa
       }
     },
     increaseQty: function(index) {
+      console.log(index);
       cart[index].qty += 1;
     },
     decreaseQty: function(index) {

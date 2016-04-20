@@ -57,7 +57,7 @@ ion-view {
 
 .heart {
   font-size:40px;
-  color:red !important;
+  margin-right: 10px;
 }
 
 /* Profile */
@@ -374,15 +374,37 @@ ion-slide p {
   position: absolute;
   right: 0px;
   top: 3px;
-  z-index: 1;
+  z-index: 0;
   color: white;
-  background-color: tomato;
+  background-color: cadetblue;
   line-height: 15px;
 }
 
 .cart-icon {
   height:30px;
   width: 30px;
+}
+
+.ion-heart{
+  margin-right: 5px;
+}
+
+.djakne{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../img/Icons/navigation/home.png);
+  height:30px;
+  width:30px;
+  background-size: contain;
+}
+
+.coffeeBar{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../img/Icons/navigation/coffeeMenu.png);
+  height:30px;
+  width:30px;
+  background-size: contain;
 }
 
 /* Icons for adding and removing items - menu template */
@@ -697,6 +719,7 @@ background: #394D61;
   font-size: 16px;
   font-weight: 600;
   float: left;
+  width: 100%;
 }
 
 #item-price {
@@ -714,8 +737,6 @@ background: #394D61;
 }
 
 .item-button-container{
-  margin-top: 25px;
-  margin-right: 10;
 }
 
 p{
