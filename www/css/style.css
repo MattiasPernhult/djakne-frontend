@@ -550,12 +550,10 @@ ion-slide p {
 #addEvent{
     min-width: 100%;
     font-size: 16px;
-    background: #444;
     padding: 30px 30px 15px 30px;
-    min-height: 100%;
-    margin-top: 20px;
     /*border: 5px solid #53687E;*/
 }
+
 
 ​​
 .form-style-4 input[type=submit],
@@ -567,9 +565,17 @@ ion-slide p {
     color: #fff;
 ​
 }
+.form-style-4 p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 15px;
+  font-style: italic;
+  color: #A8BACE;
+}
+
 .form-style-4 label {
     display:block;
     margin-bottom: 10px;
+    padding: 2%;
 }
 .form-style-4 label > span{
     display: inline-block;
@@ -692,10 +698,6 @@ ion-slide p {
   margin-right: 10;
 }
 
-p{
-  color: black !important;
-
-}
 
 .bg-slide{
   background-color: #f0f0f0 !important;
