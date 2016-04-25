@@ -12,8 +12,8 @@
         <div ng-style="{ 'height':'155px','width':'100%','background-color':'#444' }">
           <img id="logo" src="img/Icons/home/coffee_black.png"></img>
         </div>
-        <ion-slide-box on-slide-changed="changeLogo()" show-pager="false" ion-slide-tabs>
-          <ion-slide class="bg-slide" ng-repeat="categories in products" ion-slide-tab-label="{{categories[0].category}}">
+        <ion-slide-box on-slide-changed="changeLogo()" show-pager="false" ion-slide-tabs ng-if="products">
+          <ion-slide ng-cloak class="bg-slide" ng-repeat="categories in products" ion-slide-tab-label="{{categories[0].category}}">
             <ion-content class="item-list expandList">
               <ion-list>
                 <ion-item ng-repeat="product in categories" class="item-accordion item-obj">

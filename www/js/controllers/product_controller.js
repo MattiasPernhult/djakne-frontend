@@ -96,6 +96,7 @@ notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate, 
 
   MenuFactory.getProducts(function(data) {
     $scope.products = data;
+    $scope.procent = 100 / Object.keys(data).length;
   });
 
   $scope.favoritesSize = function() {

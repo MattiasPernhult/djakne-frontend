@@ -35,6 +35,7 @@
                     <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
                       <span>Interests</span>
                       <p>{{member.interests}}</p>
+                      <p ng-show="member.interests.length === 0">None</p>
                     </label>
                     <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
                       <span>Lives</span>

@@ -251,12 +251,14 @@ h3.menuTitle.favourites{
 .slider {
   height: 100%;
 }
+
 .slider-slide {
   color: #000;
   font-weight: 300;
   position: relative;
   background-repeat:no-repeat;
   background-size:cover;
+  width: 100%;
 }
 
 .slider-pager {
@@ -719,10 +721,6 @@ ion-slide p {
   box-shadow: none !important;
 }
 
-div.slider-slides {
-  width: 100% !important;
-}
-
 .item-list{
   margin-bottom: 10px;
   margin-top: 5px;
@@ -730,7 +728,6 @@ div.slider-slides {
 
 .item-button-container{
 }
-
 
 .bg-slide{
   background-color: #f0f0f0 !important;
