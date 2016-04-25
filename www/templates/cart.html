@@ -1,30 +1,19 @@
-<ion-view view-title="Cart">
-  <ion-nav-bar>
-    <ion-nav-buttons side="left">
-      <button ng-click="goToMenu()" class=" button button-icon ion-ios-arrow-left"></button>
-    </ion-nav-buttons>
-    <ion-nav-buttons side="right">
-      <button class=" button button-icon ion-bag"></button>
-      <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
-    </ion-nav-buttons>
-  </ion-nav-bar>
-  <ion-content class="padding">
+<ion-content class="padding" ng-style="{'background-color':'#f2f2f2'}">
       <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
-      <div ng-if="cartQty > 0 || goToMenu()">
       <ion-list>
-        <ion-item ng-repeat="item in customersProducts">
+        <ion-item ng-repeat="item in customersProducts" class="cart-item">
           <div class="productInfo cart">
             <h2 class="product-title">{{item.name}}</p>
             <p class="product-price">{{item.price}} kr</p>
           </div>
           <div class="containerCartIcons">
-            <button ng-click="removeFromCart(item)" id="add" class="button button-outline button-assertive ion-minus cartIcon">
+            <button ng-click="removeFromCart(item)" id="add" class="button button-outline button-dark ion-minus cartIcon">
 
             </button>
             <div id="qtyContainer">
               <h1 id="qty-amount">{{item.qty}}<span>st</span></h1>
             </div>
-            <button ng-click="addToCart(item)" id="remove" class=" remove button button-outline button-assertive ion-plus cartIcon">
+            <button ng-click="addToCart(item)" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon">
 
             </button>
           </div>
@@ -48,4 +37,3 @@
       </div>
     </div>
   </ion-content>
-</ion-view>

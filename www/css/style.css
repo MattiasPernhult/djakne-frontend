@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
-
+@import url(https://fonts.googleapis.com/css?family=Vollkorn);
 
 
 .item {
@@ -11,6 +11,12 @@
 body {
   font-family: Georgia, Times, "Times New Roman", serif !important;
   color: #222222;
+}
+
+h2 {
+  font-family: 'Vollkorn', serif!important;
+  font-size: 16px!important;
+  margin-top: 5px!important;
 }
 
 .containerCartIcons {
@@ -57,7 +63,7 @@ ion-view {
 
 .heart {
   font-size:40px;
-  color:red !important;
+  margin-right: 10px;
 }
 
 /* Profile */
@@ -322,10 +328,13 @@ ion-slide p {
 /* Home/Djäkne template */
 
 #homeAvatar {
-  border-radius: 20%;
   width: 50px;
   height: 50px;
   margin-left: 5px;
+}
+
+.event-header {
+  margin-left: 0px!important;
 }
 
 /* List item content - menu template / cart template */
@@ -362,15 +371,37 @@ ion-slide p {
   position: absolute;
   right: 0px;
   top: 3px;
-  z-index: 1;
+  z-index: 0;
   color: white;
-  background-color: tomato;
+  background-color: cadetblue;
   line-height: 15px;
 }
 
 .cart-icon {
   height:30px;
   width: 30px;
+}
+
+.ion-heart{
+  margin-right: 5px;
+}
+
+.djakne{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../img/Icons/navigation/home.png);
+  height:30px;
+  width:30px;
+  background-size: contain;
+}
+
+.coffeeBar{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../img/Icons/navigation/coffeeMenu.png);
+  height:30px;
+  width:30px;
+  background-size: contain;
 }
 
 /* Icons for adding and removing items - menu template */
@@ -549,12 +580,10 @@ ion-slide p {
 #addEvent{
     min-width: 100%;
     font-size: 16px;
-    background: #444;
     padding: 30px 30px 15px 30px;
-    min-height: 100%;
-    margin-top: 20px;
     /*border: 5px solid #53687E;*/
 }
+
 
 ​​
 .form-style-4 input[type=submit],
@@ -566,9 +595,17 @@ ion-slide p {
     color: #fff;
 ​
 }
+.form-style-4 p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 15px;
+  font-style: italic;
+  color: #A8BACE;
+}
+
 .form-style-4 label {
     display:block;
     margin-bottom: 10px;
+    padding: 2%;
 }
 .form-style-4 label > span{
     display: inline-block;
@@ -670,6 +707,7 @@ ion-slide p {
   font-size: 16px;
   font-weight: 600;
   float: left;
+  width: 100%;
 }
 
 #item-price {
@@ -687,14 +725,8 @@ ion-slide p {
 }
 
 .item-button-container{
-  margin-top: 25px;
-  margin-right: 10;
 }
 
-p{
-  color: black !important;
-
-}
 
 .bg-slide{
   background-color: #f0f0f0 !important;
@@ -747,7 +779,7 @@ label.item.item-input {
 }
 
 .expandList{
-  margin-bottom: 150px;
+  /*margin-bottom: 150px;*/
 }
 
 

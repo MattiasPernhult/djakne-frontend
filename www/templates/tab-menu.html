@@ -1,82 +1,84 @@
 <ion-view title="Djäkne">
   <ion-nav-buttons side="right">
-    <button class="button icon-left ion-bag button-outline"
-      ng-disabled="cartQty === 0"
-      ng-click="toggleCart(); priceRequest()">
+    <button class="button icon-left ion-heart button-outline" ng-style="userFavorites ? {'color':'#FF7E7E'} : {'color':'white'}" ng-disabled="favoritesSize() === 0" ng-style="">
+    </button>
+    <button class="button icon-left ion-bag button-outline" ng-disabled="cartQty === 0" ng-click="toggleCart(); priceRequest()">
     </button>
     <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
   </ion-nav-buttons>
   <ion-side-menus>
-  	<ion-side-menu-content>
+    <ion-side-menu-content drag-content="false">
       <ion-content scroll="false" class="homeSlider" has-tabs="true">
         <div ng-style="{ 'height':'155px','width':'100%','background-color':'#444' }">
           <img id="logo" src="img/Icons/home/coffee_black.png"></img>
         </div>
-        <ion-slide-box on-slide-changed="changeLogo()"show-pager="false" ion-slide-tabs>
-          <ion-slide class="bg-slide" ng-repeat="list in products" ion-slide-tab-label="{{list[0].category}}">
+        <ion-slide-box on-slide-changed="changeLogo()" show-pager="false" ion-slide-tabs>
+          <ion-slide class="bg-slide" ng-repeat="categories in products" ion-slide-tab-label="{{categories[0].category}}">
             <ion-content class="item-list expandList">
               <ion-list>
-                <ion-item ng-repeat="item in list" class="item-accordion item-obj">
-                  <p id="item-name">{{item.name}}</p>
+                <ion-item ng-repeat="product in categories" class="item-accordion item-obj">
+                  <p id="item-name">{{product.name}}</p>
                   <div class="buttonContainer item-button-container">
-                    <button ng-click="isFavorite(item)" class="heart button button-clear" ng-class="item.isFavorite ? 'ion-ios-heart' : 'ion-ios-heart-outline'">
-                    <button ng-click="addToCart(item)" class="button button-outline button-assertive">
-                      ADD
+                    <button ng-click="isFavorite(product)" class="heart button ion-ios-heart-outline button-clear" ng-style="product.isFavorite ? {'color':'red'} : {'color':'#e2e2e2'}">
+                      <button ng-click="addToCart(product)" class="button button-outline button-assertive">
+                        ADD
+                      </button>
+                      <button ng-click="buyNow(product)" class="button button-outline button-assertive">
+                        FAST BUY
+                      </button>
                     </button>
                   </div>
-                  <p id="item-price">{{item.price}} kr</p>
+                  <p id="item-price">{{product.price}} kr</p>
                 </ion-item>
               </ion-list>
             </ion-content>
           </ion-slide>
         </ion-slide-box>
-      </ion-side-menu-content>
-        <ion-side-menu side="right" expose-aside-when="false">
-      	  <ion-header-bar class="bar-dark">
-      			<h1 class="title">Left Menu</h1>
-      		</ion-header-bar>
-
-          <!-- Slider content -->
-          <ion-content class="padding" ng-style="{'background-color':'#f2f2f2'}">
-              <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
-              <ion-list>
-                <ion-item ng-repeat="item in customersProducts" class="cart-item">
-                  <div class="productInfo cart">
-                    <h2 class="product-title">{{item.name}}</p>
-                    <p class="product-price">{{item.price}} kr</p>
-                  </div>
-                  <div class="containerCartIcons">
-                    <button ng-click="removeFromCart(item)" id="add" class="button button-outline button-dark ion-minus cartIcon">
-
-                    </button>
-                    <div id="qtyContainer">
-                      <h1 id="qty-amount">{{item.qty}}<span>st</span></h1>
-                    </div>
-                    <button ng-click="addToCart(item)" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon">
-
-                    </button>
-                  </div>
-                </ion-item>
-              </ion-list>
-              <form class="list">
-                <label class="item item-input">
-                    <span class="input-label"><h3>Meddelande:</h3></span>
-                    <input type="text" id="comment" placeholder="Skriv ytterligare önskemål..">
-                </label>
-                <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked"><h3>{{item.name}}</h3></ion-toggle>
-              </form>
-              <div class="cart-total-container">
-                <div class="total-desc">
-                  <h4 id="cart-total-title">Totalt:</h4>
-                  <p id="cart-total-price">{{totalPrice}} kr</p>
-                </div>
-              </div>
-              <div class="text-center">
-                <button class="button button-block button-dark" ng-click="placeOrder()"> Beställ</button>
-              </div>
+      </ion-content>
+    </ion-side-menu-content>
+    <ion-side-menu side="right" expose-aside-when="false">
+      <!-- Slider content -->
+      <!-- <div ng-include="'templates/cart.html'"></div> -->
+      <ion-content class="padding" ng-style="{'background-color':'#f2f2f2'}">
+        <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
+        <ion-list>
+          <ion-item ng-repeat="item in customersProducts" class="cart-item">
+            <div class="productInfo cart">
+              <h2 class="product-title">{{item.name}}</h2>
+              <p class="product-price">{{item.price}} kr</p>
             </div>
-          </ion-content>
+            <div class="containerCartIcons">
+              <button ng-click="removeFromCart(item)" id="add" class="button button-outline button-dark ion-minus cartIcon">
 
-      	</ion-side-menu>
-      </ion-side-menus>
+              </button>
+              <div id="qtyContainer">
+                <h1 id="qty-amount">{{item.qty}}<span>st</span></h1>
+              </div>
+              <button ng-click="addToCart(item)" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon">
+
+              </button>
+            </div>
+          </ion-item>
+        </ion-list>
+        <form class="list">
+          <label class="item item-input">
+            <span class="input-label"><h3>Meddelande:</h3></span>
+            <input type="text" id="comment" placeholder="Skriv ytterligare önskemål..">
+          </label>
+          <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked">
+            <h3>{{item.name}}</h3>
+          </ion-toggle>
+        </form>
+        <div class="cart-total-container">
+          <div class="total-desc">
+            <h4 id="cart-total-title">Totalt:</h4>
+            <p id="cart-total-price">{{totalPrice}} kr</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="button button-block button-dark" ng-click="placeOrder()"> Beställ</button>
+        </div>
+      </ion-content>
+    </ion-side-menu>
+  </ion-side-menus>
 </ion-view>

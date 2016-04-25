@@ -34,7 +34,7 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     },
   ];
 
-  $scope.doRefresh = function() {
+  $scope.doMemberRefresh = function() {
     MembersFactory.getMembers(function(err, data) {
       if (!err) {
         $timeout(function() {
@@ -44,6 +44,18 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
       }
     });
   };
+
+  $scope.doEventRefresh = function() {
+    EventFactory.getEvents(function(err, data) {
+      if (!err) {
+        $timeout(function() {
+          $scope.events = data.events;
+          $scope.$broadcast('scroll.refreshComplete');
+        }, 1000);
+      }
+    });
+  };
+
   $scope.ratingsObject = {
     iconOn: 'ion-ios-star',
     iconOff: 'ion-ios-star-outline',
@@ -56,12 +68,16 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     },
   };
 
-  CoffeeFactory.getCoffee(function(data) {
+  CoffeeFactory.getCoffee(function(err, data) {
     console.log('getCoffee');
-    $scope.rating = data;
+    // TODO: Provide some message to the user, if there is some error
+    if (!err) {
+      $scope.rating = data;
+    }
   });
 
   MembersFactory.getMembers(function(err, data)  {
+    // TODO: Provide some message to the user, if there is some error
     if (!err) {
       $scope.members = data.members;
     }

@@ -35,7 +35,7 @@ factories.factory('MenuFactory', function($http, accessFactory, HOST, httpServic
 
     httpService.get(url, function(err, result) {
       if (err) {
-        return done(result.data);
+        return done(err);
       }
       products = result.products;
       return done(products);
