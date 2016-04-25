@@ -85,7 +85,7 @@ factories.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoa
     getTotalPrice: function() {
       return totalPrice;
     },
-    order: function(message, takeaway, singleItem) {
+    order: function(message, takeaway, singleItem, done) {
       var data = {
         message: message,
         takeaway: takeaway,
@@ -114,6 +114,7 @@ factories.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoa
           $location.path('/tab/menu');
           toastService.showLongBottom('Din order har lagts');
         }
+        done();
       });
     },
   };

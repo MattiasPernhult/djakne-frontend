@@ -15,16 +15,16 @@
         </div>
         <h1 class="title">Favorites</h1>
         <div class="buttons">
-          <button class="button icon icon-right ion-bag button-outline" ng-disabled="cartQty === 0" ng-click="toggleCart(); priceRequest()"></button>
+          <button class="button icon icon-right ion-bag button-outline" ng-disabled="cartQty === 0" ng-click="closeFavoriteModal(); toggleCart(); priceRequest()"></button>
           <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
         </div>
       </ion-header-bar>
 
       <ion-content>
         <ion-list>
-          <ion-item ng-repeat="product in userFavorites" class="item-accordion item-obj">
-            <p class="item-name">{{product.name}}</p>
-            <div class="buttonContainer item-button-container">
+          <ion-item ng-repeat="product in userFavorites">
+            <p class="item-name" style="width: 55%;">{{product.name}}</p>
+            <div>
               <button ng-click="addToCart(product)" class="button button-outline button-assertive">
                 ADD
               </button>
@@ -110,7 +110,7 @@
           </div>
         </div>
         <div class="text-center">
-          <button class="button button-block button-dark" ng-click="placeOrder()"> Beställ</button>
+          <button class="button button-block button-dark" ng-disabled="sendingOrder" ng-click="placeOrder()"> Beställ</button>
         </div>
       </ion-content>
     </ion-side-menu>
