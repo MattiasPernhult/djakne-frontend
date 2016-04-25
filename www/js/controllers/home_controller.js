@@ -46,10 +46,11 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   };
 
   $scope.doEventRefresh = function() {
-    EventFactory.getEvents(function(err, data) {
-      if (!err) {
+    EventFactory.getEvents(function(data) {
+      console.log('i refresh, data= ' + data);
+      if (data) {
         $timeout(function() {
-          $scope.events = data.events;
+          $scope.events = data;
           $scope.$broadcast('scroll.refreshComplete');
         }, 1000);
       }

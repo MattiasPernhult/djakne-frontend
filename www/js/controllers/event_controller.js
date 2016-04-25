@@ -33,6 +33,7 @@ controllers.controller('EventController', function($scope, EventFactory, $state,
       } else {
         $scope.showImage = true;
         toastService.showLongBottom('Du är nu anmäld till eventet');
+        EventFactory.updateEventList(result);
       }
     });
   };

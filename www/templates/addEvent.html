@@ -18,12 +18,12 @@
       <label>
       <input type="email" placeholder="Email" ng-model="event.author" required>
       </label>
-      <p class="padding"><input type="checkbox" ng-click="show = !show" checked> At Djäkne</p>
+      <input type="checkbox" ng-model="event.djakne" ng-change="change()">
       <label>
-      <input type="text" placeholder="Place" ng-model="event.place" ng-if="show" required>
+      <input type="text" placeholder="Place" ng-model="event.place" ng-if="!show" required>
       </label>
       <label>
-      <input type="text" placeholder="Adress" ng-model="event.adress" ng-if="show" required>
+      <input type="text" placeholder="Adress" ng-model="event.adress" ng-if="!show" required>
       </label>
       <label>
         <p>Date and time</p>
