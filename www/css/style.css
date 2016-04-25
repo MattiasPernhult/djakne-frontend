@@ -13,8 +13,15 @@ body {
   color: #222222;
 }
 
-h2 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Vollkorn', serif!important;
+}
+
+p {
+  font-family: 'Alegreya Sans', sans-serif !important;
+}
+
+h2 {
   font-size: 16px!important;
   margin-top: 5px!important;
 }
@@ -49,14 +56,6 @@ h2 {
   padding-top: 3px!important;
 }
 
-h1 {
-  text-align: center;
-  margin-top: 10px;
-  font-family: Georgia, Times, "Times New Roman", serif !important;
-  color: #222222;
-  line-height: 1.3;
-}
-
 ion-view {
   position:relative;
 }
@@ -71,34 +70,6 @@ ion-view {
 .hero{
     height: 155px;
     color: white;
-}
-
-#iconSettings {
-  display:flex;
-  padding: 5px 0;
-  background-color: black;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 238px;
-  opacity: 0.7;
-}
-
-#iconSettings .icon {
-  color: white;
-  font-size: 25px;
-}
-
-#iconSettings a {
-  color: white;
-}
-
-#iconSettings a:first-child {
-  border-right: 1px solid #ccc;
-}
-
-#iconSettings a:last-child {
-  border-left: 1px solid #ccc;
 }
 
 .content {
@@ -128,18 +99,6 @@ ion-view {
   box-shadow: 0 0 2px 1px;
 }
 
-.ion-wifi {
-  font-size: 30px;
-}
-
-.ion-cash {
-  font-size: 30px;
-}
-
-#credits-amount{
-  vertical-align: text-bottom;
-}
-
 /* MENU */
 
 /* Product Information */
@@ -159,7 +118,6 @@ ion-view {
   font-weight: 400 !important;
   font-size:17px !important;
   color: black;
-  /*font-family: 'Alegreya Sans', sans-serif !important;*/
 }
 
 .product-price{
@@ -180,43 +138,6 @@ ion-view {
 
 /* Items in menu template */
 
-.product:first-of-type{
-  border-top: none !important;
-}
-
-.product:last-of-type{
-  border-bottom: none !important;
-}
-
-.item-expand:last-child {
-  border-top: 1px solid #e2e2e2;
-  border-bottom:none;
-}
-
-.item-expand {
-  position: relative;
-  width: 100%;
-  transition: height 0.1s ease-out;
-  overflow: hidden;
-  border-bottom: 1px solid #e2e2e2;
-}
-
-.item-expand.inactive:after {
-  content: "";
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  height: 10%;
-  width: 100%;
-  display: block;
-}
-
-.item-expand.active {
-  height: auto;
-  transition: height 0.3s ease-out;
-
-}
-
 .item {
   background-color: rgba(255, 255, 255, 0.7);
   display: flex;
@@ -225,11 +146,11 @@ ion-view {
   box-shadow: 3px 5px 5px rgba(51, 51, 51, 0.40);
   display: block !important;
 }
+
 /* Title in menu cards */
 
 h3.menuTitle.ng-binding {
   margin-top: 7% !important;
-  font-family: 'Alegreya Sans', sans-serif !important;
   font-size: 36px;
   color: white;
 }
@@ -237,7 +158,6 @@ h3.menuTitle.ng-binding {
 h3.menuTitle.favourites{
   margin-top: 10%;
   text-align: center;
-  font-family: 'Alegreya Sans', sans-serif !important;
   font-size: 36px;
   color: white;
 }
@@ -268,7 +188,6 @@ h3.menuTitle.favourites{
 ion-slide p {
   width: 200px;
   margin: 0 auto;
-  font-family: 'Alegreya Sans', sans-serif !important;
 }
 
 .text-login-container {
@@ -283,7 +202,6 @@ ion-slide p {
 
 .text-login-container h3 {
   font-size: 28px;
-  font-family: 'Alegreya Sans', sans-serif !important;
 }
 
 /* Color overlay on background image */
@@ -312,7 +230,6 @@ ion-slide p {
 .login-container h1 {
  font-size: 50px;
  margin-bottom: 0;
- font-family: Georgia, Times, "Times New Roman", serif !important;
 }
 /* Login - subtitle */
 
@@ -343,14 +260,6 @@ ion-slide p {
 
 .products {
   background: none;
-}
-
-.item {
-  background-color: rgba(255, 255, 255, 0.7);
-  display: flex;
-  margin-bottom: 5px;
-  border: none;
-  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0.4);
 }
 
 .row {
@@ -525,33 +434,10 @@ ion-slide p {
   margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 20px;
-  font-family: Georgia, serif;
 }
 
-.coffeeModal {
-  padding: 15px 10px 0px 10px;
-  font-style: 'Vollkorn', serif;
+/*Coffee Modal*/
 
-}
-
-#coffeeImage {
-  width: 100%;
-  height: 220px;
-
-}
-
-.coffeeVote {
-  font-size: 20px;
-  padding-bottom: 0;
-  margin-bottom: 3px;
-
-}
-
-.button.button-block.button-dark.vote {
-  margin-top: 3px;
-
-
-}
 .button.icon.icon-right.ion-ios-close-outline {
   background: none;
 
@@ -592,13 +478,11 @@ ion-slide p {
 .form-style-4 input[type=text],
 .form-style-4 input[type=email]
 {
-    font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 16px;
     color: #fff;
 ​
 }
 .form-style-4 p {
-  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 15px;
   font-style: italic;
   color: #A8BACE;
@@ -726,9 +610,6 @@ ion-slide p {
   margin-top: 5px;
 }
 
-.item-button-container{
-}
-
 .bg-slide{
   background-color: #f0f0f0 !important;
 }
@@ -792,7 +673,6 @@ label.item.item-input {
   border: 1px solid #ccc;
   width: 100px;
   border-radius: 20px;
-  font-family: Georgia, serif;
   opacity: 0.;
   color: #595454 !important;
   font-weight: bold;
@@ -811,7 +691,6 @@ label.item.item-input {
   text-align: center;
   font-size: 20px;
   margin-top: 20px;
-  font-family: Georgia, serif;;
   color: #665;
 }
 
@@ -827,19 +706,16 @@ label.item.item-input {
 }
 
 .card.membership1 {
-  border-radius: 10px;
   background-color: #B5AAAA;
 }
 
 .card.membership2 {
-  border-radius: 10px;
   background-color: #988B8B;
 }
 
 .card .membershipTitle {
   font-size: 20px;
   color: white;
-  font-family: Georgia;
   font-style: bold;
   margin-top: 8px;
 }
