@@ -15,6 +15,11 @@ function($scope, SessionFactory, ProfileFactory, $state) {
     console.log($scope.user);
   });
 
+  ProfileFactory.getWifi(function(data) {
+    $scope.wifiMember = data.member;
+    $scope.wifiPremium = data.premium;
+    console.log($scope.wifi);
+  });
   $scope.logout = function() {
     $state.go('login');
   };
