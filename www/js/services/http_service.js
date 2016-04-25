@@ -25,8 +25,8 @@ services.service('httpService', function($http) {
     .success(function(result) {
       afterCall(null, result);
     })
-    .error(function(err) {
-      afterCall(err, null);
+    .error(function(err, status) {
+      afterCall(err, null, status);
     });
   };
 

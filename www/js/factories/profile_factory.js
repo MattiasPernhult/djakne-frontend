@@ -5,7 +5,7 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
       checked: 'false',
     },
     Lactose: {
-      name: 'Lactose Free',
+      name: 'Lactose',
       checked: 'false',
     },
   };

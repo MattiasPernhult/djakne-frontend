@@ -1,7 +1,8 @@
 controllers.controller('ProductController',
 function($scope, $state, $http, HOST, accessFactory, Cart,
 MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFactory,
-notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) {
+notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate, $ionicPopover,
+$ionicModal) {
 
   $scope.toggleCart = function() {
     $ionicSideMenuDelegate.toggleRight();
@@ -71,12 +72,33 @@ notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) 
     vote.show = !vote.show;
   };
 
+  $ionicModal.fromTemplateUrl('favorite_modal.html', {
+    id: '9',
+    scope: $scope,
+    animation: 'slide-in-up',
+  }).then(function(modal)  {
+    $scope.favoriteModal = modal;
+  });
+
+  $scope.openFavoriteModal = function(member) {
+    $scope.member = member;
+    console.log($scope.member);
+    $scope.favoriteModal.show();
+  };
+
+  $scope.closeFavoriteModal = function() {
+    $scope.favoriteModal.hide();
+  };
+
   // Watch for changes in cart size
   $scope.$watch(function() {
       return Cart.size();
     },
     function(newVal) {
       $scope.cartQty = newVal;
+      if (newVal === 0 && $ionicSideMenuDelegate.isOpen()) {
+        $ionicSideMenuDelegate.toggleRight();
+      }
     }
   );
 
@@ -91,8 +113,19 @@ notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) 
   };
 
   MenuFactory.getProducts(function(data) {
+    $scope.getFavorites();
+    for (var index in data) {
+      for (var i = 0; i < data[index].length; i++) {
+        data[index][i].isFavorite = $scope.isFavorite(data[index][i]);
+      }
+    }
     $scope.products = data;
   });
+
+  $scope.favoritesSize = function() {
+    var favSize = $scope.userFavorites.length;
+    return favSize;
+  };
 
   $scope.addFavorite = function(item) {
     console.log(item);
@@ -110,11 +143,11 @@ notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) 
     var favorites;
     res = window.localStorage.getItem('favorites');
     favorites = JSON.parse(res);
-    return favorites;
+    $scope.userFavorites = favorites;
   };
 
-  $scope.isFavorite = function(item)  {
-    var exists;
+  $scope.toogleFavorite = function(item) {
+    var exists = false;
     for (var index = 0; index < $scope.userFavorites.length; index++) {
       if (item.id === $scope.userFavorites[index].id) {
         exists = true;
@@ -127,6 +160,15 @@ notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate) 
       item.isFavorite = true;
       $scope.addFavorite(item);
     }
+  };
+
+  $scope.isFavorite = function(item)  {
+    for (var index = 0; index < $scope.userFavorites.length; index++) {
+      if (item.id === $scope.userFavorites[index].id) {
+        return true;
+      }
+    }
+    return false;
   };
 
   $scope.isActive = function(item) {

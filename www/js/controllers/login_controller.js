@@ -1,6 +1,6 @@
 controllers.controller('LoginController',
   function($scope, $state, $http, $location, $rootScope, accessFactory,
-    HOST, $ionicSlideBoxDelegate, toastService) {
+    HOST, $ionicSlideBoxDelegate, toastService, httpService) {
 
     $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
     $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';
@@ -9,20 +9,21 @@ controllers.controller('LoginController',
     $scope.clientSecret = 'UVKqpbFQchFA8ku0';
 
     $scope.loginWithLinkedIn = function() {
-      var ref = cordova.ThemeableBrowser.open($scope.urlStep1, '_blank', {
-        statusbar: {
-          color: '#000',
-        },
-        toolbar: {
-          height: 0,
-          color: '#000',
-        },
-      }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
-        console.error(e.message);
-      }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
-        console.log(e.message);
-      });
+      //  var ref = cordova.ThemeableBrowser.open($scope.urlStep1, '_blank', {
+      //    statusbar: {
+      //      color: '#000',
+      //    },
+      //    toolbar: {
+      //      height: 0,
+      //      color: '#000',
+      //    },
+      //  }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
+      //    console.error(e.message);
+      //  }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
+      //    console.log(e.message);
+      //  });
 
+      var ref = cordova.InAppBrowser.open($scope.urlStep1, '_blank');
       ref.addEventListener('loadstop', function(event) {
         console.log('loadstop');
         console.log(event.url);
@@ -64,8 +65,15 @@ controllers.controller('LoginController',
       if (window.localStorage.tokenExpires && window.localStorage.token) {
         var date = new Date();
         if (date.getTime() < window.localStorage.tokenExpires) {
-          accessFactory.changeAccessToken(window.localStorage.token);
-          $state.go('tab.home');
+          var url = HOST.hostAdress + ':3000/member?token=' + window.localStorage.token;
+          httpService.get(url, function(err, result, status) {
+            if (err && status !== 200) {
+              $scope.loginWithLinkedIn();
+            } else {
+              accessFactory.changeAccessToken(window.localStorage.token);
+              $state.go('tab.home');
+            }
+          });
         } else {
           $scope.loginWithLinkedIn();
         }

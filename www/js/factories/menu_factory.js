@@ -25,7 +25,8 @@ factories.factory('MenuFactory', function($http, accessFactory, HOST, httpServic
   var getProducts = function(done) {
     var url;
     if (window.cordova) {
-      url = HOST.hostAdress + ':4000/menu/categories';
+      url = HOST.hostAdress + ':4000/menu/categories?join=Kall%20dryck,Julmust,Kaffe,Specialte,' +
+      'Mat,Frukost,Kakor,Reztart,Kaffe,Droppkaffe,Kaffe,Hela%20b%C3%B6nor';
     } else {
       url = '/data/menu_categories.json';
     }
@@ -35,7 +36,7 @@ factories.factory('MenuFactory', function($http, accessFactory, HOST, httpServic
 
     httpService.get(url, function(err, result) {
       if (err) {
-        return done(result.data);
+        return done(err);
       }
       products = result.products;
       return done(products);

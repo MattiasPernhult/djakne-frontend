@@ -1,5 +1,5 @@
 controllers.controller('AddEventController',
-  function($scope, $http, HOST, EventFactory, $cordovaToast, httpService, toastService) {
+  function($scope, $state, $http, HOST, EventFactory, $cordovaToast, httpService, toastService) {
 
     $scope.event = {};
 
@@ -9,7 +9,7 @@ controllers.controller('AddEventController',
         text: $scope.event.text,
         author: $scope.event.author,
         date: $scope.event.date,
-        location: $scope.event.location,
+        location: $scope.event.place + ', ' + $scope.event.adress,
       };
 
       var url = HOST.hostAdress + ':4000/events';
@@ -18,6 +18,8 @@ controllers.controller('AddEventController',
           toastService.showLongBottom(err.message);
         } else {
           toastService.showLongBottom('Eventet har skapats');
+          $scope.event = {};
+          $state.go('tab.home');
           EventFactory.getEvents(function() {
             return;
           });
