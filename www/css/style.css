@@ -658,8 +658,8 @@ ion-slide p {
   color: orange;
 }
 
-.button.button-outline.button-small.button-stable{
-  margin-left: 80%;
+.button.button-outline.button-stable{
+  margin-left: 70%;
   margin-top: 3%;
   margin-bottom: 3%;
 }
@@ -890,4 +890,11 @@ label.item.item-input {
   left: 0;
   right: 0;
   margin: 0 auto;
+}
+
+
+#atDjakne{
+  text-indent: 15%;
+  box-shadow: none !important;
+  margin-left: -5%;
 }
