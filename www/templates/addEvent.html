@@ -6,7 +6,7 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 ​
-  <ion-content ng-style="{ 'background-color': '#444' }">>
+  <ion-content ng-style="{ 'background-color': 'white' }">>
   <div id="addEvent">
     <form class="form-style-4" ng-submit="sendPost()" name="validEvent">
       <label>
@@ -18,19 +18,19 @@
       <label>
       <input type="email" placeholder="Email" ng-model="event.author" required>
       </label>
-      <p class="padding"><input type="checkbox" ng-click="show = !show" checked> At Djäkne</p>
+      <p class="padding"><input type="checkbox" ng-click="show = !show" ng-model="event.djakne" checked> At Djäkne</p>
       <label>
-      <input type="text" placeholder="Place" ng-model="event.place" ng-if="show" required>
+      <input type="text" placeholder="Place" ng-model="event.place" ng-show="show" required>
       </label>
       <label>
-      <input type="text" placeholder="Adress" ng-model="event.adress" ng-if="show" required>
+      <input type="text" placeholder="Adress" ng-model="event.adress" ng-show="show" required>
       </label>
       <label>
-        <p>Date and time</p>
-        <input type="datetime-local" ng-model="event.date" placeholder="Date and Time" required>
+        <p>Date and Time</p>
+        <input type="datetime-local" id="dateTime" ng-model="event.date" placeholder="Date and Time" required>
       </label>
       <label>
-      <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-full button-light">
+      <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-full button-dark">
         Submit
       </button>
       </label>
