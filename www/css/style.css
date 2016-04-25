@@ -585,7 +585,11 @@ ion-slide p {
     /*border: 5px solid #53687E;*/
 }
 
-
+#dateTime{
+  background: none;
+  border: 1px;
+  border-style: solid;
+}
 ​​
 .form-style-4 input[type=submit],
 .form-style-4 input[type=text],
@@ -593,14 +597,14 @@ ion-slide p {
 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 16px;
-    color: #fff;
+    color: #444;
 ​
 }
 .form-style-4 p {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 15px;
   font-style: italic;
-  color: #A8BACE;
+  color: #444;
 }
 
 .form-style-4 label {
@@ -618,7 +622,7 @@ ion-slide p {
 {
     background: transparent;
     border: none;
-    border-bottom: 1px dashed #83A4C5;
+    border-bottom: 1px dashed #988B8B;
     width: 275px;
     outline: none;
     padding: 0px 0px 0px 0px;
@@ -630,16 +634,10 @@ ion-slide p {
 .form-style-4 input[type=email]:focus,
 .form-style-4 input[type=email] :focus
 {
-    border-bottom: 1px dashed #D9FFA9;
+    border-bottom: 1px dashed #13ce1f;
 }
 ​
-.form-style-4 input[type=submit]{
-    background: #576E86;
-    border: none;
-    padding: 8px 10px 8px 10px;
-    border-radius: 5px;
-    color: #A8BACE;
-}
+
 
 .button.button-full.button-light{
   margin-top: 10%;
@@ -658,6 +656,12 @@ ion-slide p {
   border-top: 2px;
   border-style: solid;
   color: orange;
+}
+
+.button.button-outline.button-small.button-stable{
+  margin-left: 80%;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 #cardHead{

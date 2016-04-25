@@ -23,8 +23,6 @@ controllers.controller('AddEventController',
         location: place,
       };
 
-      console.log('formData: ' + JSON.stringify(formData, null, 4));
-
       var url = HOST.hostAdress + ':4000/events';
       httpService.post(url, formData, function(err, result)  {
         if (err) {

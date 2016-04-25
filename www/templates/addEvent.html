@@ -6,7 +6,7 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 ​
-  <ion-content ng-style="{ 'background-color': '#444' }">>
+  <ion-content ng-style="{ 'background-color': 'white' }">>
   <div id="addEvent">
     <form class="form-style-4" ng-submit="sendPost()" name="validEvent">
       <label>
@@ -26,11 +26,11 @@
       <input type="text" placeholder="Adress" ng-model="event.adress" ng-if="!show" required>
       </label>
       <label>
-        <p>Date and time</p>
-        <input type="datetime-local" ng-model="event.date" placeholder="Date and Time" required>
+        <p>Date and Time</p>
+        <input type="datetime-local" id="dateTime" ng-model="event.date" placeholder="Date and Time" required>
       </label>
       <label>
-      <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-full button-light">
+      <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-full button-dark">
         Submit
       </button>
       </label>

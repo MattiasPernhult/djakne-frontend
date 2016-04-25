@@ -1,29 +1,29 @@
 <ion-content overflow-scroll="false" class="expandList" ng-controller="EventController">
  <ion-refresher on-refresh="doEventRefresh()" disable-pulling-rotation="false">
 
- </ion-refresher>
- <a class="ion-edit" ui-sref="addEvent"></a>
-   <div class="card padding events" ng-repeat="event in events">
-   <div id="cardHead">
-     <h4>{{ event.title }}</h4>
-     <h6>{{ event.date | date:'MM/dd/yyyy' }}</h6>
-     <hr>
-     <p id="infoText">{{event.text}}</p>
-   </div>
-   <div ng-repeat="attendant in event.attendants" ng-show="show">
-     <img ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false"</img>
-     <p>{{event.author}}</p>
-   </div>
-     <p>Location: {{event.location}}</p>
-     <div ng-show="show">
-       <button class="button button-small button-dark" id="cowork" ng-click="showing = !showing; signUp(event._id)" ng-show="!showing">
-         Sign up
-       </button>
-       <p ng-show="showing"> You've already signed up</p>
-     </div>
-     <button class="button button-small button-clear" ng-click="show = !show">
-       <p ng-if="!show">See more</p>
-       <p ng-if="show">See less</p>
-     </button>
- </div>
+  </ion-refresher>
+  <button class="button button-outline button-stable" ui-sref="addEvent">add event</button>
+    <div class="card padding events" ng-repeat="event in events">
+    <div id="cardHead">
+      <h4>{{ event.title }}</h4>
+      <h6>{{ event.date | date:'MM/dd/yyyy' }}</h6>
+      <hr>
+      <p id="infoText">{{event.text}}</p>
+    </div>
+    <div ng-repeat="attendant in event.attendants" ng-show="show">
+      <img ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false"</img>
+      <p>{{event.author}}</p>
+    </div>
+      <p>Location: {{event.location}}</p>
+      <div ng-show="show">
+        <button class="button button-small button-outline button-dark" id="cowork" ng-click="showing = !showing; signUp(event._id)" ng-show="!showing">
+          Sign up
+        </button>
+        <p ng-show="showing"> You've already signed up</p>
+      </div>
+      <button class="button button-small button-clear" ng-click="show = !show">
+        <p ng-if="!show">See more</p>
+        <p ng-if="show">See less</p>
+      </button>
+  </div>
 </ion-content>
