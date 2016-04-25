@@ -1,11 +1,45 @@
 <ion-view title="Djäkne">
   <ion-nav-buttons side="right">
-    <button class="button icon-left ion-heart button-outline" ng-style="userFavorites ? {'color':'#FF7E7E'} : {'color':'white'}" ng-disabled="favoritesSize() === 0" ng-style="">
+    <button class="button icon-left ion-heart button-outline" ng-click="openFavoriteModal()" ng-style="userFavorites ? {'color':'#FF7E7E'} : {'color':'white'}" ng-disabled="favoritesSize() === 0" ng-style="">
     </button>
     <button class="button icon-left ion-bag button-outline" ng-disabled="cartQty === 0" ng-click="toggleCart(); priceRequest()">
     </button>
     <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
   </ion-nav-buttons>
+
+  <script id="favorite_modal.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-header-bar class="bar-dark">
+        <div class="buttons">
+          <button class="button icon icon-left ion-chevron-left" ng-click="closeFavoriteModal()"></button>
+        </div>
+        <h1 class="title">Favorites</h1>
+        <div class="buttons">
+          <button class="button icon icon-right ion-bag button-outline" ng-disabled="cartQty === 0" ng-click="toggleCart(); priceRequest()"></button>
+          <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
+        </div>
+      </ion-header-bar>
+
+      <ion-content>
+        <ion-list>
+          <ion-item ng-repeat="product in userFavorites" class="item-accordion item-obj">
+            <p class="item-name">{{product.name}}</p>
+            <div class="buttonContainer item-button-container">
+              <button ng-click="addToCart(product)" class="button button-outline button-assertive">
+                ADD
+              </button>
+              <button ng-click="buyNow(product)" class="button button-outline button-assertive">
+                FAST BUY
+              </button>
+              </button>
+            </div>
+            <p class="item-price">{{product.price}} kr</p>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-modal-view>
+  </script>
+
   <ion-side-menus>
     <ion-side-menu-content drag-content="false">
       <ion-content scroll="false" class="homeSlider" has-tabs="true">
@@ -17,9 +51,9 @@
             <ion-content class="item-list expandList">
               <ion-list>
                 <ion-item ng-repeat="product in categories" class="item-accordion item-obj">
-                  <p id="item-name">{{product.name}}</p>
+                  <p class="item-name">{{product.name}}</p>
                   <div class="buttonContainer item-button-container">
-                    <button ng-click="isFavorite(product)" class="heart button ion-ios-heart-outline button-clear" ng-style="product.isFavorite ? {'color':'red'} : {'color':'#e2e2e2'}">
+                    <button ng-click="toogleFavorite(product)" class="heart button ion-ios-heart-outline button-clear" ng-style="product.isFavorite ? {'color':'red'} : {'color':'#e2e2e2'}">
                       <button ng-click="addToCart(product)" class="button button-outline button-assertive">
                         ADD
                       </button>
@@ -28,7 +62,7 @@
                       </button>
                     </button>
                   </div>
-                  <p id="item-price">{{product.price}} kr</p>
+                  <p class="item-price">{{product.price}} kr</p>
                 </ion-item>
               </ion-list>
             </ion-content>
