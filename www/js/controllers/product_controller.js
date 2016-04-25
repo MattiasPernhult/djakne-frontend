@@ -245,18 +245,24 @@ $ionicModal) {
 
   $scope.showConfirm = function(item) {
     var confirmPopup = $ionicPopup.confirm({
-      title: 'Lägga beställning?',
+      title: 'Do you want to fast buy one ' + item.name + '?',
     });
 
     confirmPopup.then(function(res) {
       if (res) {
-        console.log(item);
         $scope.buyNow(item);
       } else {
-        console.log('Snabbeställning avbruten');
+        $scope.showAlert();
       }
     });
   };
+
+  $scope.showAlert = function() {
+   var alertPopup = $ionicPopup.alert({
+     title: 'Order',
+     template: 'Your order is cancelled',
+   });
+ };
 
   // Watch for changes in product total
   $scope.$watch(function() {

@@ -774,3 +774,9 @@ label.item.item-input {
   right: 0;
   margin: 0 auto;
 }
+
+/* Center text in alert message */
+.popup-body {
+ text-align: center;
+ font-weight: lighter;
+}
