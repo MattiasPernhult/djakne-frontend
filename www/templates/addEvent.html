@@ -17,13 +17,15 @@
       </label>
       <label>
       <input type="email" placeholder="Email" ng-model="event.author" required>
-      </label>
-      <input type="checkbox" ng-model="event.djakne" ng-change="change()">
+    </label>
       <label>
-      <input type="text" placeholder="Place" ng-model="event.place" ng-if="!show" required>
+            <ion-checkbox id="atDjakne" ng-model="event.djakne" ng-change="change()" ng-checked="true" ng-click="show = !show">At Djakne</ion-checkbox>
       </label>
       <label>
-      <input type="text" placeholder="Adress" ng-model="event.adress" ng-if="!show" required>
+      <input type="text" placeholder="Place" ng-model="event.place" ng-if="show" required>
+      </label>
+      <label>
+      <input type="text" placeholder="Adress" ng-model="event.adress" ng-if="show" required>
       </label>
       <label>
         <p>Date and Time</p>

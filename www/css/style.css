@@ -891,3 +891,10 @@ label.item.item-input {
   right: 0;
   margin: 0 auto;
 }
+
+
+#atDjakne{
+  text-indent: 15%;
+  box-shadow: none !important;
+  margin-left: -5%;
+}
