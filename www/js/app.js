@@ -1,5 +1,6 @@
 angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories', 'config',
-'ngCordova',])
+  'ngCordova',
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -27,32 +28,38 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-  .state('login', {
+    .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
     controller: 'LoginController',
   })
 
-    .state('cart', {
-      url: '/cart',
-      templateUrl: 'templates/cart.html',
-      controller: 'ProductController',
-    })
+  .state('cart', {
+    url: '/cart',
+    templateUrl: 'templates/cart.html',
+    controller: 'ProductController',
+  })
 
-    .state('addEvent', {
-      url: '/addEvent',
-      templateUrl: 'templates/addEvent.html',
-      controller: 'AddEventController',
-    })
+  .state('addEvent', {
+    url: '/addEvent',
+    templateUrl: 'templates/addEvent.html',
+    controller: 'AddEventController',
+  })
 
-    .state('profile', {
-        url: '/profile',
-        templateUrl: 'templates/profile.html',
-        controller: 'ProfileController',
-      })
+  .state('profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.html',
+    controller: 'ProfileController',
+  })
+
+  .state('calendar', {
+    url: '/calendar',
+    templateUrl: 'templates/calendar.html',
+    controller: 'CalendarController',
+  })
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html',

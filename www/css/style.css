@@ -522,7 +522,6 @@ ion-slide p {
 .button.readMore {
   margin-top: 10px;
   border: 1px solid #ccc;
-  width: 30%;
   border-radius: 20px;
   font-family: Georgia, serif;
 }
@@ -780,21 +779,21 @@ label.item.item-input {
 }
 
 .expandList{
-  margin-bottom: 150px;
+  /*margin-bottom: 150px;*/
 }
 
 
 
 /* Css for CO-WORK */
 
-.button.button-small.readMore {
+.button.readMore {
   margin-top: 10px;
   border: 1px solid #ccc;
   width: 100px;
   border-radius: 20px;
   font-family: Georgia, serif;
   opacity: 0.;
-  color: #504F4F;
+  color: #595454 !important;
   font-weight: bold;
 }
 
@@ -869,8 +868,23 @@ label.item.item-input {
   margin-top: 20px;
 }
 
+.ion-ios-checkmark-empty:before {
+    margin: 0px 15px 0px 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.ion-ios-close-empty:before {
+    margin: 0px 15px 0px 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.check{
+  vertical-align: super;
+}
+
 .list-container ul li {
-  padding:4px 20px;
+  padding:2px 20px;
 }
 .list-container ul li:nth-child(2n) {
   background: #f3f3f3;
@@ -883,6 +897,33 @@ label.item.item-input {
 .list-container {
   text-align: left;
   width: 95%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.coworkDesc p {
+  width: 92% !important;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #ccc;
+  color: #2E2A2A !important;
+  font-size: 15.5px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.joinUs {
+  margin:12px 0px 3px 0px;
+}
+
+.joinUs p{
+  width: 90% !important;
+  color: white !important;
+  font-size: 16px;
+  padding: 0px 0px 0px 0px;
+  text-align: center;
   left: 0;
   right: 0;
   margin: 0 auto;
