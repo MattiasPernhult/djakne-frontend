@@ -16,21 +16,30 @@
 
             <script id="modal.html" type="text/ng-template">
               <ion-modal-view>
-                <ion-header-bar>
+                <ion-header-bar class="bar-dark">
                   <h1 class="title">{{member.firstName}} {{member.lastName}}</h1>
                   <button class="button icon icon-right ion-ios-close-outline" ng-click="closeModal()"></button>
                 </ion-header-bar>
 
                 <ion-content>
-                  <div style="display: block; margin: 0 auto; padding: 10px;">
-                    <img ng-src="data:image/jpeg;base64,{{member.image}}"></img>
-                    <h4>Jobbar med</h4>
-                    <p>{{member.headline}}</p>
-                    <h4>Intressen</h4>
-                    <p>{{member.interests}}</p>
-                    <h4>Bor</h4>
-                    <p>{{member.location}}</p>
-                    <a ng-click="gotoLinkedIn()"href="">LinkedIn</a>
+                  <div class="hero text-center" style="background: #444">
+                    <div class="content">
+                      <img class="avatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+                    </div>
+                  </div>
+                    <div class="list">
+                    <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
+                      <span>Work</span>
+                      <p>{{member.headline}}</p>
+                    </label>
+                    <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
+                      <span>Interests</span>
+                      <p>{{member.interests}}</p>
+                    </label>
+                    <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
+                      <span>Lives</span>
+                      <p>{{member.location}}</p>
+                    </label>
                   </div>
                 </ion-content>
               </ion-modal-view>
@@ -40,25 +49,30 @@
 
               <script id="currentCoffee.html" type="text/ng-template">
                 <ion-modal-view>
-                <ion-header-bar>
+                <ion-header-bar class="bar-dark">
                   <h1 class="title">Veckans kaffe</h1>
                   <button class="button icon icon-right ion-ios-close-outline" ng-click="closeCoffeeModal()"></button>
                 </ion-header-bar>
 
                   <ion-content>
-                    <div class="box coffeeModal">
-                      <h3 class>{{rating.title}}</h3>
-                      <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
-                      <img id="coffeeImage" ng-src="{{rating.image}}"></img>
-                      <p>{{rating.description}}</p>
-                    </div>
-
-                    <div class="box coffeeModal">
-                      <h1 class="coffeeVote">Vote!</h1>
-                      <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
-                      <div class="text-center padding">
-                        <button class="button button-block button-dark vote" ng-click="send()">Submit your rating</button>
+                    <div class="list card">
+                      <div class="item item-avatar">
+                        <img src="img/Icons/home/coffee_black.png">
+                        <div class="event-header">
+                          <h2>{{rating.title}}</h2>
+                          <h5>{{rating.startDate | date:'MM/dd/yyyy'}}</h5>
+                        </div>
                       </div>
+                      <div class="item item-body">
+                        <img class="event-img" ng-src="{{rating.image}}">
+                        <p>{{rating.description}}</p>
+                        <h1 class="coffeeVote">Vote!</h1>
+                        <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+                        <div class="text-center padding">
+                          <button class="button button-block button-dark vote" ng-click="send()">Submit your rating</button>
+                        </div>
+                      </div>
+                    </div>
                     </div>
                  </ion-content>
                 </ion-modal-view>
@@ -78,82 +92,3 @@
       </ion-slide>
     </ion-slide-box>
 </ion-content>
-
-<!--
-<ion-view view-title="Djäkne">
-  <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
-  <ion-content class="home">
-
-  <ion-refresher on-refresh="doRefresh()" disable-pulling-rotation="false">
-
-  </ion-refresher>
-
-  <ion-slide-box class="slider home" show-pager="false" auto-play="false" does-continue="false" on-slide-changed="slideChanged(index)">
-  <ion-slide class="homeSlider" ng-style="{ 'background-image': 'url(' + currentCoffee.image + ')' }">
-    <div class="slider-home-container text-center">
-      <div class="text-home-container">
-
-         <h1>{{currentCoffee.title}}</h1>
-        <! Obj text -->
-        <!-- <p>{{ currentCoffee.text | limitTo: 45 }}{{obj.text.length > 20 ? ' Läs mer..' : ''}}</p>
-        <button class="button button-small readMore" ng-click="openCoffeeModal(coffee)">Read more</button>
-      </div>
-    </div>
-  </ion-slide>
-</ion-slide-box> -->
-
-<!--
-    <div class="list card">
-      <h1>Veckans Kaffe</h1>
-      <h3>{{rating.title}}</h3>
-      <h5>{{rating.startDate | date:'MM/dd/yyyy @ h:mma'}}</h5>
-      <img id="coffeeImage" ng-src="{{rating.image}}"></img>
-      <p>{{rating.description}}</p>
-    </div>
-
-    <div class="list card">
-      <h1>Rösta!</h1>
-      <h3>{{rating.startDate | date:'V.ww'}}</h3>
-      <h5>Kaffe från {{rating.title}}</h3>
-      <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
-        <button class="button button-block button-dark" ng-click="send()">Skicka</button>
-    </div>
--->
-
-
-    <!-- <div class="box co-work">
-      <h4 class="home-title">Updates</h4>
-    </div> -->
-
-    <!-- <ul class="flex-container djakne">
-      <li class="item card text"> -->
-        <!-- <img class="whatsOn" src="img/Icons/event_BlackNoBG.png"> -->
-        <!-- <h1>#Events</h1>
-        <h5>{{currentEvent.title}}</h5>
-        <p></p>
-      </li>
-      <li class="item card text"> -->
-        <!-- <img class="whatsOn" src="img/Icons/news_BlackNoBG.png"> -->
-          <!-- <h1>#News</h1>
-        <h5>Nyhet</h5>
-        <p></p>
-      </li>
-    </ul> -->
-
-    <!-- <ul class="flex-container djakne">
-      <li class="item card text"> -->
-        <!-- <img class="whatsOn" src="img/Icons/book_BlackNoBG.png"> -->
-          <!-- <h1>#Member</h1>
-        <h5>Available</h5>
-        <p></p>
-      </li>
-      <li class="item card text"> -->
-        <!-- <img class="whatsOn" src="img/Icons/join_BlackNoBG.png"> -->
-          <!-- <h1>#Join us</h1>
-        <h5>How to!</h5>
-        <p></p>
-      </li>
-    </ul>
-
-  </ion-content>
-</ion-view> -->
