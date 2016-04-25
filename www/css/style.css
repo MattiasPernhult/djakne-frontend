@@ -139,10 +139,7 @@ ion-view {
 .slider-pager {
   bottom: 80px;
 }
-ion-slide p {
-  width: 200px;
-  margin: 0 auto;
-}
+
 .text-login-container {
   top: 350px;
   bottom: 0;
@@ -352,6 +349,16 @@ ion-slide p {
 .homeItem {
   margin-left: 200px;
 }
+#attendImg{
+  width: 50px;
+  float: left;
+}
+#cowork{
+  display: block;
+  float: right;
+  margin-top: 20%;
+}
+
 #addEvent {
   min-width: 100%;
   font-size: 16px;
@@ -408,7 +415,7 @@ ion-slide p {
   margin-top: 5px;
   border-top: 2px;
   border-style: solid;
-  color: orange;
+
 }
 .button.button-outline.button-stable {
   margin-left: 70%;
@@ -432,6 +439,8 @@ ion-slide p {
 #cardHead hr {
   margin-top: 16%;
 }
+
+
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;
