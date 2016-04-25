@@ -508,6 +508,8 @@ font-size: 14px;
 .item-price {
   margin-left: 0;
   font-size: 18px;
+  float: left;
+  width: 100%;
 }
 .item-obj {
   box-shadow: none !important;
