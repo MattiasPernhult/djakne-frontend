@@ -36,9 +36,23 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
       }
     });
   };
+  var getWifi = function(done) {
+    var url;
+    if (window.cordova) {
+      url = HOST.hostAdress + ':4000/wifi?token=' + accessFactory.getAccessToken();
+    } else {
+      url = 'data/wifi.json';
+    }
+    httpService.get(url, function(err, result)  {
+      if (!err) {
+        return done(result);
+      }
+    });
+  };
 
   return {
     getUser: getUser,
+    getWifi: getWifi,
     getOrderSettings: getOrderSettings,
     checkOrderSettings: checkOrderSettings,
   };
