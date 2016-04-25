@@ -6,7 +6,7 @@
     <div class="card padding events" ng-repeat="event in events">
     <div id="cardHead">
       <h4>{{ event.title }}</h4>
-      <h6>{{ event.date | date:'MM/dd/yyyy' }}</h6>
+      <h6>{{ event.date | date:'d MMM' }}</h6>
       <hr>
       <p id="infoText">{{event.text}}</p>
     </div>
