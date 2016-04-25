@@ -18,7 +18,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  font-family: 'Alegreya Sans', sans-serif !important;
+  font-family:Georgia, Times, "Times New Roman", serif!important;
+
 }
 
 h2 {
@@ -103,17 +104,6 @@ ion-view {
 
 /* Product Information */
 
-.menuCard {
-  width:100%;
-  height:16%;
-  position:relative;
-  background-color: rgba(000, 000, 000, 0.4);
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  box-shadow: 3px 5px 5px rgba(51, 51, 51, 0);
-}
-
 .product-title{
   font-weight: 400 !important;
   font-size:17px !important;
@@ -147,20 +137,6 @@ ion-view {
   display: block !important;
 }
 
-/* Title in menu cards */
-
-h3.menuTitle.ng-binding {
-  margin-top: 7% !important;
-  font-size: 36px;
-  color: white;
-}
-
-h3.menuTitle.favourites{
-  margin-top: 10%;
-  text-align: center;
-  font-size: 36px;
-  color: white;
-}
 
 .item-avatar {
   flex: 0 0 auto;
@@ -258,19 +234,6 @@ ion-slide p {
 
 /* List item content - menu template / cart template */
 
-.products {
-  background: none;
-}
-
-.row {
-  padding: 0;
-}
-
-.product-desc {
-  display:block;
-  font-size:12px;
-}
-
 /* Nav buttons */
 
 .circle {
@@ -297,24 +260,6 @@ ion-slide p {
   margin-right: 5px;
 }
 
-.djakne{
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(../img/Icons/navigation/home.png);
-  height:30px;
-  width:30px;
-  background-size: contain;
-}
-
-.coffeeBar{
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(../img/Icons/navigation/coffeeMenu.png);
-  height:30px;
-  width:30px;
-  background-size: contain;
-}
-
 /* Icons for adding and removing items - menu template */
 
 .productInfo.cart{
@@ -330,10 +275,6 @@ ion-slide p {
   box-shadow: none !important;
 }
 
-/* FIX */
-.toggleSpecials h3 {
-
-}
 /* Product total - cart template */
 
 .cart-total-container {
@@ -430,12 +371,6 @@ ion-slide p {
    text-align: left;
 }
 
-.button.readMore {
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-}
-
 /*Coffee Modal*/
 
 .button.icon.icon-right.ion-ios-close-outline {
@@ -469,11 +404,8 @@ ion-slide p {
     min-width: 100%;
     font-size: 16px;
     padding: 30px 30px 15px 30px;
-    /*border: 5px solid #53687E;*/
 }
-
-
-​​
+​
 .form-style-4 input[type=submit],
 .form-style-4 input[type=text],
 .form-style-4 input[type=email]
@@ -672,10 +604,9 @@ label.item.item-input {
   margin-top: 10px;
   border: 1px solid #ccc;
   width: 100px;
-  border-radius: 20px;
-  opacity: 0.;
   color: #595454 !important;
   font-weight: bold;
+  font-family: 'Alegreya Sans', sans-serif!important;
 }
 
 .box {
