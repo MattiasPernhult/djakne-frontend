@@ -21,6 +21,8 @@ function($scope, SessionFactory, ProfileFactory, $state) {
     console.log($scope.wifi);
   });
   $scope.logout = function() {
+    window.localStorage.token = undefined;
+    window.localStorage.tokenExpires = undefined;
     $state.go('login');
   };
   // When user changes settings, add or remove localstorage
