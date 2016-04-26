@@ -6,7 +6,7 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 ​
-  <ion-content ng-style="{ 'background-color': 'white' }">>
+  <ion-content ng-style="{ 'background-color': 'white' }">
   <div id="addEvent">
     <form class="form-style-4" ng-submit="sendPost()" name="validEvent">
       <label>
@@ -19,7 +19,7 @@
       <input type="email" placeholder="Email" ng-model="event.author" required>
     </label>
       <label>
-            <ion-checkbox id="atDjakne" ng-model="event.djakne" ng-change="change()" ng-checked="true" ng-click="show = !show">At Djakne</ion-checkbox>
+          <ion-checkbox id="atDjakne" ng-model="event.djakne" ng-change="change()" ng-checked="true" ng-click="show = !show">At Djakne</ion-checkbox>
       </label>
       <label>
       <input type="text" placeholder="Place" ng-model="event.place" ng-if="show" required>

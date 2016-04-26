@@ -2,7 +2,7 @@
   <ion-refresher on-refresh="doEventRefresh()" disable-pulling-rotation="false">
 
   </ion-refresher>
-  <button class="button button-outline button-stable" ui-sref="addEvent">add event</button>
+  <button class="button button-outline button-assertive" ui-sref="addEvent">ADD EVENT</button>
     <div class="card padding events" ng-repeat="event in events">
     <div id="cardHead">
       <h4>{{ event.title }}</h4>
@@ -21,7 +21,7 @@
         </button>
         <p ng-show="showing"> You've already signed up</p>
       </div>
-      <button class="button button-small button-clear" ng-click="show = !show">
+      <button class="button button-block button-clear" ng-click="show = !show">
         <p ng-if="!show">See more</p>
         <p ng-if="show">See less</p>
       </button>

@@ -261,6 +261,7 @@ ion-view {
   margin-right: 5px;
 }
 
+
 /* Icons for adding and removing items - menu template */
 
 .productInfo.cart {
@@ -453,12 +454,14 @@ font-size: 14px;
   margin-top: 5px;
   border-top: 2px;
   border-style: solid;
+  min-width: 90%;
 
 }
-.button.button-outline.button-stable {
-  margin-left: 70%;
-  margin-top: 3%;
-  margin-bottom: 3%;
+.button.button-outline.button-assertive {
+  float: right;
+  margin: 3%;
+  display: block;
+
 }
 #cardHead {
   padding: 1%;
