@@ -67,11 +67,11 @@ controllers.controller('LoginController',
         if (date.getTime() < window.localStorage.tokenExpires) {
           var url = HOST.hostAdress + ':3000/member?token=' + window.localStorage.token;
           httpService.get(url, function(err, result, status) {
-            if (err && status !== 200) {
+            if (err && status !== 200)  {
               $scope.loginWithLinkedIn();
             } else {
               if (checkIfUsersBirthday(result.member)) {
-                alertUser(result.member.firsName);
+                alertUser(result.member.firstName);
               }
               accessFactory.changeAccessToken(window.localStorage.token);
               $state.go('tab.home');
@@ -119,17 +119,17 @@ controllers.controller('LoginController',
         return false;
       }
       if ((usersBirthday.getUTCDate() + 1) === date.getUTCDate() &&
-       (usersBirthday.getUTCMonth() === date.getUTCMonth())) {
+        (usersBirthday.getUTCMonth() === date.getUTCMonth())) {
         return true;
       }
       return false;
     };
 
     var alertUser = function(userFirstName) {
-      var alertPopUp = $ionicPopup.alert({
+      $ionicPopup.alert({
         title: 'Happy Birthday!',
         template: userFirstName + ' it seems like it\'s your birthday!' +
-        'We hope that you\'ll have a great day!',
+          ' We hope that you\'ll have a great day!',
       });
     };
   });
