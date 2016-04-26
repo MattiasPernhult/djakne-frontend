@@ -457,12 +457,12 @@ font-size: 14px;
   min-width: 90%;
 
 }
-.button.button-outline.button-assertive {
+.button.button-outline.button-assertive.event {
   float: right;
   margin: 3%;
   display: block;
-
 }
+
 #cardHead {
   padding: 1%;
   border-top: 1px;
@@ -672,10 +672,22 @@ label.item.item-input {
   right: 0;
   margin: 0 auto;
 }
+
+.checkbox-royal input:before,
+.checkbox-royal .checkbox-icon:before {
+border-color: black;
+}
+
+.checkbox-royal input:checked:before,
+.checkbox-royal input:checked + .checkbox-icon:before {
+background: #215163;
+border-color: #215163;
+}
+
 #atDjakne {
   text-indent: 15%;
   box-shadow: none !important;
-  margin-left: -5%;
+  margin-left: -4%;
 }
 .coworkDesc p {
   width: 92% !important;
