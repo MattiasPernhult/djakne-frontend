@@ -4,6 +4,8 @@ MenuFactory, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, ProfileFact
 notificationService, httpService, $ionicSideMenuDelegate, $ionicScrollDelegate, $ionicPopover,
 $ionicModal) {
 
+  $scope.sendingOrder = false;
+
   $scope.toggleCart = function() {
     $ionicSideMenuDelegate.toggleRight();
   };
@@ -200,14 +202,13 @@ $ionicModal) {
     Cart.priceRequest(data, function(err, resp) {
       if (err) {
         alert('ERROR');
-      } else {
-        $state.go('cart');
       }
     });
   };
 
   // Place order
   $scope.placeOrder = function() {
+    $scope.sendingOrder = true;
     var singleItem = false;
     var message = '';
     var takeaway = false;
@@ -225,7 +226,9 @@ $ionicModal) {
         message += comment;
       }
     }
-    Cart.order(message, takeaway, singleItem);
+    Cart.order(message, takeaway, singleItem, function() {
+      $scope.sendingOrder = false;
+    });
   };
 
   $scope.buyNow = function(item) {
@@ -245,18 +248,24 @@ $ionicModal) {
 
   $scope.showConfirm = function(item) {
     var confirmPopup = $ionicPopup.confirm({
-      title: 'Lägga beställning?',
+      title: 'Do you want to fast buy one ' + item.name + '?',
     });
 
     confirmPopup.then(function(res) {
       if (res) {
-        console.log(item);
         $scope.buyNow(item);
       } else {
-        console.log('Snabbeställning avbruten');
+        $scope.showAlert();
       }
     });
   };
+
+  $scope.showAlert = function() {
+   var alertPopup = $ionicPopup.alert({
+     title: 'Order',
+     template: 'Your order is cancelled',
+   });
+ };
 
   // Watch for changes in product total
   $scope.$watch(function() {

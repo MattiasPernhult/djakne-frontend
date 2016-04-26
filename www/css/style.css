@@ -340,6 +340,7 @@ font-size: 14px;
 }
 .ionic_ratings .icon {
   font-size: 45px;
+  padding: 3px;
 }
 
 /* Homecards */
@@ -645,8 +646,8 @@ label.item.item-input {
   opacity: 0.75;
   margin-bottom: 7px;
   margin-top: 20px;
-
 }
+
 .ion-ios-checkmark-empty:before {
   margin: 0px 15px 0px 10px;
   font-size: 25px;

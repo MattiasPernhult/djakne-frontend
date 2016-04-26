@@ -46,10 +46,11 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   };
 
   $scope.doEventRefresh = function() {
-    EventFactory.getEvents(function(err, data) {
-      if (!err) {
+    EventFactory.getEvents(function(data) {
+      console.log('i refresh, data= ' + data);
+      if (data) {
         $timeout(function() {
-          $scope.events = data.events;
+          $scope.events = data;
           $scope.$broadcast('scroll.refreshComplete');
         }, 1000);
       }
@@ -59,8 +60,8 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   $scope.ratingsObject = {
     iconOn: 'ion-ios-star',
     iconOff: 'ion-ios-star-outline',
-    iconOnColor: 'rgb(0, 0, 0)',
-    iconOffColor: 'rgb(100, 100, 100)',
+    iconOnColor: 'rgb(152, 139, 139)',
+    iconOffColor: 'rgb(152, 139, 139)',
     rating: $scope.votes,
     minRating: 1,
     callback: function(rating) {
