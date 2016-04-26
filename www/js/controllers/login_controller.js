@@ -130,6 +130,10 @@ controllers.controller('LoginController',
         title: 'Happy Birthday!',
         template: userFirstName + ' it seems like it\'s your birthday!' +
           ' We hope that you\'ll have a great day!',
+        buttons: [{
+          text: 'Thanks!',
+          type: 'button-dark',
+        }, ],
       });
     };
   });
