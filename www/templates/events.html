@@ -6,20 +6,21 @@
     <div class="card padding events" ng-repeat="event in events">
     <div id="cardHead">
       <h4>{{ event.title }}</h4>
-      <h6>{{ event.date | date:'d MMM' }}</h6>
+      <h5>{{ event.date | date:'d MMM' }}</h5>
       <hr>
-      <p id="infoText">{{event.text}}</p>
+      <p id="infoText"><b>Description: </b> {{event.text}}</p>
     </div>
       <div ng-show="show">
-        <p>Location: {{event.location}}</p>
-        <p>{{event.author}}</p>
+        <p><b>Location: </b> {{event.location}}</p>
+        <p><b>Author: </b> {{event.author}}</p>
+        <h4>Attending</h4>
         <div ng-repeat="attendant in event.attendants" ng-show="show">
           <img id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false"</img>
         </div>
-        <button class="button button-small button-outline button-assertive" id="cowork" ng-click="showing = !showing; signUp(event._id)" ng-show="!showing">
-          Sign up
+        <button class="button button-outline button-assertive" id="cowork" ng-click="showing = !showing; signUp(event._id)" ng-show="!showing">
+          SIGN UP
         </button>
-        <p ng-show="showing"> You've already signed up</p>
+        <button class="button button-outline button-dark" id="cowork" ng-show="showing">SIGNED UP</button>
       </div>
       <button class="button button-block button-clear" ng-click="show = !show">
         <p ng-if="!show">See more</p>
