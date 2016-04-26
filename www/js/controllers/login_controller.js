@@ -83,18 +83,18 @@ controllers.controller('LoginController',
     };
 
     $scope.gallery = [{
-      url: 'img/business1.jpeg',
+      url: 'img/login1.jpg',
       title: 'Evolve and share',
       desc: 'A place for creative and driven builders',
     }, {
-      url: 'img/djakne.png',
+      url: 'img/login2.jpg',
       title: 'Enjoy great coffee',
-      desc: 'We believe great coffee leads to higher efficiency',
+      desc: 'Great coffee leads to higher efficiency',
     }, {
 
-      url: 'img/coffeeData.jpeg',
+      url: 'img/login3.jpg',
       title: 'Stay Connected',
-      desc: 'Secured & good Wi-Fi and power outlets provided',
+      desc: 'Secured Wi-Fi and power outlets provided',
     }, ];
 
     $scope.next = function() {

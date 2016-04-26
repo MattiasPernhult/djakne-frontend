@@ -13,11 +13,12 @@
       <div class="item item-avatar">
         <img src="img/Icons/home/coffee_black.png">
         <div class="event-header">
-          <h2>{{rating.title}}</h2>
+          <h2>This weeks coffee!</h2>
           <h4>{{ rating.startDate | date:'d MMMM' }}</h4>
         </div>
       </div>
       <div class="item item-body">
+        <h2>{{rating.title}}</h2>
         <img class="event-img" ng-src="{{rating.image}}">
         <p>
           <a ng-click="openCoffeeModal(coffee)" class="subdued">Read More</a>
