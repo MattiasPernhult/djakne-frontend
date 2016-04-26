@@ -1,6 +1,8 @@
 <ion-view title="Djäkne">
   <ion-nav-buttons side="right">
-      <button class="button icon-left ion-android-person button-outline" ui-sref="profile" ng-style=""></button>
+    <button favDirective class="button icon-left ion-heart button-outline" ng-click="openFavoriteModal()" ng-style="userFavorites ? {'color':'#FF7E7E'} : {'color':'white'}" ng-disabled="favoritesSize() === 0" ng-style="">
+    </button>
+    <button class="button icon-left ion-android-person button-outline" ui-sref="profile" ng-style=""></button>
       <!-- <button class="button icon-left ion-android-calendar button-outline" ui-sref="calendar"></button> -->
   </ion-nav-buttons>
 <ion-content scroll="false" class="homeSlider">
