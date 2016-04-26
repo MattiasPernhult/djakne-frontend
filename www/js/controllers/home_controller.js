@@ -60,8 +60,8 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   $scope.ratingsObject = {
     iconOn: 'ion-ios-star',
     iconOff: 'ion-ios-star-outline',
-    iconOnColor: 'rgb(0, 0, 0)',
-    iconOffColor: 'rgb(100, 100, 100)',
+    iconOnColor: 'rgb(152, 139, 139)',
+    iconOffColor: 'rgb(152, 139, 139)',
     rating: $scope.votes,
     minRating: 1,
     callback: function(rating) {
