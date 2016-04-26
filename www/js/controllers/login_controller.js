@@ -128,7 +128,8 @@ controllers.controller('LoginController',
     var alertUser = function(userFirstName) {
       var alertPopUp = $ionicPopup.alert({
         title: 'Happy Birthday!',
-        template: userFirstName + ' it seems like it\'s your birthday! We hope thath you\'ll have a great day!',
+        template: userFirstName + ' it seems like it\'s your birthday!' +
+        'We hope that you\'ll have a great day!',
       });
     };
   });
