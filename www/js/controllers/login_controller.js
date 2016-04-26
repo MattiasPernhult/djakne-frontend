@@ -1,6 +1,6 @@
 controllers.controller('LoginController',
   function($scope, $state, $http, $location, $rootScope, accessFactory,
-    HOST, $ionicSlideBoxDelegate, toastService, httpService) {
+    HOST, $ionicSlideBoxDelegate, toastService, httpService, $ionicPopup, $timeout) {
 
     $scope.urlStep1 = HOST.hostAdress + ':3000/oauth/linkedin/ios';
     $scope.redirectUri = HOST.hostAdress + ':3000/oauth/linkedin/ios/callback';
@@ -67,9 +67,12 @@ controllers.controller('LoginController',
         if (date.getTime() < window.localStorage.tokenExpires) {
           var url = HOST.hostAdress + ':3000/member?token=' + window.localStorage.token;
           httpService.get(url, function(err, result, status) {
-            if (err && status !== 200) {
+            if (err && status !== 200)  {
               $scope.loginWithLinkedIn();
             } else {
+              if (checkIfUsersBirthday(result.member)) {
+                alertUser(result.member.firstName);
+              }
               accessFactory.changeAccessToken(window.localStorage.token);
               $state.go('tab.home');
             }
@@ -107,5 +110,30 @@ controllers.controller('LoginController',
     // Called each time the slide changes
     $scope.slideChanged = function(index) {
       $scope.slideIndex = index;
+    };
+
+    var checkIfUsersBirthday = function(user) {
+      var date = new Date();
+      var usersBirthday = new Date(user.dob);
+      if (!Date.parse(usersBirthday)) {
+        return false;
+      }
+      if ((usersBirthday.getUTCDate() + 1) === date.getUTCDate() &&
+        (usersBirthday.getUTCMonth() === date.getUTCMonth())) {
+        return true;
+      }
+      return false;
+    };
+
+    var alertUser = function(userFirstName) {
+      $ionicPopup.alert({
+        title: 'Happy Birthday!',
+        template: userFirstName + ' it seems like it\'s your birthday!' +
+          ' We hope that you\'ll have a great day!',
+        buttons: [{
+          text: 'Thanks!',
+          type: 'button-dark',
+        }, ],
+      });
     };
   });

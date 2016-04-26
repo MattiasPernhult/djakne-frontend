@@ -261,6 +261,7 @@ ion-view {
   margin-right: 5px;
 }
 
+
 /* Icons for adding and removing items - menu template */
 
 .productInfo.cart {
@@ -389,13 +390,17 @@ font-size: 14px;
   margin-left: 200px;
 }
 #attendImg{
-  width: 50px;
+  width: 60px;
+  padding: 3px;
+  display: block;
   float: left;
+
 }
 #cowork{
   display: block;
-  float: right;
   margin-top: 20%;
+  /*margin-left: 7%;*/
+  float: right;
 }
 
 #addEvent {
@@ -407,6 +412,11 @@ font-size: 14px;
   background: none;
   border: 1px;
   border-style: solid;
+}
+#reqFields{
+  font-size: 12px;
+  color: #444;
+  opacity: 0.7;
 }
 ​​ .form-style-4 input[type=submit], .form-style-4 input[type=text], .form-style-4 input[type=email] {
   font-size: 16px;
@@ -454,13 +464,16 @@ font-size: 14px;
   margin-top: 5px;
   border-top: 2px;
   border-style: solid;
+  min-width: 90%;
+  text-align: left;
 
 }
-.button.button-outline.button-stable {
-  margin-left: 70%;
-  margin-top: 3%;
-  margin-bottom: 3%;
+.button.button-outline.button-assertive.event {
+  float: right;
+  margin: 3%;
+  display: block;
 }
+
 #cardHead {
   padding: 1%;
   border-top: 1px;
@@ -471,9 +484,10 @@ font-size: 14px;
   color: black;
   display: block;
 }
-#cardHead h6 {
+#cardHead h5 {
   color: black;
   float: right;
+  font-size: 16px;
 }
 #cardHead hr {
   margin-top: 16%;
@@ -679,10 +693,22 @@ label.item.item-input {
   right: 0;
   margin: 0 auto;
 }
+
+.checkbox-royal input:before,
+.checkbox-royal .checkbox-icon:before {
+border-color: black;
+}
+
+.checkbox-royal input:checked:before,
+.checkbox-royal input:checked + .checkbox-icon:before {
+background: #215163;
+border-color: #215163;
+}
+
 #atDjakne {
   text-indent: 15%;
   box-shadow: none !important;
-  margin-left: -5%;
+  margin-left: -4%;
 }
 
 #MEM4 {
