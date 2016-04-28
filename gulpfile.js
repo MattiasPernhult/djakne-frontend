@@ -10,7 +10,7 @@ var notify = require('gulp-notify');
 var jscs = require('gulp-jscs');
 var guppy = require('git-guppy')(gulp);
 var exec = require('child_process').exec;
-var through = require('through2')
+var through = require('through2');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
