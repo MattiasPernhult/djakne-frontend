@@ -51,6 +51,7 @@ gulp.task('pre-commit', guppy.src('pre-commit', function(files) {
       var voice = voices[index];
       exec('echo "Lucky bastard, you passed all the tests, Miss Puff will be happy" | say -v ' +
       voice, function(err, stdout, stderr) {
+        console.log(err);
         done();
       });
     }))
