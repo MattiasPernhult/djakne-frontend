@@ -10,6 +10,7 @@ controllers.controller('AddEventController',
     $scope.sendPost = function() {
       var place = '';
 
+
       if ($scope.event.djakne === true) {
         place = 'Djäkne';
       } else {
