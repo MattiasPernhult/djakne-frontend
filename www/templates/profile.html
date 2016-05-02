@@ -40,7 +40,7 @@
           <span class="item-note">
             Wifi: {{wifiMember.wifiName}}
           </span>
-          <span class="item-note">
+          <span class="item-note wifi">
           Password: {{wifiMember.wifiPassword}}
           </span>
         </div>
@@ -54,9 +54,19 @@
             </button>
           </span>
           <div id="bookings" ng-show="bookings">
+            <h2 class="text-center" ng-show="!bookedQty">No upcoming events</h2>
             <ion-list>
-              <ion-item ng-repeat="event in isBooked">
-                <h4>{{event.title}}<span id="bookingDate">{{event.date}}</span></h4>
+              <ion-item class="bookedItems" ng-repeat="event in isBooked" ng-style="bookedQty == 1 ? {'border': 'none'} : ''">
+                <div id="bookingsDateContainer">
+                  <div class="dateBox">
+                    <p id="bookingDay" class="bookingsDate">{{event.date | date : 'd'}}</p>
+                    <p id="bookingMonth" class="bookingsDate">{{event.date | date : 'MMM'}}</p>
+                  </div>
+                </div>
+                <div id="bookingsDesc">
+                  <h3>{{event.title}}</h3>
+                  <h4>{{event.location}}</h4>
+                </div>
               </ion-item>
             </ion-list>
           </div>
