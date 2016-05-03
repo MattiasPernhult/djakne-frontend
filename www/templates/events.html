@@ -17,6 +17,10 @@
       </div>
       <hr>
       <p id="infoText" ng-style="show ? {'height' : 'auto'} : {'height' : '1.5em'}">{{event.text}}</p>
+      <button class="button button-outline button-assertive" id="cowork" ng-click="showing = !showing; signUp(event._id)" ng-show="!showing">
+        SIGN UP
+      </button>
+      <button class="button button-outline button-dark" id="cowork" ng-show="showing">SIGNED UP</button>
       <h2 ng-show="show">At:</h2>
       <p ng-show="show">Lomma Beach House</p>
       <p ng-show="show">12:00, {{event.date | date : shortTime}}</p>
