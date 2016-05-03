@@ -417,9 +417,11 @@ h2#attending {
 }
 
 #cowork{
-  display: block;
+  /*display: block;
   float: right;
-  margin-top: 20%;
+  margin-top: 20%;*/
+  display: block;
+  margin: 0 auto;
 }
 
 #addEvent {
