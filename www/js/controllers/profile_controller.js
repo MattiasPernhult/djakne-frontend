@@ -1,5 +1,5 @@
 controllers.controller('ProfileController',
-function($scope, SessionFactory, ProfileFactory, $state) {
+function($scope, SessionFactory, ProfileFactory, EventFactory, $state) {
 
   // When user enters view, check settings
   $scope.$on('$ionicView.enter', function() {
@@ -34,4 +34,28 @@ function($scope, SessionFactory, ProfileFactory, $state) {
       SessionFactory.add(name, value);
     }
   };
+
+  EventFactory.getEvents(function(data) {
+   var events = data;
+   //  var id = 687;
+   var id = $scope.user.id;
+   $scope.isBooked = [];
+   angular.forEach(events, function(event) {
+     for (var i = 0; i < event.attendants.length; i++) {
+       if (id == event.attendants[i].id) {
+         $scope.isBooked.push(event);
+         break;
+       }
+     }
+   });
+   $scope.bookedQty = $scope.isBooked.length;
+   if ($scope.isBooked.length > 1) {
+     var list = $scope.isBooked;
+     $scope.isBooked = list.sort(function(a, b) {
+       a = new Date(a.date);
+       b = new Date(b.date);
+       return a - b;
+     });
+   }
+ });
 });
