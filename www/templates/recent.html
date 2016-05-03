@@ -24,5 +24,31 @@
           <a ng-click="openCoffeeModal(coffee)" class="subdued">Read More</a>
         </p>
       </div>
+
+      <!-- News card -->
+      <div ng-repeat="issue in issues"class="list card">
+        <div class="item item-avatar">
+          <img src="img/Icons/home/news_black.png">
+          <div class="event-header">
+            <h2>{{issue.issue}}</h2>
+          </div>
+        </div>
+
+        <div class="list card">
+
+          <div ng-repeat="letter in issue.letters" class="item item-body">
+            <p>{{letter.title}}<p>
+
+             <p>{{letter.description | limitTo: 200 + "'...'"}}<p>
+               <p>
+                <a ng-click="openNewsModal()" class="subdued">Read More</a>
+               </p>
+
+
+          </div>
+        </div>
     </div>
+
+
+
   </ion-content>

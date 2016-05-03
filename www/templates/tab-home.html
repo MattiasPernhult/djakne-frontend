@@ -80,6 +80,30 @@
                 </ion-modal-view>
               </script>
 
+<!-- News Modal -->
+              <script id="currentNews.html" type="text/ng-template">
+                <ion-modal-view>
+                <ion-header-bar class="bar-dark">
+                  <button class="button button-icon ion-ios-arrow-left" ng-click="closeNewsModal()"></button>
+                  <h1 class="title">Latest news</h1>
+                </ion-header-bar>
+
+                <ion-content>
+                  <div ng-repeat="issue in issues" class="list card">
+                    <div class="item item-avatar">
+                      <img src="img/Icons/home/coffee_black.png">
+                      <div class="event-header">
+                        <p>{{issue.title}}<p>
+                      </div>
+                      <div class="text-center padding">
+                          <h2>{{issue.issue}}</h2>
+                      </div>
+                    </ion-content>
+
+                </ion-modal-view>
+              </script>
+
+
           </div>
         </ion-slide>
         <!-- Slide två -->

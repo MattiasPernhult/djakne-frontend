@@ -1,5 +1,5 @@
 controllers.controller('HomeController', function($scope, CoffeeFactory, $http, HOST,
-  accessFactory, $ionicModal, MembersFactory, httpService, toastService, $ionicSlideBoxDelegate,
+  accessFactory, $ionicModal, MembersFactory, NewsFactory, httpService, toastService, $ionicSlideBoxDelegate,
   EventFactory, $timeout) {
 
   $scope.votes = 2;
@@ -77,6 +77,15 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     }
   });
 
+  NewsFactory.getNews(function(err, data) {
+    console.log('getNews');
+    // TODO: Provide some message to the user, if there is some error
+    if (!err) {
+      console.log(data);
+      $scope.issues = data.issues;
+    }
+  });
+
   MembersFactory.getMembers(function(err, data)  {
     // TODO: Provide some message to the user, if there is some error
     if (!err) {
@@ -99,6 +108,15 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
   }).then(function(modal)  {
     $scope.modalCoffee = modal;
   });
+
+  $ionicModal.fromTemplateUrl('currentNews.html', {
+    id: '3',
+    scope: $scope,
+    animation: 'slide-in-up',
+  }).then(function(modal)  {
+    $scope.modalNews = modal;
+  });
+
 
   $scope.ratingsCallback = function(rating) {
     console.log('Selected rating is : ', rating);
@@ -139,6 +157,14 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
 
   $scope.closeModal = function() {
     $scope.modal.hide();
+  };
+
+  $scope.openNewsModal = function() {
+    $scope.modalNews.show();
+  };
+
+  $scope.closeNewsModal = function() {
+    $scope.modalNews.hide();
   };
 
   // $scope.$on('$destroy', function() {
