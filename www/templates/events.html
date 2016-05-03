@@ -23,12 +23,16 @@
       <div id="attendants" ng-show="show">
         <img ng-repeat="attendant in event.attendants" id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false"</img>
       </div>
+      <!-- Event comments -->
       <h2 id="comment" ng-show="show">Comments:</h2>
       <div id="comments" ng-show="show">
-        <div ng-repeat="comment in event.comments" class="list">
-          <img class="commentImg" ng-src="data:image/gif;base64,{{comment.userImage}}" ng-if="attendant.image != false"</img>
-          <p>{{comment.comment}}</p>
-        </div>
+          <div class="commentContainer" ng-repeat="comment in event.comments">
+            <img class="userImg" ng-src="data:image/gif;base64,{{comment.userImage}}" ng-if="attendant.image != false"</img>
+            <div class="contentComment">
+              <h2 class="userTitle">{{comment.firstName}} {{comment.lastName}}</h2>
+              <p class="userComment">{{comment.comment}}</p>
+            </div>
+          </div>
       </div>
       <!-- Comment input container -->
       <div ng-show="show" ng-style="{'margin-top': '25px'}">

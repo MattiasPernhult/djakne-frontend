@@ -842,3 +842,26 @@ input.commentContent {
   white-space: normal;
   margin-bottom: 20px;
 }
+
+div.commentContainer {
+  padding: 5px;
+}
+
+div .userImg{
+  height: 100%;
+  width: 12%;
+}
+
+div .userComment{
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.contentComment{
+  width: 88%;
+  display: inline-block;
+}
+
+h2.userTitle{
+  margin-left: 5px;
+}
