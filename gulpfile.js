@@ -9,6 +9,8 @@ var sh = require('shelljs');
 var notify = require('gulp-notify');
 var jscs = require('gulp-jscs');
 var guppy = require('git-guppy')(gulp);
+var exec = require('child_process').exec;
+var through = require('through2');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -31,6 +33,8 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
+var voices = ['Kathy', 'Agnes', 'Princess', 'Vicki', 'Junior', 'Ralph'];
+
 gulp.task('pre-commit', guppy.src('pre-commit', function(files) {
   var gulpFilter = require('gulp-filter');
   var jshint = require('gulp-jshint');
@@ -42,6 +46,15 @@ gulp.task('pre-commit', guppy.src('pre-commit', function(files) {
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'))
     .pipe(jscs('.jscsrc'))
+    .pipe(through.obj(function(chunk, enc, done) {
+      var index = Math.floor((Math.random() * (voices.length - 1)) + 1);
+      var voice = voices[index];
+      exec('echo "Lucky bastard, you passed all the tests, Miss Puff will be happy" | say -v ' +
+      voice, function(err, stdout, stderr) {
+        console.log(err);
+        done();
+      });
+    }))
     .pipe(notify({
       title: 'Git commit',
       message: 'JSCS and JSHINT passed, so your commit was successful. Lucky bastard...',

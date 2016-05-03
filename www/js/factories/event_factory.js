@@ -3,6 +3,45 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
   var events;
   var oneEvent;
 
+  var addComment = function(eventId, text, done) {
+    var url;
+    var token = accessFactory.getAccessToken();
+    var data = {
+      token: token,
+      comment: text,
+    };
+    url = HOST.hostAdress + ':4000/events/' + eventId + '/comment';
+    console.log(url);
+    console.log(data);
+    httpService.put(url, data, function(err, result) {
+      if (err) {
+        console.log('NOT OK!');
+      } else {
+        console.log('Yiiipppiee!');
+        console.log('res: ' + result);
+      }
+      done(err, result);
+    });
+  };
+
+  var removeComment = function(eventId, commentId, done) {
+    var data  = {
+      token: accessFactory.getAccessToken(),
+    };
+
+    var url = HOST.hostAdress + ':4000/events/' + eventId + '/comment/' + commentId;
+    httpService.delete(url, data, function(err, result) {
+      if (err) {
+        console.log('NOT OK!');
+        console.log(err);
+      } else {
+        console.log('Yiiipppiee!');
+        console.log('res: ' + result);
+      }
+      done(err, result);
+    });
+  };
+
   var getEvents = function(done) {
     var url;
     var date = new Date().toISOString();
@@ -49,5 +88,7 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
     setEvent: setEvent,
     getListOfEvents: getListOfEvents,
     updateEventList: updateEventList,
+    addComment: addComment,
+    removeComment: removeComment,
   };
 });
