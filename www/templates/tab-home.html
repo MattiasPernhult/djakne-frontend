@@ -1,6 +1,8 @@
 <ion-view title="Djäkne">
   <ion-nav-buttons side="right">
-      <button class="button icon-left ion-android-person button-outline" ui-sref="profile" ng-style=""></button>
+    <button favDirective class="button icon-left ion-heart button-outline" ng-click="openFavoriteModal()" ng-style="userFavorites ? {'color':'#FF7E7E'} : {'color':'white'}" ng-disabled="favoritesSize() === 0" ng-style="">
+    </button>
+    <button class="button icon-left ion-android-person button-outline" ui-sref="profile" ng-style=""></button>
       <!-- <button class="button icon-left ion-android-calendar button-outline" ui-sref="calendar"></button> -->
   </ion-nav-buttons>
 <ion-content scroll="false" class="homeSlider">
@@ -17,10 +19,9 @@
             <script id="modal.html" type="text/ng-template">
               <ion-modal-view>
                 <ion-header-bar class="bar-dark">
+                  <button class="button button-icon ion-ios-arrow-left" ng-click="closeModal()"></button>
                   <h1 class="title">{{member.firstName}} {{member.lastName}}</h1>
-                  <button class="button icon icon-right ion-ios-close-outline" ng-click="closeModal()"></button>
                 </ion-header-bar>
-
                 <ion-content>
                   <div class="hero text-center" style="background: #444">
                     <div class="content">
@@ -51,8 +52,8 @@
               <script id="currentCoffee.html" type="text/ng-template">
                 <ion-modal-view>
                 <ion-header-bar class="bar-dark">
+                  <button class="button button-icon ion-ios-arrow-left" ng-click="closeCoffeeModal()"></button>
                   <h1 class="title">This weeks coffee!</h1>
-                  <button class="button icon icon-right ion-ios-close-outline" ng-click="closeCoffeeModal()"></button>
                 </ion-header-bar>
 
                   <ion-content>
@@ -66,8 +67,8 @@
                       </div>
                       <div class="item item-body">
                         <img class="event-img" ng-src="{{rating.image}}">
-                        <p ng-style="{'text-align':'justify'}">{{rating.description}}</p>
-                        <h2 class="coffeeVote">Vote for: {{rating.title}}</h2>
+                        <p ng-style="{'text-align':'left', 'width':'90%', 'margin':'0 auto'}">{{rating.description}}</p>
+                        <h2>Vote for: {{rating.title}}</h2>
                         <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
                         <div class="text-center padding">
                           <button ng-style="{'padding':'5px 10px 5px 10px', 'margin-top':'10px'}" class="button button-small button-outline button-assertive" ng-click="send()">SUBMIT</button>

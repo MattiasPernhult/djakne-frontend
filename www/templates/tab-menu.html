@@ -22,7 +22,7 @@
 
       <ion-content>
         <ion-list>
-          <ion-item ng-repeat="product in userFavorites">
+          <ion-item class="favItem" ng-repeat="product in userFavorites">
             <p class="item-name" style="width: 55%;">{{product.name}}</p>
             <div>
               <button ng-click="addToCart(product)" class="button button-outline button-assertive">
@@ -77,10 +77,10 @@
         <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
         <ion-list>
           <ion-item ng-repeat="item in customersProducts" class="cart-item">
-            <div class="productInfo cart">
+
               <h2 class="product-title">{{item.name}}</h2>
               <p class="product-price">{{item.price}} kr</p>
-            </div>
+
             <div class="containerCartIcons">
               <button ng-click="removeFromCart(item)" id="add" class="button button-outline button-dark ion-minus cartIcon">
 
@@ -96,8 +96,8 @@
         </ion-list>
         <form class="list">
           <label class="item item-input">
-            <span class="input-label"><h3>Meddelande:</h3></span>
-            <input type="text" id="comment" placeholder="Skriv ytterligare önskemål..">
+            <span class="input-label"><h3>Message:</h3></span>
+            <input type="text" id="comment" placeholder="Write additional requests..">
           </label>
           <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked">
             <h3>{{item.name}}</h3>
@@ -105,12 +105,12 @@
         </form>
         <div class="cart-total-container">
           <div class="total-desc">
-            <h4 id="cart-total-title">Totalt:</h4>
+            <h4 id="cart-total-title">Total:</h4>
             <p id="cart-total-price">{{totalPrice}} kr</p>
           </div>
         </div>
         <div class="text-center">
-          <button class="button button-block button-dark" ng-disabled="sendingOrder" ng-click="placeOrder()"> Beställ</button>
+          <button id="orderButton" class="button button-outline button-dark" ng-disabled="sendingOrder" ng-click="placeOrder()"> Place order</button>
         </div>
       </ion-content>
     </ion-side-menu>

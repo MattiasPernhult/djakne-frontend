@@ -13,8 +13,10 @@
       </div>
     </div>
     <ion-list>
+      <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
+
       <ion-item class="profileItem" >
-        <span class="ion-cash"></span>
+        <span class="ion-card"></span>
         <div>
           <span class="item-note">
             Your credit is: {{user.credits}}
@@ -31,14 +33,16 @@
           <span class="item-note">
            Password: {{wifiPremium.wifiPassword}}
           </span>
-
         </div>
       </ion-item>
+
       <ion-item ng-hide="wifiPremium" class="profileItem">
       <span  class="ion-wifi"></span>
         <div>
-          <span class="item-note">
+          <p><span class="item-note">
             Wifi: {{wifiMember.wifiName}}
+          </span></p>
+          <p><span class="item-note">
           </span>
           <span class="item-note wifi">
           Password: {{wifiMember.wifiPassword}}
@@ -72,6 +76,10 @@
           </div>
       </ion-item>
       <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
+        </span></p>
+        </div>
+      </ion-item>
+
     </ion-list>
   </ion-content>
 </ion-view>
