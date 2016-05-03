@@ -1,16 +1,22 @@
 controllers.controller('EventController', function($scope, EventFactory, $state,
    $http, httpService, toastService, HOST, accessFactory, ProfileFactory) {
-  $scope.usrComment = {};
+  $scope.userComment = {};
 
   ProfileFactory.getUser(function(data) {
     $scope.user = JSON.parse(data);
   });
 
   $scope.addComment = function(eventId) {
-    alert('Your comment says: ' + $scope.usrComment.text + 'The id is: ' + eventId);
-    var text = $scope.usrComment.text;
-    EventFactory.addComment(eventId, text);
-    $scope.usrComment.text = null;
+    var text = $scope.userComment.text;
+    EventFactory.addComment(eventId, text, function(err, result) {
+      if (err) {
+        toastService.showLongBottom(err.error);
+      } else {
+        $scope.userComment.text = null;
+        EventFactory.updateEventList(result.event);
+        $scope.show = true;
+      }
+    });
   };
 
   $scope.isVisible = false;

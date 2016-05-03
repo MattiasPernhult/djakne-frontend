@@ -23,13 +23,20 @@
       <div id="attendants" ng-show="show">
         <img ng-repeat="attendant in event.attendants" id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false"</img>
       </div>
+      <h2 id="comment" ng-show="show">Comments:</h2>
+      <div id="comments" ng-show="show">
+        <div ng-repeat="comment in event.comments" class="list">
+          <img class="commentImg" ng-src="data:image/gif;base64,{{comment.userImage}}" ng-if="attendant.image != false"</img>
+          <p>{{comment.comment}}</p>
+        </div>
+      </div>
       <!-- Comment input container -->
       <div ng-show="show" ng-style="{'margin-top': '25px'}">
         <img class="commentImg" ng-src="data:image/jpeg;base64,{{user.image}} "></img>
         <!-- data:image/jpeg;base64,{{member.image}} -->
-        <input ng-model="usrComment.text" class="commentContent" type="text" placeholder="Write your comment here.."> <!-- User input --> </input>
+        <input ng-model="userComment.text" class="commentContent" type="text" placeholder="Write your comment here.."> <!-- User input --> </input>
       </div>
-      <button ng-show="show" ng-click="addComment(event._id, text)" ng-disabled="!usrComment.text" class=" addComment button-small button-dark button button-outline"> Add Comment </button>
+      <button ng-show="show" ng-click="addComment(event._id); $event.stopPropagation()" ng-disabled="!userComment.text" class=" addComment button-small button-dark button button-outline"> Add Comment </button>
       <button id="center" class="button button-small button-outline button-dark" ng-click="show = !show" ng-style="show ? {'margin-top':'52px'} : {'margin-top':'15px'}">
         <p ng-if="!show">See more</p>
         <p ng-if="show">See less</p>

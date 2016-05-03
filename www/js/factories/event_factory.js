@@ -3,19 +3,16 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
   var events;
   var oneEvent;
 
-  var addComment = function(eventId, text) {
+  var addComment = function(eventId, text, done) {
     var url;
-    // var token = accessFactory.getAccessToken();
-    // var data = {
-    //   token: token,
-    //   comment: text,
-    // };
+    var token = accessFactory.getAccessToken();
     var data = {
-      token: 'AQWUSbmYqht3fFXj1Dk_Eb2JdVpbbirqt8TCkGTFp-7zLy_9-EzjsBQX8vGMUMlorvTJtz9KyqWJVb7C0aG_jZcesHXNJCX_k9GX1SLGT3uHTwsjp1g309_rt-EeIfPyFDrKiM8IoxEHmtzIbnt-1PlqUkBvlogddGj5LPP8jNH54i8eQ0g',
-      comment: 'Fan vad trevligt, lätt att jag följer med',
+      token: token,
+      comment: text,
     };
-    url = HOST.hostAdress + ':4000/events/571f2e9751f7e50a0d5cf909/comment';
+    url = HOST.hostAdress + ':4000/events/' + eventId + '/comment';
     console.log(url);
+    console.log(data);
     httpService.put(url, data, function(err, result) {
       if (err) {
         console.log('NOT OK!');
@@ -23,6 +20,7 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
         console.log('Yiiipppiee!');
         console.log('res: ' + result);
       }
+      done(err, result);
     });
   };
 
