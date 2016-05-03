@@ -1,4 +1,17 @@
-controllers.controller('EventController', function($scope, EventFactory, $state, $http, httpService, toastService, HOST, accessFactory) {
+controllers.controller('EventController', function($scope, EventFactory, $state,
+   $http, httpService, toastService, HOST, accessFactory, ProfileFactory) {
+  $scope.usrComment = {};
+
+  ProfileFactory.getUser(function(data) {
+    $scope.user = JSON.parse(data);
+  });
+
+  $scope.addComment = function(eventId) {
+    alert('Your comment says: ' + $scope.usrComment.text + 'The id is: ' + eventId);
+    var text = $scope.usrComment.text;
+    EventFactory.addComment(eventId, text);
+    $scope.usrComment.text = null;
+  };
 
   $scope.isVisible = false;
   $scope.toggleElement = function() {
