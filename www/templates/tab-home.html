@@ -6,7 +6,7 @@
       <!-- <button class="button icon-left ion-android-calendar button-outline" ui-sref="calendar"></button> -->
   </ion-nav-buttons>
 <ion-content scroll="false" class="homeSlider">
-  <div ng-style="{ 'height':'155px','width':'100%','background-color':'#444'}">
+  <div ng-style="{ 'height':'120px','width':'100%','background-color':'#444'}">
     <img id="logo" ng-src="{{icon.src}}"></img>
   </div>
     <ion-slide-box on-slide-changed="changeLogo()"show-pager="false" ion-slide-tabs>
@@ -20,12 +20,17 @@
               <ion-modal-view>
                 <ion-header-bar class="bar-dark">
                   <button class="button button-icon ion-ios-arrow-left" ng-click="closeModal()"></button>
+<<<<<<< HEAD
                   <h1 class="title">{{member.firstName}} {{member.lastName}}</h1>
+=======
+                  <h1 class="title">Member</h1>
+>>>>>>> e2a568050a7b61720504fcf9abf297151d17eaaf
                 </ion-header-bar>
                 <ion-content>
                   <div class="hero text-center" style="background: #444">
                     <div class="content">
                       <img class="avatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+                      <p><a id="profileTitle">{{member.firstName}} {{member.lastName}}</a></p>
                     </div>
                   </div>
                     <div class="list">
@@ -68,7 +73,11 @@
                       <div class="item item-body">
                         <img class="event-img" ng-src="{{rating.image}}">
                         <p ng-style="{'text-align':'left', 'width':'90%', 'margin':'0 auto'}">{{rating.description}}</p>
+<<<<<<< HEAD
                         <h2>Vote for: {{rating.title}}</h2>
+=======
+                        <h2 id="ratingTitle">Vote for this weeks coffee!</h2>
+>>>>>>> e2a568050a7b61720504fcf9abf297151d17eaaf
                         <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
                         <div class="text-center padding">
                           <button ng-style="{'padding':'5px 10px 5px 10px', 'margin-top':'10px'}" class="button button-small button-outline button-assertive" ng-click="send()">SUBMIT</button>

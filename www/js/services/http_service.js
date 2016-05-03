@@ -30,9 +30,20 @@ services.service('httpService', function($http) {
     });
   };
 
+  var del = function(url, deleteBody, afterCall) {
+    $http.delete(url)
+    .success(function(result) {
+      afterCall(null, result);
+    })
+    .error(function(err, status) {
+      afterCall(err, null, status);
+    });
+  };
+
   return {
     get: get,
     put: put,
     post: post,
+    delete: del,
   };
 });

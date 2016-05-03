@@ -58,7 +58,7 @@ ion-view {
 /* Profile */
 
 .hero {
-  height: 155px;
+  height: 120px;
   color: white;
 }
 .content {
@@ -73,8 +73,8 @@ ion-view {
   font-size: 15px;
 }
 .avatar {
-  height: 90px;
-  width: 90px;
+  height: 60px;
+  width: 60px;
   background-position: center;
   border-radius: 50%;
   display: inline-block;
@@ -362,6 +362,11 @@ font-size: 14px;
   padding: 3px;
 }
 
+#ratingTitle {
+  margin-top: 30px!important;
+  font-weight: bold;
+}
+
 /* Homecards */
 
 .flex-container {
@@ -408,19 +413,35 @@ font-size: 14px;
   margin-left: 200px;
 }
 #attendImg{
+<<<<<<< HEAD
   width: 60px;
   padding: 3px;
   display: block;
   float: left;
+=======
+>>>>>>> e2a568050a7b61720504fcf9abf297151d17eaaf
   width: 40px;
   margin: 2px;
   margin-right: 3px;
 }
+
+h2#attending {
+  margin-top: 15px !important;
+}
+
 #cowork{
+<<<<<<< HEAD
   display: block;
   margin-top: 20%;
   /*margin-left: 7%;*/
   float: right;
+=======
+  /*display: block;
+  float: right;
+  margin-top: 20%;*/
+  display: block;
+  margin: 0 auto;
+>>>>>>> e2a568050a7b61720504fcf9abf297151d17eaaf
 }
 
 #addEvent {
@@ -626,7 +647,7 @@ label.item.item-input {
 
 /* Is used to expand scrolling */
 .expandList {
-  margin-bottom: 150px;
+  margin-bottom: 120px;
 }
 
 /* Css for CO-WORK */
@@ -789,6 +810,7 @@ border-color: #215163;
  font-weight: lighter;
 }
 
+<<<<<<< HEAD
 /* Items in favorite modal */
 .favItem{
   box-shadow: 1px 1px 2px rgba(51, 51, 51, 0.40);
@@ -798,6 +820,9 @@ border-color: #215163;
 
 #orderButton{
   width: 60%;
+=======
+
+>>>>>>> e2a568050a7b61720504fcf9abf297151d17eaaf
 #bookingsDateContainer{
   height:auto;
   width: 20%;
@@ -858,3 +883,57 @@ border-color: #215163;
 .wifi{
   clear: both;
 }
+<<<<<<< HEAD
+=======
+
+.commentImg{
+  width: 12%;
+  height: 12%;
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.addComment{
+  float: right;
+  margin-top:10px;
+}
+
+input.commentContent {
+  height: 43px;
+  width: 87%;
+  margin-left: 5px;
+  padding-left: 5px;
+  vertical-align: middle;
+  display: inline-block;
+  border: 1px solid #ddd;
+}
+
+#infoText{
+  white-space: normal;
+  margin-bottom: 20px;
+}
+
+div.commentContainer {
+  padding: 5px;
+}
+
+div .userImg{
+  height: 100%;
+  width: 12%;
+}
+
+div .userComment{
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.contentComment{
+  width: 88%;
+  display: inline-block;
+}
+
+h2.userTitle{
+  margin-left: 5px;
+}
+>>>>>>> e2a568050a7b61720504fcf9abf297151d17eaaf
