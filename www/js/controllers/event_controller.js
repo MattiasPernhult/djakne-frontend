@@ -19,6 +19,17 @@ controllers.controller('EventController', function($scope, EventFactory, $state,
     });
   };
 
+  $scope.removeComment = function(eventId, commentId) {
+    EventFactory.removeComment(eventId, commentId, function(err, result) {
+      if (err) {
+        toastService.showLongBottom(err.error);
+      } else {
+        EventFactory.updateEventList(result.event);
+        $scope.show = true;
+      }
+    });
+  };
+
   $scope.isVisible = false;
   $scope.toggleElement = function() {
 
