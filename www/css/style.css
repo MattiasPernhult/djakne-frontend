@@ -58,7 +58,7 @@ ion-view {
 /* Profile */
 
 .hero {
-  height: 155px;
+  height: 120px;
   color: white;
 }
 .content {
@@ -73,8 +73,8 @@ ion-view {
   font-size: 15px;
 }
 .avatar {
-  height: 90px;
-  width: 90px;
+  height: 60px;
+  width: 60px;
   background-position: center;
   border-radius: 50%;
   display: inline-block;
@@ -344,6 +344,11 @@ font-size: 14px;
   padding: 3px;
 }
 
+#ratingTitle {
+  margin-top: 30px!important;
+  font-weight: bold;
+}
+
 /* Homecards */
 
 .flex-container {
@@ -585,7 +590,7 @@ label.item.item-input {
 
 /* Is used to expand scrolling */
 .expandList {
-  margin-bottom: 150px;
+  margin-bottom: 120px;
 }
 
 /* Css for CO-WORK */
