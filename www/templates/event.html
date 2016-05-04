@@ -56,7 +56,7 @@
       <div ng-style="{'margin-top': '25px'}">
         <img class="commentImg" ng-src="data:image/jpeg;base64,{{user.image}} "></img>
         <input ng-model="userComment.text" class="commentContent" type="text" placeholder="Write your comment here.."> <!-- User input -->
-          <button ng-click="addComment(event._id); $event.stopPropagation()" ng-disabled="!userComment.text" class=" addComment button-small button-dark button button-outline"> Add Comment </button>
+          <button ng-click="addComment(currentEvent._id); $event.stopPropagation()" ng-disabled="!userComment.text" class=" addComment button-small button-dark button button-outline"> Add Comment </button>
         </input>
       </div>
     </div>
