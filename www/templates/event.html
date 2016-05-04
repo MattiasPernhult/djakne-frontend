@@ -21,7 +21,8 @@
       </div>
       <div id="bookingsDesc">
         <h3>{{currentEvent.title}}</h3>
-        <h4>{{currentEvent.location}}</h4>
+        <h4><p ng-if="currentEvent.location">{{currentEvent.location}}</p></h4>
+        <h4><p ng-if="!currentEvent.location">Djäkne</p></h4>
       </div>
       <p class="infoText">{{currentEvent.text}}</p>
       <h2>At:</h2>
