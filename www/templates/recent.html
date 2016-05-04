@@ -33,22 +33,12 @@
             <h2>{{issue.issue}}</h2>
           </div>
         </div>
-
-        <div class="list card">
-
-          <div ng-repeat="letter in issue.letters" class="item item-body">
-            <p>{{letter.title}}<p>
-
-             <p>{{letter.description | limitTo: 200 + "'...'"}}<p>
+          <div ng-repeat="letter in issue.letters"class="item item-text-wrap">
+            {{letter.title}}
+            <p class="textoverflow">{{letter.description |  limitTo:200  + "'...'"  }}</p>
+             </div>
                <p>
                 <a ng-click="openNewsModal()" class="subdued">Read More</a>
                </p>
-
-
-          </div>
-        </div>
     </div>
-
-
-
   </ion-content>

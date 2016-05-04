@@ -628,6 +628,13 @@ label.item.item-input {
   margin-bottom: 120px;
 }
 
+/* Recent */
+p.textoverflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Css for CO-WORK */
 
 .button.readMore {
