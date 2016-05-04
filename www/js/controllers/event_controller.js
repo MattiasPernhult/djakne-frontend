@@ -2,6 +2,13 @@ controllers.controller('EventController', function($scope, EventFactory, $state,
    $http, httpService, toastService, HOST, accessFactory, ProfileFactory) {
   $scope.userComment = {};
 
+  $scope.go = function(name, event) {
+    var userObj = $scope.user;
+    var eventObj = event;
+    console.log(eventObj);
+    $state.go(name, {eventParam: eventObj, userParam: userObj});
+  };
+
   ProfileFactory.getUser(function(data) {
     $scope.user = JSON.parse(data);
   });

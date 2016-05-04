@@ -30,10 +30,15 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
     controller: 'LoginController',
   })
 
-  .state('cart', {
-    url: '/cart',
-    templateUrl: 'templates/cart.html',
-    controller: 'ProductController',
+  .state('event', {
+    cache: false,
+    url: '/event',
+    templateUrl: 'templates/event.html',
+    controller: 'EventDescriptionController',
+    params: {
+      eventParam: null,
+      userParam: null,
+    },
   })
 
   .state('addEvent', {

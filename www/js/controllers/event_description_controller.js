@@ -1,5 +1,5 @@
 controllers.controller('EventDescriptionController',
-  function($scope, $http, EventFactory, accessFactory, HOST, httpService, toastService) {
+  function($scope, $http, EventFactory, accessFactory, HOST, httpService, toastService,$stateParams) {
     var eventData = EventFactory.getEvent();
     $scope.chosenEvent = eventData;
     $scope.image = '/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8KCwkMEQ8SEhEP' +
@@ -59,4 +59,11 @@ controllers.controller('EventDescriptionController',
         }
       });
     };
+
+    // Get event parameter
+    $scope.currentEvent = $stateParams.eventParam;
+
+    // Get user parameter
+    $scope.user = $stateParams.userParam;
+
   });

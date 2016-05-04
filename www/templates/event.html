@@ -1,0 +1,59 @@
+<ion-view view-title="Event">
+  <!-- Head bar -->
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-buttons side="left">
+      <button class=" button button-icon ion-ios-arrow-left" ui-sref="tab.home"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    <button class="button button-small button-outline button-assertive" id="cowork" ng-click="showing = !showing; signUp(event._id)" ng-show="!showing">
+      SIGN UP
+     </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <!-- Page content -->
+​  <ion-content class="has-header">
+    <div ng-style="{'padding': '10px'}">
+      <div id="bookingsDateContainer">
+        <div class="dateBox">
+          <p id="bookingDay" class="bookingsDate">{{currentEvent.date | date : 'd'}}</p>
+          <p id="bookingMonth" class="bookingsDate">{{currentEvent.date | date : 'MMM'}}</p>
+        </div>
+      </div>
+      <div id="bookingsDesc">
+        <h3>{{currentEvent.title}}</h3>
+        <h4>{{currentEvent.location}}</h4>
+      </div>
+      <p class="infoText">{{currentEvent.text}}</p>
+      <h2>At:</h2>
+      <p class="infoText">{{currentEvent.location}}</p>
+      <p class="infoText">{{currentEvent.date | date:'h:mma'}}, {{currentEvent.date | date : shortTime}}</p>
+      <h2 id="attending">Attending:</h2>
+      <div id="attendants">
+        <img ng-repeat="attendant in currentEvent.attendants" id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false"</img>
+      </div>
+
+      <!-- Event comments -->
+      <h2 id="comment">Comments:</h2>
+      <div id="comments">
+        <div class="row" ng-repeat="comment in currentEvent.comments" ng-style="{'padding-left':'0'}">
+          <div class="col col-90" ng-style="{'padding-left':'0'}">
+            <img class="imgCom" ng-src="data:image/gif;base64,{{comment.userImage}}" ng-if="attendant.image != false"</img>
+            <div class="contentComment">
+              <h2 class="userTitle">{{comment.firstName}} {{comment.lastName}}</h2>
+              <p class="userComment">{{comment.comment}}</p>
+            </div>
+          </div>
+          <div class="col">
+            <button ng-if="user.id == comment.memberId"  ng-style="{'float': 'right', 'margin-top':'10px'}" ng-click="removeComment(event._id, comment._id)" class="button button-small button-outline button-dark">X</button>
+          </div>
+        </div>
+      </div>
+      <!-- Comment input container -->
+      <div ng-style="{'margin-top': '25px'}">
+        <img class="commentImg" ng-src="data:image/jpeg;base64,{{user.image}} "></img>
+        <input ng-model="userComment.text" class="commentContent" type="text" placeholder="Write your comment here.."> <!-- User input --> </input>
+      </div>
+      <button ng-click="addComment(event._id); $event.stopPropagation()" ng-disabled="!userComment.text" class=" addComment button-small button-dark button button-outline"> Add Comment </button>
+    </div>
+  </ion-content>
+</ion-view>

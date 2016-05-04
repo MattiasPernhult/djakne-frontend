@@ -786,7 +786,8 @@ label.item.item-input {
 }
 
 #bookingsDesc{
-  width:95%;
+  width: 95%;
+  margin-bottom: 30px;
 }
 
 #bookingsDesc h3{
@@ -836,22 +837,21 @@ label.item.item-input {
 
 input.commentContent {
   height: 43px;
-  width: 87%;
-  margin-left: 5px;
+  width: 85%;
+  margin-left: 50px;
   padding-left: 5px;
-  vertical-align: middle;
-  display: inline-block;
   border: 1px solid #ddd;
 }
 
-#infoText{
+
+.infoText{
   white-space: normal;
-  margin-bottom: 20px;
+  margin:0;
 }
 
-div.commentContainer {
+/*div.commentContainer {
   padding: 5px;
-}
+}*/
 
 div .userImg{
   height: 100%;
@@ -860,7 +860,9 @@ div .userImg{
 
 div .userComment{
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 50px;
+  white-space: normal;
+  width: 93%;
 }
 
 .contentComment{
@@ -869,5 +871,18 @@ div .userComment{
 }
 
 h2.userTitle{
-  margin-left: 5px;
+  margin-left: 50px;
+  margin-bottom: 0;
+}
+
+img.imgCom {
+  width: 40px;
+  margin: 2px;
+  margin-right: 3px;
+  position: absolute;
+  top: 8px;
+}
+
+.col-90{
+  position: relative;
 }
