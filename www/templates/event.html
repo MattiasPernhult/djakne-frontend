@@ -5,7 +5,7 @@
       <button class=" button button-icon ion-ios-arrow-left" ui-sref="tab.home"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-    <button class="button button-small button-outline button-assertive" id="cowork" ng-click="showing = !showing; signUp(event._id)" ng-show="!showing">
+    <button class="button button-small button-outline button-white" id="cowork" ng-click="showing = !showing; signUp(event._id)" ng-show="!showing">
       SIGN UP
      </button>
     </ion-nav-buttons>
@@ -34,8 +34,11 @@
       </div>
 
       <!-- Event comments -->
-      <h2 id="comment">Comments:</h2>
-      <div id="comments">
+      <div>
+      <div>
+        <h5 id="comment">{{currentEvent['comments'].length}}  |  COMMENTS</h5>
+      </div>
+      <div id="comments" ng-style="{'max-height':'200px','overflow':'scroll','min-height':'auto'}">
         <div class="row" ng-repeat="comment in currentEvent.comments" ng-style="{'padding-left':'0'}">
           <div class="col col-90" ng-style="{'padding-left':'0'}">
             <img class="imgCom" ng-src="data:image/gif;base64,{{comment.userImage}}" ng-if="attendant.image != false"</img>
@@ -52,9 +55,10 @@
       <!-- Comment input container -->
       <div ng-style="{'margin-top': '25px'}">
         <img class="commentImg" ng-src="data:image/jpeg;base64,{{user.image}} "></img>
-        <input ng-model="userComment.text" class="commentContent" type="text" placeholder="Write your comment here.."> <!-- User input --> </input>
+        <input ng-model="userComment.text" class="commentContent" type="text" placeholder="Write your comment here.."> <!-- User input -->
+          <button ng-click="addComment(event._id); $event.stopPropagation()" ng-disabled="!userComment.text" class=" addComment button-small button-dark button button-outline"> Add Comment </button>
+        </input>
       </div>
-      <button ng-click="addComment(event._id); $event.stopPropagation()" ng-disabled="!userComment.text" class=" addComment button-small button-dark button button-outline"> Add Comment </button>
     </div>
   </ion-content>
 </ion-view>

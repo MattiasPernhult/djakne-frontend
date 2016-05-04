@@ -1,5 +1,6 @@
 controllers.controller('EventDescriptionController',
-  function($scope, $http, EventFactory, accessFactory, HOST, httpService, toastService,$stateParams) {
+  function($scope, $http, EventFactory, accessFactory, HOST, httpService,
+    toastService, $stateParams, ProfileFactory) {
     var eventData = EventFactory.getEvent();
     $scope.chosenEvent = eventData;
     $scope.image = '/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8KCwkMEQ8SEhEP' +
@@ -60,10 +61,44 @@ controllers.controller('EventDescriptionController',
       });
     };
 
+    $scope.userComment = {};
+
     // Get event parameter
     $scope.currentEvent = $stateParams.eventParam;
 
     // Get user parameter
     $scope.user = $stateParams.userParam;
+
+    // Get user obj
+    ProfileFactory.getUser(function(data) {
+      $scope.user = JSON.parse(data);
+    });
+
+    // Function to add comment
+    $scope.addComment = function(eventId) {
+      var text = $scope.userComment.text;
+      EventFactory.addComment(eventId, text, function(err, result) {
+        if (err) {
+          toastService.showLongBottom(err.error);
+        } else {
+          $scope.userComment.text = null;
+          EventFactory.updateEventList(result.event);
+          $scope.show = true;
+        }
+      });
+    };
+
+    // Function to remove comment
+    $scope.removeComment = function(eventId, commentId) {
+      EventFactory.removeComment(eventId, commentId, function(err, result) {
+        if (err) {
+          toastService.showLongBottom(err.error);
+        } else {
+          EventFactory.updateEventList(result.event);
+          $scope.show = true;
+        }
+      });
+    };
+
 
   });

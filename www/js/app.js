@@ -37,7 +37,6 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
     controller: 'EventDescriptionController',
     params: {
       eventParam: null,
-      userParam: null,
     },
   })
 
