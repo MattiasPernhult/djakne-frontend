@@ -18,7 +18,7 @@
       <label>
       <input type="email" placeholder="Email *" ng-model="event.author" required>
       </label>
-      <ion-checkbox id="atDjakne" class="checkbox checkbox-royal" ng-model="event.djakne" ng-change="change()" ng-checked="true" ng-click="show = !show">At Djakne</ion-checkbox>
+      <ion-checkbox id="atDjakne" class="checkbox checkbox-royal" ng-model="event.djakne" ng-change="change()" ng-checked="true" ng-click="show = !show; resetCustomLocation()">At Djakne</ion-checkbox>
       <div ng-show="show">
         <label>
         <input type="text" placeholder="Place *" ng-model="event.place">
