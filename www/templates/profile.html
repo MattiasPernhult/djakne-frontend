@@ -16,7 +16,7 @@
       <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
 
       <ion-item class="profileItem" >
-        <span class="ion-card"></span>
+        <span class="creditIcon" ><img src="img/Icons/credits_NoBG.png"  style= "height: 30px; width: 30px ;"> </span>
         <div>
           <span class="item-note">
             Your credit is: {{user.credits}}
@@ -25,7 +25,7 @@
       </ion-item>
 
       <ion-item ng-show="wifiPremium" class="profileItem">
-        <span  class="ion-wifi"></span>
+        <span class="wifiIcon"><img src= "img/Icons/wifi_NoBG.png" style= "height: 28px; width: 30px; align: center; position: bottom"> </span>
         <div>
           <span class="item-note">
             Wifi: {{wifiPremium.wifiName}}
@@ -37,7 +37,7 @@
       </ion-item>
 
       <ion-item ng-hide="wifiPremium" class="profileItem">
-      <span  class="ion-wifi"></span>
+      <span class="wifiIcon"><img src= "img/Icons/wifi_NoBG.png" style= "height: 28px; width: 30px; align: center position: bottom"></span>
         <div>
           <p><span class="item-note">
             Wifi: {{wifiMember.wifiName}}
@@ -45,6 +45,20 @@
           <p><span class="item-note">
           Password: {{wifiMember.wifiPassword}}
         </span></p>
+        </div>
+      </ion-item>
+      <div>
+      <ion-item class="profileItem" >
+          <span class="wishGhipy">
+          <p>  Wish a Gihpy animation write a word,<br> it will be shown in the TV at Coffeebar: </p>
+          </span>
+          <label class="wishGhipy">
+          <div>
+            <input  ng-model="text" class="addGiphyInput" type="text" placeholder="Wish a giphy.."> <!-- User input --> </input>
+
+          <button  ng-click="addGhipy(text); $profile.stopPropagation()" ng-disabled="!text" class=" addComment button-small button-dark button button-outline"> Wish a giphy </button>
+         <img src="{{img}}" style="height:55%" ><br>
+          </label>
         </div>
       </ion-item>
 

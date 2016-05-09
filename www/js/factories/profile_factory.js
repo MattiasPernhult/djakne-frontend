@@ -50,7 +50,37 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
     });
   };
 
+  var addGhipy = function(text, done) {
+    var url;
+    var token = accessFactory.getAccessToken();
+    var data = {
+      token: token,
+      giphy: text,
+    };
+    url = HOST.hostAdress + ':4000/retrotv/request ';
+    console.log(url);
+    console.log(data);
+    httpService.post(url, data, function(err, result) {
+      if (err) {
+        console.log('NOT OK!');
+      } else {
+        console.log('Yiiipppiee!');
+        console.log('res: ' + result);
+      }
+      done (err, result);
+    });
+  };
+  var getGhipy = function(done) {
+    var url;
+    if (window.cordova) {
+      url = HOST.hostAdress + ':4000/retrotv?token=' + accessFactory.getAccessToken();
+    } else {
+      url = 'data/retrotv';
+    }
+  };
   return {
+    addGhipy: addGhipy,
+    getGhipy: getGhipy,
     getUser: getUser,
     getWifi: getWifi,
     getOrderSettings: getOrderSettings,
