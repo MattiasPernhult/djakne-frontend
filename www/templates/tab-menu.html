@@ -43,9 +43,9 @@
   <ion-side-menus>
     <ion-side-menu-content drag-content="false">
       <ion-content scroll="false" class="homeSlider" has-tabs="true">
-        <div ng-style="{ 'height':'120px','width':'100%','background-color':'#444' }">
+        <!-- <div ng-style="{ 'height':'100px','width':'100%','background-color':'#444' }">
           <img id="logo" src="img/Icons/home/coffee_black.png"></img>
-        </div>
+        </div> -->
         <ion-slide-box on-slide-changed="changeLogo()" show-pager="false" ion-slide-tabs ng-if="products">
           <ion-slide ng-cloak class="bg-slide" ng-repeat="categories in products" ion-slide-tab-label="{{categories[0].category}}">
             <ion-content class="item-list expandList">

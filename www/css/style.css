@@ -557,13 +557,14 @@ hr{
   width: 100%;
 }
 .item-price {
-  margin-left: 0;
+  /*margin-left: 0;*/
   font-size: 18px;
   float: left;
   width: 100%;
 }
 .item-obj {
   box-shadow: none !important;
+  height: 125px;!important;
 }
 .item-list {
   margin-bottom: 10px;
@@ -620,7 +621,7 @@ label.item.item-input {
   border-bottom: 1px solid #e5e5e5;
 }
 .expandList {
-  margin-bottom: 120px;
+  margin-top: 50px;
 }
 
 /* Css for CO-WORK */
