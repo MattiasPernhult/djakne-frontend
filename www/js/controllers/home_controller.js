@@ -117,7 +117,7 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
       if (err) {
         toastService.showLongBottom(err.result);
       } else {
-        toastService.showLongBottom('Ditt resultat har skickats');
+        toastService.showLongBottom('You have now voted for this weeks coffee');
       }
     });
   };
