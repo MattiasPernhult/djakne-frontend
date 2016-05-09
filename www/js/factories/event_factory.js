@@ -25,12 +25,12 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
   };
 
   var removeComment = function(eventId, commentId, done) {
-    var data  = {
+    var data = {
       token: accessFactory.getAccessToken(),
     };
 
     var url = HOST.hostAdress + ':4000/events/' + eventId + '/comment/' + commentId;
-    httpService.delete(url, data, function(err, result) {
+    httpService.put(url, data, function(err, result) {
       if (err) {
         console.log('NOT OK!');
         console.log(err);

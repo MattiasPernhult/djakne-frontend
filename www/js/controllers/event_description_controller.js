@@ -46,17 +46,19 @@ controllers.controller('EventDescriptionController',
     );
 
     $scope.signUp = function() {
-      var url = HOST.hostAdress + ':4000/events/register/' + $scope.chosenEvent._id;
+      var url = HOST.hostAdress + ':4000/events/register/' + $scope.currentEvent._id;
       var body = {
         token: accessFactory.getAccessToken(),
       };
 
       httpService.post(url, body, function(err, result) {
         if (err) {
-          toastService.showLongBottom('Något blev fel så du är ej anmäld till eventet');
+          toastService.showLongBottom('Something went wrong so you have not been ' +
+          'added to the event');
         } else {
           $scope.showImage = true;
-          toastService.showLongBottom('Du är nu anmäld till eventet');
+          $scope.currentEvent = result.event;
+          toastService.showLongBottom('You are now signed up for the event');
         }
       });
     };
@@ -82,6 +84,7 @@ controllers.controller('EventDescriptionController',
           toastService.showLongBottom(err.error);
         } else {
           $scope.userComment.text = null;
+          $scope.currentEvent = result.event;
           EventFactory.updateEventList(result.event);
           $scope.show = true;
         }
@@ -90,31 +93,14 @@ controllers.controller('EventDescriptionController',
 
     // Function to remove comment
     $scope.removeComment = function(eventId, commentId) {
-      EventFactory.removeComment(eventId, commentId, function(err, result) {
+      EventFactory.removeComment($scope.currentEvent._id, commentId, function(err, result) {
         if (err) {
           toastService.showLongBottom(err.error);
         } else {
+          $scope.currentEvent = result.event;
           EventFactory.updateEventList(result.event);
           $scope.show = true;
         }
       });
     };
-
-    $scope.signUp = function(eventId) {
-      var url = HOST.hostAdress + ':4000/events/register/' + eventId;
-      var body = {
-        token: accessFactory.getAccessToken(),
-      };
-
-      httpService.post(url, body, function(err, result) {
-        if (err) {
-          toastService.showLongBottom('Något blev fel så du är ej anmäld till eventet');
-        } else {
-          $scope.showImage = true;
-          toastService.showLongBottom('Du är nu anmäld till eventet');
-          EventFactory.updateEventList(result);
-        }
-      });
-    };
-
   });
