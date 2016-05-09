@@ -87,28 +87,32 @@ ion-view {
   box-shadow: 0 0 2px 1px;
 }
 
+.profileItem{
+  box-shadow:none!important;
+}
 
 .ion-wifi {
   font-size: 30px;
   float:left;
-  margin-left: 25px !important;
+  margin-left: 25px;
 }
 
-.profileItem{
-  box-shadow:none!important;
-  border-bottom: 1px solid lightgrey!important;
-}
-
-.ion-cash {
+.ion-calendar {
   font-size: 30px;
   float:left;
-  margin-left: 25px !important;
+  margin-left: 25px;
+}
+
+.ion-card {
+  font-size: 30px;
+  float:left;
+  margin-left: 25px;
 
 }
 .ion-clipboard {
   font-size: 33px;
   float:left;
-  margin-left: 25px !important;
+  margin-left: 25px;
 }
 
 .profile-text {
@@ -117,12 +121,6 @@ ion-view {
   font-family: sans-serif;
   margin-right: 50px;
   float:left;
-}
-#event-icon {
-  height: 30px;
-  width: 30px;
-  float:left;
-  margin-left: 25px !important;
 }
 
 #bookings {
@@ -194,7 +192,7 @@ ion-view {
 }
 
 .text-login-container {
-  top: 350px;
+  top: 70%;
   bottom: 0;
   left: 0;
   right: 0;
@@ -249,7 +247,7 @@ ion-view {
 #homeAvatar {
   width: 50px;
   height: 50px;
-  margin-left: 5px;
+  margin-left: 2px;
 }
 .event-header {
   margin-left: 0px!important;
@@ -562,13 +560,14 @@ hr{
   width: 100%;
 }
 .item-price {
-  margin-left: 0;
+  /*margin-left: 0;*/
   font-size: 18px;
   float: left;
   width: 100%;
 }
 .item-obj {
   box-shadow: none !important;
+  height: 125px;!important;
 }
 .item-list {
   margin-bottom: 10px;
@@ -625,7 +624,7 @@ label.item.item-input {
   border-bottom: 1px solid #e5e5e5;
 }
 .expandList {
-  margin-bottom: 120px;
+  margin-top: 50px;
 }
 
 /* Css for CO-WORK */
@@ -790,7 +789,8 @@ label.item.item-input {
 }
 
 #bookingsDesc{
-  width:95%;
+  width: 95%;
+  margin-bottom: 30px;
 }
 
 #bookingsDesc h3{
@@ -840,22 +840,21 @@ label.item.item-input {
 
 input.commentContent {
   height: 43px;
-  width: 87%;
-  margin-left: 5px;
+  width: 85%;
+  margin-left: 50px;
   padding-left: 5px;
-  vertical-align: middle;
-  display: inline-block;
   border: 1px solid #ddd;
 }
 
-#infoText{
+
+.infoText{
   white-space: normal;
-  margin-bottom: 20px;
+  margin:0;
 }
 
-div.commentContainer {
+/*div.commentContainer {
   padding: 5px;
-}
+}*/
 
 div .userImg{
   height: 100%;
@@ -864,7 +863,9 @@ div .userImg{
 
 div .userComment{
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 50px;
+  white-space: normal;
+  width: 93%;
 }
 
 .contentComment{
@@ -873,7 +874,48 @@ div .userComment{
 }
 
 h2.userTitle{
-  margin-left: 5px;
+  margin-left: 50px;
+  margin-bottom: 0;
+}
+
+img.imgCom {
+  width: 40px;
+  margin: 2px;
+  margin-right: 3px;
+  position: absolute;
+  top: 8px;
+}
+
+.col-90{
+  position: relative;
+}
+
+#comment{
+  padding: 5px 5px;
+  padding-top: 10px;
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* CSS for tab-bar */
+.tab-item {
+  max-width: 100%;
+}
+
+.tab-nav.tabs {
+    padding-top: 0px;
+}
+
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+    background-color: #323232;
+}
+
+.tab-item .icon {
+    display: block;
+    margin: 0 auto;
+    height: 30px;
+    font-size: 35px;
+    margin-top: 4px !important;
 }
 
 
