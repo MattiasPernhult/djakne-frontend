@@ -892,3 +892,24 @@ img.imgCom {
   margin: 0;
   border-bottom: 1px solid #ddd;
 }
+
+/* CSS for tab-bar */
+.tab-item {
+  max-width: 100%;
+}
+
+.tab-nav.tabs {
+    padding-top: 0px;
+}
+
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+    background-color: #323232;
+}
+
+.tab-item .icon {
+    display: block;
+    margin: 0 auto;
+    height: 30px;
+    font-size: 35px;
+    margin-top: 1.5px !important;
+}
