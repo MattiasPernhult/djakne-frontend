@@ -53,11 +53,10 @@ controllers.controller('EventDescriptionController',
 
       httpService.post(url, body, function(err, result) {
         if (err) {
-          toastService.showLongBottom('Something went wrong so you have not been ' +
-          'added to the event');
+          toastService.showLongBottom(err.error.message);
         } else {
           $scope.showImage = true;
-          $scope.currentEvent = result.event;
+          $scope.currentEvent = result;
           toastService.showLongBottom('You are now signed up for the event');
         }
       });
