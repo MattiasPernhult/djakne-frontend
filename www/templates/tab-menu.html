@@ -82,26 +82,26 @@
               <p class="product-price">{{item.price}} kr</p>
 
             <div class="containerCartIcons">
-              <button ng-click="removeFromCart(item)" id="add" class="button button-outline button-dark ion-minus cartIcon">
+              <button ng-click="removeFromCart(item);priceRequest();$event.preventDefault();$event.stopPropagation()" id="add" class="button button-outline button-dark ion-minus cartIcon">
 
               </button>
               <div id="qtyContainer">
                 <h1 id="qty-amount">{{item.qty}}<span>st</span></h1>
               </div>
-              <button ng-click="addToCart(item)" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon">
+              <button ng-click="addToCart(item);priceRequest();$event.preventDefault();$event.stopPropagation()" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon">
 
               </button>
             </div>
           </ion-item>
         </ion-list>
         <form class="list">
+          <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked">
+            <h3>{{item.name}}</h3>
+          </ion-toggle>
           <label class="item item-input">
             <span class="input-label"><h3>Message:</h3></span>
             <input type="text" id="comment" placeholder="Write additional requests..">
           </label>
-          <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked">
-            <h3>{{item.name}}</h3>
-          </ion-toggle>
         </form>
         <div class="cart-total-container">
           <div class="total-desc">
