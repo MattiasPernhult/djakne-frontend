@@ -66,20 +66,22 @@ factories.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoa
       var productsId = [];
       for (var index in cart) {
         var object = cart[index];
-        productsId.push({
-          id: object.id,
-        });
+        for (var i = 0; i < object.qty; i++) {
+          productsId.push({
+            id: object.id,
+          });
+        }
       }
       return productsId;
     },
     priceRequest: function(data, done) {
-      var url = HOST.hostAdress + ':3000/menu/pricerequest?token=' + accessFactory.getAccessToken();
+      var url = HOST.hostAdress + ':3000/menu/pricerequest?token=AQWaZblHWG0r5oXiBZDPOSoGCuVgSTVGj-pQ9G484USv9vRZnt3zPue7VEaC9nF_v0i5ZcoyvuvhNhYTzianjbGc3weRmrtq92i17cTLaQsewbGQueolQVX3kRubYPhiwFO3v9iVGy8Ruo9Vu1SlXOqtHWMExrtS96tTHhgkcWkZgjmBYwU';
       httpService.post(url, data, function(err, result) {
         if (err) {
-          return done(err);
+          return done(err, result);
         }
         totalPrice = result.totalPrice;
-        return done(null);
+        return done(null, result);
       });
     },
     getTotalPrice: function() {
