@@ -100,5 +100,21 @@ controllers.controller('EventDescriptionController',
       });
     };
 
+    $scope.signUp = function(eventId) {
+      var url = HOST.hostAdress + ':4000/events/register/' + eventId;
+      var body = {
+        token: accessFactory.getAccessToken(),
+      };
+
+      httpService.post(url, body, function(err, result) {
+        if (err) {
+          toastService.showLongBottom('Något blev fel så du är ej anmäld till eventet');
+        } else {
+          $scope.showImage = true;
+          toastService.showLongBottom('Du är nu anmäld till eventet');
+          EventFactory.updateEventList(result);
+        }
+      });
+    };
 
   });
