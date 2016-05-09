@@ -82,13 +82,13 @@
               <p class="product-price">{{item.price}} kr</p>
 
             <div class="containerCartIcons">
-              <button ng-click="removeFromCart(item);priceRequest();$event.preventDefault();$event.stopPropagation()" id="add" class="button button-outline button-dark ion-minus cartIcon">
+              <button ng-click="removeFromCart(item); priceRequest()" id="add" class="button button-outline button-dark ion-minus cartIcon">
 
               </button>
               <div id="qtyContainer">
                 <h1 id="qty-amount">{{item.qty}}<span>st</span></h1>
               </div>
-              <button ng-click="addToCart(item);priceRequest();$event.preventDefault();$event.stopPropagation()" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon">
+              <button ng-click="addToCart(item); priceRequest()" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon">
 
               </button>
             </div>
