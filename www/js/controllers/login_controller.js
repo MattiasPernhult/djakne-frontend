@@ -74,6 +74,7 @@ controllers.controller('LoginController',
                 alertUser(result.member.firstName);
               }
               accessFactory.changeAccessToken(window.localStorage.token);
+              accessFactory.setMemberInfo(result.member);
               $state.go('tab.home');
             }
           });
