@@ -13,50 +13,53 @@
       </div>
     </div>
     <ion-list>
-      <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
+      <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-style="margin-top: 10px" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
+      <div class="row" style="border-top:1px solid lightgrey; border-bottom:1px solid grey">
+        <div class="col col-50">
+          <img src="img/Icons/credits_NoBG.png" class="profileIcons">
+          <p class="profileDisplay" style="margin-top: 8px">Your credit is: {{user.credits}}</p>
+        </div>
+        <div class="col col-50 wifi" ng-show="wifiPremium">
+          <img src="img/Icons/wifi_NoBG.png" class="profileIcons" />
+          <p class="profileDisplay"  style="margin-top: 8px">{{wifiPremium.wifiName}}</p>
+          <p class="profileDisplay" style="margin-top: -8px">{{wifiPremium.wifiPassword}}</p>
+        </div>
+       <div class="col col-50" ng-hide="wifiPremium">
+         <img src="img/Icons/wifi_NoBG.png" class="profileIcons"/>
+         <p class="profileDisplay"  style="margin-top: 8px">{{wifiMember.wifiName}}</p>
+         <p class="profileDisplay" style="margin-top: -12px">{{wifiMember.wifiPassword}}</p>
+       </div>
 
-      <ion-item class="profileItem" style="border-top:1px solid lightgrey;">
-        <span class="ion-card"></span>
-        <div>
-          <span class="item-note">
-            Your credit is: {{user.credits}}
-          </span>
+      </div>
+      <!-- <ion-item class="profileItem" id="creditInfo" style="border-top:1px solid lightgrey;">
+         <span class="wifiIcon"><img src= "img/Icons/credits_NoBG.png" class="profileIcons"></span>
+           <p>Your credit is: {{user.credits}}</p>
         </div>
       </ion-item>
 
-      <ion-item ng-show="wifiPremium" class="profileItem">
-        <span  class="ion-wifi"></span>
-        <div>
-          <p><span class="item-note">
-            Wifi: {{wifiPremium.wifiName}}
-          </span></p>
-          <p><span class="item-note">
-           Password: {{wifiPremium.wifiPassword}}
-         </span></p>
-        </div>
+      <ion-item ng-show="wifiPremium" class="profileItem" id="wifiInfo">
+        <span class="wifiIcon"><img src= "img/Icons/wifi_NoBG.png" class="profileIcons"></span>
+          <p>Wifi: {{wifiPremium.wifiName}}</p>
+          <p>Password: {{wifiPremium.wifiPassword}}</p>
       </ion-item>
 
-      <ion-item ng-hide="wifiPremium" class="profileItem">
-        <span  class="ion-wifi"></span>
+      <ion-item ng-hide="wifiPremium" class="profileItem" id="wifiInfo">
+         <span class="wifiIcon"><img src= "img/Icons/wifi_NoBG.png" class="profileIcons"></span>
         <div>
-          <p><span class="item-note">
-            Wifi: {{wifiMember.wifiName}}
-          </span></p>
-          <p><span class="item-note">
-           Password: {{wifiMember.wifiPassword}}
-         </span></p>
+          <p>Wifi: {{wifiMember.wifiName}}</p>
+          <p>Password: {{wifiMember.wifiPassword}}</p>
         </div>
-      </ion-item>
+      </ion-item> -->
 
       <ion-item class="profileItem">
-        <span  class="ion-calendar"></span>
+        <!-- <span  class="ion-calendar"></span>
           <span class="item-note">
             <button class="bookingButton button button-small button-outline button-dark" ng-click="bookings = !bookings">
              <p  class="readMore" ng-if="!bookings">Upcoming Events</p>
              <p class="readMore" ng-if="bookings">Hide Events</p>
             </button>
-          </span>
-          <div id="bookings" ng-show="bookings">
+          </span> -->
+          <div>
             <h2 class="text-center" ng-show="!bookedQty">No upcoming events</h2>
             <ion-list>
               <ion-item class="bookedItems" ng-repeat="event in isBooked" ng-style="bookedQty == 1 ? {'border': 'none'} : ''">

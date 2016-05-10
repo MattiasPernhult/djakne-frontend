@@ -91,6 +91,21 @@ ion-view {
   box-shadow:none!important;
 }
 
+.profileIcons{
+  height: 28px;
+  width: 30px;
+  margin-top: 8px;
+}
+
+.col.col-50{
+  text-align: center;
+}
+
+.profileDisplay{
+  display: block;
+}
+
+
 .ion-wifi {
   font-size: 30px;
   float:left;
@@ -123,9 +138,6 @@ ion-view {
   float:left;
 }
 
-#bookings {
-  margin-top: 50px;
-}
 
 #bookingDate {
   float: right;
@@ -927,7 +939,6 @@ img.imgCom {
     font-size: 35px;
     margin-top: 4px !important;
 }
-
 
 .row:before {
     content:'';
