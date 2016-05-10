@@ -31,7 +31,7 @@ controllers.controller('AddEventController',
       var url = HOST.hostAdress + ':4000/events';
       httpService.post(url, formData, function(err, result)  {
         if (err) {
-          toastService.showLongBottom(err.message);
+          toastService.showLongBottom(err.error);
         } else {
           toastService.showLongBottom('Event was created');
           $scope.event = {};

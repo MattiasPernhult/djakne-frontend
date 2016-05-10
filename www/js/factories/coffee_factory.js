@@ -20,7 +20,7 @@ factories.factory('CoffeeFactory', function(HOST, httpService, debugService) {
           return done(err.error, null);
         }
       }
-      coffee = result.result;
+      coffee = result.data;
       return done(null, coffee);
     });
   };

@@ -16,10 +16,10 @@ factories.factory('MembersFactory', function($http, HOST, httpService, debugServ
         }
       }
       if (debugService.isDebug()) {
-        if (result.members.length === 0) {
+        if (result.data.length === 0) {
           provideDefaultData(done);
         } else {
-          return done(null, result);
+          return done(null, result.data);
         }
       }
     });

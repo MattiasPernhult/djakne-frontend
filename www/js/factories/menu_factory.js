@@ -39,7 +39,7 @@ factories.factory('MenuFactory', function($http, accessFactory, HOST, httpServic
       if (err) {
         return done(err);
       }
-      products = result.products;
+      products = result.data;
       return done(products);
     });
   };
