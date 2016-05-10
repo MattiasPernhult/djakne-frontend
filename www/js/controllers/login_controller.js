@@ -7,6 +7,26 @@ controllers.controller('LoginController',
     $scope.grantType = 'authorization_code';
     $scope.cliendId = '77fqlypcm1ourl';
     $scope.clientSecret = 'UVKqpbFQchFA8ku0';
+    console.log(window.localStorage);
+    if (window.localStorage.tokenExpires && window.localStorage.token) {
+      var date = new Date();
+      if (date.getTime() < window.localStorage.tokenExpires) {
+        var url = HOST.hostAdress + ':3000/member?token=' + window.localStorage.token;
+        httpService.get(url, function(err, result, status) {
+          if (!err) {
+            accessFactory.changeAccessToken(window.localStorage.token);
+            var goTo = 'tab.home';
+            var cm = 'CoffeeMenu';
+            if (window.localStorage.CoffeeMenu) {
+              goTo = 'tab.menu';
+            }
+            $state.go(goTo);
+          } else {
+            alert('ERROR');
+          }
+        });
+      }
+    }
 
     $scope.loginWithLinkedIn = function() {
       //  var ref = cordova.ThemeableBrowser.open($scope.urlStep1, '_blank', {
@@ -70,9 +90,6 @@ controllers.controller('LoginController',
             if (err && status !== 200)  {
               $scope.loginWithLinkedIn();
             } else {
-              if (checkIfUsersBirthday(result.member)) {
-                alertUser(result.member.firstName);
-              }
               accessFactory.changeAccessToken(window.localStorage.token);
               accessFactory.setMemberInfo(result.member);
               $state.go('tab.home');

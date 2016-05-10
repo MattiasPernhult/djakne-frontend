@@ -115,6 +115,7 @@ $ionicModal) {
   };
 
   MenuFactory.getProducts(function(data) {
+    console.log(data);
     $scope.getFavorites();
     for (var index in data) {
       for (var i = 0; i < data[index].length; i++) {
@@ -145,7 +146,7 @@ $ionicModal) {
     var favorites;
     res = window.localStorage.getItem('favorites');
     favorites = JSON.parse(res);
-    $scope.userFavorites = favorites;
+    $scope.userFavorites = favorites || [];
   };
 
   $scope.toogleFavorite = function(item) {
@@ -198,10 +199,12 @@ $ionicModal) {
     var data = {
       products: Cart.getProductsId(),
     };
-    data = JSON.stringify(data);
+    console.log(data);
     Cart.priceRequest(data, function(err, resp) {
       if (err) {
         alert('ERROR');
+      } else {
+        console.log(resp);
       }
     });
   };

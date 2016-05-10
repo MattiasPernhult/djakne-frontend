@@ -22,10 +22,6 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
 
   $ionicConfigProvider.tabs.position('bottom');
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
   $stateProvider
 
     .state('login', {
@@ -34,10 +30,14 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
     controller: 'LoginController',
   })
 
-  .state('cart', {
-    url: '/cart',
-    templateUrl: 'templates/cart.html',
-    controller: 'ProductController',
+  .state('event', {
+    cache: false,
+    url: '/event',
+    templateUrl: 'templates/event.html',
+    controller: 'EventDescriptionController',
+    params: {
+      eventParam: null,
+    },
   })
 
   .state('addEvent', {
@@ -47,6 +47,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
   })
 
   .state('profile', {
+    cache: false,
     url: '/profile',
     templateUrl: 'templates/profile.html',
     controller: 'ProfileController',

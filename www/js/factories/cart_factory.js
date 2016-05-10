@@ -66,9 +66,11 @@ factories.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoa
       var productsId = [];
       for (var index in cart) {
         var object = cart[index];
-        productsId.push({
-          id: object.id,
-        });
+        for (var i = 0; i < object.qty; i++) {
+          productsId.push({
+            id: object.id,
+          });
+        }
       }
       return productsId;
     },
@@ -76,10 +78,10 @@ factories.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoa
       var url = HOST.hostAdress + ':3000/menu/pricerequest?token=' + accessFactory.getAccessToken();
       httpService.post(url, data, function(err, result) {
         if (err) {
-          return done(err);
+          return done(err, result);
         }
         totalPrice = result.totalPrice;
-        return done(null);
+        return done(null, result);
       });
     },
     getTotalPrice: function() {
@@ -108,11 +110,11 @@ factories.factory('Cart', function($http, accessFactory, HOST, $state, $ionicLoa
       var url = HOST.hostAdress + ':3000/order?token=' + accessFactory.getAccessToken();
       httpService.post(url, data, function(err, result)  {
         if (err) {
-          toastService.showLongBottom('Problem med order');
+          toastService.showLongBottom('Problem with order!');
         } else {
           cart.length = 0;
           $location.path('/tab/menu');
-          toastService.showLongBottom('Din order har lagts');
+          toastService.showLongBottom('Order was sent!');
         }
         done();
       });

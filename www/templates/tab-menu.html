@@ -43,9 +43,9 @@
   <ion-side-menus>
     <ion-side-menu-content drag-content="false">
       <ion-content scroll="false" class="homeSlider" has-tabs="true">
-        <div ng-style="{ 'height':'155px','width':'100%','background-color':'#444' }">
+        <!-- <div ng-style="{ 'height':'100px','width':'100%','background-color':'#444' }">
           <img id="logo" src="img/Icons/home/coffee_black.png"></img>
-        </div>
+        </div> -->
         <ion-slide-box on-slide-changed="changeLogo()" show-pager="false" ion-slide-tabs ng-if="products">
           <ion-slide ng-cloak class="bg-slide" ng-repeat="categories in products" ion-slide-tab-label="{{categories[0].category}}">
             <ion-content class="item-list expandList">
@@ -82,26 +82,26 @@
               <p class="product-price">{{item.price}} kr</p>
 
             <div class="containerCartIcons">
-              <button ng-click="removeFromCart(item)" id="add" class="button button-outline button-dark ion-minus cartIcon">
+              <button ng-click="removeFromCart(item); priceRequest()" id="add" class="button button-outline button-dark ion-minus cartIcon">
 
               </button>
               <div id="qtyContainer">
                 <h1 id="qty-amount">{{item.qty}}<span>st</span></h1>
               </div>
-              <button ng-click="addToCart(item)" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon">
+              <button ng-click="addToCart(item); priceRequest()" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon">
 
               </button>
             </div>
           </ion-item>
         </ion-list>
         <form class="list">
+          <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked">
+            <h3>{{item.name}}</h3>
+          </ion-toggle>
           <label class="item item-input">
             <span class="input-label"><h3>Message:</h3></span>
             <input type="text" id="comment" placeholder="Write additional requests..">
           </label>
-          <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked">
-            <h3>{{item.name}}</h3>
-          </ion-toggle>
         </form>
         <div class="cart-total-container">
           <div class="total-desc">

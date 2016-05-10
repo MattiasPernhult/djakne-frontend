@@ -7,13 +7,18 @@ controllers.controller('AddEventController',
       $scope.show = $scope.event.djakne;
     };
 
+    $scope.resetCustomLocation = function() {
+      $scope.event.place = null;
+      $scope.event.adress = null;
+    };
+
     $scope.sendPost = function() {
       var place = '';
 
-      if ($scope.event.djakne === true) {
-        place = 'Djäkne';
-      } else {
+      if ($scope.event.place && $scope.event.adress) {
         place = $scope.event.place + ', ' + $scope.event.adress;
+      } else {
+        place = 'Djäkne';
       }
       var formData = {
         title: $scope.event.title,
@@ -28,7 +33,7 @@ controllers.controller('AddEventController',
         if (err) {
           toastService.showLongBottom(err.message);
         } else {
-          toastService.showLongBottom('Eventet har skapats');
+          toastService.showLongBottom('Event was created');
           $scope.event = {};
           $state.go('tab.home');
           EventFactory.getEvents(function() {

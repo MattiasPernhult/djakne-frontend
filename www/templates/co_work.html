@@ -1,98 +1,27 @@
-<ion-content overflow-scroll="true" class="expandList">
+<body ng-controller="CoworkController">
+  <ion-content overflow-scroll="true" class="expandList" delegate-handle="content">
 
              <h4 class="priceTable">Join our community</h4>
-           <div class="coworkDesc">
-             <p><strong>
-               An innovative hub for entreupeneurs and startups
-             </strong></p>
-           </div>
-
-             <div id="MEM1">
-               <div class="box card membership1" >
-               <h2 class="membershipTitle">Djäkne</h2>
-                 <div class="price">
-                   <div class="amount-container">
-                     <span class="amount">990</span>
-                     <span class="currency">SEK</span>
-                     <div class="period">MONTHLY</div>
-                   </div>
-                 </div>
-                 <div class="list-container">
-
-                   <div ng-show="showBasic">
-                     <ul>
-                       <li>
-                         <item class="ion-ios-checkmark-empty"></item>
-                         <span class="check">Coffee</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-checkmark-empty"></item>
-                         <span class="check">Order coffee with our app</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-checkmark-empty"></item>
-                         <span class="check">Groundfloor workspace</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-checkmark-empty"></item>
-                         <span class="check">Conference room booking</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-checkmark-empty"></item>
-                         <span class="check">Access to our Wi-Fi</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-close-empty"></item>
-                         <span class="check">Breakfast</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-close-empty"></item>
-                         <span class="check">Postbox</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-close-empty"></item>
-                         <span class="check">Personal locker</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-close-empty"></item>
-                         <span class="check">Second floor workspace</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-close-empty"></item>
-                         <span class="check">Conference room discounts</span>
-                       </li>
-                     </ul>
-                     <div class="joinUs">
-                     <p><strong>
-                       Wish to join us?
-                     </strong></p>
-                     <p><strong>
-                       Contact our baristas or mail us at: info@djakne.se
-                     </strong></p>
-                     </div>
-                   </div>
-
-                 </div>
-
-                 <button class="button button-small button-clear" ng-click="showBasic = !showBasic">
-                  <p class="button button-small readMore" ng-if="!showBasic">See more</p>
-                  <p class="button button-small readMore" ng-if="showBasic">See less</p>
-                 </button>
-             </div>
+             <div class="coworkDesc">
+               <p>
+                 An innovative hub for entrepreneurs and startups
+               </p>
              </div>
 
-             <div id="MEM2">
-                 <div class="price">
-                     <div class="box card membership2">
-                     <h2 class="membershipTitle">Premium</h2>
+               <div id="MEM1">
+                 <div class="box card membership1" >
+                 <h2 class="membershipTitle">Djäkne</h2>
+                   <div class="price">
                      <div class="amount-container">
                        <span class="amount">990</span>
                        <span class="currency">SEK</span>
                        <div class="period">MONTHLY</div>
                      </div>
-                     <div class="list-container">
-                       <div ng-show="showPremium">
-                         <ul>
+                   </div>
+                   <div class="list-container">
+
+                     <div ng-show="showBasic">
+                       <ul>
                          <li>
                            <item class="ion-ios-checkmark-empty"></item>
                            <span class="check">Coffee</span>
@@ -114,102 +43,128 @@
                            <span class="check">Access to our Wi-Fi</span>
                          </li>
                          <li>
-                           <item class="ion-ios-checkmark-empty"></item>
+                           <item class="ion-ios-close-empty"></item>
                            <span class="check">Breakfast</span>
                          </li>
                          <li>
-                           <item class="ion-ios-checkmark-empty"></item>
+                           <item class="ion-ios-close-empty"></item>
                            <span class="check">Postbox</span>
                          </li>
                          <li>
-                           <item class="ion-ios-checkmark-empty"></item>
+                           <item class="ion-ios-close-empty"></item>
                            <span class="check">Personal locker</span>
                          </li>
                          <li>
-                           <item class="ion-ios-checkmark-empty"></item>
+                           <item class="ion-ios-close-empty"></item>
                            <span class="check">Second floor workspace</span>
                          </li>
                          <li>
-                           <item class="ion-ios-checkmark-empty"></item>
+                           <item class="ion-ios-close-empty"></item>
                            <span class="check">Conference room discounts</span>
                          </li>
                        </ul>
                        <div class="joinUs">
-                         <p><strong>
-                           Wish to join us?
-                         </strong></p>
-                         <p><strong>
-                           Contact our baristas or mail us at: info@djakne.se
-                         </strong></p>
+                       <p>
+                         Wish to join us?
+                       </p>
+                       <p>
+                         Contact our baristas or mail us at: info@djakne.se
+                      </p>
                        </div>
                      </div>
-                  </div>
-                   <button class="button button-small button-clear" ng-click="showPremium = !showPremium">
-                    <p class="button button-small readMore" ng-if="!showPremium">See more</p>
-                    <p class="button button-small readMore" ng-if="showPremium">See less</p>
-                  </button>
+
+                   </div>
+
+                   <button class="button button-small button-clear" ng-click="showBasic = !showBasic">
+                    <p class="button button-small readMore" ng-if="!showBasic">See more</p>
+                    <p class="button button-small readMore" ng-if="showBasic">See less</p>
+                   </button>
+               </div>
+               </div>
+
+               <div id="MEM2">
+                   <div class="price">
+                       <div class="box card membership2">
+                       <h2 class="membershipTitle">Premium</h2>
+                       <div class="amount-container">
+                         <span class="amount">1490</span>
+                         <span class="currency">SEK</span>
+                         <div class="period">MONTHLY</div>
+                       </div>
+                       <div class="list-container">
+                         <div ng-show="showPremium">
+                           <ul>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Coffee</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Order coffee with our app</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Groundfloor workspace</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Conference room booking</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Access to our Wi-Fi</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Breakfast</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Postbox</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Personal locker</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Second floor workspace</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Conference room discounts</span>
+                           </li>
+                         </ul>
+                         <div class="joinUs">
+                           <p>
+                             Wish to join us?
+                           </p>
+                           <p>
+                             Contact our baristas or mail us at: info@djakne.se
+                           </p>
+                         </div>
+                       </div>
+                    </div>
+                     <button class="button button-small button-clear" ng-click="showPremium = !showPremium">
+                      <p class="button button-small readMore" ng-if="!showPremium">See more</p>
+                      <p class="button button-small readMore" ng-if="showPremium">See less</p>
+                    </button>
+                   </div>
                  </div>
                </div>
-             </div>
 
-         <div id="MEM3">
-           <div class="box card membership1" >
-               <h2 class="membershipTitle">Half-day pass</h2>
-                 <div class="price">
-                   <div class="amount-container">
-                     <span class="amount">100</span>
-                     <span class="currency">SEK</span>
-                     <div class="period">3 H</div>
-                   </div>
-                 </div>
-                 <div class="list-container">
-                   <div ng-show="showHalfdayPass">
-                     <ul>
-                       <li>
-                         <item class="ion-ios-checkmark-empty"></item>
-                         <span class="check">Coffee</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-checkmark-empty"></item>
-                         <span class="check">Groundfloor workspace</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-checkmark-empty"></item>
-                         <span class="check">Access to our Wi-Fi</span>
-                       </li>
-                       <li>
-                         <item class="ion-ios-checkmark-empty"></item>
-                         <span class="check">Personal locker</span>
-                       </li>
-                     </ul>
-                     <div class="joinUs">
-                       <p><strong>
-                         Wish to join us?
-                       </strong></p>
-                       <p><strong>
-                         Contact our baristas or mail us at: info@djakne.se
-                       </strong></p>
+           <div id="MEM3">
+             <div class="box card membership1" >
+                 <h2 class="membershipTitle">Half-day pass</h2>
+                   <div class="price">
+                     <div class="amount-container">
+                       <span class="amount">100</span>
+                       <span class="currency">SEK</span>
+                       <div class="period">3 H</div>
                      </div>
                    </div>
-                 </div>
-                 <button class="button button-small button-clear" ng-click="showHalfdayPass = !showHalfdayPass">
-                  <p class="button button-small readMore" ng-if="!showHalfdayPass">See more</p>
-                  <p class="button button-small readMore" ng-if="showHalfdayPass">See less</p>
-                 </button>
-           </div>
-         </div>
-
-         <div id="MEM4">
-             <div class="price">
-                   <div class="box card membership2">
-                   <h2 class="membershipTitle">Day pass</h2>
-                   <div class="amount-container">
-                     <span class="amount">150</span>
-                     <span class="currency">SEK</span>
-                     <div class="period">FULL DAY</div>
-                   </div>
                    <div class="list-container">
-                     <div ng-show="showDaypass">
+                     <div ng-show="showHalfdayPass">
                        <ul>
                          <li>
                            <item class="ion-ios-checkmark-empty"></item>
@@ -228,20 +183,67 @@
                            <span class="check">Personal locker</span>
                          </li>
                        </ul>
-                     <div class="joinUs">
-                       <p><strong>
-                         Wish to join us?
-                       </strong></p>
-                       <p><strong>
-                         Contact our baristas or mail us at: info@djakne.se
-                       </strong></p>
+                       <div class="joinUs">
+                         <p>
+                           Wish to join us?
+                         </p>
+                         <p>
+                           Contact our baristas or mail us at: info@djakne.se
+                         </p>
                        </div>
+                     </div>
                    </div>
-                 </div>
-                   <button class="button button-small button-clear" ng-click="showDaypass = !showDaypass">
-                    <p class="button button-small readMore" ng-if="!showDaypass" >See more</p>
-                    <p class="button button-small readMore" ng-if="showDaypass">See less</p>
-                  </button>
-                 </div>
+                   <button class="button button-small button-clear" ng-click="showHalfdayPass = !showHalfdayPass">
+                    <p class="button button-small readMore" ng-if="!showHalfdayPass" ng-click="scrollMe('MEM4')">See more</p>
+                    <p class="button button-small readMore" ng-if="showHalfdayPass" ng-click="scrollMe('MEM4')">See less</p>
+                   </button>
+             </div>
            </div>
-</ion-content>
+
+           <div id="MEM4">
+               <div class="price">
+                     <div class="box card membership2">
+                     <h2 class="membershipTitle">Day pass</h2>
+                     <div class="amount-container">
+                       <span class="amount">150</span>
+                       <span class="currency">SEK</span>
+                       <div class="period">FULL DAY</div>
+                     </div>
+                     <div class="list-container">
+                       <div ng-show="showDaypass">
+                         <ul>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Coffee</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Groundfloor workspace</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Access to our Wi-Fi</span>
+                           </li>
+                           <li>
+                             <item class="ion-ios-checkmark-empty"></item>
+                             <span class="check">Personal locker</span>
+                           </li>
+                         </ul>
+                       <div class="joinUs">
+                         <p>
+                           Wish to join us?
+                         </p>
+                         <p>
+                           Contact our baristas or mail us at: info@djakne.se
+                         </p>
+                         </div>
+                     </div>
+                   </div>
+                     <button class="button button-small button-clear" ng-click="showDaypass = !showDaypass">
+                      <p class="button button-small readMore" ng-if="!showDaypass" ng-click="scrollMe('MEM4')" >See more</p>
+                      <p class="button button-small readMore" ng-if="showDaypass" ng-click="scrollMe('MEM4')">See less</p>
+                    </button>
+                   </div>
+             </div>
+  </ion-content>
+</body>
