@@ -56,7 +56,7 @@ controllers.controller('EventDescriptionController',
           toastService.showLongBottom('You are already attending this event');
         } else {
           $scope.showImage = true;
-          $scope.currentEvent = result;
+          $scope.currentEvent = result.data;
           toastService.showLongBottom('You are now signed up for the event');
         }
       });
