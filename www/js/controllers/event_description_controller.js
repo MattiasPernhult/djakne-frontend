@@ -1,6 +1,6 @@
 controllers.controller('EventDescriptionController',
   function($scope, $http, EventFactory, accessFactory, HOST, httpService,
-    toastService, $stateParams, ProfileFactory) {
+    toastService, $stateParams, ProfileFactory, $state) {
     var eventData = EventFactory.getEvent();
     $scope.chosenEvent = eventData;
     $scope.image = '/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8KCwkMEQ8SEhEP' +
@@ -99,6 +99,18 @@ controllers.controller('EventDescriptionController',
           $scope.currentEvent = result;
           EventFactory.updateEventList(result);
           $scope.show = true;
+        }
+      });
+    };
+
+    $scope.removeEvent = function(eventId) {
+      EventFactory.removeEvent(eventId, function(err, result) {
+        if (err) {
+          toastService.showLongBottom(err.error);
+        } else {
+          $scope.events = EventFactory.removeEventFromList(eventId);
+          toastService.showLongBottom('The event was successfully deleted');
+          $state.go('tab.home');
         }
       });
     };

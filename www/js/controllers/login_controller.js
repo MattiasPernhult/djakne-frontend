@@ -23,6 +23,7 @@ controllers.controller('LoginController',
         httpService.get(url, function(err, result, status) {
           if (result && !result.error && result.error !== 'Invalid token') {
             accessFactory.changeAccessToken(window.localStorage.token);
+            accessFactory.setMemberInfo(result.member);
             $scope.goTo();
           }
         });
