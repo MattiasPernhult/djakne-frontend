@@ -18,11 +18,11 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
     return orderSettings;
   };
 
-  var checkOrderSettings = function(name) {
+  var checkOrderSettings = function(key, name) {
     if (window.localStorage[name]) {
-      orderSettings[name].checked = true;
+      orderSettings[key].checked = true;
     } else {
-      orderSettings[name].checked = false;
+      orderSettings[key].checked = false;
     }
   };
 
