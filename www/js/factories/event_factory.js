@@ -42,6 +42,24 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
     });
   };
 
+  var removeEvent = function(eventId, done) {
+    var data = {
+      token: accessFactory.getAccessToken(),
+    };
+
+    var url = HOST.hostAdress + ':4000/events/' + eventId;
+    httpService.put(url, data, function(err, result) {
+      if (err) {
+        console.log('NOT OK!');
+        console.log(err);
+      } else {
+        console.log('Yiiipppiee!');
+        console.log('res: ' + result);
+      }
+      done(err, result.data);
+    });
+  };
+
   var getEvents = function(done) {
     var url;
     var date = new Date().toISOString();
@@ -73,6 +91,19 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
     }
   };
 
+  var addEventToList = function(newEvent) {
+    events.push(newEvent);
+  };
+
+  var removeEventFromList = function(eventToRemoveId) {
+    for (var i = 0; i < events.length; i++) {
+      if (events[i]._id === eventToRemoveId) {
+        events.splice(i, 1);
+        return events;
+      }
+    }
+  };
+
   var setEvent = function(chosenEvent) {
     oneEvent = chosenEvent;
   };
@@ -89,5 +120,8 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
     updateEventList: updateEventList,
     addComment: addComment,
     removeComment: removeComment,
+    removeEvent: removeEvent,
+    removeEventFromList: removeEventFromList,
+    addEventToList: addEventToList,
   };
 });

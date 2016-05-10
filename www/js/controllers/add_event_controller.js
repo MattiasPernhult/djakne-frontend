@@ -36,10 +36,9 @@ controllers.controller('AddEventController',
         } else {
           toastService.showLongBottom('Event was created');
           $scope.event = {};
+          console.log('skapat event, resultat från api: ' + JSON.stringify(result, null, 4));
+          EventFactory.addEventToList(result.data);
           $state.go('tab.home');
-          EventFactory.getEvents(function() {
-            return;
-          });
         }
       });
     };

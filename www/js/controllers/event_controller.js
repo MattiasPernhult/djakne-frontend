@@ -57,21 +57,4 @@ controllers.controller('EventController', function($scope, EventFactory, $state,
       $scope.events = newVal;
     }
   );
-  $scope.signUp = function(eventId) {
-    var url = HOST.hostAdress + ':4000/events/register/' + eventId;
-    var body = {
-      token: accessFactory.getAccessToken(),
-    };
-
-    httpService.post(url, body, function(err, result) {
-      if (err) {
-        toastService.showLongBottom('Something went wrong so you have not been ' +
-        'added to the event');
-      } else {
-        $scope.showImage = true;
-        toastService.showLongBottom('You are now signed up for the event');
-        EventFactory.updateEventList(result.data);
-      }
-    });
-  };
 });

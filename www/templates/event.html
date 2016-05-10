@@ -31,6 +31,7 @@
       <p class="infoText">
         {{currentEvent.location}}
       </p>
+      <button ng-if="currentEvent.author == user.id"  ng-style="{'float': 'right', 'margin-top':'10px'}" ng-click="removeEvent(currentEvent._id)" class="button button-small button-outline button-dark">Remove event</button>
       <p class="infoText">{{currentEvent.date | date:'h:mma'}}, {{currentEvent.date | date : shortTime}}</p>
       <h2 id="attending">Attending:</h2>
       <div id="attendants">

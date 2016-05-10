@@ -24,6 +24,7 @@ controllers.controller('LoginController',
           alert(JSON.stringify(result));
           if (!result.error && result.error !== 'Invalid token') {
             accessFactory.changeAccessToken(window.localStorage.token);
+            accessFactory.setMemberInfo(result.member);
             $scope.goTo();
           }
         });
