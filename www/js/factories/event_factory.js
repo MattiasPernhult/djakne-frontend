@@ -20,17 +20,17 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
         console.log('Yiiipppiee!');
         console.log('res: ' + result);
       }
-      done(err, result);
+      done(err, result.data);
     });
   };
 
   var removeComment = function(eventId, commentId, done) {
-    var data  = {
+    var data = {
       token: accessFactory.getAccessToken(),
     };
 
     var url = HOST.hostAdress + ':4000/events/' + eventId + '/comment/' + commentId;
-    httpService.delete(url, data, function(err, result) {
+    httpService.put(url, data, function(err, result) {
       if (err) {
         console.log('NOT OK!');
         console.log(err);
@@ -38,7 +38,7 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
         console.log('Yiiipppiee!');
         console.log('res: ' + result);
       }
-      done(err, result);
+      done(err, result.data);
     });
   };
 
@@ -53,10 +53,9 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
 
     httpService.get(url, function(err, res) {
       if (err) {
-        console.log('error: ' + err);
         return done(err.error);
       }
-      events = res.result;
+      events = res.data;
       return done(events);
     });
   };

@@ -5,6 +5,7 @@ function($scope, SessionFactory, ProfileFactory, EventFactory, $state) {
   $scope.$on('$ionicView.enter', function() {
     ProfileFactory.checkOrderSettings('Takeaway');
     ProfileFactory.checkOrderSettings('Lactose');
+    ProfileFactory.checkOrderSettings('CoffeeMenu');
 
     // Get ordersettings
     $scope.orderSettings = ProfileFactory.getOrderSettings();
@@ -27,7 +28,6 @@ function($scope, SessionFactory, ProfileFactory, EventFactory, $state) {
   };
   // When user changes settings, add or remove localstorage
   $scope.change = function(name, value) {
-
     if (window.localStorage[name]) {
       SessionFactory.remove(name);
     } else {

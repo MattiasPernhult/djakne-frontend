@@ -65,11 +65,12 @@ controllers.controller('EventController', function($scope, EventFactory, $state,
 
     httpService.post(url, body, function(err, result) {
       if (err) {
-        toastService.showLongBottom('Något blev fel så du är ej anmäld till eventet');
+        toastService.showLongBottom('Something went wrong so you have not been ' +
+        'added to the event');
       } else {
         $scope.showImage = true;
-        toastService.showLongBottom('Du är nu anmäld till eventet');
-        EventFactory.updateEventList(result);
+        toastService.showLongBottom('You are now signed up for the event');
+        EventFactory.updateEventList(result.data);
       }
     });
   };

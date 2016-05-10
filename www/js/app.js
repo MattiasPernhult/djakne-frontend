@@ -47,6 +47,7 @@ angular.module('starter', ['ionic', 'ionic-ratings', 'controllers', 'factories',
   })
 
   .state('profile', {
+    cache: false,
     url: '/profile',
     templateUrl: 'templates/profile.html',
     controller: 'ProfileController',
