@@ -21,9 +21,9 @@ controllers.controller('LoginController',
       if (date.getTime() < window.localStorage.tokenExpires) {
         var url = HOST.hostAdress + ':3000/member?token=' + window.localStorage.token;
         httpService.get(url, function(err, result, status) {
-          alert(JSON.stringify(result));
           if (result && !result.error && result.error !== 'Invalid token') {
             accessFactory.changeAccessToken(window.localStorage.token);
+            accessFactory.setMemberInfo(result.member);
             $scope.goTo();
           }
         });
