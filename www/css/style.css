@@ -27,6 +27,12 @@ h3 {
   margin-top: 5px!important;
 }
 
+hr {
+  border-style: solid!important;
+  border-color: #f1f1f1!important;
+  border-width: 0.5px!important
+}
+
 .containerCartIcons {
   display: flex;
   float: right;

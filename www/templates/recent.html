@@ -40,6 +40,7 @@
           <div ng-repeat="letter in issue.letters" class="item item-body" style="padding:0px;">
             <h3>{{letter.title}}<h3>
             <p>{{letter.description | limitTo: 200 }}...<p>
+            <hr ng-style="{'width':'85%'}" ng-hide="$last">
           </div>
           <p>
             <a ng-click="openNewsModal()" class="subdued">Read More</a>

@@ -100,7 +100,7 @@
                         <div ng-repeat="letter in issue.letters" class="item item-body">
                           <h3>{{letter.title}}<h3>
                           <p>{{letter.description}}<p>
-                          <hr>
+                          <hr ng-hide="$last">
                         </div>
                       </div>
                     </ion-content>
