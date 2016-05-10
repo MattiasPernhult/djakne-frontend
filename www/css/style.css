@@ -19,9 +19,14 @@ p {
   font-family: Georgia, Times, "Times New Roman", serif!important;
 }
 h2 {
-  font-size: 16px!important;
+  font-size: 28px!important;
+}
+
+h3 {
+  font-size: 18px!important;
   margin-top: 5px!important;
 }
+
 .containerCartIcons {
   display: flex;
   float: right;
@@ -203,9 +208,6 @@ ion-view {
   position: absolute;
   margin: auto;
 }
-.text-login-container h3 {
-  font-size: 28px;
-}
 
 /* Color overlay on background image */
 
@@ -296,12 +298,6 @@ ion-view {
   box-shadow: none !important;
   margin-top: 5% !important;
   margin-left: 4% !important;
-}
-
-/* FIX */
-.toggleSpecials h3 {
-font-family: sans-serif;
-font-size: 14px;
 }
 
 /* Product total - cart template */
@@ -580,6 +576,7 @@ hr{
 }
 .item-body {
   box-shadow: none!important;
+  padding: 0px;
 }
 .bg-slide {
   background-color: #f0f0f0 !important;
