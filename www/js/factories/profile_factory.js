@@ -8,6 +8,10 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
       name: 'Lactose',
       checked: 'false',
     },
+    CoffeeMenu: {
+      name: 'CoffeeMenu',
+      checked: 'false',
+    },
   };
   var getOrderSettings = function() {
     console.log(orderSettings);
