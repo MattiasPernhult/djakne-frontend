@@ -15,6 +15,7 @@ controllers.controller('LoginController',
         httpService.get(url, function(err, result, status) {
           if (!err) {
             accessFactory.changeAccessToken(window.localStorage.token);
+            accessFactory.setMemberInfo(result.member);
             var goTo = 'tab.home';
             var cm = 'CoffeeMenu';
             if (window.localStorage.CoffeeMenu) {
@@ -91,6 +92,7 @@ controllers.controller('LoginController',
               $scope.loginWithLinkedIn();
             } else {
               accessFactory.changeAccessToken(window.localStorage.token);
+              accessFactory.setMemberInfo(result.member);
               $state.go('tab.home');
             }
           });
