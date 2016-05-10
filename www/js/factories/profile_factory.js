@@ -56,11 +56,11 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
 
   var addGiphy = function(text, done) {
     var url;
-    console.log('NOT OK!');
+    console.log('OK!');
     var token = accessFactory.getAccessToken();
     var data = {
       token: token,
-      giphy: text,
+      giphy: text + '[,'+text+']',
     };
     url = HOST.hostAdress + ':4000/retrotv/request ';
     console.log(url);
