@@ -133,7 +133,7 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
 
     httpService.put(url, rating, function(err, result) {
       if (err) {
-        toastService.showLongBottom(err.result);
+        toastService.showLongBottom(err.error);
       } else {
         toastService.showLongBottom('You have now voted for this weeks coffee');
       }

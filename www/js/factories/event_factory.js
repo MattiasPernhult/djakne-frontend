@@ -20,7 +20,7 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
         console.log('Yiiipppiee!');
         console.log('res: ' + result);
       }
-      done(err, result);
+      done(err, result.data);
     });
   };
 
@@ -38,7 +38,7 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
         console.log('Yiiipppiee!');
         console.log('res: ' + result);
       }
-      done(err, result);
+      done(err, result.data);
     });
   };
 
@@ -53,10 +53,9 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
 
     httpService.get(url, function(err, res) {
       if (err) {
-        console.log('error: ' + err);
         return done(err.error);
       }
-      events = res.result;
+      events = res.data;
       return done(events);
     });
   };

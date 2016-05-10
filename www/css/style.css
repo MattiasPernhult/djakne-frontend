@@ -91,7 +91,7 @@ ion-view {
   box-shadow:none!important;
 }
 
-.profileIcons{
+#profileIcons{
   height: 28px;
   width: 30px;
   margin-top: 8px;
@@ -108,20 +108,11 @@ ion-view {
 
 .ion-wifi {
   font-size: 30px;
-  float:left;
-  margin-left: 25px;
 }
 
-.ion-calendar {
-  font-size: 30px;
-  float:left;
-  margin-left: 25px;
-}
 
 .ion-card {
   font-size: 30px;
-  float:left;
-  margin-left: 25px;
 
 }
 .ion-clipboard {
@@ -303,6 +294,8 @@ ion-view {
 }
 .toggleSpecials {
   box-shadow: none !important;
+  margin-top: 5% !important;
+  margin-left: 4% !important;
 }
 
 /* FIX */

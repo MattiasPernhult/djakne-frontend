@@ -53,7 +53,7 @@ controllers.controller('EventDescriptionController',
 
       httpService.post(url, body, function(err, result) {
         if (err) {
-          toastService.showLongBottom(err.error.message);
+          toastService.showLongBottom('You are already attending this event');
         } else {
           $scope.showImage = true;
           $scope.currentEvent = result;
@@ -83,8 +83,8 @@ controllers.controller('EventDescriptionController',
           toastService.showLongBottom(err.error);
         } else {
           $scope.userComment.text = null;
-          $scope.currentEvent = result.event;
-          EventFactory.updateEventList(result.event);
+          $scope.currentEvent = result;
+          EventFactory.updateEventList(result);
           $scope.show = true;
         }
       });
@@ -96,8 +96,8 @@ controllers.controller('EventDescriptionController',
         if (err) {
           toastService.showLongBottom(err.error);
         } else {
-          $scope.currentEvent = result.event;
-          EventFactory.updateEventList(result.event);
+          $scope.currentEvent = result;
+          EventFactory.updateEventList(result);
           $scope.show = true;
         }
       });

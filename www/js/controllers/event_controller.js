@@ -70,7 +70,7 @@ controllers.controller('EventController', function($scope, EventFactory, $state,
       } else {
         $scope.showImage = true;
         toastService.showLongBottom('You are now signed up for the event');
-        EventFactory.updateEventList(result);
+        EventFactory.updateEventList(result.data);
       }
     });
   };
