@@ -50,8 +50,9 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
     });
   };
 
-  var addGhipy = function(text, done) {
+  var addGiphy = function(text, done) {
     var url;
+    console.log('NOT OK!');
     var token = accessFactory.getAccessToken();
     var data = {
       token: token,
@@ -70,17 +71,9 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
       done (err, result);
     });
   };
-  var getGhipy = function(done) {
-    var url;
-    if (window.cordova) {
-      url = HOST.hostAdress + ':4000/retrotv?token=' + accessFactory.getAccessToken();
-    } else {
-      url = 'data/retrotv';
-    }
-  };
+
   return {
-    addGhipy: addGhipy,
-    getGhipy: getGhipy,
+    addGiphy: addGiphy,
     getUser: getUser,
     getWifi: getWifi,
     getOrderSettings: getOrderSettings,

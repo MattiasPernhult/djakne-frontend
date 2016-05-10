@@ -1,6 +1,18 @@
 controllers.controller('ProfileController',
-  function($scope, SessionFactory, ProfileFactory, $state) {
-
+  function($scope, SessionFactory, ProfileFactory, EventFactory, $state, toastService) {
+    $scope.userWish = {};
+    $scope.addGiphy = function() {
+      var text = $scope.userWish.text;
+      console.log('test');
+      ProfileFactory.addGiphy(text, function(err, result) {
+        if (err) {
+          toastService.showLongBottom(err.error);
+        } else {
+          $scope.userWish.text = null;
+          $scope.userWish = result;
+        }
+      });
+    };
     // When user enters view, check settings
     $scope.$on('$ionicView.enter', function() {
       ProfileFactory.checkOrderSettings('Takeaway');
@@ -34,17 +46,27 @@ controllers.controller('ProfileController',
         SessionFactory.add(name, value);
       }
     };
+    EventFactory.getEvents(function(data) {
+      var events = data;
+      //  var id = 687;
+      var id = $scope.user.id;
+      $scope.isBooked = [];
+      angular.forEach(events, function(event) {
+        for (var i = 0; i < event.attendants.length; i++) {
+          if (id === event.attendants[i].id) {
+            $scope.isBooked.push(event);
+            break;
+          }
+        }
+      });
+      $scope.bookedQty = $scope.isBooked.length;
+      if ($scope.isBooked.length > 1) {
+        var list = $scope.isBooked;
+        $scope.isBooked = list.sort(function(a, b) {
+          a = new Date(a.date);
+          b = new Date(b.date);
+          return a - b;
+        });
+      }
+    });
   });
-
-  $scope.addGhipy = function(text) {
-    var text = $scope.text;
-    ProfileFactory.addGhipy(text, function(err, result) {
-    if (err) {
-      toastService.showLongBottom(err.error);
-    } else {
-      $scope.userComment.text = null;
-      ProfileFactory.addGhipy;
-      $scope.show = true;
-    }
-  });
-};
