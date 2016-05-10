@@ -3,12 +3,8 @@
     <!-- <button class="button icon-left ion-heart button-outline" ng-click="openFavoriteModal()" ng-style="userFavorites ? {'color':'#FF7E7E'} : {'color':'white'}" ng-disabled="favoritesSize() === 0" ng-style="">
     </button> -->
     <button class="button icon-left ion-android-person button-outline" ui-sref="profile" ng-style=""></button>
-      <!-- <button class="button icon-left ion-android-calendar button-outline" ui-sref="calendar"></button> -->
   </ion-nav-buttons>
 <ion-content scroll="false" has-bouncing="false">
-  <!-- <div ng-style="{ 'height':'120px','width':'100%','background-color':'#444'}">
-    <img id="logo" ng-src="{{icon.src}}"></img>
-  </div> -->
     <ion-slide-box on-slide-changed="changeLogo()"show-pager="false" ion-slide-tabs>
       <!-- Slide ett -->
         <ion-slide ion-slide-tab-label="Recent">
@@ -81,7 +77,7 @@
                 </ion-modal-view>
               </script>
 
-<!-- News Modal -->
+              <!-- News Modal -->
               <script id="currentNews.html" type="text/ng-template">
                 <ion-modal-view>
                 <ion-header-bar class="bar-dark">
@@ -111,8 +107,6 @@
 
                 </ion-modal-view>
               </script>
-
-
           </div>
         </ion-slide>
         <!-- Slide två -->
