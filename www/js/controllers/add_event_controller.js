@@ -1,5 +1,6 @@
 controllers.controller('AddEventController',
-  function($scope, $state, $http, HOST, EventFactory, $cordovaToast, httpService, toastService) {
+  function($scope, $state, $http, HOST, EventFactory, $cordovaToast,
+  httpService, toastService, accessFactory) {
     $scope.event = {};
 
     $scope.change = function() {
@@ -14,7 +15,7 @@ controllers.controller('AddEventController',
 
     $scope.sendPost = function() {
       var place = '';
-
+      var member = accessFactory.getMemberInfo();
       if ($scope.event.place && $scope.event.adress) {
         place = $scope.event.place + ', ' + $scope.event.adress;
       } else {
@@ -23,11 +24,11 @@ controllers.controller('AddEventController',
       var formData = {
         title: $scope.event.title,
         text: $scope.event.text,
-        author: $scope.event.author,
+        author: String(member.id),
         date: $scope.event.date,
         location: place,
       };
-
+      console.log('formData satt: ' + JSON.stringify(formData, null, 4));
       var url = HOST.hostAdress + ':4000/events';
       httpService.post(url, formData, function(err, result)  {
         if (err) {
