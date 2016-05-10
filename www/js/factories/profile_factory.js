@@ -5,11 +5,11 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
       checked: 'false',
     },
     Lactose: {
-      name: 'Lactose',
+      name: 'Lactose free',
       checked: 'false',
     },
     CoffeeMenu: {
-      name: 'CoffeeMenu',
+      name: 'CoffeeMenu as startpage',
       checked: 'false',
     },
   };

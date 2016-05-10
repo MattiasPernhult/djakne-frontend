@@ -88,6 +88,21 @@ ion-view {
   box-shadow:none!important;
 }
 
+.profileIcons{
+  height: 28px;
+  width: 30px;
+  margin-top: 8px;
+}
+
+.col.col-50{
+  text-align: center;
+}
+
+.profileDisplay{
+  display: block;
+}
+
+
 .ion-wifi {
   font-size: 30px;
   float:left;
@@ -120,9 +135,6 @@ ion-view {
   float:left;
 }
 
-#bookings {
-  margin-top: 50px;
-}
 
 #bookingDate {
   float: right;
@@ -913,4 +925,19 @@ img.imgCom {
     height: 30px;
     font-size: 35px;
     margin-top: 4px !important;
+}
+
+.creditIcon {
+ min-width: 30px !important;
+ min-height: 30px !important;
+ margin-left: 15px !important;
+ margin-bottom: 1px !important;
+ float:left;
+}
+.wifiIcon {
+ min-width: 30px !important;
+ min-height: 20px !important;
+ margin-left: 20px !important;
+ margin-bottom: 1px !important;
+ float:left;
 }
