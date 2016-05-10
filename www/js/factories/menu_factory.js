@@ -27,7 +27,7 @@ factories.factory('MenuFactory', function($http, accessFactory, HOST, httpServic
     if (window.cordova) {
       url = HOST.hostAdress + ':4000/menu/categories?join=Cold%20drink,Christmas%20must,' +
       'Coffee,Special%20tea,Food,Breakfast,Cookies,Reztart,Coffee,Dropcoffee,Coffee,' +
-      'Whole%20coffee%20beans';
+      'Whole%20coffee%20beans,Sweets,Cookies';
     } else {
       url = '/data/menu_categories.json';
     }
