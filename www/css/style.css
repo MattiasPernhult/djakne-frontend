@@ -573,6 +573,9 @@ hr{
   margin-bottom: 10px;
   margin-top: 5px;
 }
+.item-body {
+  box-shadow: none!important;
+}
 .bg-slide {
   background-color: #f0f0f0 !important;
 }

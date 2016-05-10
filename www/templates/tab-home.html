@@ -5,7 +5,7 @@
     <button class="button icon-left ion-android-person button-outline" ui-sref="profile" ng-style=""></button>
       <!-- <button class="button icon-left ion-android-calendar button-outline" ui-sref="calendar"></button> -->
   </ion-nav-buttons>
-<ion-content scroll="false" class="">
+<ion-content scroll="false" has-bouncing="false">
   <!-- <div ng-style="{ 'height':'120px','width':'100%','background-color':'#444'}">
     <img id="logo" ng-src="{{icon.src}}"></img>
   </div> -->
@@ -92,12 +92,20 @@
                 <ion-content>
                   <div ng-repeat="issue in issues" class="list card">
                     <div class="item item-avatar">
-                      <img src="img/Icons/home/coffee_black.png">
+                      <img src="img/Icons/home/news_black.png">
                       <div class="event-header">
                         <p>{{issue.title}}<p>
                       </div>
                       <div class="text-center padding">
                           <h2>{{issue.issue}}</h2>
+                      </div>
+                      <div class="list">
+
+                        <div ng-repeat="letter in issue.letters" class="item item-body">
+                          <h2>{{letter.title}}<h2>
+                          <p>{{letter.description}}<p>
+                          <hr>
+                        </div>
                       </div>
                     </ion-content>
 

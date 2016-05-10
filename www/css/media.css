@@ -10,6 +10,10 @@
     margin-left: 10px!important;
   }
 
+  h2 {
+    font-size: 14px!important;
+  }
+
 }
 @media (max-width:481px) { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
 

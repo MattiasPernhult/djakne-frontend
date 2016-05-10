@@ -39,14 +39,13 @@
         <div class="list">
 
           <div ng-repeat="letter in issue.letters" class="item item-body">
-            <p>{{letter.title}}<p>
-
-             <p>{{letter.description | limitTo: 200 + "'...'"}}<p>
-               <p>
-                <a ng-click="openNewsModal()" class="subdued">Read More</a>
-               </p>
-
-
+            <h2>{{letter.title}}<h2>
+            <p>{{letter.description | limitTo: 200 }}...<p>
+            <hr>
           </div>
-    </div>
+          <p>
+            <a ng-click="openNewsModal()" class="subdued">Read More</a>
+          </p>
+        </div>
+      </div>
   </ion-content>
