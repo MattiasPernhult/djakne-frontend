@@ -1,5 +1,5 @@
 <ion-content overflow-scroll="false" class="expandList" ng-style="{'background-color':'white'}">
-  <ion-refresher on-refresh="doMemberRefresh()" disable-pulling-rotation="false">
+  <ion-refresher on-refresh="doMemberRefresh()">
 
   </ion-refresher>
   <!-- Innehåll för slide ett -->
@@ -24,5 +24,28 @@
           <a ng-click="openCoffeeModal(coffee)" class="subdued">Read More</a>
         </p>
       </div>
-    </div>
+
+      </div>
+
+      <!-- News card -->
+      <div ng-repeat="issue in issues"class="list card">
+        <div class="item item-avatar">
+          <img src="img/Icons/home/news_black.png">
+          <div class="event-header">
+            <h2>{{issue.issue}}</h2>
+          </div>
+        </div>
+
+        <div class="list">
+
+          <div ng-repeat="letter in issue.letters" class="item item-body">
+            <h2>{{letter.title}}<h2>
+            <p>{{letter.description | limitTo: 200 }}...<p>
+            <hr>
+          </div>
+          <p>
+            <a ng-click="openNewsModal()" class="subdued">Read More</a>
+          </p>
+        </div>
+      </div>
   </ion-content>
