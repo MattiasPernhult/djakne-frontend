@@ -25,6 +25,8 @@
         </p>
       </div>
 
+      </div>
+
       <!-- News card -->
       <div ng-repeat="issue in issues"class="list card">
         <div class="item item-avatar">
@@ -34,7 +36,7 @@
           </div>
         </div>
 
-        <div class="list card">
+        <div class="list">
 
           <div ng-repeat="letter in issue.letters" class="item item-body">
             <p>{{letter.title}}<p>
@@ -46,7 +48,6 @@
 
 
           </div>
-        </div>
     </div>
 
 
