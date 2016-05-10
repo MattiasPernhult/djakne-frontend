@@ -1,14 +1,14 @@
 <ion-view title="Djäkne">
   <ion-nav-buttons side="right">
-    <button favDirective class="button icon-left ion-heart button-outline" ng-click="openFavoriteModal()" ng-style="userFavorites ? {'color':'#FF7E7E'} : {'color':'white'}" ng-disabled="favoritesSize() === 0" ng-style="">
-    </button>
+    <!-- <button class="button icon-left ion-heart button-outline" ng-click="openFavoriteModal()" ng-style="userFavorites ? {'color':'#FF7E7E'} : {'color':'white'}" ng-disabled="favoritesSize() === 0" ng-style="">
+    </button> -->
     <button class="button icon-left ion-android-person button-outline" ui-sref="profile" ng-style=""></button>
       <!-- <button class="button icon-left ion-android-calendar button-outline" ui-sref="calendar"></button> -->
   </ion-nav-buttons>
-<ion-content scroll="false" class="homeSlider">
-  <div ng-style="{ 'height':'120px','width':'100%','background-color':'#444'}">
+<ion-content scroll="false" class="">
+  <!-- <div ng-style="{ 'height':'120px','width':'100%','background-color':'#444'}">
     <img id="logo" ng-src="{{icon.src}}"></img>
-  </div>
+  </div> -->
     <ion-slide-box on-slide-changed="changeLogo()"show-pager="false" ion-slide-tabs>
       <!-- Slide ett -->
         <ion-slide ion-slide-tab-label="Recent">
@@ -32,12 +32,12 @@
                     <div class="list">
                     <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
                       <span>Work</span>
-                      <p>{{member.headline}}</p>
+                      <p>{{member.headline | limitTo:45}}</p>
                     </label>
                     <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
                       <span>Interests</span>
                       <p>{{member.interests}}</p>
-                      <p ng-show="member.interests.length === 0">None</p>
+                      <p ng-show="member.interests.length === 0">None given.</p>
                     </label>
                     <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
                       <span>Lives</span>

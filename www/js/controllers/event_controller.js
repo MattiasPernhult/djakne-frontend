@@ -1,34 +1,40 @@
 controllers.controller('EventController', function($scope, EventFactory, $state,
    $http, httpService, toastService, HOST, accessFactory, ProfileFactory) {
-  $scope.userComment = {};
+  // $scope.userComment = {};
 
-  ProfileFactory.getUser(function(data) {
-    $scope.user = JSON.parse(data);
-  });
-
-  $scope.addComment = function(eventId) {
-    var text = $scope.userComment.text;
-    EventFactory.addComment(eventId, text, function(err, result) {
-      if (err) {
-        toastService.showLongBottom(err.error);
-      } else {
-        $scope.userComment.text = null;
-        EventFactory.updateEventList(result.event);
-        $scope.show = true;
-      }
-    });
+  $scope.go = function(name, event) {
+    // var userObj = $scope.user;
+    var eventObj = event;
+    $state.go(name, {eventParam: eventObj});
   };
 
-  $scope.removeComment = function(eventId, commentId) {
-    EventFactory.removeComment(eventId, commentId, function(err, result) {
-      if (err) {
-        toastService.showLongBottom(err.error);
-      } else {
-        EventFactory.updateEventList(result.event);
-        $scope.show = true;
-      }
-    });
-  };
+  // ProfileFactory.getUser(function(data) {
+  //   $scope.user = JSON.parse(data);
+  // });
+  //
+  // $scope.addComment = function(eventId) {
+  //   var text = $scope.userComment.text;
+  //   EventFactory.addComment(eventId, text, function(err, result) {
+  //     if (err) {
+  //       toastService.showLongBottom(err.error);
+  //     } else {
+  //       $scope.userComment.text = null;
+  //       EventFactory.updateEventList(result.event);
+  //       $scope.show = true;
+  //     }
+  //   });
+  // };
+
+  // $scope.removeComment = function(eventId, commentId) {
+  //   EventFactory.removeComment(eventId, commentId, function(err, result) {
+  //     if (err) {
+  //       toastService.showLongBottom(err.error);
+  //     } else {
+  //       EventFactory.updateEventList(result.event);
+  //       $scope.show = true;
+  //     }
+  //   });
+  // };
 
   $scope.isVisible = false;
   $scope.toggleElement = function() {
@@ -59,11 +65,12 @@ controllers.controller('EventController', function($scope, EventFactory, $state,
 
     httpService.post(url, body, function(err, result) {
       if (err) {
-        toastService.showLongBottom('Något blev fel så du är ej anmäld till eventet');
+        toastService.showLongBottom('Something went wrong so you have not been ' +
+        'added to the event');
       } else {
         $scope.showImage = true;
-        toastService.showLongBottom('Du är nu anmäld till eventet');
-        EventFactory.updateEventList(result);
+        toastService.showLongBottom('You are now signed up for the event');
+        EventFactory.updateEventList(result.data);
       }
     });
   };

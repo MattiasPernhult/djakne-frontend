@@ -1,4 +1,5 @@
 controllers.controller('ProfileController',
+<<<<<<< HEAD
   function($scope, SessionFactory, ProfileFactory, EventFactory, $state, toastService) {
     $scope.userWish = {};
     $scope.addGiphy = function() {
@@ -26,6 +27,15 @@ controllers.controller('ProfileController',
       $scope.user = JSON.parse(data);
       console.log($scope.user);
     });
+=======
+function($scope, SessionFactory, ProfileFactory, EventFactory, $state) {
+
+  // When user enters view, check settings
+  $scope.$on('$ionicView.enter', function() {
+    ProfileFactory.checkOrderSettings('Takeaway');
+    ProfileFactory.checkOrderSettings('Lactose');
+    ProfileFactory.checkOrderSettings('CoffeeMenu');
+>>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f
 
     ProfileFactory.getWifi(function(data) {
       $scope.wifiMember = data.member;
@@ -70,3 +80,44 @@ controllers.controller('ProfileController',
       }
     });
   });
+<<<<<<< HEAD
+=======
+  $scope.logout = function() {
+    window.localStorage.token = undefined;
+    window.localStorage.tokenExpires = undefined;
+    $state.go('login');
+  };
+  // When user changes settings, add or remove localstorage
+  $scope.change = function(name, value) {
+    if (window.localStorage[name]) {
+      SessionFactory.remove(name);
+    } else {
+      SessionFactory.add(name, value);
+    }
+  };
+
+  EventFactory.getEvents(function(data) {
+   var events = data;
+   //  var id = 687;
+   var id = $scope.user.id;
+   $scope.isBooked = [];
+   angular.forEach(events, function(event) {
+     for (var i = 0; i < event.attendants.length; i++) {
+       if (id == event.attendants[i].id) {
+         $scope.isBooked.push(event);
+         break;
+       }
+     }
+   });
+   $scope.bookedQty = $scope.isBooked.length;
+   if ($scope.isBooked.length > 1) {
+     var list = $scope.isBooked;
+     $scope.isBooked = list.sort(function(a, b) {
+       a = new Date(a.date);
+       b = new Date(b.date);
+       return a - b;
+     });
+   }
+ });
+});
+>>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f

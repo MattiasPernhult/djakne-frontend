@@ -14,7 +14,24 @@
     </div>
     <ion-list>
       <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')"><h3>{{item.name}}</h3></ion-toggle>
+      <div class="row" style="border-top:1px solid lightgrey; border-bottom:1px solid grey">
+        <div class="col col-50">
+          <span class="ion-card" id="profileIcons"></span>
+          <p class="profileDisplay" style="margin-top: 8px">Your credit is: {{user.credits}}</p>
+        </div>
+        <div class="col col-50 wifi" ng-show="wifiPremium">
+          <img src="img/Icons/wifi_NoBG.png" class="profileIcons" />
+          <p class="profileDisplay"  style="margin-top: 8px">{{wifiPremium.wifiName}}</p>
+          <p class="profileDisplay" style="margin-top: -8px">{{wifiPremium.wifiPassword}}</p>
+        </div>
+       <div class="col col-50" ng-hide="wifiPremium">
+         <span  class="ion-wifi" id="profileIcons"></span>
+         <!-- <img src="img/Icons/wifi_NoBG.png" class="profileIcons"/> -->
+         <p class="profileDisplay"  style="margin-top: 8px">{{wifiMember.wifiName}}</p>
+         <p class="profileDisplay" style="margin-top: -12px">{{wifiMember.wifiPassword}}</p>
+       </div>
 
+<<<<<<< HEAD
       <ion-item class="profileItem" >
         <span class="creditIcon" ><img src="img/Icons/credits_NoBG.png"  style= "height: 30px; width: 30px ;"> </span>
         <div>
@@ -38,14 +55,28 @@
 
       <ion-item ng-hide="wifiPremium" class="profileItem">
       <span class="wifiIcon"><img src= "img/Icons/wifi_NoBG.png" style= "height: 28px; width: 30px; align: center position: bottom"></span>
-        <div>
-          <p><span class="item-note">
-            Wifi: {{wifiMember.wifiName}}
-          </span></p>
-          <p><span class="item-note">
-          Password: {{wifiMember.wifiPassword}}
-        </span></p>
+=======
+      </div>
+      <!-- <ion-item class="profileItem" id="creditInfo" style="border-top:1px solid lightgrey;">
+         <span class="wifiIcon"><img src= "img/Icons/credits_NoBG.png" class="profileIcons"></span>
+           <p>Your credit is: {{user.credits}}</p>
         </div>
+      </ion-item>
+
+      <ion-item ng-show="wifiPremium" class="profileItem" id="wifiInfo">
+        <span class="wifiIcon"><img src= "img/Icons/wifi_NoBG.png" class="profileIcons"></span>
+          <p>Wifi: {{wifiPremium.wifiName}}</p>
+          <p>Password: {{wifiPremium.wifiPassword}}</p>
+      </ion-item>
+
+      <ion-item ng-hide="wifiPremium" class="profileItem" id="wifiInfo">
+         <span class="wifiIcon"><img src= "img/Icons/wifi_NoBG.png" class="profileIcons"></span>
+>>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f
+        <div>
+          <p>Wifi: {{wifiMember.wifiName}}</p>
+          <p>Password: {{wifiMember.wifiPassword}}</p>
+        </div>
+<<<<<<< HEAD
       </ion-item>
       <div>
       <ion-item class="profileItem" >
@@ -66,6 +97,36 @@
      <img ng-show="userWish" src="{{userWish.img}}" style="height:55%" ><br>
    </div>
     </ion-item>
+=======
+      </ion-item> -->
+
+      <ion-item class="profileItem">
+        <!-- <span  class="ion-calendar"></span>
+          <span class="item-note">
+            <button class="bookingButton button button-small button-outline button-dark" ng-click="bookings = !bookings">
+             <p  class="readMore" ng-if="!bookings">Upcoming Events</p>
+             <p class="readMore" ng-if="bookings">Hide Events</p>
+            </button>
+          </span> -->
+          <div>
+            <h2 class="text-center" ng-show="!bookedQty">No upcoming events</h2>
+            <ion-list>
+              <ion-item class="bookedItems" ng-repeat="event in isBooked" ng-style="bookedQty == 1 ? {'border': 'none'} : ''">
+                <div id="bookingsDateContainer">
+                  <div class="dateBox">
+                    <p id="bookingDay" class="bookingsDate">{{event.date | date : 'd'}}</p>
+                    <p id="bookingMonth" class="bookingsDate">{{event.date | date : 'MMM'}}</p>
+                  </div>
+                </div>
+                <div id="bookingsDesc">
+                  <h3>{{event.title}}</h3>
+                  <h4>{{event.location}}</h4>
+                </div>
+              </ion-item>
+            </ion-list>
+          </div>
+      </ion-item>
+>>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f
     </ion-list>
   </ion-content>
 </ion-view>

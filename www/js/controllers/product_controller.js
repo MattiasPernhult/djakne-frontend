@@ -199,10 +199,12 @@ $ionicModal) {
     var data = {
       products: Cart.getProductsId(),
     };
-    data = JSON.stringify(data);
+    console.log(data);
     Cart.priceRequest(data, function(err, resp) {
       if (err) {
         alert('ERROR');
+      } else {
+        console.log(resp);
       }
     });
   };

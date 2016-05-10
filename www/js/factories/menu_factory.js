@@ -25,8 +25,9 @@ factories.factory('MenuFactory', function($http, accessFactory, HOST, httpServic
   var getProducts = function(done) {
     var url;
     if (window.cordova) {
-      url = HOST.hostAdress + ':4000/menu/categories?join=Kall%20dryck,Julmust,Kaffe,Specialte,' +
-      'Mat,Frukost,Kakor,Reztart,Kaffe,Droppkaffe,Kaffe,Hela%20b%C3%B6nor';
+      url = HOST.hostAdress + ':4000/menu/categories?join=Cold%20drink,Christmas%20must,' +
+      'Coffee,Special%20tea,Food,Breakfast,Cookies,Reztart,Coffee,Dropcoffee,Coffee,' +
+      'Whole%20coffee%20beans';
     } else {
       url = '/data/menu_categories.json';
     }
@@ -38,7 +39,7 @@ factories.factory('MenuFactory', function($http, accessFactory, HOST, httpServic
       if (err) {
         return done(err);
       }
-      products = result.products;
+      products = result.data;
       return done(products);
     });
   };

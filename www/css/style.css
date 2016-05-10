@@ -102,10 +102,27 @@ ion-view {
   box-shadow:none!important;
 }
 
+<<<<<<< HEAD
+=======
+#profileIcons{
+  height: 28px;
+  width: 30px;
+  margin-top: 8px;
+}
+
+.col.col-50{
+  text-align: center;
+}
+
+.profileDisplay{
+  display: block;
+}
+>>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f
 
 
 .ion-wifi {
   font-size: 30px;
+<<<<<<< HEAD
   float:left;
   margin-left: 25px;
 }
@@ -124,17 +141,27 @@ ion-view {
   float:left;
   margin-left: 25px;
 >>>>>>> cd2d49268bd0541bd9459483eb1aeff20d6c0684
+=======
+}
+
+
+.ion-card {
+  font-size: 30px;
+>>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f
 
 .ion-clipboard {
   font-size: 33px;
   float:left;
   margin-left: 25px;
+<<<<<<< HEAD
 }
 .iconCredit {
   height: 30px !important;
   width: 30px !important;
   float:left;
   margin-left: 5px !important;
+=======
+>>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f
 }
 
 .profile-text {
@@ -145,9 +172,6 @@ ion-view {
   float:left;
 }
 
-#bookings {
-  margin-top: 50px;
-}
 
 #bookingDate {
   float: right;
@@ -313,6 +337,8 @@ ion-view {
 }
 .toggleSpecials {
   box-shadow: none !important;
+  margin-top: 5% !important;
+  margin-left: 4% !important;
 }
 
 /* FIX */
@@ -870,6 +896,7 @@ input.commentContent {
   width: 85%;
   margin-left: 50px;
   padding-left: 5px;
+<<<<<<< HEAD
   border: 1px solid #ddd;
 }
 
@@ -885,6 +912,13 @@ input.addGiphyInput {
 
 #infoText{
 
+=======
+  border: 1px solid #ddd;
+}
+
+
+.infoText{
+>>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f
   white-space: normal;
   margin:0;
 }
@@ -903,10 +937,13 @@ div .userComment{
   margin-left: 50px;
   white-space: normal;
   width: 93%;
+<<<<<<< HEAD
 }
 div .userGhipy{
   display: inline-block;
   margin-left: 2px;
+=======
+>>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f
 }
 
 .contentComment{
@@ -957,4 +994,22 @@ img.imgCom {
     height: 30px;
     font-size: 35px;
     margin-top: 4px !important;
+<<<<<<< HEAD
+=======
+}
+
+.creditIcon {
+ min-width: 30px !important;
+ min-height: 30px !important;
+ margin-left: 15px !important;
+ margin-bottom: 1px !important;
+ float:left;
+}
+.wifiIcon {
+ min-width: 30px !important;
+ min-height: 20px !important;
+ margin-left: 20px !important;
+ margin-bottom: 1px !important;
+ float:left;
+>>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f
 }

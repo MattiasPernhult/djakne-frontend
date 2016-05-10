@@ -31,7 +31,7 @@ services.service('httpService', function($http) {
   };
 
   var del = function(url, deleteBody, afterCall) {
-    $http.delete(url)
+    $http.delete(url, deleteBody)
     .success(function(result) {
       afterCall(null, result);
     })
@@ -44,6 +44,6 @@ services.service('httpService', function($http) {
     get: get,
     put: put,
     post: post,
-    delete: del,
+    del: del,
   };
 });
