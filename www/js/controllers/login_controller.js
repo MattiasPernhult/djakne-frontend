@@ -78,6 +78,7 @@ controllers.controller('LoginController',
             } else {
               accessFactory.changeAccessToken(window.localStorage.token);
               $scope.goTo();
+              accessFactory.setMemberInfo(result.member);
             }
           });
         } else {
