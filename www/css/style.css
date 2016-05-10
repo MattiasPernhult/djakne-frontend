@@ -931,34 +931,3 @@ img.imgCom {
     height: 30px;
     font-size: 35px;
     margin-top: 4px !important;
-<<<<<<< HEAD
-=======
-}
-
-<<<<<<< HEAD
-.creditIcon {
- min-width: 30px !important;
- min-height: 30px !important;
- margin-left: 15px !important;
- margin-bottom: 1px !important;
- float:left;
-}
-.wifiIcon {
- min-width: 30px !important;
- min-height: 20px !important;
- margin-left: 20px !important;
- margin-bottom: 1px !important;
- float:left;
->>>>>>> c64ea12999cb9ccb633adbff030022ae34b98b1f
-}
-=======
-.row:before {
-    content:'';
-    width:100%;
-    height:100%;
-    position:absolute;
-    left:0;
-    top:0;
-    background:linear-gradient(transparent 100px, white);
-  }
->>>>>>> 46b0d134ec49f8a1261a5f8561c15ceeae7b24a3
