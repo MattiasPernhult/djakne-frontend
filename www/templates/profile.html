@@ -31,14 +31,13 @@
          <p class="profileDisplay" style="margin-top: -12px">{{wifiMember.wifiPassword}}</p>
        </div>
 
-      </div>
-      <!-- <ion-item class="profileItem" id="creditInfo" style="border-top:1px solid lightgrey;">
+<ion-item class="profileItem" id="creditInfo" style="border-top:1px solid lightgrey;">
          <span class="wifiIcon"><img src= "img/Icons/credits_NoBG.png" class="profileIcons"></span>
            <p>Your credit is: {{user.credits}}</p>
         </div>
       </ion-item>
 
-      <ion-item ng-show="wifiPremium" class="profileItem" id="wifiInfo">
+    <!--  <ion-item ng-show="wifiPremium" class="profileItem" id="wifiInfo">
         <span class="wifiIcon"><img src= "img/Icons/wifi_NoBG.png" class="profileIcons"></span>
           <p>Wifi: {{wifiPremium.wifiName}}</p>
           <p>Password: {{wifiPremium.wifiPassword}}</p>
@@ -46,11 +45,31 @@
 
       <ion-item ng-hide="wifiPremium" class="profileItem" id="wifiInfo">
          <span class="wifiIcon"><img src= "img/Icons/wifi_NoBG.png" class="profileIcons"></span>
+
         <div>
           <p>Wifi: {{wifiMember.wifiName}}</p>
           <p>Password: {{wifiMember.wifiPassword}}</p>
         </div>
-      </ion-item> -->
+
+      </ion-item>
+      <div>-->
+      <ion-item class="profileItem" >
+          <!-- <span class="wishGhipy"> -->
+          <p>  Wish a Gihpy animation write a word,<br> it will be shown in the TV at Coffeebar: </p>
+          <!-- </span> -->
+          <!-- <label class="wishGhipy"> -->
+          <!-- <div> -->
+            <input  ng-model="userWish.text" class="addGiphyInput" type="text" placeholder="Wish a giphy.."> <!-- User input --> </input>
+
+          <button  ng-click="addGiphy()" ng-disabled="!userWish.text" class=" addComment button-small button-dark button button-outline"> Wish a giphy </button>
+
+          <!-- </label> -->
+        <!-- </div> -->
+      </ion-item>
+   <ion-item class="profileItem" >
+     <div>
+   </div>
+    </ion-item>
 
       <ion-item class="profileItem">
         <!-- <span  class="ion-calendar"></span>
@@ -78,6 +97,7 @@
             </ion-list>
           </div>
       </ion-item>
+
     </ion-list>
   </ion-content>
 </ion-view>

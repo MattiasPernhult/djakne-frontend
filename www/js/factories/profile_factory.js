@@ -54,7 +54,30 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
     });
   };
 
+  var addGiphy = function(text, done) {
+    var url;
+    console.log('OK!');
+    var token = accessFactory.getAccessToken();
+    var data = {
+      token: token,
+      giphy: text,
+    };
+    url = HOST.hostAdress + ':4000/retrotv/request ';
+    console.log(url);
+    console.log(data);
+    httpService.post(url, data, function(err, result) {
+      if (err) {
+        console.log('NOT OK!');
+      } else {
+        console.log('Yiiipppiee!');
+        console.log('res: ' + result);
+      }
+      done (err, result);
+    });
+  };
+
   return {
+    addGiphy: addGiphy,
     getUser: getUser,
     getWifi: getWifi,
     getOrderSettings: getOrderSettings,
