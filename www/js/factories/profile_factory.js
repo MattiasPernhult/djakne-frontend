@@ -60,7 +60,7 @@ factories.factory('ProfileFactory', function(HOST, $http, accessFactory, httpSer
     var token = accessFactory.getAccessToken();
     var data = {
       token: token,
-      giphy: text + '[,'+text+']',
+      giphy: text,
     };
     url = HOST.hostAdress + ':4000/retrotv/request ';
     console.log(url);
