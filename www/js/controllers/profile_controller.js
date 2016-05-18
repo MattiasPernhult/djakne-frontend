@@ -10,8 +10,7 @@ controllers.controller('ProfileController',
         } else {
           //  $scope.userWish.text = null;
           $scope.userWish = result;
-          console.log(JSON.stringify(result, null, 2));
-          console.log($scope.userWish);
+          toastService.showLongBottom('You giphy wish will become true in about in near future..');
         }
       });
     };
