@@ -1,6 +1,6 @@
 controllers.controller('EventDescriptionController',
   function($scope, $http, EventFactory, accessFactory, HOST, httpService,
-    toastService, $stateParams, ProfileFactory, $state) {
+    toastService, $stateParams, ProfileFactory, $state, $ionicModal, $ionicPopup) {
     var eventData = EventFactory.getEvent();
     $scope.chosenEvent = eventData;
     $scope.image = '/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8KCwkMEQ8SEhEP' +
@@ -111,6 +111,53 @@ controllers.controller('EventDescriptionController',
           $scope.events = EventFactory.removeEventFromList(eventId);
           toastService.showLongBottom('The event was successfully deleted');
           $state.go('tab.home');
+        }
+      });
+    };
+
+    $ionicModal.fromTemplateUrl('modal.html', {
+      id: '1',
+      scope: $scope,
+      animation: 'slide-in-up',
+    }).then(function(modal)  {
+      $scope.modal = modal;
+    });
+
+    $scope.openModal = function(member) {
+      console.log('i openmodal');
+      $scope.member = member;
+      console.log($scope.member);
+      $scope.modal.show();
+    };
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+
+    $scope.showConfirmDeleteEvent = function(eventId) {
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Do you really want to delete the event?',
+      });
+
+      confirmPopup.then(function(res) {
+        if (res) {
+          $scope.removeEvent(eventId);
+        } else {
+          $scope.showAlert();
+        }
+      });
+    };
+
+    $scope.showConfirmDeleteComment = function(eventId, commentId) {
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Do you really want to delete your comment?',
+      });
+
+      confirmPopup.then(function(res) {
+        if (res) {
+          $scope.removeComment(eventId, commentId);
+        } else {
+          $scope.showAlert();
         }
       });
     };

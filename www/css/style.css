@@ -755,19 +755,18 @@ p.textoverflow {
   margin-bottom: 7px;
   margin-top: 20px;
 }
-.ion-ios-checkmark-empty:before {
-  margin: 0px 15px 0px 10px;
-  font-size: 25px;
-  font-weight: bold;
+
+.checkbox-royal input:before,
+.checkbox-royal .checkbox-icon:before {
+border-color: #0786AB;
 }
-.ion-ios-close-empty:before {
-  margin: 0px 15px 0px 10px;
-  font-size: 25px;
-  font-weight: bold;
+
+.checkbox-royal input:checked:before,
+.checkbox-royal input:checked + .checkbox-icon:before {
+background: #0786AB;
+border-color: #0786AB;
 }
-.check {
-  vertical-align: super;
-}
+
 .list-container ul li {
   padding: 2px 20px;
 }

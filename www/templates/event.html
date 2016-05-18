@@ -31,11 +31,11 @@
       <p class="infoText">
         {{currentEvent.location}}
       </p>
-      <button ng-if="currentEvent.author == user.id"  ng-style="{'float': 'right', 'margin-top':'10px'}" ng-click="removeEvent(currentEvent._id)" class="button button-small button-outline button-dark">Remove event</button>
+      <button ng-if="currentEvent.author == user.id"  ng-style="{'float': 'right', 'margin-top':'10px'}" ng-click="showConfirmDeleteEvent(currentEvent._id)" class="button button-small button-outline button-dark">Remove event</button>
       <p class="infoText">{{currentEvent.date | date:'h:mma'}}, {{currentEvent.date | date : shortTime}}</p>
       <h2 id="attending">Attending:</h2>
       <div id="attendants">
-        <img ng-repeat="attendant in currentEvent.attendants" id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false"</img>
+        <img ng-repeat="attendant in currentEvent.attendants" ng-click="openModal(attendant)" id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false"</img>
       </div>
 
       <!-- Event comments -->
@@ -46,14 +46,14 @@
       <div id="comments" ng-style="{'max-height':'200px','overflow':'scroll','min-height':'auto'}">
         <div class="row" ng-repeat="comment in currentEvent.comments" ng-style="{'padding-left':'0'}">
           <div class="col col-90" ng-style="{'padding-left':'0'}">
-            <img class="imgCom" ng-src="data:image/gif;base64,{{comment.userImage}}" ng-if="attendant.image != false"</img>
             <div class="contentComment">
-              <h2 class="userTitle">{{comment.firstName}} {{comment.lastName}}</h2>
+              <h5 class="userTitle" style="margin-left: 50px">{{comment.firstName}} {{comment.lastName}}</h5>
+              <img class="imgCom" ng-src="data:image/gif;base64,{{comment.userImage}}" ng-if="attendant.image != false"</img>
               <p class="userComment">{{comment.comment}}</p>
             </div>
           </div>
           <div class="col">
-            <button ng-if="user.id == comment.memberId"  ng-style="{'float': 'right', 'margin-top':'10px'}" ng-click="removeComment(currentEvent._id, comment._id)" class="button button-small button-outline button-dark">X</button>
+            <button ng-if="user.id == comment.memberId"  ng-style="{'float': 'right', 'margin-top':'10px'}" ng-click="showConfirmDeleteComment(currentEvent._id, comment._id)" class="button button-small button-outline button-dark">X</button>
           </div>
         </div>
       </div>
@@ -65,5 +65,38 @@
         </input>
       </div>
     </div>
+
+    <script id="modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar-dark">
+          <button class="button button-icon ion-ios-arrow-left" ng-click="closeModal()"></button>
+          <h1 class="title">Member</h1>
+        </ion-header-bar>
+        <ion-content>
+          <div class="hero text-center" style="background: #444">
+            <div class="content">
+              <img class="avatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+              <p><a id="profileTitle">{{member.firstName}} {{member.lastName}}</a></p>
+            </div>
+          </div>
+            <div class="list">
+            <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
+              <span>Work</span>
+              <p>{{member.headline | limitTo:45}}</p>
+            </label>
+            <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
+              <span>Interests</span>
+              <p>{{member.interests}}</p>
+              <p ng-show="member.interests.length === 0">None given.</p>
+            </label>
+            <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
+              <span>Lives</span>
+              <p>{{member.location}}</p>
+            </label>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
   </ion-content>
 </ion-view>

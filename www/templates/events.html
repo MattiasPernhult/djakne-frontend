@@ -6,7 +6,7 @@
   <!-- Page content -->
   <button class="button button-clear button-full event" ui-sref="addEvent">ADD EVENT</button>
   <ion-list>
-    <ion-item class="newEvents" ng-repeat="event in events" ng-click="go('event', event)">
+    <ion-item class="newEvents" ng-repeat="event in events | orderBy: date" ng-click="go('event', event)">
       <div id="bookingsDateContainer">
         <div class="dateBox">
           <p id="bookingDay" class="bookingsDate">{{event.date | date : 'd'}}</p>
