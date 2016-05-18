@@ -5,6 +5,11 @@ controllers.controller('AddEventController',
 
     $scope.change = function() {
       $scope.event.djakne = ($scope.event.djakne) ? true : false;
+      if (!$scope.event.djakne) {
+        $scope.event.place = null;
+        $scope.event.adress = null;
+        alert(JSON.stringify($scope.event, null, 2));
+      }
       $scope.show = $scope.event.djakne;
     };
 
@@ -16,10 +21,16 @@ controllers.controller('AddEventController',
     $scope.sendPost = function() {
       var place = '';
       var member = accessFactory.getMemberInfo();
+      if (!member.id) {
+        member.id = undefined;
+      }
       if ($scope.event.place && $scope.event.adress) {
         place = $scope.event.place + ', ' + $scope.event.adress;
-      } else {
+      } else if ($scope.event.djakne) {
         place = 'Djäkne';
+      } else {
+        toastService.showLongBottom('You must decide where the event will take place');
+        return;
       }
       var formData = {
         title: $scope.event.title,
@@ -28,7 +39,6 @@ controllers.controller('AddEventController',
         date: $scope.event.date,
         location: place,
       };
-      console.log('formData satt: ' + JSON.stringify(formData, null, 4));
       var url = HOST.hostAdress + ':4000/events';
       httpService.post(url, formData, function(err, result)  {
         if (err) {
@@ -36,10 +46,8 @@ controllers.controller('AddEventController',
         } else {
           toastService.showLongBottom('Event was created');
           $scope.event = {};
+          EventFactory.addEventToList(result.data);
           $state.go('tab.home');
-          EventFactory.getEvents(function() {
-            return;
-          });
         }
       });
     };

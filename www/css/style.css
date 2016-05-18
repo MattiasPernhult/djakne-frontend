@@ -1,5 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
 @import url(https://fonts.googleapis.com/css?family=Vollkorn);
+
+/*@import "compass/css3";*/
+
 .item {
   display: flex;
   padding-left: 10px;
@@ -16,9 +19,20 @@ p {
   font-family: Georgia, Times, "Times New Roman", serif!important;
 }
 h2 {
-  font-size: 16px!important;
+  font-size: 28px!important;
+}
+
+h3 {
+  font-size: 18px!important;
   margin-top: 5px!important;
 }
+
+hr {
+  border-style: solid!important;
+  border-color: #f1f1f1!important;
+  border-width: 0.5px!important
+}
+
 .containerCartIcons {
   display: flex;
   float: right;
@@ -172,6 +186,48 @@ ion-view {
   width: 150px;
 }
 
+
+/* MENU */
+
+/* Favorites */
+
+.trash{
+  font-size: 37px;
+}
+
+
+/* Product Information */
+
+.menuItem{
+  line-height: 23px !important;
+  height: 115px !important;
+  margin-bottom: 6px !important;
+}
+
+.product-title {
+  font-weight: 400 !important;
+  font-size: 17px !important;
+  color: black;
+}
+.product-price {
+  font-size: 14px !important;
+}
+.productInfo {
+  width: 60%;
+  display: inline-block;
+  float: left;
+}
+
+/* Container for add and buy button */
+
+.buttonContainer {
+  float: right;
+  position: absolute;
+  right: 10px;
+  top: 37px;
+}
+
+
 /* MENU */
 
 
@@ -236,9 +292,6 @@ ion-view {
   z-index: 1;
   position: absolute;
   margin: auto;
-}
-.text-login-container h3 {
-  font-size: 28px;
 }
 
 /* Color overlay on background image */
@@ -487,7 +540,6 @@ h2#attending {
 ​​ .form-style-4 input[type=submit], .form-style-4 input[type=text], .form-style-4 input[type=email] {
   font-size: 16px;
   color: #444;
-  ​
 }
 .form-style-4 p {
   font-size: 15px;
@@ -605,17 +657,21 @@ hr{
 }
 .item-price {
   /*margin-left: 0;*/
+  margin-top: 10px;
   font-size: 18px;
   float: left;
   width: 100%;
 }
 .item-obj {
   box-shadow: none !important;
-  height: 125px;!important;
+  height: 125px !important;
 }
 .item-list {
   margin-bottom: 10px;
   margin-top: 5px;
+}
+.item-body {
+  box-shadow: none!important;
 }
 .bg-slide {
   background-color: #f0f0f0 !important;
@@ -669,6 +725,13 @@ label.item.item-input {
 }
 .expandList {
   margin-top: 50px;
+}
+
+/* Recent */
+p.textoverflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Css for CO-WORK */
@@ -740,19 +803,18 @@ label.item.item-input {
   margin-bottom: 7px;
   margin-top: 20px;
 }
-.ion-ios-checkmark-empty:before {
-  margin: 0px 15px 0px 10px;
-  font-size: 25px;
-  font-weight: bold;
+
+.checkbox-royal input:before,
+.checkbox-royal .checkbox-icon:before {
+border-color: #0786AB;
 }
-.ion-ios-close-empty:before {
-  margin: 0px 15px 0px 10px;
-  font-size: 25px;
-  font-weight: bold;
+
+.checkbox-royal input:checked:before,
+.checkbox-royal input:checked + .checkbox-icon:before {
+background: #0786AB;
+border-color: #0786AB;
 }
-.check {
-  vertical-align: super;
-}
+
 .list-container ul li {
   padding: 2px 20px;
 }
@@ -979,19 +1041,4 @@ img.imgCom {
     height: 30px;
     font-size: 35px;
     margin-top: 4px !important;
-}
-
-.creditIcon {
- min-width: 30px !important;
- min-height: 30px !important;
- margin-left: 15px !important;
- margin-bottom: 1px !important;
- float:left;
-}
-.wifiIcon {
- min-width: 30px !important;
- min-height: 20px !important;
- margin-left: 20px !important;
- margin-bottom: 1px !important;
- float:left;
 }
