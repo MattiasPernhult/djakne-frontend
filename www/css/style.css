@@ -529,9 +529,8 @@ h2#attending {
 }
 
 #removeEvent{
- float: right;
- margin-top: -33%;
- display: block;
+ margin-right: 3%;
+ padding: 2.7%;
 }
 
 #addEvent {
@@ -999,6 +998,10 @@ div .userGhipy{
   margin-left: 2px;
 }
 
+#attendants{
+ display: block;
+ margin-top: 16% !important;
+}
 .contentComment{
   width: 88%;
   display: inline-block;

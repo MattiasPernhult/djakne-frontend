@@ -9,37 +9,39 @@
   </ion-nav-bar>
   <!-- Page content -->
   ​
-  <ion-content class="has-header">
-    <div ng-style="{'padding': '10px'}">
-      <div id="bookingsDateContainer">
-        <div class="dateBox">
-          <p id="bookingDay" class="bookingsDate">{{currentEvent.date | date : 'd'}}</p>
-          <p id="bookingMonth" class="bookingsDate">{{currentEvent.date | date : 'MMM'}}</p>
-        </div>
-      </div>
-      <div id="bookingsDesc">
-        <h3>{{currentEvent.title}}</h3>
-        <!-- <h4><p ng-if="currentEvent.location">{{currentEvent.location}}</p></h4>
-        <h4><p ng-if="!currentEvent.location">Djäkne</p></h4> -->
-        <h4><p>{{currentEvent.text}}</p></h4>
-      </div>
-      <!-- <p class="infoText">{{currentEvent.text}}</p> -->
-      <!-- <h2>At:</h2>
-      <p class="infoText">{{currentEvent.location}}</p> -->
-      <button id="removeEvent" ng-if="currentEvent.author == user.id"  ng-click="showConfirmDeleteEvent(currentEvent._id)" class="button button-small button-outline button-dark">
-        REMOVE EVENT
-      </button>
-      <button class="button button-outline button-assertive" ng-style="{'float': 'right', 'margin-top':'10px'}" ng-click="showing = !showing; signUp(currentEvent._id)" ng-show="!showing">
-        SIGN UP
-      </button>
-      <p class="infoText">{{currentEvent.date | date:'h:mma'}}</p>
-      <p class="infoText">
-        {{currentEvent.location}}
-      </p>
-      <h4 id="attending">Attending:</h4>
-      <div id="attendants">
-        <img ng-repeat="attendant in currentEvent.attendants" ng-click="openModal(attendant)" id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false" </img>
-      </div>
+
+<ion-content class="has-header">
+   <div ng-style="{'padding': '10px'}">
+     <div id="bookingsDateContainer">
+       <div class="dateBox">
+         <p id="bookingDay" class="bookingsDate">{{currentEvent.date | date : 'd'}}</p>
+         <p id="bookingMonth" class="bookingsDate">{{currentEvent.date | date : 'MMM'}}</p>
+       </div>
+     </div>
+     <div id="bookingsDesc">
+       <h2>{{currentEvent.title}}</h2>
+       <p class="infoText">{{currentEvent.date | date:'h:mma'}}</p>
+       <!-- <h4><p ng-if="currentEvent.location">{{currentEvent.location}}</p></h4>
+       <h4><p ng-if="!currentEvent.location">Djäkne</p></h4> -->
+     </div>
+     <!-- <p class="infoText">{{currentEvent.text}}</p> -->
+     <!-- <h2>At:</h2>
+     <p class="infoText">{{currentEvent.location}}</p> -->
+
+     <p class="infoText">
+       {{currentEvent.location}}
+     </p>
+     <p>{{currentEvent.text}}</p>
+     <button class="button button-outline button-assertive" ng-style="{'float': 'right'}" ng-click="showing = !showing; signUp(currentEvent._id)" ng-show="!showing">
+       SIGN UP
+     </button>
+     <button id="removeEvent" ng-if="currentEvent.author == user.id"  ng-style="{'float': 'right'}" ng-click="showConfirmDeleteEvent(currentEvent._id)" class="button button-small button-outline button-dark">
+       REMOVE EVENT
+     </button>
+     <div id="attendants">
+       <h4 id="attending">Attending:</h4>
+       <img ng-repeat="attendant in currentEvent.attendants" ng-click="openModal(attendant)" id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false" </img>
+     </div>
 
       <!-- Event comments -->
       <div>
@@ -65,7 +67,7 @@
           <img class="commentImg" ng-src="data:image/jpeg;base64,{{user.image}} "></img>
           <input ng-model="userComment.text" class="commentContent" type="text" placeholder="Write your comment here..">
           <!-- User input -->
-          <button ng-click="addComment(currentEvent._id); $event.stopPropagation()" ng-disabled="!userComment.text" class=" addComment button-small button-dark button button-outline"> Add Comment </button>
+          <button ng-click="addComment(currentEvent._id); $event.stopPropagation()" ng-disabled="!userComment.text" class=" addComment button-small button-dark button button-outline"> ADD COMMENT </button>
           </input>
         </div>
       </div>
