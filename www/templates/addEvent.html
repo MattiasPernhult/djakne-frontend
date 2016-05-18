@@ -1,43 +1,40 @@
 <ion-view view-title="Add Event">
-​
+  ​
   <ion-nav-bar class="bar-dark">
     <ion-nav-buttons side="left">
       <button class=" button button-icon ion-ios-arrow-left" ui-sref="tab.home"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
-​
+  ​
   <ion-content ng-style="{ 'background-color': 'white' }">
-  <div id="addEvent">
-    <form class="form-style-4" ng-submit="sendPost()" name="validEvent">
-      <label>
-      <input type="text" placeholder="Event name *" ng-model="event.title" required>
-      </label>
-      <label>
-      <input type="text" placeholder="Event description *" ng-model="event.text" required>
-      </label>
-      <label>
-      <input type="email" placeholder="Email *" ng-model="event.author" required>
-      </label>
-      <ion-checkbox id="atDjakne" class="checkbox checkbox-royal" ng-model="event.djakne" ng-change="change()" ng-checked="false" ng-click="!show = show; resetCustomLocation()">At Djakne</ion-checkbox>
-      <div ng-show="!show">
+    <div id="addEvent">
+      <form class="form-style-4" ng-submit="sendPost()" name="validEvent">
         <label>
-        <input type="text" placeholder="Place *" ng-model="event.place">
+          <input type="text" placeholder="Event name *" ng-model="event.title" required>
         </label>
         <label>
-        <input type="text" placeholder="Adress *" ng-model="event.adress">
+          <input type="text" placeholder="Event description *" ng-model="event.text" required>
         </label>
-      </div>
-      <label>
-        <p>Date and Time</p>
-        <input type="datetime-local" id="dateTime" ng-model="event.date" placeholder="Date and Time" required>
-      </label>
-      <label>
-      <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-full button-dark">
-        Submit
-      </button>
-      </label>
-    </form>
-    <p id="reqFields">* = required fields </p>
-</div>
+        <ion-checkbox id="atDjakne" class="checkbox-royal" ng-model="event.djakne" ng-change="change()" ng-checked="false" ng-click="!show = show; resetCustomLocation()">At Djäkne</ion-checkbox>
+        <div ng-show="!show">
+          <label>
+            <input type="text" placeholder="Place *" ng-model="event.place">
+          </label>
+          <label>
+            <input type="text" placeholder="Adress *" ng-model="event.adress">
+          </label>
+        </div>
+        <label>
+          <p>Date and Time</p>
+          <input type="datetime-local" id="dateTime" ng-model="event.date" placeholder="Date and Time" required>
+        </label>
+        <label>
+          <button type="submit" name="name" ng-disabled="!validEvent.$valid" class="button button-full" style="background-color: #0786AB ">
+            SUBMIT
+          </button>
+        </label>
+      </form>
+      <p id="reqFields">* = required fields </p>
+    </div>
   </ion-content>
 </ion-view>

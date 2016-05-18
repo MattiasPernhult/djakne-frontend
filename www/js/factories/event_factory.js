@@ -92,7 +92,7 @@ factories.factory('EventFactory', function($http, accessFactory, HOST, httpServi
   };
 
   var addEventToList = function(newEvent) {
-    events.push(newEvent);
+    events.unshift(newEvent);
   };
 
   var removeEventFromList = function(eventToRemoveId) {
