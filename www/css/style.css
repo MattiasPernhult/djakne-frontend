@@ -567,7 +567,7 @@ h2#attending {
   background: transparent;
   border: none;
   border-bottom: 1px dashed #988B8B;
-  width: 275px;
+  width: 100%;
   outline: none;
   padding: 0px 0px 0px 0px;
   font-style: italic;
