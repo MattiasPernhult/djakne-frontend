@@ -68,23 +68,32 @@ $ionicModal) {
     ProfileFactory.checkOrderSettings('Lactose');
     // Get ordersettings
     $scope.orderSettings = ProfileFactory.getOrderSettings();
+    // Get favorites
+    $scope.getFavorites();
+    // Get products
+    MenuFactory.getProducts(function(data) {
+      for (var index in data) {
+        for (var i = 0; i < data[index].length; i++) {
+          data[index][i].isFavorite = $scope.isFavorite(data[index][i]);
+        }
+      }
+      $scope.products = data;
+    });
   });
 
   $scope.expand = function(vote) {
     vote.show = !vote.show;
   };
 
-  $ionicModal.fromTemplateUrl('favorite_modal.html', {
-    id: '9',
+  $ionicModal.fromTemplateUrl('modals/favorites.html', {
+    id: '4',
     scope: $scope,
     animation: 'slide-in-up',
   }).then(function(modal)  {
     $scope.favoriteModal = modal;
   });
 
-  $scope.openFavoriteModal = function(member) {
-    $scope.member = member;
-    console.log($scope.member);
+  $scope.openFavoriteModal = function() {
     $scope.favoriteModal.show();
   };
 
@@ -114,17 +123,6 @@ $ionicModal) {
     return Cart.contains(product);
   };
 
-  MenuFactory.getProducts(function(data) {
-    console.log(data);
-    $scope.getFavorites();
-    for (var index in data) {
-      for (var i = 0; i < data[index].length; i++) {
-        data[index][i].isFavorite = $scope.isFavorite(data[index][i]);
-      }
-    }
-    $scope.products = data;
-  });
-
   $scope.favoritesSize = function() {
     var favSize = $scope.userFavorites.length;
     return favSize;
@@ -147,6 +145,10 @@ $ionicModal) {
     res = window.localStorage.getItem('favorites');
     favorites = JSON.parse(res);
     $scope.userFavorites = favorites || [];
+  };
+
+  $scope.checkIfFav = function() {
+    console.log(Object.keys($scope.products).length);
   };
 
   $scope.toogleFavorite = function(item) {
@@ -179,6 +181,8 @@ $ionicModal) {
       if (item.id === $scope.userFavorites[index].id) {
         item.isFavorite = true;
         break;
+      } else {
+        item.isFavorite = false;
       }
     }
   };
@@ -264,11 +268,11 @@ $ionicModal) {
   };
 
   $scope.showAlert = function() {
-   var alertPopup = $ionicPopup.alert({
-     title: 'Order',
-     template: 'Your order is cancelled',
-   });
- };
+    var alertPopup = $ionicPopup.alert({
+      title: 'Order',
+      template: 'Your order is cancelled',
+    });
+  };
 
   // Watch for changes in product total
   $scope.$watch(function() {

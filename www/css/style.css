@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100);
 @import url(https://fonts.googleapis.com/css?family=Vollkorn);
 
-@import "compass/css3";
+/*@import "compass/css3";*/
 
 .item {
   display: flex;
@@ -148,6 +148,48 @@ ion-view {
 .bookingButton {
   width: 150px;
 }
+
+
+/* MENU */
+
+/* Favorites */
+
+.trash{
+  font-size: 37px;
+}
+
+
+/* Product Information */
+
+.menuItem{
+  line-height: 23px !important;
+  height: 115px !important;
+  margin-bottom: 6px !important;
+}
+
+.product-title {
+  font-weight: 400 !important;
+  font-size: 17px !important;
+  color: black;
+}
+.product-price {
+  font-size: 14px !important;
+}
+.productInfo {
+  width: 60%;
+  display: inline-block;
+  float: left;
+}
+
+/* Container for add and buy button */
+
+.buttonContainer {
+  float: right;
+  position: absolute;
+  right: 10px;
+  top: 37px;
+}
+
 
 /* MENU */
 
@@ -450,7 +492,6 @@ h2#attending {
 ​​ .form-style-4 input[type=submit], .form-style-4 input[type=text], .form-style-4 input[type=email] {
   font-size: 16px;
   color: #444;
-  ​
 }
 .form-style-4 p {
   font-size: 15px;
@@ -568,13 +609,14 @@ hr{
 }
 .item-price {
   /*margin-left: 0;*/
+  margin-top: 10px;
   font-size: 18px;
   float: left;
   width: 100%;
 }
 .item-obj {
   box-shadow: none !important;
-  height: 125px;!important;
+  height: 125px !important;
 }
 .item-list {
   margin-bottom: 10px;
