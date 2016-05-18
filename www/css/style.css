@@ -56,6 +56,7 @@ hr {
 #remove {
   float: left;
 }
+
 .tab {
   padding-top: 3px!important;
 }
@@ -435,6 +436,12 @@ h2#attending {
   margin-top: 20%;*/
   display: block;
   margin: 0 auto;
+}
+
+#removeEvent{
+ float: right;
+ margin-top: -33%;
+ display: block;
 }
 
 #addEvent {
@@ -878,10 +885,9 @@ div .userImg{
 }
 
 div .userComment{
-  display: inline-block;
   margin-left: 50px;
-  white-space: normal;
   width: 93%;
+  margin-top: -2.6% !important;
 }
 
 .contentComment{
