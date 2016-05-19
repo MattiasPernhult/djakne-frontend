@@ -642,6 +642,7 @@ h2#attending {
 .newEvents{
   box-shadow: none;
   border-bottom: 1px solid #ccc;
+  background-color: #fbfbfb !important;
 }
 
 .newEvents:nth-child(1){
