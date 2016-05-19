@@ -940,6 +940,15 @@ border-color: #0786AB;
   text-align: center;
 }
 
+.eventBox{
+  width: 20%;
+  margin: 0 auto;
+  background-color: #0a9dc7;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
 .bookingsDate{
   color: white!important;
   font-family: arial !important;
@@ -955,6 +964,11 @@ border-color: #0786AB;
 #bookingsDesc{
   width: 95%;
   margin-bottom: 30px;
+}
+#eventDesc{
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 #bookingsDesc h3{
@@ -1046,7 +1060,6 @@ div .userGhipy{
 
 #attendants{
  display: block;
- margin-top: 16% !important;
 }
 .contentComment{
   width: 88%;

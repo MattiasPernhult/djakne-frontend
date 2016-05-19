@@ -12,7 +12,8 @@
   </ion-header-bar>
 
   <ion-content ng-style="{'background-color':'#f0f0f0'}">
-    <ion-list>
+    <p class="text-center" style="margin-top:50%;" ng-show="userFavorites.length < 1"><strong>No products selected</strong></p>
+    <ion-list ng-show="userFavorites">
       <ion-item  ng-repeat="product in userFavorites" class="menuItem item-accordion item-obj">
         <p class="item-name">{{product.name}}</p>
         <p class="item-price">{{product.price}} kr</p>
