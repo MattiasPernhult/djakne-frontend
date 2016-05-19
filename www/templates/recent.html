@@ -5,46 +5,39 @@
   <!-- Innehåll för slide ett -->
   <div class="list card">
     <h3>People @ Djakne</h3>
-  <div class="item">
-    <img id="homeAvatar" ng-click="openModal(member)" ng-repeat="member in members | limitTo: 6" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+    <div class="item">
+      <img id="homeAvatar" ng-click="openModal(member)" ng-repeat="member in members | limitTo: 6" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+    </div>
   </div>
-</div>
-    <div class="list card">
-      <div class="item item-avatar">
-        <img src="img/Icons/home/coffee_black.png">
-        <div class="event-header">
-          <h3>{{rating.title}}</h3>
-          <h4>This weeks coffee!</h4>
-        </div>
+  <div class="list card">
+    <div class="item item-avatar">
+      <img src="img/Icons/home/coffee_black.png">
+      <div class="event-header">
+        <h3>{{rating.title}}</h3>
+        <h4>This weeks coffee!</h4>
       </div>
-      <div class="item item-body">
-        <img class="event-img" ng-src="{{rating.image}}">
-        <p>
-          <a ng-click="openCoffeeModal(coffee)" class="subdued">Read More</a>
-        </p>
-      </div>
+    </div>
+    <div class="item item-body">
+      <img class="event-img" ng-src="{{rating.image}}">
+      <p>
+        <a ng-click="openCoffeeModal(coffee)" class="subdued">Read More</a>
+      </p>
+    </div>
 
-      </div>
+  </div>
 
-      <!-- News card -->
-      <div ng-repeat="issue in issues"class="list card">
-        <div class="item item-avatar">
-          <img src="img/Icons/home/news_black.png">
-          <div class="event-header">
-            <h3>{{issue.issue}}</h3>
-          </div>
-        </div>
+  <!-- News Card-->
+  <div ng-repeat="letter in issue.letters" class="item item-body" style="padding:0px;">
+    <h3>{{letter.title}}<h3>
+              <p style="padding:0px 10px 0px 10px;text-align:center">{{letter.description | limitTo: 200 }}...<p>
+              <hr ng-style="{'width':'85%'}" ng-hide="$last">
+            </div>
 
-        <div class="list">
-
-          <div ng-repeat="letter in issue.letters" class="item item-body" style="padding:0px;">
+  <!-- CurrentNews.html-->
+  <div ng-repeat="letter in issue.letters" class="item item-body">
             <h3>{{letter.title}}<h3>
-            <p>{{letter.description | limitTo: 200 }}...<p>
-            <hr ng-style="{'width':'85%'}" ng-hide="$last">
+            <p style="padding:0px 10px 0px 10px;text-align:justify">{{letter.description}}<p>
+            <hr ng-hide="$last">
           </div>
-          <p>
-            <a ng-click="openNewsModal()" class="subdued">Read More</a>
-          </p>
         </div>
-      </div>
-  </ion-content>
+      </ion-content>
