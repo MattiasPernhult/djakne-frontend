@@ -10,13 +10,15 @@
 }
 body {
   font-family: Georgia, Times, "Times New Roman", serif !important;
-  color: #222222;
+  color: #666;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Vollkorn', serif!important;
+  color: #444;
 }
 p {
   font-family: Georgia, Times, "Times New Roman", serif!important;
+  color: #666;
 }
 h2 {
   font-size: 28px!important;
@@ -41,27 +43,30 @@ hr {
   margin: 0;
 }
 
-/* FIX */
-
 .cartIcon {
   min-width: 40px !important;
   min-height: 40px !important;
   line-height: 0 !important;
   margin: 0 10px;
-  color: black !important;
+  /*color: black !important;*/
 }
+
 #add {
   float: right;
 }
+
 #remove {
   float: left;
 }
+
 .tab {
   padding-top: 3px!important;
 }
+
 ion-view {
   position: relative;
 }
+
 .heart {
   font-size: 40px;
   margin-right: 10px;
@@ -117,10 +122,12 @@ ion-view {
 }
 
 
-#profileIcons{
-  height: 28px;
-  width: 30px;
-  margin-top: 8px;
+.profileIcons{
+  /*height: 30px;
+  width: 30px;*/
+  /*margin-top: 8px;*/
+  /*font-size: 45px;
+  display:block;*/
 }
 
 .col.col-50{
@@ -131,12 +138,17 @@ ion-view {
   display: block;
 }
 
-
+.profileIconText{
+  margin-left:10px;
+  margin-bottom: 0;
+  height: 100%;
+  vertical-align:text-bottom;
+  margin-top: 10px;
+}
 
 .ion-wifi {
-  font-size: 30px;
-  float:left;
-  margin-left: 25px;
+  font-size: 42px;
+  margin-left: 10px;
 }
 
 
@@ -147,31 +159,29 @@ ion-view {
 }
 
 .ion-card {
-  font-size: 30px;
-  float:left;
-  margin-left: 25px;
-
+  font-size: 42px;
+  margin-left: 10px;
+  /*float:left;*/
 }
 
 
-.ion-card {
+/*.ion-card {
   font-size: 30px;
   font-size: 33px;
   float:left;
   margin-left: 25px;
 
-}
+}*/
 .iconCredit {
   height: 30px !important;
   width: 30px !important;
   float:left;
   margin-left: 5px !important;
-
 }
 
 .profile-text {
   font-size: 14px;
-  color: black;
+  /*color: black;*/
   font-family: sans-serif;
   margin-right: 50px;
   float:left;
@@ -207,7 +217,7 @@ ion-view {
 .product-title {
   font-weight: 400 !important;
   font-size: 17px !important;
-  color: black;
+  /*color: black;*/
 }
 .product-price {
   font-size: 14px !important;
@@ -236,7 +246,7 @@ ion-view {
 .product-title {
   font-weight: 400 !important;
   font-size: 17px !important;
-  color: black;
+  /*color: black;*/
 }
 .product-price {
   font-size: 14px !important;
@@ -273,7 +283,7 @@ ion-view {
   height: 100%;
 }
 .slider-slide {
-  color: #000;
+  /*color: #000;*/
   font-weight: 300;
   position: relative;
   background-repeat: no-repeat;
@@ -377,18 +387,20 @@ ion-view {
   width: 150px !important;
 }
 .toggleSpecials:last-child {
-  border-top: 1px solid #e5e5e5;
+  /*border-top: 1px solid #e5e5e5;*/
+  border-bottom: none;
 }
 .toggleSpecials {
   box-shadow: none !important;
-  margin-top: 5% !important;
+  /*margin-top: 5% !important;*/
   margin-left: 4% !important;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 /* FIX */
 .toggleSpecials h3 {
 font-family: sans-serif;
-font-size: 14px;
+font-size: 14px !important;
 }
 .wishGhipy h3 {
 font-family: sans-serif;
@@ -415,7 +427,7 @@ margin-left: 20px !important;
   font-size: 20px;
   line-height: 20px;
   font-family: initial;
-  color: #444;
+  /*color: #444;*/
 }
 
 /* Item quantity - cart template */
@@ -539,12 +551,12 @@ h2#attending {
 }
 ​​ .form-style-4 input[type=submit], .form-style-4 input[type=text], .form-style-4 input[type=email] {
   font-size: 16px;
-  color: #444;
+
 }
 .form-style-4 p {
   font-size: 15px;
   font-style: italic;
-  color: #444;
+
 }
 .form-style-4 label {
   display: block;
@@ -574,7 +586,7 @@ h2#attending {
 .ion-edit {
   display: block;
   margin-left: 90%;
-  color: black;
+  /*color: black;*/
   margin-top: 2%;
   font-size: 20px;
 }
@@ -596,11 +608,9 @@ h2#attending {
 }
 #cardHead h4 {
   float: left;
-  color: black;
   display: block;
 }
 #cardHead h6 {
-  color: black;
   float: right;
 }
 #cardHead hr {
@@ -757,7 +767,7 @@ p.textoverflow {
   text-align: center;
   font-size: 20px;
   margin-top: 20px;
-  color: #665;
+  /*color: #665;*/
 }
 .price .amount-container {
   padding: 25px 0 5px;
@@ -797,7 +807,7 @@ p.textoverflow {
 .list-container ul {
   list-style: none;
   background: #D0C9C9;
-  color: #666;
+  /*color: #666;*/
   font-size: 12.5px;
   opacity: 0.75;
   margin-bottom: 7px;
@@ -841,7 +851,7 @@ border-color: #0786AB;
   width: 92% !important;
   padding-bottom: 17px;
   border-bottom: 1px solid #ccc;
-  color: #2E2A2A !important;
+  /*color: #2E2A2A !important;*/
   font-size: 15.5px;
   text-align: center;
   left: 0;
@@ -902,12 +912,10 @@ border-color: #0786AB;
 #bookingsDesc h3{
   font-size: 20px;
   padding-left: 5px;
-  color: #444;
 }
 
 #bookingsDesc h4{
   padding-left: 5px;
-  color: #444;
 }
 
 #bookingMonth{
@@ -921,10 +929,6 @@ border-color: #0786AB;
 
 .bookedItems:last-child{
   border: none;
-}
-
-.list h2 {
-  color: #444;
 }
 
 .wifi{
@@ -956,7 +960,7 @@ input.addGiphyInput {
   height: 43px;
   width: 97%;
   margin-left: 2px;
-  padding-left: 2px;
+  padding-left: 10px;
   vertical-align: middle;
   display: inline-block;
   border: 1px solid #ddd;
@@ -1041,4 +1045,52 @@ img.imgCom {
     height: 30px;
     font-size: 35px;
     margin-top: 4px !important;
+}
+
+#profile_nav{
+  background-color: whitesmoke;
+}
+
+#profile_nav ul{
+  padding: 15px 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#profile_nav ul li{
+  font-size: 12px;
+  padding:0 30px;
+  text-transform: uppercase;
+}
+
+#profile_nav ul li:nth-child(2){
+  border-right: 1px solid #555;
+  border-left: 1px solid #555;
+}
+
+#icon_list{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0 10px;
+}
+
+#icon_list li{
+  padding: 10px 0;
+  margin: 10px 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  text-align: center;
+}
+
+.profil_active{
+  font-size: 14px !important;
+  font-weight: 600;
 }

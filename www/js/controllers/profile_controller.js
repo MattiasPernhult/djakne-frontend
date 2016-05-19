@@ -1,6 +1,7 @@
 controllers.controller('ProfileController',
 function($scope, SessionFactory, ProfileFactory, EventFactory, $state, toastService) {
   $scope.userWish = {};
+  $scope.general = true;
   $scope.addGiphy = function() {
     var text = $scope.userWish.text;
     ProfileFactory.addGiphy(text, function(err, result) {
@@ -11,6 +12,27 @@ function($scope, SessionFactory, ProfileFactory, EventFactory, $state, toastServ
         toastService.showLongBottom('You giphy wish will become true in near future..');
       }
     });
+  };
+
+  $scope.changeView = function(index) {
+
+    switch(index){
+      case 0:
+        $scope.general = true;
+        $scope.giphy = false;
+        $scope.eventBooking = false;
+        break;
+      case 1:
+        $scope.general = false;
+        $scope.giphy = true;
+        $scope.eventBooking = false;
+        break;
+      case 2:
+        $scope.general = false;
+        $scope.giphy = false;
+        $scope.eventBooking = true;
+        break;
+    }
   };
 
   ProfileFactory.getUser(function(data) {
