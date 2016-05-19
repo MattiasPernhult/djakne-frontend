@@ -35,12 +35,12 @@
       <ul id="icon_list">
         <li ng-hide="wifiPremium">
           <span class="ion-wifi"></span>
-          <p class="profileDisplay profileIconText">{{wifiMember.wifiName}}</p>
-          <p class="profileDisplay profileIconText">{{wifiMember.wifiPassword}}</p>
+          <p class="profileDisplay profileIconText"><strong>Wi-fi: </strong>{{wifiMember.wifiName}}<br>
+          <strong>Password: </strong>{{wifiMember.wifiPassword}}</p>
         </li>
         <li>
           <span class="ion-card"></span>
-          <p class="profileDisplay profileIconText">Your credit is: {{user.credits}}</p>
+          <p class="profileDisplay profileIconText"><strong>Your credit is: </strong>{{user.credits}}</p>
         </li>
       </ul>
     </div>
