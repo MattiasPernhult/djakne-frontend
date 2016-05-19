@@ -34,20 +34,20 @@
       <ion-content class="padding" ng-style="{'background-color':'#f2f2f2'}">
         <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
         <ion-list>
-          <ion-item ng-repeat="item in customersProducts" class="cart-item">
-              <h2 class="product-title">{{item.name}}</h2>
-              <p class="product-price">{{item.price}} kr</p>
-            <div class="containerCartIcons">
-              <button ng-click="removeFromCart(item); priceRequest()" id="add" class="button button-outline button-dark ion-minus cartIcon"></button>
+          <ion-item ng-style="{'padding-top':'0', 'padding-bottom':'0','height':'103px','box-shadow':'none'}" ng-repeat="item in customersProducts" class="menuItem">
+            <p class="item-name">{{item.name}}</p>
+            <p class="item-price">{{item.price}} kr</p>
+            <div ng-style="{'display':'flex'}" class="buttonContainer item-button-container">
+              <button ng-click="removeFromCart(item); priceRequest()" class="button button-outline button-dark ion-minus cartIcon"></button>
               <div id="qtyContainer">
-                <h1 id="qty-amount">{{item.qty}}<span>st</span></h1>
+                <h2 id="qty-amount">{{item.qty}}<span>st</span></h2>
               </div>
-              <button ng-click="addToCart(item); priceRequest()" id="remove" class=" remove button button-outline button-dark ion-plus cartIcon"></button>
+              <button ng-click="addToCart(item); priceRequest()" class="remove button button-outline button-dark ion-plus cartIcon"></button>
             </div>
           </ion-item>
         </ion-list>
         <form class="list">
-          <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-hide="$last" ng-model="item.checked" ng-checked="item.checked">
+          <ion-toggle class="cartSpecials" ng-repeat="item in orderSettings" ng-hide="$last" ng-model="item.checked" ng-checked="item.checked">
             <h3>{{item.name}}</h3>
           </ion-toggle>
           <label class="item item-input">

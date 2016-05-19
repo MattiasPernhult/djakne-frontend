@@ -397,11 +397,26 @@ ion-view {
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* FIX */
 .toggleSpecials h3 {
 font-family: sans-serif;
 font-size: 14px !important;
 }
+
+.cartSpecials:last-child {
+  /*border-top: 1px solid #e5e5e5;*/
+  border-bottom: none;
+}
+.cartSpecials {
+  box-shadow: none !important;
+  /*margin-top: 5% !important;*/
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.cartSpecials h3 {
+font-family: sans-serif;
+font-size: 14px !important;
+}
+
 .wishGhipy h3 {
 font-family: sans-serif;
 font-size: 14px;
