@@ -9,7 +9,7 @@ function($scope, SessionFactory, ProfileFactory, EventFactory, $state, toastServ
         toastService.showLongBottom(err.error);
       } else {
         $scope.userWish = result;
-        toastService.showLongBottom('You giphy wish will become true in near future..');
+        toastService.showLongBottom('Your giphy wish will become true in the near future..');
       }
     });
   };
