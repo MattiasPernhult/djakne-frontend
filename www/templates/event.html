@@ -5,98 +5,104 @@
       <button class=" button button-icon ion-ios-arrow-left" ui-sref="tab.home"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-    <button class="button button-small button-outline button-white" id="cowork" ng-click="showing = !showing; signUp(currentEvent._id)" ng-show="!showing">
-      SIGN UP
-     </button>
     </ion-nav-buttons>
   </ion-nav-bar>
   <!-- Page content -->
-​  <ion-content class="has-header">
-    <div ng-style="{'padding': '10px'}">
-      <div id="bookingsDateContainer">
-        <div class="dateBox">
-          <p id="bookingDay" class="bookingsDate">{{currentEvent.date | date : 'd'}}</p>
-          <p id="bookingMonth" class="bookingsDate">{{currentEvent.date | date : 'MMM'}}</p>
-        </div>
-      </div>
-      <div id="bookingsDesc">
-        <h3>{{currentEvent.title}}</h3>
-        <!-- <h4><p ng-if="currentEvent.location">{{currentEvent.location}}</p></h4>
-        <h4><p ng-if="!currentEvent.location">Djäkne</p></h4> -->
-        <h4><p>{{currentEvent.text}}</p></h4>
-      </div>
-      <!-- <p class="infoText">{{currentEvent.text}}</p> -->
-      <!-- <h2>At:</h2>
-      <p class="infoText">{{currentEvent.location}}</p> -->
-      <p class="infoText">
-        {{currentEvent.location}}
-      </p>
-      <button ng-if="currentEvent.author == user.id"  ng-style="{'float': 'right', 'margin-top':'10px'}" ng-click="showConfirmDeleteEvent(currentEvent._id)" class="button button-small button-outline button-dark">Remove event</button>
-      <p class="infoText">{{currentEvent.date | date:'h:mma'}}, {{currentEvent.date | date : shortTime}}</p>
-      <h2 id="attending">Attending:</h2>
-      <div id="attendants">
-        <img ng-repeat="attendant in currentEvent.attendants" ng-click="openModal(attendant)" id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false"</img>
-      </div>
+  ​
+
+<ion-content class="has-header">
+   <div ng-style="{'padding': '10px'}">
+     <div id="bookingsDateContainer">
+       <div class="dateBox">
+         <p id="bookingDay" class="bookingsDate">{{currentEvent.date | date : 'd'}}</p>
+         <p id="bookingMonth" class="bookingsDate">{{currentEvent.date | date : 'MMM'}}</p>
+       </div>
+     </div>
+     <div id="bookingsDesc">
+       <h2>{{currentEvent.title}}</h2>
+       <p class="infoText">{{currentEvent.date | date:'h:mma'}}</p>
+       <!-- <h4><p ng-if="currentEvent.location">{{currentEvent.location}}</p></h4>
+       <h4><p ng-if="!currentEvent.location">Djäkne</p></h4> -->
+     </div>
+     <!-- <p class="infoText">{{currentEvent.text}}</p> -->
+     <!-- <h2>At:</h2>
+     <p class="infoText">{{currentEvent.location}}</p> -->
+
+     <p class="infoText">
+       {{currentEvent.location}}
+     </p>
+     <p>{{currentEvent.text}}</p>
+     <button class="button button-outline button-assertive" ng-style="{'float': 'right'}" ng-click="showing = !showing; signUp(currentEvent._id)" ng-show="!showing">
+       SIGN UP
+     </button>
+     <button id="removeEvent" ng-if="currentEvent.author == user.id"  ng-style="{'float': 'right'}" ng-click="showConfirmDeleteEvent(currentEvent._id)" class="button button-small button-outline button-dark">
+       REMOVE EVENT
+     </button>
+     <div id="attendants">
+       <h4 id="attending">Attending:</h4>
+       <img ng-repeat="attendant in currentEvent.attendants" ng-click="openModal(attendant)" id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false" </img>
+     </div>
 
       <!-- Event comments -->
       <div>
-      <div>
-        <h5 id="comment">{{currentEvent['comments'].length}}  |  COMMENTS</h5>
-      </div>
-      <div id="comments" ng-style="{'max-height':'200px','overflow':'scroll','min-height':'auto'}">
-        <div class="row" ng-repeat="comment in currentEvent.comments" ng-style="{'padding-left':'0'}">
-          <div class="col col-90" ng-style="{'padding-left':'0'}">
-            <div class="contentComment">
-              <h5 class="userTitle" style="margin-left: 50px">{{comment.firstName}} {{comment.lastName}}</h5>
-              <img class="imgCom" ng-src="data:image/gif;base64,{{comment.userImage}}" ng-if="attendant.image != false"</img>
-              <p class="userComment">{{comment.comment}}</p>
+        <div>
+          <h5 id="comment">{{currentEvent['comments'].length}}  |  COMMENTS</h5>
+        </div>
+        <div id="comments" ng-style="{'max-height':'200px','overflow':'scroll','min-height':'auto'}">
+          <div class="row" ng-repeat="comment in currentEvent.comments" ng-style="{'padding-left':'0'}">
+            <div class="col col-90" ng-style="{'padding-left':'0'}">
+              <div class="contentComment">
+                <h5 class="userTitle" style="margin-left: 18%"><b>{{comment.firstName}} {{comment.lastName}}</b></h5>
+                <img class="imgCom" ng-src="data:image/gif;base64,{{comment.userImage}}" ng-if="attendant.image != false" </img>
+                <p class="userComment" style="margin-top: -10%">{{comment.comment}}</p>
+              </div>
             </div>
-          </div>
-          <div class="col">
-            <button ng-if="user.id == comment.memberId"  ng-style="{'float': 'right', 'margin-top':'10px'}" ng-click="showConfirmDeleteComment(currentEvent._id, comment._id)" class="button button-small button-outline button-dark">X</button>
+            <div class="col">
+              <button ng-if="user.id == comment.memberId" ng-style="{'float': 'right', 'margin-top':'10px'}" ng-click="showConfirmDeleteComment(currentEvent._id, comment._id)" class="button button-small button-outline button-dark">X</button>
+            </div>
           </div>
         </div>
+        <!-- Comment input container -->
+        <div ng-style="{'margin-top': '25px'}">
+          <img class="commentImg" ng-src="data:image/jpeg;base64,{{user.image}} "></img>
+          <input ng-model="userComment.text" class="commentContent" type="text" placeholder="Write your comment here..">
+          <!-- User input -->
+          <button ng-click="addComment(currentEvent._id); $event.stopPropagation()" ng-disabled="!userComment.text" class=" addComment button-small button-dark button button-outline"> ADD COMMENT </button>
+          </input>
+        </div>
       </div>
-      <!-- Comment input container -->
-      <div ng-style="{'margin-top': '25px'}">
-        <img class="commentImg" ng-src="data:image/jpeg;base64,{{user.image}} "></img>
-        <input ng-model="userComment.text" class="commentContent" type="text" placeholder="Write your comment here.."> <!-- User input -->
-          <button ng-click="addComment(currentEvent._id); $event.stopPropagation()" ng-disabled="!userComment.text" class=" addComment button-small button-dark button button-outline"> Add Comment </button>
-        </input>
-      </div>
-    </div>
 
-    <script id="modal.html" type="text/ng-template">
-      <ion-modal-view>
-        <ion-header-bar class="bar-dark">
-          <button class="button button-icon ion-ios-arrow-left" ng-click="closeModal()"></button>
-          <h1 class="title">Member</h1>
-        </ion-header-bar>
-        <ion-content>
-          <div class="hero text-center" style="background: #444">
-            <div class="content">
-              <img class="avatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
-              <p><a id="profileTitle">{{member.firstName}} {{member.lastName}}</a></p>
+      <script id="modal.html" type="text/ng-template">
+        <ion-modal-view>
+          <ion-header-bar class="bar-dark">
+            <button class="button button-icon ion-ios-arrow-left" ng-click="closeModal()"></button>
+            <h1 class="title">Member</h1>
+          </ion-header-bar>
+          <ion-content>
+            <div class="hero text-center" style="background: #444">
+              <div class="content">
+                <img class="avatar" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+                <p><a id="profileTitle">{{member.firstName}} {{member.lastName}}</a></p>
+              </div>
             </div>
-          </div>
             <div class="list">
-            <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
-              <span>Work</span>
-              <p>{{member.headline | limitTo:45}}</p>
-            </label>
-            <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
-              <span>Interests</span>
-              <p>{{member.interests}}</p>
-              <p ng-show="member.interests.length === 0">None given.</p>
-            </label>
-            <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
-              <span>Lives</span>
-              <p>{{member.location}}</p>
-            </label>
-          </div>
-        </ion-content>
-      </ion-modal-view>
-    </script>
+              <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
+                <span>Work</span>
+                <p>{{member.headline | limitTo:45}}</p>
+              </label>
+              <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
+                <span>Interests</span>
+                <p>{{member.interests}}</p>
+                <p ng-show="member.interests.length === 0">None given.</p>
+              </label>
+              <label class="item item-stacked-label" ng-style="{ 'box-shadow':'none', 'border-bottom': '1px solid lightgrey' }">
+                <span>Lives</span>
+                <p>{{member.location}}</p>
+              </label>
+            </div>
+          </ion-content>
+        </ion-modal-view>
+      </script>
 
   </ion-content>
 </ion-view>

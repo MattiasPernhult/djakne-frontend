@@ -539,6 +539,11 @@ h2#attending {
   margin: 0 auto;
 }
 
+#removeEvent{
+ margin-right: 3%;
+ padding: 2.7%;
+}
+
 #addEvent {
   min-width: 100%;
   font-size: 16px;
@@ -572,7 +577,7 @@ h2#attending {
   background: transparent;
   border: none;
   border-bottom: 1px dashed #988B8B;
-  width: 275px;
+  width: 100%;
   outline: none;
   padding: 0px 0px 0px 0px;
   font-style: italic;
@@ -986,10 +991,9 @@ div .userImg{
 }
 
 div .userComment{
-  display: inline-block;
   margin-left: 50px;
-  white-space: normal;
   width: 93%;
+  margin-top: -2.6% !important;
 
 }
 div .userGhipy{
@@ -997,6 +1001,10 @@ div .userGhipy{
   margin-left: 2px;
 }
 
+#attendants{
+ display: block;
+ margin-top: 16% !important;
+}
 .contentComment{
   width: 88%;
   display: inline-block;
