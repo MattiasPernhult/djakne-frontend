@@ -1,4 +1,4 @@
-<ion-content overflow-scroll="false" class="expandList" ng-style="{'background-color':'white'}">
+<ion-content overflow-scroll="false" class="expandList" ng-style="{'background-color':'#f0f0f0'}">
   <ion-refresher on-refresh="doMemberRefresh()">
 
   </ion-refresher>
@@ -10,11 +10,11 @@
     </div>
   </div>
   <div class="list card">
-    <div class="item item-avatar">
-      <img src="img/Icons/home/coffee_black.png">
+    <div class="item-header">
+      <img class="icon-header" src="img/Icons/home/coffee_black.png">
       <div class="event-header">
-        <h3>{{rating.title}}</h3>
-        <h4>This weeks coffee!</h4>
+        <h3>This weeks coffee!</h3>
+        <h5>{{rating.title}}</h5>
       </div>
     </div>
     <div class="item item-body">
@@ -30,8 +30,8 @@
 
   <!-- News card -->
         <div ng-repeat="issue in issues"class="list card">
-          <div class="item item-avatar">
-            <img src="img/Icons/home/news_black.png">
+          <div class="item-header">
+            <img class="icon-header" src="img/Icons/home/news_black.png">
             <div class="event-header">
               <h3>{{issue.issue}}</h3>
             </div>
@@ -41,7 +41,7 @@
 
             <div ng-repeat="letter in issue.letters" class="item item-body" style="padding:0px;">
               <h3>{{letter.title}}<h3>
-              <p style="padding:0px 16px 0px 16px;text-align:justify">{{letter.description | limitTo: 200 }}...<p>
+              <p style="padding:0px 16px 0px 16px;text-align:center">{{letter.description | limitTo: 200 }}...<p>
               <hr ng-style="{'width':'85%'}" ng-hide="$last">
             </div>
             <p>

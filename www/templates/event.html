@@ -19,7 +19,7 @@
        </div>
      </div>
      <div id="bookingsDesc">
-       <h2>{{currentEvent.title}}</h2>
+       <h3>{{currentEvent.title}}</h3>
        <p class="infoText">{{currentEvent.date | date:'h:mma'}}</p>
        <!-- <h4><p ng-if="currentEvent.location">{{currentEvent.location}}</p></h4>
        <h4><p ng-if="!currentEvent.location">Djäkne</p></h4> -->
@@ -32,7 +32,7 @@
        {{currentEvent.location}}
      </p>
      <p>{{currentEvent.text}}</p>
-     <button class="button button-outline button-assertive" ng-style="{'float': 'right'}" ng-click="showing = !showing; signUp(currentEvent._id)" ng-show="!showing">
+     <button ng-if="currentEvent.attendantsId !== user.id" class="button button-outline button-assertive" ng-style="{'float': 'right'}" ng-click="showing = !showing; signUp(currentEvent._id)">
        SIGN UP
      </button>
      <button id="removeEvent" ng-if="currentEvent.author == user.id"  ng-style="{'float': 'right'}" ng-click="showConfirmDeleteEvent(currentEvent._id)" class="button button-small button-outline button-dark">
