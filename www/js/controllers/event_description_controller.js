@@ -1,6 +1,7 @@
 controllers.controller('EventDescriptionController',
   function($scope, $http, EventFactory, accessFactory, HOST, httpService,
-    toastService, $stateParams, ProfileFactory, $state, $ionicModal, $ionicPopup) {
+    toastService, $stateParams, ProfileFactory, $state, $ionicModal, $ionicPopup,
+    $ionicScrollDelegate) {
     var eventData = EventFactory.getEvent();
     $scope.chosenEvent = eventData;
     $scope.image = '/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8KCwkMEQ8SEhEP' +
@@ -37,6 +38,27 @@ controllers.controller('EventDescriptionController',
     '8z//2Q==';
     $scope.showImage = false;
 
+    $scope.quantity = 3;
+
+    $scope.showAll = false;
+
+    $scope.showMore = function() {
+      $scope.quantity = $scope.currentEvent.comments.length;
+      $scope.showAll = true;
+      $ionicScrollDelegate.resize();
+    };
+
+    $scope.hide = function() {
+      $scope.quantity = 3;
+      $scope.showAll = false;
+      $ionicScrollDelegate.resize();
+    };
+
+    $scope.commentAmount = function() {
+      $scope.commentQty = $scope.currentEvent.comments.length;
+    };
+
+
     $scope.$watch(function() {
         return EventFactory.getEvent();
       },
@@ -66,6 +88,9 @@ controllers.controller('EventDescriptionController',
 
     // Get event parameter
     $scope.currentEvent = $stateParams.eventParam;
+
+    // Get size of comments
+    $scope.commentAmount();
 
     // Get user parameter
     $scope.user = $stateParams.userParam;
