@@ -1,0 +1,80 @@
+<ion-view view-title="Profile">
+  <!-- Navigation button -->
+  <ion-nav-buttons side="left">
+    <button ui-sref="tab.home" class=" button button-icon ion-ios-arrow-left"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button icon-left ion-log-out button" ng-click="logout()">Logout</button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <!-- Top header -->
+    <div class="hero text-center" style="background: #444">
+      <div class="content">
+        <div class="avatar" style="background-image: url(data:image/gif;base64,{{user.image}}) ;"></div>
+        <p><a id="profileTitle">{{user.firstName}} {{user.lastName}}</a></p>
+      </div>
+    </div>
+
+    <div id="profile_nav">
+      <ul>
+        <li ng-click="changeView(0)" ng-class="{'profil_active' : general}">General</li>
+        <li ng-click="changeView(2)" ng-class="{'profil_active' : eventBooking}">Bookings</li>
+        <li ng-click="changeView(1)" ng-class="{'profil_active' : giphy}">Giphy</li>
+      </ul>
+    </div>
+
+    <!-- Specials -->
+    <ion-list ng-show="general">
+      <ion-toggle class="toggleSpecials" ng-repeat="item in orderSettings" ng-model="item.checked" ng-checked="item.checked" ng-change="change(item.name,'true')">
+        <h3>{{item.name}}</h3></ion-toggle>
+    </ion-list>
+
+    <!-- Icons -->
+    <div ng-show="general" class="row" style="border-top:1px solid lightgrey;">
+      <ul id="icon_list">
+        <li ng-hide="wifiPremium">
+          <span class="ion-wifi"></span>
+          <p class="profileDisplay profileIconText"><strong>Wi-fi: </strong>{{wifiMember.wifiName}}<br>
+          <strong>Password: </strong>{{wifiMember.wifiPassword}}</p>
+        </li>
+        <li>
+          <span class="ion-card"></span>
+          <p class="profileDisplay profileIconText"><strong>Your credit is: </strong>{{user.credits}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Giphy -->
+    <ion-item class="profileItem" ng-show="giphy">
+      <p ng-style="{'margin-top':'10px', 'margin-bottom':'15px'}" class="text-center"> <strong>Wish a Giphy animation!</strong>
+        <br>  Spread a little joy and see the result at <br> our coffeebar</p>
+      <input ng-model="userWish.text" class="addGiphyInput" type="text" placeholder="Write a word..">
+      <!-- User input -->
+      </input>
+      <button ng-style="{'margin-right':'10px'}" ng-click="addGiphy()" ng-disabled="!userWish.text" class=" addComment button-small button-dark button button-outline"> WISH A GIPHY </button>
+    </ion-item>
+
+    <!-- Events -->
+    <ion-item class="profileItem" ng-show="eventBooking">
+      <div>
+        <p ng-style="{'padding-top':'16px'}" class="text-center" ng-show="!bookedQty"><strong>No upcoming events</strong></p>
+        <ion-list>
+          <ion-item class="bookedItems" ng-repeat="event in isBooked" ng-style="bookedQty == 1 ? {'border': 'none'} : ''">
+            <div id="bookingsDateContainer">
+              <div class="dateBox">
+                <p id="bookingDay" class="bookingsDate">{{event.date | date : 'd'}}</p>
+                <p id="bookingMonth" class="bookingsDate">{{event.date | date : 'MMM'}}</p>
+              </div>
+            </div>
+            <div id="bookingsDesc">
+              <h3>{{event.title}}</h3>
+              <h4>{{event.location}}</h4>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-item>
+
+  </ion-content>
+</ion-view>

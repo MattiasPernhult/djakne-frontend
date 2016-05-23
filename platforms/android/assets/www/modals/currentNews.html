@@ -1,0 +1,31 @@
+<!-- Current news modal -->
+<ion-modal-view>
+  <ion-header-bar class="bar-dark">
+    <button class="button button-icon ion-ios-arrow-left" ng-click="closeNewsModal()"></button>
+    <h1 class="title">Latest news</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <div ng-repeat="issue in issues" class="list card">
+      <div class="item-header">
+        <img class="icon-header" src="img/Icons/home/news_black.png">
+        <div class="event-header">
+          <p>{{issue.title}}
+            <p>
+        </div>
+        <div class="text-center">
+          <h3>{{issue.issue}}</h3>
+        </div>
+      </div>
+
+      <div class="list">
+
+        <div ng-repeat="letter in issue.letters" class="item item-body">
+          <h3>{{letter.title}}<h3>
+        <p style="padding:0px 7px 0px 7px;text-align:justify">{{letter.description}}<p>
+        <hr ng-hide="$last">
+      </div>
+    </div>
+  </ion-content>
+
+</ion-modal-view>

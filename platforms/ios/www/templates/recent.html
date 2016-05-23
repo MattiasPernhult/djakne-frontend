@@ -1,0 +1,28 @@
+<ion-content overflow-scroll="false" class="expandList" ng-style="{'background-color':'white'}">
+  <ion-refresher on-refresh="doMemberRefresh()" disable-pulling-rotation="false">
+
+  </ion-refresher>
+  <!-- Innehåll för slide ett -->
+  <div class="list card">
+    <h2>People @ Djakne</h2>
+  <div class="item">
+    <img id="homeAvatar" ng-click="openModal(member)" ng-repeat="member in members | limitTo: 6" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+  </div>
+</div>
+    <div class="list card">
+      <div class="item item-avatar">
+        <img src="img/Icons/home/coffee_black.png">
+        <div class="event-header">
+          <h2>This weeks coffee!</h2>
+          <h4>{{ rating.startDate | date:'d MMMM' }}</h4>
+        </div>
+      </div>
+      <div class="item item-body">
+        <h2>{{rating.title}}</h2>
+        <img class="event-img" ng-src="{{rating.image}}">
+        <p>
+          <a ng-click="openCoffeeModal(coffee)" class="subdued">Read More</a>
+        </p>
+      </div>
+    </div>
+  </ion-content>

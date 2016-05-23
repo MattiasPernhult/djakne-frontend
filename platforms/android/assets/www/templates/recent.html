@@ -1,0 +1,52 @@
+<ion-content overflow-scroll="false" class="expandList" ng-style="{'background-color':'#f0f0f0'}">
+  <ion-refresher on-refresh="doMemberRefresh()">
+
+  </ion-refresher>
+  <!-- Innehåll för slide ett -->
+  <div class="list card">
+    <h3>People @ Djakne</h3>
+    <div class="item">
+      <img id="homeAvatar" ng-click="openModal(member)" ng-repeat="member in members | limitTo: 6" ng-src="data:image/jpeg;base64,{{member.image}}"></img>
+    </div>
+  </div>
+  <div class="list card">
+    <div class="item-header">
+      <img class="icon-header" src="img/Icons/home/coffee_black.png">
+      <div class="event-header">
+        <h3>This weeks coffee!</h3>
+        <h5>{{rating.title}}</h5>
+      </div>
+    </div>
+    <div class="item item-body">
+      <img class="event-img" ng-src="{{rating.image}}">
+      <p>
+        <a ng-click="openCoffeeModal(coffee)" class="subdued">Read More</a>
+      </p>
+    </div>
+
+  </div>
+
+
+
+  <!-- News card -->
+        <div ng-repeat="issue in issues"class="list card">
+          <div class="item-header">
+            <img class="icon-header" src="img/Icons/home/news_black.png">
+            <div class="event-header">
+              <h3>{{issue.issue}}</h3>
+            </div>
+          </div>
+
+          <div class="list">
+
+            <div ng-repeat="letter in issue.letters" class="item item-body" style="padding:0px;">
+              <h3>{{letter.title}}<h3>
+              <p style="padding:0px 16px 0px 16px;text-align:center">{{letter.description | limitTo: 200 }}...<p>
+              <hr ng-style="{'width':'85%'}" ng-hide="$last">
+            </div>
+            <p>
+              <a ng-click="openNewsModal()" class="subdued">Read More</a>
+            </p>
+          </div>
+        </div>
+      </ion-content>

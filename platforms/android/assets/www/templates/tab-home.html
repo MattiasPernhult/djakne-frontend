@@ -1,0 +1,25 @@
+<ion-view title="Djäkne">
+  <ion-nav-buttons side="right">
+    <button class="button icon-left ion-heart button-outline" ng-click="openFavoriteModal()" ng-style="userFavorites ? {'color':'#FF7E7E'} : {'color':'white'}" ng-disabled="userFavorites < 1">
+    </button>
+    <button class="button icon-left ion-android-person button-outline" ui-sref="profile" ng-style=""></button>
+  </ion-nav-buttons>
+<ion-content scroll="false" has-bouncing="false">
+    <ion-slide-box show-pager="false" ion-slide-tabs>
+      <!-- Slide ett -->
+        <ion-slide ion-slide-tab-label="Recent">
+          <!-- Innehåll slide ett -->
+          <div ng-include="'templates/recent.html'"></div>
+        </ion-slide>
+        <!-- Slide två -->
+        <ion-slide ion-slide-tab-label="Co-work">
+          <!-- Innehåll slide två -->
+          <div ng-include="'templates/co_work.html'"></div>
+        </ion-slide>
+        <!-- Slide tre -->
+        <ion-slide ion-slide-tab-label="Events">
+          <!-- Innehåll slide tre -->
+          <div ng-include="'templates/events.html'"></div>
+      </ion-slide>
+    </ion-slide-box>
+</ion-content>

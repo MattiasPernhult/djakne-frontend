@@ -1,0 +1,29 @@
+<!-- Current coffee modal -->
+<ion-modal-view>
+<ion-header-bar class="bar-dark">
+  <button class="button button-icon ion-ios-arrow-left" ng-click="closeCoffeeModal()"></button>
+  <h1 class="title">This weeks coffee!</h1>
+</ion-header-bar>
+
+  <ion-content>
+    <div class="list card">
+      <div class="item-header">
+        <img class="icon-header"src="img/Icons/home/coffee_black.png">
+        <div class="event-header">
+          <h3>{{rating.title}}</h3>
+          <h4>{{ rating.startDate | date:'d MMMM' }}</h4>
+        </div>
+      </div>
+      <div class="item item-body">
+        <img class="event-img" ng-src="{{rating.image}}">
+        <p ng-style="{'text-align':'left', 'width':'90%', 'margin':'0 auto'}">{{rating.description}}</p>
+        <h3 id="ratingTitle">Vote for this weeks coffee!</h3>
+        <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+        <div class="text-center padding">
+          <button ng-style="{'padding':'5px 10px 5px 10px', 'margin-top':'10px'}" class="button button-small button-outline button-assertive" ng-click="send()">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+    </div>
+ </ion-content>
+</ion-modal-view>
