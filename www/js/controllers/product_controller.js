@@ -26,7 +26,7 @@ $ionicModal) {
     push.on('notification', function(data) {
       var notification = {
         id: 1,
-        title: 'Your order',
+        title: 'Order',
         text: data.message,
         data: {
           customProperty: 'custom value',
