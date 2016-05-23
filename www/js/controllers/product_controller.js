@@ -54,14 +54,7 @@ $ionicModal) {
 
   $scope.customersProducts = Cart.list();
   $scope.userFavorites = $scope.userFavorites  || [];
-  // $scope.specials = [{
-  //     name: 'Laktosfritt',
-  //     checked: false,
-  //   }, {
-  //     name: 'Takeaway',
-  //     checked: false,
-  //   },
-  // ];
+
 
   $scope.$on('$ionicView.enter', function() {
     ProfileFactory.checkOrderSettings('Takeaway');
@@ -274,6 +267,14 @@ $ionicModal) {
     });
   };
 
+
+  $scope.redirectToCart = function() {
+    $scope.closeFavoriteModal();
+    $scope.toggleCart();
+    $scope.priceRequest();
+  };
+
+
   // Watch for changes in product total
   $scope.$watch(function() {
       return Cart.total();
@@ -282,4 +283,9 @@ $ionicModal) {
       $scope.total = newVal;
     }
   );
+
+  $scope.goToHome = function() {
+    $state.go('tab.home');
+  };
+
 });

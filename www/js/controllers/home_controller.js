@@ -1,6 +1,6 @@
 controllers.controller('HomeController', function($scope, CoffeeFactory, $http, HOST,
   accessFactory, $ionicModal, MembersFactory, NewsFactory, httpService, toastService, $ionicSlideBoxDelegate,
-  EventFactory, $timeout, Cart, $ionicPopup, $ionicSideMenuDelegate) {
+  EventFactory, $timeout, Cart, $ionicPopup, $ionicSideMenuDelegate, $state) {
 
   $scope.votes = 2;
   $scope.body = {};
@@ -197,22 +197,6 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
     }
   );
 
-  // Watch for changes in cart size
-  // $scope.$watch(function() {
-  //     return $scope.userFavorites.length;
-  //   },
-  //   function(newQty) {
-  //     $scope.favQty = newQty;
-  //     console.log($scope.favQty);
-      // if (newQty == 1) {
-      //   console.log('Hej');
-      //   $scope.favoriteModal.isShown()
-      //   $scope.favoriteModal.hide();
-      // }
-  //   }
-  // );
-
-
 
   // Modals
 
@@ -289,6 +273,11 @@ controllers.controller('HomeController', function($scope, CoffeeFactory, $http, 
 
   $scope.gotoLinkedIn = function() {
     window.open($scope.member.linkedInProfile, '_system');
+  };
+
+  $scope.redirectToCart = function() {
+    $state.go('tab.menu');
+    $scope.closeFavoriteModal();
   };
 
   //

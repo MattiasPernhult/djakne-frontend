@@ -76,7 +76,7 @@ function($scope, SessionFactory, ProfileFactory, EventFactory, $state, toastServ
     $scope.isBooked = [];
     angular.forEach(events, function(event) {
       for (var i = 0; i < event.attendants.length; i++) {
-        if (id === event.attendants[i].id) {
+        if (id == event.attendants[i].id) {
           $scope.isBooked.push(event);
           break;
         }

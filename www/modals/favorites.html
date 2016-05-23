@@ -1,34 +1,3 @@
-<!-- <ion-modal-view>
-  <ion-header-bar class="bar-dark">
-    <div class="buttons">
-      <button class="button icon icon-left ion-chevron-left" ng-click="closeFavoriteModal()"></button>
-    </div>
-    <h1 class="title">Favorites</h1>
-    <div class="buttons">
-      <button class="button icon icon-right ion-bag button-outline" ng-disabled="cartQty === 0" ng-click="closeFavoriteModal(); toggleCart(); priceRequest()"></button>
-      <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
-    </div>
-  </ion-header-bar>
-
-  <ion-content>
-    <ion-list>
-      <ion-item class="favItem" ng-repeat="product in userFavorites">
-        <p class="item-name" style="width: 55%;">{{product.name}}</p>
-        <div>
-          <button class="trash button button-assertive button-clear ion-ios-trash-outline" ng-click="toogleFavorite(product)"></button>
-          <button ng-click="addToCart(product)" class="button button-outline button-assertive">
-            ADD
-          </button>
-          <button ng-click="showConfirm(product)" class="button button-outline button-assertive">
-            FAST BUY
-          </button>
-          </button>
-        </div>
-        <p class="item-price">{{product.price}} kr</p>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-modal-view> -->
 
 <ion-modal-view>
   <ion-header-bar class="bar-dark">
@@ -37,13 +6,14 @@
     </div>
     <h1 class="title">Favorites</h1>
     <div class="buttons">
-      <button class="button icon icon-right ion-bag button-outline" ng-disabled="cartQty === 0" ng-click="closeFavoriteModal(); toggleCart(); priceRequest()"></button>
+      <button class="button icon icon-right ion-bag button-outline" ng-disabled="cartQty === 0" ng-click="redirectToCart()"></button>
       <div class="circle" ng-show="cartQty > 0">{{cartQty}}</div>
     </div>
   </ion-header-bar>
 
   <ion-content ng-style="{'background-color':'#f0f0f0'}">
-    <ion-list>
+    <p class="text-center" style="margin-top:50%;" ng-show="userFavorites.length < 1"><strong>No products selected</strong></p>
+    <ion-list ng-show="userFavorites">
       <ion-item  ng-repeat="product in userFavorites" class="menuItem item-accordion item-obj">
         <p class="item-name">{{product.name}}</p>
         <p class="item-price">{{product.price}} kr</p>
