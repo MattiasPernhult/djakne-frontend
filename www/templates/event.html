@@ -37,10 +37,10 @@
             <button ng-if="currentEvent.attendantsId !== user.id" class="button button-outline button-grey" ng-style="{'text-align': 'center', 'border-color': '#444', 'color': '#444'}" ng-click="showing = !showing; signUp(currentEvent._id)">
               SIGN UP
             </button>
+            <button id="removeEvent" ng-if="currentEvent.author == user.id" ng-style="{'text-align': 'center','font-size': '15px'}" ng-click="showConfirmDeleteEvent(currentEvent._id)" class="button button-small button-outline button-dark">
+              REMOVE EVENT
+            </button>
           </div>
-          <button id="removeEvent" ng-if="currentEvent.author == user.id" ng-style="{'float': 'right'}" ng-click="showConfirmDeleteEvent(currentEvent._id)" class="button button-small button-outline button-dark">
-            REMOVE EVENT
-          </button>
           <div id="attendants">
             <h4 style="margin-bottom:2px;" id="attending">Attending:</h4>
             <img style="width: 35px;" ng-repeat="attendant in currentEvent.attendants" ng-click="openModal(attendant)" id="attendImg" ng-src="data:image/gif;base64,{{attendant.image}}" ng-if="attendant.image != false" </img>
