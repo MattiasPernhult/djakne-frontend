@@ -8,7 +8,6 @@ controllers.controller('AddEventController',
       if (!$scope.event.djakne) {
         $scope.event.place = null;
         $scope.event.adress = null;
-        alert(JSON.stringify($scope.event, null, 2));
       }
       $scope.show = $scope.event.djakne;
     };
