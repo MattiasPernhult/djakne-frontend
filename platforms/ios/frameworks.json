@@ -1,8 +1,0 @@
-{
-    "QuartzCore.framework": 1,
-    "AddressBook.framework": 1,
-    "libsqlite3.tbd": 1,
-    "libz.tbd": 1,
-    "EventKit.framework": 1,
-    "EventKitUI.framework": 1
-}
